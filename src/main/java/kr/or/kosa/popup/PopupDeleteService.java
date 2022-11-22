@@ -15,45 +15,36 @@ public class PopupDeleteService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
+		String msg="";
+	    String url="";
 		
-		
-		try {
-			PopupDao popupdao = new PopupDao();
-			String Id = request.getParameter("id");
-			String Popup_title = request.getParameter("popup_title");
-			String Popup_filename = request.getParameter("popup_filename");
-			String Popup_date = request.getParameter("popup_date");
+	    
+	    try {
+			PopupDao dao = new PopupDao();
+			int popupno = Integer.parseInt(request.getParameter("popup_no"));
+			int row = dao.DeletePopup(popupno);
 			
-			Popup popup = new Popup();
-			
-			popup.setId(Id);
-			popup.setPopup_title(Popup_title);
-			popup.setPopup_filename(Popup_filename);
-			popup.setPopup_date(new Date(Popup_date));
-			
-			int result = popupdao.InsertPopup(popup);
-			
-			String msg = "";
-			String url = "";
-			if(result !=0 ) {
-				msg = "insert success";
-				url = "글목록.do";
-				
+			if(row != 0) {
+				msg = "팝업 삭제를 성공했습니다.";
 			}else {
-				msg = "insert fail";
-				url = "글쓰기.do";
+				msg = "팝업 삭제를 실패했습니다.";
 			}
-			request.setAttribute("msg", msg);
-			request.setAttribute("url", url);
-			
-		} catch (Exception e) {
+			url = "popup.do" ;
+	    } catch (Exception e) {
 			e.printStackTrace();
-		} 
-		
+			msg = "서버 오류 발생";
+			url = "popup.do" ;
+		}
+	    request.setAttribute("msg",msg);
+		request.setAttribute("url", url);
 		forward.setRedirect(false);
-		forward.setPath("redirecg.jsp");
+		forward.setPath("/WEB-INF/views/utils/redirect.jsp");
+		
 		return forward;
+	
+		}
+		
+		
 	}
 
-}
 
