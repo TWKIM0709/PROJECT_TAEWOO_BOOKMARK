@@ -16,7 +16,7 @@ public class CalendarAllListService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
-		System.out.println("캘린더 서비스 진입");
+		System.out.println("캘린더 ALLList서비스 진입");
 		
 		//List<Calendar> calendarList = new ArrayList<>();
 		List<Calendar> calendarList = null;
@@ -25,6 +25,7 @@ public class CalendarAllListService implements Action {
 		
 		//DB작업
 		try {
+			Calendar calendar = new Calendar();
 			CalendarDao dao = new CalendarDao();
 			calendarList = dao.CalendarAlllist();
 			

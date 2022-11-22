@@ -35,9 +35,32 @@
 			<p><button id="popupbutton">추가하기</button></p>
 		</div>
 	</div>
+
+	
 </body>
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function() {
+		//<c:set var="calendarList" value="${requestScope.calendarList}" />
+			//let arr = new Array();
+			let arr = ${requestScope.calendarList};
+			console.log(mylist);
+			/*
+		  <c:forEach var="item" items="${requestScope.calendarList}">        
+	            arr.push(
+	            		{
+	            			calendar_no: "${item.claendar_no}",
+	            			id: "${item.id}",
+	            			calendar_start: "${item.calendar_start}",
+	            			calendar_end: "${item.calendar_end}",
+	            			calndar_content: "${item.calendar_content}",
+	            			calendar_status: "${item.calendar_status}"
+	            		}
+	           	);
+	           
+	    </c:forEach>
+	    */
+	  
+		console.log(arr);
 		let calendarEl = document.getElementById('calendar');
 		let calendarOption = {
 				initialView : 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)

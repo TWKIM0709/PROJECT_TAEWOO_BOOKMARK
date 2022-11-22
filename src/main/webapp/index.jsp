@@ -11,5 +11,6 @@
 <title>Insert title here</title>
 </head>
 <body>
+		<a href="${pageContext.request.contextPath}/calendarall.do">CALENDAR</a>
 </body>
 </html>
