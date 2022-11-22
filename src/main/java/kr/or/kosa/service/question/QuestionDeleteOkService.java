@@ -11,33 +11,38 @@ public class QuestionDeleteOkService implements Action {
 //문의사항 삭제
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		String idx = request.getParameter("idx");
-		String pwd =request.getParameter("pwd");
+		String question_no = request.getParameter("question_no");
 		
 		String msg ="";
 		String url = "";
 		QuestionDao qdao;
+		ActionForward forward = new ActionForward();
 		try {
 			qdao = new QuestionDao();
 			
-			int result = 0;//qdao.deleteQuestion(question_no);
+			boolean result = qdao.deleteQuestion(question_no);
 			
-			if(result > 0) {
+			if(result) {
 				msg="delete success";
 				url=".do";
 			}else {
 				msg="delete fail";
 				url=".do";
 			}
+		request.setAttribute("msg", msg);
+		request.setAttribute("url" , url);
+		
+		forward.setRedirect(false);
+		forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
+			msg = "error";
+			String url = "";
+			request.setAttribute("msg",msg);
+			request.setAttribute("url", url);
+			forward.setPath("redirect.jsp");
+			forward.setRedirect(false);
 		}
-		request.setAttribute("board_msg", msg);
-		request.setAttribute("board_url" , url);
-		
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/views/redirect.jsp");
 		return forward;
 	}
 
