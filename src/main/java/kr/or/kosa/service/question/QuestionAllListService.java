@@ -60,7 +60,7 @@ public class QuestionAllListService implements Action {
 			request.setAttribute("pagesize", pagesize);
 			request.setAttribute("cpage", cpage);
 			request.setAttribute("pagecount", pagecount);
-			request.setAttribute("qlist", qlist);
+			request.setAttribute("questionlist", qlist);
 			request.setAttribute("totalboardcount", totalboardcount);
 			request.setAttribute("pager", pager);
 
@@ -68,7 +68,15 @@ public class QuestionAllListService implements Action {
 			forward.setRedirect(false); // forward
 			forward.setPath("/WEB-INF/views/board_list.jsp");
 		} catch (Exception e) {
+			
 			System.out.println(e.getMessage());
+			String msg = "error";
+			String url = "";
+			request.setAttribute("msg",msg);
+			request.setAttribute("url", url);
+			
+			forward.setPath("redirect.jsp");
+			forward.setRedirect(false);
 		}
 		return forward;		
 	}

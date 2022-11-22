@@ -12,7 +12,7 @@ public class QuestionUpdateService implements Action {
 //문의사항 수정하기
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-String question_no = request.getParameter("question_no");
+		String question_no = request.getParameter("question_no");
 		
 		String msg="";
 	    String url="";
@@ -27,19 +27,17 @@ String question_no = request.getParameter("question_no");
 
 			qdao = new QuestionDao();
 			
-			//BoardService service = BoardService.getInBoardService();
-			 Question_Board qboard =null;// qdao.getEditContent(question_no);
-			
+			 Question_Board qboard = qdao.getQuestionByNo(question_no);
 			if(qboard == null){
 				msg ="데이터 오류";
 				url ="BoardList.do";
 				
-				request.setAttribute("board_msg", msg);
-				request.setAttribute("board_url", url);
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", url);
 				
 				forward = new ActionForward();
 				forward.setRedirect(false);
-				forward.setPath("/WEB-INF/views/board/redirect.jsp");
+				forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 				
 			}else {
 				request.setAttribute("question_no", question_no);
@@ -48,10 +46,13 @@ String question_no = request.getParameter("question_no");
 				forward = new ActionForward();
 				forward.setRedirect(false);
 				forward.setPath("/WEB-INF/views/board/board_edit.jsp");
-				
 			}
-
 		} catch (Exception e) {
+			e.printStackTrace();
+			 request.setAttribute("msg","error");
+				request.setAttribute("url","" );
+			forward.setPath("redirect.jsp");
+			forward.setRedirect(false);
 			e.printStackTrace();
 		}
 

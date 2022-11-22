@@ -24,7 +24,8 @@ public class QuestionWriteOkService implements Action {
 	    	board.setQuestion_title(request.getParameter("question_title"));
 	    	board.setQuestion_content(request.getParameter("question_content"));
 	    	board.setHits(Integer.parseInt(request.getParameter("hits")));
-	    	board.setNotice_no(Integer.parseInt(request.getParameter("notice_no")));
+	    	int notice = (request.getParameter("notice_no") != null) ? Integer.parseInt(request.getParameter("notice_no")) : 0;
+	    	board.setNotice_no(notice);
 	    	
 	    
 	    	int result = dao.writeQuestionBoard(board);
@@ -38,7 +39,20 @@ public class QuestionWriteOkService implements Action {
 		    }
 		    
 	    	
+	   
+	    request.setAttribute("board_msg",msg);
+	    request.setAttribute("board_url", url);
+	    
+	    
+	    forward.setRedirect(false);
+	    forward.setPath("redirect.jsp");
 		} catch (Exception e) {
+			e.printStackTrace();
+
+			request.setAttribute("msg","error");
+			request.setAttribute("url","" );
+			forward.setPath("redirect.jsp");
+			forward.setRedirect(false);
 			e.printStackTrace();
 		}
 	    
@@ -47,13 +61,6 @@ public class QuestionWriteOkService implements Action {
 	    //write.jsp 화면  >> writeok.jsp 처리 >> service >> dao > DB 작업 > 
 	    //return dao > return service >  writeok.jsp 결과처리 >> 이동 (공통) >> redirect.jsp
 	    		
-	   
-	    request.setAttribute("board_msg",msg);
-	    request.setAttribute("board_url", url);
-	    
-	    
-	    forward.setRedirect(false);
-	    forward.setPath("redirect.jsp");
 	    
 		return forward;
 	}

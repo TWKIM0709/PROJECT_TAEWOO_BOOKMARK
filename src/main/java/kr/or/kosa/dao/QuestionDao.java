@@ -93,10 +93,10 @@ public class QuestionDao implements BookMarkDao{
 			int start = cpage * pagesize - (pagesize -1); //1 * 5 - (5 - 1) >> 1
 			int end = cpage * pagesize; // 1 * 5 >> 5
 			
-			pstmt.setInt(1, end);
-			pstmt.setInt(2, start);
-			pstmt.setString(3, type);
-			pstmt.setString(4, value);
+			pstmt.setString(1, type);
+			pstmt.setString(2, value);
+			pstmt.setInt(3, end);
+			pstmt.setInt(4, start);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -276,11 +276,12 @@ public class QuestionDao implements BookMarkDao{
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "update question_board"
-					+ "set question_title = ?,question_content=?,question_date=sysdate, notice_no=?";
+					+ "set question_title = ?,question_content=?,question_date=sysdate, notice_no=? where question_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getQuestion_title());
 			pstmt.setString(2, board.getQuestion_content());
 			pstmt.setInt(3, board.getNotice_no());
+			pstmt.setInt(4, board.getQuestion_no());
 			
 			row = pstmt.executeUpdate();
 		} catch (Exception e) {

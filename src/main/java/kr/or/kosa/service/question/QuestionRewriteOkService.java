@@ -20,6 +20,7 @@ public class QuestionRewriteOkService implements Action {
 		String notice_no = request.getParameter("notice_no");
 		String msg="";
 	    String url="";
+		ActionForward forward = new ActionForward();
 		
 				
 		try {
@@ -45,18 +46,22 @@ public class QuestionRewriteOkService implements Action {
 		    	msg="rewrite insert fail";
 		    	url="BoardContent.do?idx="+board.getQuestion_no();
 		    }
-		    
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		request.setAttribute("msg",msg);
 		request.setAttribute("url", url);
 		
-		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/views/utils/redirect.jsp");
+		    
+		} catch (Exception e) {
+			 msg = "error";
+			 url = "";
+			 request.setAttribute("msg",msg);
+				request.setAttribute("url", url);
+			forward.setPath("redirect.jsp");
+			forward.setRedirect(false);
+			e.printStackTrace();
+		}
+		
 		
 		return forward;
 	}
