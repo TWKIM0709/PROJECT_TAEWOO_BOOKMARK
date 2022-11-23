@@ -471,7 +471,7 @@ public class BlogDao implements BookMarkDao{
 	}
 	
 	//댓글 작성
-	public int replyWrite(int blog_reply_no, int blog_no, String id, String content){
+	public int replyWrite(int blog_no, String id, String content){
 
 		int resultrow = 0;
 		int maxrefer = getMaxRefer();
@@ -550,8 +550,8 @@ public class BlogDao implements BookMarkDao{
 			//대댓글 작성하려는 원댓글
 			String originsql = "select refer, depth, step from blog_reply where blog_reply_no = ?";
 			//대댓글 insert 쿼리
-			String insertsql = "insert into blog_reply(blog_reply_no, id, refer, depth, step, reply_content, del) "
-					+ "values(blog_reply_no_seq.nextval, ?, ?, ?, ?, ?, 0";
+			String insertsql = "insert into blog_reply(blog_reply_no, id, refer, depth, step, reply_content, del,blog_no) "
+					+ "values(blog_reply_no_seq.nextval, ?, ?, ?, ?, ?, 0,?)";
 			//여기 테이블에 시퀀스가 있나 ?? -> 만들라고 했삼 221120 16:05
 			//blog__reply_no_ 에 seq 추가 (11.21 김태우)
 			
@@ -570,7 +570,7 @@ public class BlogDao implements BookMarkDao{
 				pstmt.setInt(3, depth + 1);
 				pstmt.setInt(4, step + 1);
 				pstmt.setString(5, reply.getReply_content());
-				
+				pstmt.setInt(6, reply.getBlog_no());
 				int row = pstmt.executeUpdate();
 				if(row > 0) {
 					result = row;
