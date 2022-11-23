@@ -635,7 +635,8 @@ public class BookDao implements BookMarkDao{
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
@@ -657,7 +658,8 @@ public class BookDao implements BookMarkDao{
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
@@ -690,7 +692,9 @@ public class BookDao implements BookMarkDao{
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
@@ -724,7 +728,9 @@ public class BookDao implements BookMarkDao{
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
