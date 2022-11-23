@@ -10,21 +10,22 @@ import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.BlogDao;
 import kr.or.kosa.dao.PopupDao;
 import kr.or.kosa.dto.Blog_Board;
+import kr.or.kosa.dto.Popup;
 
 public class PopupLikeListService implements Action {
 //관리자 - 팝업조회
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
-		
+		String title = request.getParameter("title");
 		try {
 			PopupDao dao = new PopupDao();
 			
-			List<PopupDao> list = dao.LikeListPopup(request.getParameter(""));
+			List<Popup> list = dao.LikeListPopup(title);
 			
 			request.setAttribute("blogboardlist", list);
 			
-			forward.setPath("관리자블로그게시글조회.do");
+			forward.setPath("관리자 팝업 조회.do");
 			forward.setRedirect(false);
 		} catch (Exception e) {
 			e.printStackTrace();
