@@ -64,19 +64,15 @@
 				droppable : true,
 				editable : true,
 				events:[
-					//TODO:ajax로 db내용을 불러올시 textcolor등은 존재하지않음 .. 이걸 어떻게 처리할까?
-							//TODO: 스크립트릿 없이 불러오는 방법
-					 <%List<Calendar> calendarList = (List<Calendar>) request.getAttribute("calendarList");%>
-			            <%if (calendarList != null) {%>
-			            <%for (Calendar vo : calendarList) {%>
-			            {
-			            	title : '<%=vo.getCalendar_content()%>',
-			                start : '<%=vo.getCalendar_start()%>',
-			                end : '<%=vo.getCalendar_end()%>',
-			                color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
-			             },
-				<%}
-			}%>
+		            <c:forEach var="items" items="${requestScope.calendarList}" varStatus="status">
+	                {
+	                    title: '${items.calendar_content}',
+	                    start: '${items.calendar_start}',
+	                    end: '${items.calendar_end}',
+	                    color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+	                },
+	            </c:forEach>
+
 				],
 				dateClick:function(event){
 					$('#test #startdate').val(event.dateStr);

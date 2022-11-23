@@ -10,6 +10,7 @@ import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.BlogDao;
 import kr.or.kosa.dao.PopupDao;
 import kr.or.kosa.dto.Blog_Board;
+import kr.or.kosa.dto.Popup;
 
 public class PopupLikeListService implements Action {
 //관리자 - 팝업조회
@@ -20,7 +21,7 @@ public class PopupLikeListService implements Action {
 		try {
 			PopupDao dao = new PopupDao();
 			
-			List<PopupDao> list = dao.LikeListPopup(request.getParameter(""));
+			List<Popup> list = dao.LikeListPopup(request.getParameter(""));
 			
 			request.setAttribute("blogboardlist", list);
 			
