@@ -33,8 +33,8 @@
 	<div id='calendar'></div>
 	<div class='hide calendarPopup' id="test">
 		<div style="padding:5px">
-			<p>title:<input type="text" id="title"></p>
-			<p>start:<input type="date" id="startdate"></p>
+			<p>Content:<input type="text" id="title"></p>
+			<p>start:<input type="date" id="startdate" value=""></p>
 			<p>end:<input type="date" id="enddate"></p>
 			<p><button id="popupbutton">추가하기</button></p>
 		</div>
@@ -65,6 +65,7 @@
 				editable : true,
 				events:[
 					//TODO:ajax로 db내용을 불러올시 textcolor등은 존재하지않음 .. 이걸 어떻게 처리할까?
+							//TODO: 스크립트릿 없이 불러오는 방법
 					 <%List<Calendar> calendarList = (List<Calendar>) request.getAttribute("calendarList");%>
 			            <%if (calendarList != null) {%>
 			            <%for (Calendar vo : calendarList) {%>
@@ -78,12 +79,14 @@
 			}%>
 				],
 				dateClick:function(event){
+					$('#test #startdate').val(event.dateStr);
 					$('#test').toggleClass('hide');
 					$('#test').css('top',event.jsEvent.y);
 					$('#test').css('left',event.jsEvent.x);
 					console.log(event);
-					console.log(event.jsEvent.pageY);
-					console.log(event.jsEvent.pageX);
+					console.log(event.dateStr);
+					//console.log(event.jsEvent.pageY);
+					//console.log(event.jsEvent.pageX);
 				},
 				eventClick:function(event){
 					console.log(event);
@@ -96,11 +99,13 @@
 		calendar.render();
 		$('#popupbutton').on({
 			click:()=>{
+				console.log($('#title').val() + " " + $('#startdate').val() + " " + $('#enddate').val());
 				calendarOption.events.push({title:$('#title').val(),
 																	start:$('#startdate').val(),
 																	end:$('#enddate').val(),
 																	backgroundColor:'#333'
 																});
+				console.log(calendarOption.events);
 			}
 		});
 	})
