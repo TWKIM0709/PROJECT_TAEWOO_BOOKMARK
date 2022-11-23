@@ -1,4 +1,4 @@
-	package kr.or.kosa.popup;
+	package kr.or.kosa.service.popup;
 
 import java.util.Date;
 

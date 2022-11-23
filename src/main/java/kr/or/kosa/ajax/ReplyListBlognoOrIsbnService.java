@@ -11,17 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.kosa.dao.BlogDao;
 import kr.or.kosa.dao.BookDao;
+import kr.or.kosa.dao.BookMarkDao;
+import kr.or.kosa.dto.Blog_Board;
 import kr.or.kosa.dto.Blog_Reply;
 import kr.or.kosa.dto.Book_Reply;
 import kr.or.kosa.dto.ReplyInterface;
+import kr.or.kosa.utils.DaoFactory;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-@WebServlet("/ReplyLike")
-public class ReplyLikeListService extends HttpServlet {
+@WebServlet("/RepleListBlogOrBook")
+public class ReplyListBlognoOrIsbnService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ReplyLikeListService() {
+    public ReplyListBlognoOrIsbnService() {
     }
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List list = null;
@@ -32,8 +35,7 @@ public class ReplyLikeListService extends HttpServlet {
 			//request에 type이라는 이름으로 블로그/책 댓글 구분됨
 			if(request.getParameter("type").equals("blog")) {
 				BlogDao dao = new BlogDao();
-				list = dao.getAllReplyByLike(request.getParameter("id"));
-				System.out.println(list);
+				list = dao.getReply(Integer.parseInt(request.getParameter("blog_no")));
 				for(Object obj : list) {
 					Blog_Reply reply = (Blog_Reply)obj;
 					json.put("blog_no", reply.getBlog_no());
@@ -51,7 +53,7 @@ public class ReplyLikeListService extends HttpServlet {
 				response.getWriter().print(jsonobj);
 			} else if(request.getParameter("type").equals("book")){
 				BookDao dao = new BookDao();
-				list = dao.Book_ReplyLikeList(request.getParameter("id"));
+				list = dao.Book_ReplyIsbnList(request.getParameter("isbn"));
 				for(Object obj : list) {
 					Book_Reply reply = (Book_Reply)obj;
 					json.put("reply_no", reply.getBook_reply_no());
@@ -79,5 +81,4 @@ public class ReplyLikeListService extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
-
 }
