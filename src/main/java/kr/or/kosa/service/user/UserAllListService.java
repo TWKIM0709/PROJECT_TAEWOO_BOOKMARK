@@ -9,6 +9,7 @@ import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.UsersDao;
 import kr.or.kosa.dto.Users;
+import kr.or.kosa.utils.ThePager;
 
 public class UserAllListService implements Action {
 
@@ -20,7 +21,7 @@ public class UserAllListService implements Action {
 		try {
 			UsersDao dao = new UsersDao();
 			
-			int totalusercount = dao.hashCode();//이름 알아내서 바꿔야함
+			int totalusercount = dao.getUserListCount();
 			
 			ps = request.getParameter("pagesize"); // pagesize
 			cp = request.getParameter("cpage"); // current page
@@ -50,12 +51,23 @@ public class UserAllListService implements Action {
 			// 102건 : pagesize=5 >> pagecount=21페이지
 
 			// 전체 목록 가져오기
-			List<Users> list = dao.getUserAllList(pagesize, cpage);//count하는 dao있어야함
+			List<Users> userlist = dao.getUserAllList(pagesize, cpage);//count하는 dao있어야함
 			
+			int pagersize = 3;
+			ThePager pager = new ThePager(totalusercount,cpage,pagesize,pagersize, "UserList.do");
+			
+			request.setAttribute("pagesize", pagesize);
+			request.setAttribute("cpage", cpage);
+			request.setAttribute("pagecount", pagecount);
+			request.setAttribute("totalusercount", totalusercount);
+			request.setAttribute("userlist", userlist);
+			request.setAttribute("pager", pager);
+			
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/user/user_list.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 		return forward;
 	}
-
 }

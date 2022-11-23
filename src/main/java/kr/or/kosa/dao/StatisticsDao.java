@@ -81,14 +81,10 @@ public class StatisticsDao implements BookMarkDao {
 	String sql;
 
 	public StatisticsDao(){
-		try {
-			conn = ConnectionHelper.getConnection("orcle");
-			pstmt = null;
-			rs = null;
-			sql = "";
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		conn = null;
+		pstmt = null;
+		rs = null;
+		sql = "";
 	}
 	
 	//남녀 성비 통계
@@ -106,6 +102,7 @@ public class StatisticsDao implements BookMarkDao {
 		int female = 0;
 		
 		try {
+			conn = ConnectionHelper.getConnection("orcle");
 			String sql = "select substr(regist_no, -1) as num from user_detail";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -157,6 +154,7 @@ public class StatisticsDao implements BookMarkDao {
 		int female = 0;
 		
 		try {
+			conn = ConnectionHelper.getConnection("orcle");
 			String sql = "select substr(regist_no, -1) as num from user_detail";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -316,22 +314,27 @@ public class StatisticsDao implements BookMarkDao {
 		List<Statistics> ageArr = new ArrayList<>();
 
 		try {
-			String sql = "select 세대, count(세대) as count from (select "
-					+ "case when y between 0 and 10 then 0 "
-					+ "when y between 11 and 20 then 10 "
-					+ "when y between 21 and 30 then 20 "
-					+ "when y between 31 and 40 then 30 "
-					+ "when y between 41 and 50 then 40 "
-					+ "when y between 51 and 60 then 50 "
-					+ "else 60 "
-					+ "end as 세대 "
-					+ "from (select extract(year from sysdate) - extract(year from d) as y "
-					+ "from test1120)) group by 세대 order by 세대 asc";
+			conn = ConnectionHelper.getConnection("orcle");
+			String sql = "select Generation, count(Generation) as count from (select case "
+					+ "                    when y between 0 and 10 then 0 "
+					+ "					when y between 11 and 20 then 10 "
+					+ "					when y between 21 and 30 then 20 "
+					+ "					when y between 31 and 40 then 30 "
+					+ "					when y between 41 and 50 then 40 "
+					+ "					when y between 51 and 60 then 50 "
+					+ "					else 60 "
+					+ "					end as Generation "
+					+ "					from (select extract(year from sysdate) - extract(year from to_date(CASE WHEN SUBSTR(regist_no, 8, 1) in ('0', '9') THEN '18'"
+					+ "                                                                                            WHEN SUBSTR(regist_no, 8, 1) in ('1', '2', '5', '6') THEN '19'"
+					+ "                                                                                            WHEN SUBSTR(regist_no, 8, 1) in ('3', '4', '7', '8') THEN '20'"
+					+ "                                                                                        END "
+					+ "                                                                                    || SUBSTR(regist_no, 1, 2),'YYYY')) as y "
+					+ "					from user_detail)) group by Generation order by Generation asc";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				String generation = rs.getString("세대");
+				String generation = rs.getString("Generation");
 				int count = rs.getInt("count");
 				
 				ageArr.add(new Statistics(generation, count));
@@ -358,6 +361,7 @@ public class StatisticsDao implements BookMarkDao {
 		List<Statistics> dailyarr = new ArrayList<>();
 		
 		try {
+			conn = ConnectionHelper.getConnection("orcle");
 			String sql = "select substr(payment_date, 0, 10) as daily, sum(sumprice) as total "
 					+ "from book_payment group by substr(payment_date, 0, 10)";
 			pstmt = conn.prepareStatement(sql);
@@ -391,6 +395,7 @@ public class StatisticsDao implements BookMarkDao {
 		List<Statistics> monthlyarr = new ArrayList<>();
 		
 		try {
+			conn = ConnectionHelper.getConnection("orcle");
 			String sql = "select substr(payment_date, 0, 7) as monthly, sum(sumprice) as total "
 					+ "from book_payment group by substr(payment_date, 0, 7)";
 			pstmt = conn.prepareStatement(sql);
@@ -427,6 +432,7 @@ public class StatisticsDao implements BookMarkDao {
 		List<Statistics> curWeekarr = new ArrayList<>();
 
 		try {
+			conn = ConnectionHelper.getConnection("orcle");
 			String sql = "SELECT"
 					+ "to_char(TRUNC(payment_date, 'iw'),'YYYY.MM.DD')|| ' - ' || to_char(sysdate, 'YYYY.MM.DD') AS weekly,"
 					+ "    sum(sumprice) AS total "
@@ -465,6 +471,7 @@ public class StatisticsDao implements BookMarkDao {
 		List<Statistics> yearlyarr = new ArrayList<>();
 		
 		try {
+			conn = ConnectionHelper.getConnection("orcle");
 			String sql = "select substr(payment_date, 0,4) as yearly, sum(sumprice) as total "
 					+ "from book_payment group by substr(payment_date, 0, 4)";
 			pstmt = conn.prepareStatement(sql);
@@ -498,6 +505,7 @@ public class StatisticsDao implements BookMarkDao {
 		List<Statistics> searchArr = new ArrayList<>();
 		
 		try {
+			conn = ConnectionHelper.getConnection("orcle");
 			String sql = "select sumprice "
 					+ "from book_payment "
 					+ "where payment_date"

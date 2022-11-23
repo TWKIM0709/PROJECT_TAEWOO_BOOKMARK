@@ -220,6 +220,36 @@ public class UsersDao implements BookMarkDao{
 		}
 		return list;
 	}
+	//전체회원 카운트
+	public int getUserListCount() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		
+		try {
+			conn = ConnectionHelper.getConnection("oracle");
+			String sql = "select count(*) cnt from users";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return count;
+	}
 	//회원like조회
 	//select * from users where [type] like '[value]'
 	public List<Users> getUserListByLike(String type, String value){
@@ -233,7 +263,7 @@ public class UsersDao implements BookMarkDao{
 					+ "u.id, u.password, u.name, u.state, d.addr, "
 					+ "d.detail_addr, d.regist_no, d.phone "
 					+ "from users u left join user_detail d on u.id = d.id"
-					+ "? like ?";
+					+ "where ? like ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, type);
 			pstmt.setString(2,"%"+ value+"%");
@@ -254,8 +284,8 @@ public class UsersDao implements BookMarkDao{
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
 		}
 		return list;

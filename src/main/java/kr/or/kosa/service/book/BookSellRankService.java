@@ -1,5 +1,7 @@
 package kr.or.kosa.service.book;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,25 +12,32 @@ import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.BookDao;
 import kr.or.kosa.dto.Book;
 
-public class BookLikeListService implements Action {
+public class BookSellRankService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
-		String name = request.getParameter("name");
+		String sd = request.getParameter("startdate");
+		String ed = request.getParameter("enddate");
+		
+		SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-DD");
 		try {
+			Date startdate = df.parse(sd);
+			Date enddate = df.parse(ed);
+			
 			BookDao dao = new BookDao();
 			
-			List<Book> booklist = dao.BookLikeList(name);
+			List<Book> booksellrank = dao.SellBookList(startdate, enddate);
 			
-			request.setAttribute("booklist", booklist);
+			request.setAttribute("booksellrank", booksellrank);
 			
 			forward.setRedirect(false);
-			forward.setPath("#");
+			forward.setPath("booksellrank.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
+		}
+		
 		return forward;
 	}
 
