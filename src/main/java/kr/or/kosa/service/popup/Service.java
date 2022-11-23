@@ -1,4 +1,4 @@
-package kr.or.kosa.popup;
+package kr.or.kosa.service.popup;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

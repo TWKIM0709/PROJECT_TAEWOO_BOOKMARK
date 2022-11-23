@@ -45,6 +45,7 @@ public class BlogDao implements BookMarkDao{
 	public List<Blog_Board> AllBoard(){//int cpage , int pagesize){
 		List<Blog_Board> boardList = null;
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			String sql=  "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, a.blog_date, b.file_name "
 					+ "from blog_board a left join blogfile b "
 					+ "on a.blog_no = b.blog_no ";
@@ -95,6 +96,7 @@ public class BlogDao implements BookMarkDao{
 		List<Blog_Board> boardList = null;
 
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			String sql=  "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, a.blog_date, b.file_name "
 					+ "from blog_board a left join blogfile b "
 					+ "on a.blog_no = b.blog_no where a.id = ?";
@@ -143,6 +145,7 @@ public class BlogDao implements BookMarkDao{
 
 		int totalcount = 0;
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select count(*) as cnt from blog_board";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -167,6 +170,7 @@ public class BlogDao implements BookMarkDao{
 		Blog_Board board = null;
 		
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, a.blog_date, b.file_name "
 					+ "from blog_board a left join blogfile b "
 					+ "on a.blog_no = b.blog_no "
@@ -205,6 +209,7 @@ public class BlogDao implements BookMarkDao{
 		boolean result = false;
 		
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "update blog_board set hits = hits + 1"
 					+ " where blog_no = ?";
 			pstmt = conn.prepareStatement(sql);
@@ -235,6 +240,7 @@ public class BlogDao implements BookMarkDao{
 		int row = 0;
 		
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			String boardsql = "insert into"
 					+ " blog_board(blog_no, id, blog_title, blog_content, hits)"
 					+ " values(blog_no_seq.nextval,?,?,?,?)";
@@ -283,6 +289,7 @@ public class BlogDao implements BookMarkDao{
 		String blog_content = board.getParameter("blog_content");
 		
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "update blog_board set blog_title=?, blog_content=? "
 					+ "where blog_no=?";
 			pstmt = conn.prepareStatement(sql);
@@ -310,6 +317,7 @@ public class BlogDao implements BookMarkDao{
 		int row = 0;
 		
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "delete from blog_board where blog_no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, blog_no);
@@ -323,13 +331,105 @@ public class BlogDao implements BookMarkDao{
 		
 		return row;
 	}
-	
+	//전체 댓글 불러오기
+	public List<Blog_Reply> getAllReply() {
+
+		ArrayList<Blog_Reply> replylist = null;
+		
+		try {
+			conn = ConnectionHelper.getConnection("oracle");
+			String sql = "select blog_reply_no,blog_no, id, refer, depth, step, reply_date, reply_content, del "
+					+ "from blog_reply";
+			
+			pstmt = conn.prepareStatement(sql);
+			//왜 blogDto에선 blog_no가 int인데 여기선 String이지 .. ??
+			//실수였대~int로 바꿨삼 221118 19:04
+			
+			rs = pstmt.executeQuery();
+			replylist = new ArrayList<>();
+			
+			while(rs.next()) {
+				int blog_reply_no = rs.getInt("blog_reply_no");
+				int blog_no = rs.getInt("blog_no");
+				String id = rs.getString("id");
+				int refer = rs.getInt("refer");
+				int depth = rs.getInt("depth");
+				int step = rs.getInt("step");
+				java.sql.Date reply_date = rs.getDate("reply_date");
+				String reply_content = rs.getString("reply_content");
+				int del = rs.getInt("del");
+				
+				Blog_Reply reply = new Blog_Reply(blog_reply_no, blog_no, id, reply_date, reply_content, refer, depth, step, del);
+				replylist.add(reply);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("getReply 예외 : " + e.getMessage());
+		}finally {
+			try {
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
+			} catch (Exception e2) {
+				
+			}
+		}
+		
+		return replylist;
+	}
+	//like로 검색하기
+	public List<Blog_Reply> getAllReplyByLike(String searchid) {
+
+		ArrayList<Blog_Reply> replylist =  new ArrayList<Blog_Reply>();
+		
+		try {
+			conn = ConnectionHelper.getConnection("oracle");
+			String sql = "select blog_reply_no,blog_no, id, refer, depth, step, reply_date, reply_content, del "
+					+ "from blog_reply where id like ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchid+"%");
+			//왜 blogDto에선 blog_no가 int인데 여기선 String이지 .. ??
+			//실수였대~int로 바꿨삼 221118 19:04
+
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				System.out.println(1);
+				int blog_reply_no = rs.getInt("blog_reply_no");
+				int blog_no = rs.getInt("blog_no");
+				String id = rs.getString("id");
+				int refer = rs.getInt("refer");
+				int depth = rs.getInt("depth");
+				int step = rs.getInt("step");
+				java.sql.Date reply_date = rs.getDate("reply_date");
+				String reply_content = rs.getString("reply_content");
+				int del = rs.getInt("del");
+				
+				Blog_Reply reply = new Blog_Reply(blog_reply_no, blog_no, id, reply_date, reply_content, refer, depth, step, del);
+				System.out.println(".");
+				System.out.println(reply);
+				replylist.add(reply);
+			}
+		} catch (Exception e) {
+			System.out.println("getReply 예외 : " + e.getMessage());
+		}finally {
+			try {
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
+			} catch (Exception e2) {
+				
+			}
+		}
+		return replylist;
+	}
 	//특정 글 댓글 불러오기
 	public List<Blog_Reply> getReply(int blog_no) {
 
 		ArrayList<Blog_Reply> replylist = null;
 		
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select blog_reply_no, id, refer, depth, step, reply_date, reply_content, del "
 					+ "from blog_reply where blog_no = ?";
 			
@@ -379,6 +479,7 @@ public class BlogDao implements BookMarkDao{
 		//blog_reply_no를 지금은 받아주고 나중엔 안받아줘도 된다 ? ?
 		//원댓글 쓸 땐 blog_reply_no = refer
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "insert into blog_reply(blog_reply_no, blog_no, id, refer, reply_content, del)"
 					+ " values(blog_reply_no_seq.nextval,?,?,?,?)";
 			//blog__reply_no_ 에 seq 추가 (11.21 김태우)
@@ -413,6 +514,7 @@ public class BlogDao implements BookMarkDao{
 		int refer_max = 0;
 		
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select nvl(max(refer), 0) from blog_reply";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -443,6 +545,7 @@ public class BlogDao implements BookMarkDao{
 		int result = 0;
 
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			int blog_reply_no = reply.getBlog_reply_no(); //현재 댓글의 번호
 			//대댓글 작성하려는 원댓글
 			String originsql = "select refer, depth, step from blog_reply where blog_reply_no = ?";
@@ -501,6 +604,7 @@ public class BlogDao implements BookMarkDao{
 		String reply_content = reply.getParameter("reply_content");
 		
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			//TODO : 수정 시간 반영하기 (sysdate)
 			String sql = "update blog_reply set reply_content=? where blog_reply_no=?";
 			pstmt = conn.prepareStatement(sql);
@@ -527,6 +631,7 @@ public class BlogDao implements BookMarkDao{
 		int result = 0;
 
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			//String sql = "delete from blog_reply where blog_reply_no = ?";
 			String sql = "update blog_reply set del = 1 where blog_reply_no = ?";
 			pstmt = conn.prepareStatement(sql);

@@ -9,10 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.or.kosa.dao.BlogDao;
+import kr.or.kosa.dao.BookDao;
 import kr.or.kosa.dao.BookMarkDao;
 import kr.or.kosa.dto.Blog_Board;
+import kr.or.kosa.dto.Blog_Reply;
+import kr.or.kosa.dto.Book_Reply;
 import kr.or.kosa.dto.ReplyInterface;
 import kr.or.kosa.utils.DaoFactory;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 @WebServlet("/ReplyAll")
 public class ReplyAllListService extends HttpServlet {
@@ -21,24 +27,53 @@ public class ReplyAllListService extends HttpServlet {
     public ReplyAllListService() {
     }
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<ReplyInterface> list = null;
-//		BookMarkDao dao = null;
+		List list = null;
+		JSONObject jsonobj = new JSONObject();
+		JSONArray jsonary = new JSONArray();
+		JSONObject json = new JSONObject();
 		try {
 			//request에 type이라는 이름으로 블로그/책 댓글 구분됨
-//			if() {
-//				dao = new DaoFactory().getDao(""); //dao 팩토리. 이름만 넣으면 됨
-//				list = dao.get...();
-//			} else {
-//				dao = new DaoFactory().getDao(""); //dao 팩토리. 이름만 넣으면 됨
-//				list = dao.get...();
-//			}
+			if(request.getParameter("type").equals("blog")) {
+				BlogDao dao = new BlogDao();
+				list = dao.getAllReply();
+				for(Object obj : list) {
+					Blog_Reply reply = (Blog_Reply)obj;
+					json.put("blog_no", reply.getBlog_no());
+					json.put("blog_reply_no", reply.getBlog_reply_no());
+					json.put("del", reply.getDel());
+					json.put("depth", reply.getDepth());
+					json.put("id", reply.getId());
+					json.put("refer", reply.getRefer());
+					json.put("reply_content", reply.getReply_content());
+					json.put("reply_date", reply.getReply_date().toString());
+					json.put("step", reply.getStep());
+					jsonary.add(json);
+				}
+				jsonobj.put("BLOG", jsonary);
+				response.getWriter().print(jsonobj);
+			} else if(request.getParameter("type").equals("book")){
+				BookDao dao = new BookDao();
+				list = dao.Book_ReplyAllList();
+				System.out.println(list);
+				for(Object obj : list) {
+					Book_Reply reply = (Book_Reply)obj;
+					json.put("reply_no", reply.getBook_reply_no());
+					json.put("id", reply.getId());
+					json.put("isbn", reply.getIsbn());
+					json.put("reply_content", reply.getReply_content());
+					json.put("reply_date", reply.getReply_date().toString());
+					jsonary.add(json);
+				}
+				jsonobj.put("BOOK", jsonary);
+				response.getWriter().print(jsonobj);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//댓글 리스트를 dao로 받아서 저장
-		request.setAttribute("replylist", list);
-
-		//forward 작업?
+		if(list == null) {
+			json.put("error", "ReplyAllListLoadingError");
+			response.getWriter().print(json);
+		}
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);

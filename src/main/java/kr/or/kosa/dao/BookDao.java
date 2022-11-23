@@ -31,7 +31,7 @@ public class BookDao implements BookMarkDao{
 		
 		try {
 			//sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn = b.isbn";
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select * from"
 				+ "(select rownum, a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from"
 				+ "book a join ebook b on a.isbn=b.isbn where rownum<=?)where rownum >=?";
@@ -103,7 +103,7 @@ public class BookDao implements BookMarkDao{
 		List<Book> booklike = new ArrayList<Book>();
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn = b.isbn where book_name like ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,  "%"+bookname+"%");
@@ -142,7 +142,7 @@ public class BookDao implements BookMarkDao{
 		int row = 0;
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "insert into book(isbn, book_name, description, price, book_filename) values(?,?,?,?,?)";
 			conn.setAutoCommit(false);
 			pstmt = conn.prepareStatement(sql);
@@ -190,7 +190,7 @@ public class BookDao implements BookMarkDao{
 		int row = 0;
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			conn.setAutoCommit(false);
 			sql = "update book set book_name=?, description=?, price=?, book_filename=? where isbn=?";
 			pstmt = conn.prepareStatement(sql);
@@ -237,7 +237,7 @@ public class BookDao implements BookMarkDao{
 		int row = 0;
 
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "delete from book where isbn=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, isbn);
@@ -261,7 +261,7 @@ public class BookDao implements BookMarkDao{
 		Book book = new Book();
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select book_name, description, price, book_filename b.file_name as file_name form book a left join ebook b on a.isbn=b.isbn where a.isbn=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, isbn);
@@ -295,7 +295,7 @@ public class BookDao implements BookMarkDao{
 		List<Book_Reply> brl = new ArrayList<Book_Reply>();
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select book_reply_no, reply_date, reply_content, id from book_reply where isbn=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, isbn);
@@ -332,7 +332,7 @@ public class BookDao implements BookMarkDao{
 			List<Book_Reply> brl = new ArrayList<Book_Reply>();
 			
 			try {
-				conn = ConnectionHelper.getConnection("orcle");
+				conn = ConnectionHelper.getConnection("oracle");
 				sql = "select book_reply_no, reply_date, reply_content, id, isbn from book_reply";
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
@@ -368,7 +368,7 @@ public class BookDao implements BookMarkDao{
 		List<Book_Reply> brl = new ArrayList<Book_Reply>();
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select book_reply_no, reply_date, reply_content, isbn from book_reply where id =?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -403,7 +403,7 @@ public class BookDao implements BookMarkDao{
 		int row = 0;
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "insert into book_reply(book_reply_no, isbn, reply_content, id)" +
 				  "values(book_reply_no_seq.nextval, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
@@ -431,7 +431,7 @@ public class BookDao implements BookMarkDao{
 		int row = 0;
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "update book_reply set reply_date=sysdate, reply_content=? where book_reply_no =?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, br.getReply_content());
@@ -456,7 +456,7 @@ public class BookDao implements BookMarkDao{
 		int row = 0;
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "delete book_reply where book_reply_no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
@@ -481,7 +481,7 @@ public class BookDao implements BookMarkDao{
 		int row = 0;
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select id, isbn from book_like where isbn=? and id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, isbn);
@@ -530,7 +530,7 @@ public class BookDao implements BookMarkDao{
 		List<Book> hmr = new ArrayList<Book>();
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select isbn, count(isbn) as likecount from book_like where like_date between ? and ? group by isbn order by 2 desc";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setDate(1, (Date)startdate);
@@ -563,7 +563,7 @@ public class BookDao implements BookMarkDao{
 		List<Book> ebl = new ArrayList<Book>();
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from book a join ebook b on a.isbn = b.isbn where isbn in (select isbn from ebook_list where id = ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -599,7 +599,7 @@ public class BookDao implements BookMarkDao{
 		int row = 0;
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "insert into ebook_list(id, isbn) values(?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, isbn);
@@ -624,7 +624,7 @@ public class BookDao implements BookMarkDao{
 		int row = 0;
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "insert into book_recommend(isbn, recommend_content) values(?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, isbn);
@@ -647,7 +647,7 @@ public class BookDao implements BookMarkDao{
 		int row = 0;
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "delete book_recommend where isbn=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, isbn);
@@ -670,7 +670,7 @@ public class BookDao implements BookMarkDao{
 		List<Book_Recommend> bl = new ArrayList<Book_Recommend>();
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.recommend_content as recommend_content from book a join book_recommend b on a.isbn = b.isbn";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -703,7 +703,7 @@ public class BookDao implements BookMarkDao{
 		List<Book> hmr = new ArrayList<Book>();
 		
 		try {
-			conn = ConnectionHelper.getConnection("orcle");
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select a.isbn, count(b.isbn) as likecount from book a join book_payment b on a.isbn=b.isbn where payment_date between ? and ? group by a.isbn order by 2 desc";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setDate(1, (Date) start);
