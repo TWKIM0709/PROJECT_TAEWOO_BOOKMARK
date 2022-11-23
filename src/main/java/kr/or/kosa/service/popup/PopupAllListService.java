@@ -1,4 +1,4 @@
-package kr.or.kosa.service.user;
+package kr.or.kosa.service.popup;
 
 import java.util.List;
 
@@ -7,26 +7,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
-import kr.or.kosa.dao.UsersDao;
-import kr.or.kosa.dto.Users;
+import kr.or.kosa.dao.PopupDao;
+import kr.or.kosa.dto.Popup;
 import kr.or.kosa.utils.ThePager;
 
-public class UserAllListService implements Action {
+public class PopupAllListService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
-		String ps = "";
-		String cp = "";
+		
 		try {
-			UsersDao dao = new UsersDao();
+			PopupDao dao = new PopupDao();
 			
-			int totalusercount = dao.getUserListCount();
+			int totalpopupcount = dao.totalPopupCount();
 			
-			ps = request.getParameter("pagesize"); // pagesize
-			cp = request.getParameter("cpage"); // current page
+			String ps = request.getParameter("ps"); // pagesize
+			String cp = request.getParameter("cp"); // current page
 
-			// List 페이지 처음 호출 ...
 			if (ps == null || ps.trim().equals("")) {
 				// default 값 설정
 				ps = "5"; // 5개씩
@@ -41,33 +39,37 @@ public class UserAllListService implements Action {
 			int cpage = Integer.parseInt(cp);
 			int pagecount = 0;
 
-			// 23건 % 5
-			if (totalusercount % pagesize == 0) {
-				pagecount = totalusercount / pagesize; // 20 << 100/5
+			
+			if (totalpopupcount % pagesize == 0) {
+				pagecount = totalpopupcount / pagesize; // 20 << 100/5
 			} else {
-				pagecount = (totalusercount / pagesize) + 1;
+				pagecount = (totalpopupcount / pagesize) + 1;
 			}
 
 			// 102건 : pagesize=5 >> pagecount=21페이지
 
 			// 전체 목록 가져오기
-			List<Users> userlist = dao.getUserAllList(pagesize, cpage);//count하는 dao있어야함
+			List<Popup> list = dao.AllListPopup(cpage, pagesize); // list >> 1 , 20
 			
-			int pagersize = 3;
-			ThePager pager = new ThePager(totalusercount,cpage,pagesize,pagersize, "UserList.do");
+			int pagersize=3; //[1][2][3]
+			ThePager pager = new ThePager(totalpopupcount,cpage,pagesize,pagersize,"PopupAllList.do");
+			
 			
 			request.setAttribute("pagesize", pagesize);
 			request.setAttribute("cpage", cpage);
 			request.setAttribute("pagecount", pagecount);
-			request.setAttribute("totalusercount", totalusercount);
-			request.setAttribute("userlist", userlist);
+			request.setAttribute("list", list);
+			request.setAttribute("totalboardcount", totalpopupcount);
 			request.setAttribute("pager", pager);
+
+			forward = new ActionForward();
+			forward.setRedirect(false); // forward
+			forward.setPath("/WEB-INF/views/Popup/PopupAllList.jsp");
 			
-			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/user/user_list.jsp");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		} 
 		return forward;
 	}
+
 }

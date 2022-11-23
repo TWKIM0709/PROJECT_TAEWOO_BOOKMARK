@@ -1,4 +1,4 @@
-package kr.or.kosa.popup;
+package kr.or.kosa.service.popup;
 
 import java.util.List;
 
@@ -17,15 +17,15 @@ public class PopupLikeListService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
-		
+		String title = request.getParameter("title");
 		try {
 			PopupDao dao = new PopupDao();
 			
-			List<Popup> list = dao.LikeListPopup(request.getParameter(""));
+			List<Popup> list = dao.LikeListPopup(title);
 			
 			request.setAttribute("blogboardlist", list);
 			
-			forward.setPath("관리자블로그게시글조회.do");
+			forward.setPath("관리자 팝업 조회.do");
 			forward.setRedirect(false);
 		} catch (Exception e) {
 			e.printStackTrace();

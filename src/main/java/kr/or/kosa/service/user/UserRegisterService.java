@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
+import kr.or.kosa.dao.UsersDao;
 import kr.or.kosa.dto.Users;
 
 public class UserRegisterService implements Action {
@@ -13,6 +14,9 @@ public class UserRegisterService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		Users user = new Users();
+		
+		String msg = "";
+		String url = "";
 		
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("passward");
@@ -30,9 +34,24 @@ public class UserRegisterService implements Action {
 		user.setRegist_no(register_no);
 		user.setPhone(phone);
 		try {
+			UsersDao dao = new UsersDao();
 			
+			int result = dao.userRegister(user);
+			if(result > 0 ) {
+				msg = "회원가입성공";
+				url = "login.do";
+			}else {
+				msg = "회원가입의 실패했습니다";
+				url = "#";
+			}
+			
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+			
+			forward.setRedirect(false);
+			forward.setPath("WEB-INF/views/utils/redirect.jsp");
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		} 
 		return forward;
 	}
