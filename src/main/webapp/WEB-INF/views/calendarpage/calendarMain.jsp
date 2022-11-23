@@ -79,8 +79,8 @@
 					$('#test').toggleClass('hide');
 					$('#test').css('top',event.jsEvent.y);
 					$('#test').css('left',event.jsEvent.x);
-					console.log(event);
-					console.log(event.dateStr);
+					//console.log(event);
+					//console.log(event.dateStr);
 					//console.log(event.jsEvent.pageY);
 					//console.log(event.jsEvent.pageX);
 				},
