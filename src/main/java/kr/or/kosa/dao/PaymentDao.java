@@ -57,6 +57,28 @@ public class PaymentDao implements BookMarkDao{
 			}
 			return cartlist;
 		}
+		
+		//게시물 총 건수 구하기
+				public int totalBoardCount() {
+					Connection conn = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					int totalcount = 0;
+					try {
+						conn = ConnectionHelper.getConnection("oracle"); //연결객체
+						String sql = "select count(*) as cnt from question_board";
+						pstmt = conn.prepareStatement(sql);
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							totalcount = rs.getInt("cnt");
+						}
+					} catch (Exception e) {
+						System.out.println("totalBoardCount 예외 : " + e.getMessage());
+					}
+					return totalcount;
+				}
+		
+		//책 추가하기
 		public int AddBook(String id, String isbn) {
 			Connection conn = ConnectionHelper.getConnection("oracle");
 			PreparedStatement pstmt = null;

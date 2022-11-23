@@ -26,11 +26,6 @@ public class QuestionRewriteService implements Action {
 				pagesize = "5";
 			}
 
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.getStackTrace();
-		}
 		
 		request.setAttribute("quetion_no", quetion_no);
 		request.setAttribute("cp", cpage);
@@ -39,6 +34,16 @@ public class QuestionRewriteService implements Action {
 		
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/views/board/board_rewrite.jsp");
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getStackTrace();
+			 request.setAttribute("msg","error");
+				request.setAttribute("url","" );
+			forward.setPath("redirect.jsp");
+			forward.setRedirect(false);
+			e.printStackTrace();
+		}
 		
 		
 		return forward;

@@ -21,7 +21,6 @@ public class QuestionRewriteOkService implements Action {
 		String msg="";
 	    String url="";
 		ActionForward forward = new ActionForward();
-		
 				
 		try {
 			int question_no = Integer.parseInt(strquestion_no);

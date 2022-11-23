@@ -1,4 +1,4 @@
-package kr.or.kosa.service.payment;
+package kr.or.kosa.service.question;
 
 import java.util.List;
 
@@ -7,21 +7,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
-import kr.or.kosa.dao.PaymentDao;
-import kr.or.kosa.dto.Book_Payment;
+import kr.or.kosa.dao.QuestionDao;
+import kr.or.kosa.dto.Question_Board;
 import kr.or.kosa.utils.ThePager;
 
-public class PaymentLogAllListService implements Action {
-//관리자가 보는 리스트
+public class QuestionAllListAdminService implements Action {
+
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-
 		ActionForward forward = null;
 		try {
-			PaymentDao pdao = new PaymentDao();
+			QuestionDao qdao = new QuestionDao();
 
 			// 게시물 총 건수
-			int totalboardcount = pdao.totalBoardCount();
+			int totalboardcount = qdao.totalBoardCount();
 
 			// 상세보기 >> 다시 LIST 넘어올때 >> 현재 페이지 설정
 			String ps = request.getParameter("ps"); // pagesize
@@ -52,7 +51,7 @@ public class PaymentLogAllListService implements Action {
 			// 102건 : pagesize=5 >> pagecount=21페이지
 
 			// 전체 목록 가져오기
-			List<Book_Payment> qlist = pdao.allpaymentlist(cpage, pagesize); // list >> 1 , 20
+			List<Question_Board> qlist = qdao.getQuestionAllList(cpage, pagesize); // list >> 1 , 20
 			
 			int pagersize=3; //[1][2][3]
 			ThePager pager = new ThePager(totalboardcount,cpage,pagesize,pagersize,".do");
@@ -61,7 +60,7 @@ public class PaymentLogAllListService implements Action {
 			request.setAttribute("pagesize", pagesize);
 			request.setAttribute("cpage", cpage);
 			request.setAttribute("pagecount", pagecount);
-			request.setAttribute("paymentalllist", qlist);
+			request.setAttribute("questionlist", qlist);
 			request.setAttribute("totalboardcount", totalboardcount);
 			request.setAttribute("pager", pager);
 
@@ -81,6 +80,5 @@ public class PaymentLogAllListService implements Action {
 		}
 		return forward;		
 	}
-
 
 }
