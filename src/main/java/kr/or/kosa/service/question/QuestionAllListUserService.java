@@ -11,7 +11,7 @@ import kr.or.kosa.dao.QuestionDao;
 import kr.or.kosa.dto.Question_Board;
 import kr.or.kosa.utils.ThePager;
 
-public class QuestionAllListService implements Action {
+public class QuestionAllListUserService implements Action {
 //모든 문의사항 리스트로 보여주기
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {

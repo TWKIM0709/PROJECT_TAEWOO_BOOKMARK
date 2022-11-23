@@ -40,15 +40,13 @@ public class QuestionWriteOkService implements Action {
 		    
 	    	
 	   
-	    request.setAttribute("board_msg",msg);
-	    request.setAttribute("board_url", url);
+	    request.setAttribute("msg",msg);
+	    request.setAttribute("url", url);
 	    
 	    
 	    forward.setRedirect(false);
 	    forward.setPath("redirect.jsp");
 		} catch (Exception e) {
-			e.printStackTrace();
-
 			request.setAttribute("msg","error");
 			request.setAttribute("url","" );
 			forward.setPath("redirect.jsp");

@@ -37,7 +37,7 @@ public class QuestionDeleteOkService implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 			msg = "error";
-			String url = "";
+			url = "";
 			request.setAttribute("msg",msg);
 			request.setAttribute("url", url);
 			forward.setPath("redirect.jsp");

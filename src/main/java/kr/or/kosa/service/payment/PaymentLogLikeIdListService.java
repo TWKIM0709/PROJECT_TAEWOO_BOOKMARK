@@ -8,25 +8,22 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.PaymentDao;
-import kr.or.kosa.dao.QuestionDao;
-import kr.or.kosa.dto.Book;
-import kr.or.kosa.dto.Question_Board;
-import kr.or.kosa.utils.ThePager;
+import kr.or.kosa.dto.Book_Payment;
 
-public class CartListService implements Action {
+public class PaymentLogLikeIdListService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward forward = new ActionForward();
+	ActionForward forward = new ActionForward();
 		
 		try {
 			PaymentDao pdao = new PaymentDao();
 
 			String id = request.getParameter("id");
 			
-			List<Book> cartlist = pdao.cartlist(id);
+			List<Book_Payment> paymentlist = pdao.paymentlist(id);
 			
-			request.setAttribute("cartlist", cartlist);
+			request.setAttribute("paymentlist", paymentlist);
 
 			forward = new ActionForward();
 			forward.setRedirect(false); // forward
@@ -44,5 +41,4 @@ public class CartListService implements Action {
 		}
 		return forward;		
 	}
-
 }
