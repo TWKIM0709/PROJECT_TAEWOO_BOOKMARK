@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
-import kr.or.kosa.service.blog.BlogAdminDeleteService;
-import kr.or.kosa.service.blog.BlogAdminDetailService;
-import kr.or.kosa.service.blog.BlogAdminEdit;
-import kr.or.kosa.service.blog.BlogAdminEditOk;
 import kr.or.kosa.service.blog.BlogAllListService;
 import kr.or.kosa.service.blog.BlogDeleteService;
 import kr.or.kosa.service.blog.BlogDetailService;
@@ -38,6 +34,7 @@ import kr.or.kosa.service.payment.CartAddService;
 import kr.or.kosa.service.payment.CartDeleteService;
 import kr.or.kosa.service.payment.CartListService;
 import kr.or.kosa.service.payment.PaymentLogAllListService;
+import kr.or.kosa.service.payment.PaymentLogIdListService;
 import kr.or.kosa.service.payment.PaymentLogLikeIdListService;
 import kr.or.kosa.service.payment.PaymentService;
 import kr.or.kosa.service.question.QuestionAllListAdminService;
@@ -105,7 +102,7 @@ public class BookMarkController extends HttpServlet {
     	//=================================================================//
     	//                                                     문의사항
     	//=================================================================//
-     	} else if(url_Command.equals("/question.do")) { //1. 회원 - 문의사항 페이지 이동
+     	} else if(url_Command.equals("/question.do")) { //1. 회원, 관리자 - 문의사항 페이지 이동
     		// 이동 + 처리
     		action = new QuestionAllListUserService();
     		forward = action.execute(request, response);
@@ -134,7 +131,7 @@ public class BookMarkController extends HttpServlet {
     		//이동 + 처리
     		action = new QuestionDeleteOkService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/questionDetail.do")) { //8. 회원 - 문의사항 글 상세보기
+    	} else if(url_Command.equals("/questionDetail.do")) { //8. 회원, 관리자 - 문의사항 글 상세보기
     		//이동 + 처리
     		action = new QuestionDetailUserService();
     		forward = action.execute(request, response);
@@ -171,19 +168,19 @@ public class BookMarkController extends HttpServlet {
     		// 이동 + 처리
     		action = new BlogWriteService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/blogUpdate.do")) { // 16. 회원 - 블로그 게시글 수정 페이지 이동
+    	} else if(url_Command.equals("/blogUpdate.do")) { // 16. 회원, 관리자 - 블로그 게시글 수정 페이지 이동
     		// 이동+처리
     		action = new BlogUpdateService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/blogUpdateOk.do")) { // 17. 회원 - 블로그 게시글 수정 처리
+    	} else if(url_Command.equals("/blogUpdateOk.do")) { // 17. 회원, 관리자 - 블로그 게시글 수정 처리
     		// 이동 + 처리
     		action = new BlogUpdateOkService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/blogDeleteOk.do")) { // 18. 회원 - 블로그 게시글 삭제 처리
+    	} else if(url_Command.equals("/blogDeleteOk.do")) { // 18. 회원, 관리자 - 블로그 게시글 삭제 처리
     		// 처리 + 이동 ( 비동기 ?)
     		action = new BlogDeleteService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/blogDatail.do")) { //19. 회원 - 블로그 게시글 상세보기
+    	} else if(url_Command.equals("/blogDatail.do")) { //19. 회원, 관리자 - 블로그 게시글 상세보기
     		// 이동 + 처리
     		action = new BlogDetailService();
     		forward = action.execute(request, response);
@@ -195,7 +192,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동 + 처리
     		action = new BookAllListService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/bookUserLikeList.do")) { // 21. 회원 - 책 like 조회 ( 책검색 )
+    	} else if(url_Command.equals("/bookUserLikeList.do")) { // 21. 회원, 관리자 - 책 like 조회 ( 책검색 )
     		// 이동 + 처리
     		action = new BookLikeListService();
     		forward = action.execute(request, response);
@@ -221,7 +218,7 @@ public class BookMarkController extends HttpServlet {
     		// 처리(비동기?)
     		action = new BookDeleteService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/bookDetail.do")) { //27.회원 - 책 상세보기 페이지 이동
+    	} else if(url_Command.equals("/bookDetail.do")) { //27.회원, 관리자 - 책 상세보기 페이지 이동
     		// 이동+처리
     		action = new BookDetailService();
     		forward = action.execute(request, response);
@@ -272,7 +269,7 @@ public class BookMarkController extends HttpServlet {
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/paymentList.do")) { //38 회원 - 결제 내역 페이지 이동
     		// 이동+처리
-    		action = new PaymentLogLikeIdListService();
+    		action = new PaymentLogIdListService();
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/paymentAlllist.do")) { //39 관리자 - 결제 전체 조회 페이지 이동
     		// 이동+처리
@@ -311,15 +308,15 @@ public class BookMarkController extends HttpServlet {
     		// 이동+처리
     		action = new UserDetailService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/userEdit.do")) { //46 회원 - 회원정보 수정 페이지 이동
+    	} else if(url_Command.equals("/userEdit.do")) { //46 회원, 관리자 - 회원정보 수정 페이지 이동
     		// 이동+처리
     		action = new UserUpdateService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/userEditOk.do")) { //47 회원 - 회원정보 수정 처리
+    	} else if(url_Command.equals("/userEditOk.do")) { //47 회원, 관리자 - 회원정보 수정 처리
     		// 이동+처리
     		action = null; //TODO :  There is no ok service
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/userWithdraw.do")) { //48 회원 - 회원탈퇴 처리
+    	} else if(url_Command.equals("/userWithdraw.do")) { //48 회원, 관리자 - 회원탈퇴 처리
     		// 이동+처리
     		action = new UserDeleteService();
     		forward = action.execute(request, response);
