@@ -11,7 +11,7 @@ import kr.or.kosa.dao.PaymentDao;
 import kr.or.kosa.dto.Book_Payment;
 
 public class PaymentLogLikeIdListService implements Action {
-
+	//관리자가 회원 아이디로 결제내역을 검색하는 서비스
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 	ActionForward forward = new ActionForward();
@@ -27,7 +27,7 @@ public class PaymentLogLikeIdListService implements Action {
 
 			forward = new ActionForward();
 			forward.setRedirect(false); // forward
-			forward.setPath("/WEB-INF/views/board_list.jsp");
+			forward.setPath(""); //TODO : Cart 뷰 페이지
 		} catch (Exception e) {
 			
 			System.out.println(e.getMessage());

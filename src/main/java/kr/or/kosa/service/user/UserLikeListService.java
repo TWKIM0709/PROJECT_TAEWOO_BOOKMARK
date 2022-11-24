@@ -17,6 +17,9 @@ public class UserLikeListService implements Action {
 		ActionForward forward = new ActionForward();
 		String type = "";
 		String value = "";
+		
+		String path = "";
+		
 		try {
 			UsersDao dao = new UsersDao();
 			
@@ -26,8 +29,14 @@ public class UserLikeListService implements Action {
 			
 			request.setAttribute("userlikelist", likelist);
 			
+			if(request.getSession().getAttribute("admin") != null) {
+				path = ""; //TODO:관리자 Like검색
+			}else {
+				path = "/WEB-INF/views/user/user_like_list.jsp";
+			}
+			
 			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/user/user_like_list.jsp");
+			forward.setPath(path);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
