@@ -25,7 +25,7 @@ public class BookDetailService implements Action {
 			if(request.getSession().getAttribute("admin")!=null) {
 				forward.setPath("adminbookdetail.jsp");
 			}else {
-				forward.setPath("bookdetail.jsp");
+				forward.setPath("/WEB-INF/views/userpage/book/detail.jsp");
 			}
 			
 			forward.setRedirect(false);

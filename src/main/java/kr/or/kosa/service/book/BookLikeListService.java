@@ -27,7 +27,7 @@ public class BookLikeListService implements Action {
 			if(request.getSession().getAttribute("admin") != null) {
 				forward.setPath("admin#");
 			}else {
-				forward.setPath("#");
+				forward.setPath("/WEB-INF/views/userpage/book/Search.html");
 			}
 			
 			forward.setRedirect(false);
