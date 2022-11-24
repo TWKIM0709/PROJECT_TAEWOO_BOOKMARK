@@ -10,7 +10,47 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
+import kr.or.kosa.service.blog.BlogAdminDeleteService;
+import kr.or.kosa.service.blog.BlogAdminDetailService;
+import kr.or.kosa.service.blog.BlogAdminEdit;
+import kr.or.kosa.service.blog.BlogAdminEditOk;
+import kr.or.kosa.service.blog.BlogAllListService;
+import kr.or.kosa.service.blog.BlogDeleteService;
+import kr.or.kosa.service.blog.BlogDetailService;
+import kr.or.kosa.service.blog.BlogEnterService;
+import kr.or.kosa.service.blog.BlogLikeListService;
+import kr.or.kosa.service.blog.BlogUpdateOkService;
+import kr.or.kosa.service.blog.BlogUpdateService;
+import kr.or.kosa.service.blog.BlogWriteService;
+import kr.or.kosa.service.book.BookAddService;
+import kr.or.kosa.service.book.BookAllListService;
+import kr.or.kosa.service.book.BookDeleteService;
+import kr.or.kosa.service.book.BookDetailService;
+import kr.or.kosa.service.book.BookLikeListService;
+import kr.or.kosa.service.book.BookLikeService;
+import kr.or.kosa.service.book.BookUpdateService;
+import kr.or.kosa.service.book.EBookListService;
+import kr.or.kosa.service.book.RecommandBookAddService;
+import kr.or.kosa.service.book.RecommandBookDeleteService;
+import kr.or.kosa.service.book.RecommandBookListService;
 import kr.or.kosa.service.calendar.CalendarAllListService;
+import kr.or.kosa.service.payment.CartAddService;
+import kr.or.kosa.service.payment.CartDeleteService;
+import kr.or.kosa.service.payment.CartListService;
+import kr.or.kosa.service.payment.PaymentLogAllListService;
+import kr.or.kosa.service.payment.PaymentLogLikeIdListService;
+import kr.or.kosa.service.payment.PaymentService;
+import kr.or.kosa.service.question.QuestionAllListAdminService;
+import kr.or.kosa.service.question.QuestionAllListUserService;
+import kr.or.kosa.service.question.QuestionDeleteOkService;
+import kr.or.kosa.service.question.QuestionDetailAdminService;
+import kr.or.kosa.service.question.QuestionDetailUserService;
+import kr.or.kosa.service.question.QuestionLikeListService;
+import kr.or.kosa.service.question.QuestionRewriteOkService;
+import kr.or.kosa.service.question.QuestionRewriteService;
+import kr.or.kosa.service.question.QuestionUpdateOkService;
+import kr.or.kosa.service.question.QuestionUpdateService;
+import kr.or.kosa.service.question.QuestionWriteOkService;
 
 @WebServlet("*.do")
 public class BookMarkController extends HttpServlet {
@@ -31,216 +71,223 @@ public class BookMarkController extends HttpServlet {
     	//=================================================================//
     	//                                                     메인페이지이동
     	//=================================================================//
-    	 if(url_Command.equals("")) { //0. 메인 페이지 이동
+    	 if(url_Command.equals("/main.do")) { //0. 메인 페이지 이동
      		// 이동+처리
-     		action = null;                                                
-     		forward = action.execute(request, response);
+    		forward = new ActionForward();
+     		forward.setRedirect(false);
+     		forward.setPath("/WEB-INF/views");
     	//=================================================================//
     	//                                                     문의사항
     	//=================================================================//
-     	} else if(url_Command.equals("")) { //1. 회원 - 문의사항 페이지 이동
+     	} else if(url_Command.equals("/question.do")) { //1. 회원 - 문의사항 페이지 이동
     		// 이동 + 처리
-    		action = null;
+    		action = new QuestionAllListUserService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //2. 관리자 - 문의사항 관리 페이지 이동
+    	} else if(url_Command.equals("/questionAdmin.do")) { //2. 관리자 - 문의사항 관리 페이지 이동
     		// 이동 + 처리
-    		action = null;
+    		action = new QuestionAllListAdminService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //3. 문의사항 검색(like) - 비동기
+    	} else if(url_Command.equals("/questionLike.do")) { //3. 문의사항 검색(like) - 비동기
     		// 처리 + json
-    		action = null;
+    		action = new QuestionLikeListService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //4. 회원 - 문의사항 글쓰기 페이지 이동
+    	} else if(url_Command.equals("/questionWrite.do")) { //4. 회원 - 문의사항 글쓰기 페이지 이동
     		// 이동
-    		action = null;
-    		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //5. 회원 - 문의사항 글쓰기 처리
+    		forward = new ActionForward();
+     		forward.setRedirect(false);
+     		forward.setPath("/WEB-INF/views");
+    	} else if(url_Command.equals("/questionWriteok.do")) { //5. 회원 - 문의사항 글쓰기 처리
     		// 이동 + 처리
-    		action = null;
+    		action = new QuestionWriteOkService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //6. 회원 - 문의사항 글 수정 페이지 이동
+    	} else if(url_Command.equals("/questionWriteUpdate.do")) { //6. 회원 - 문의사항 글 수정 페이지 이동
     		//이동 + 처리
-    		action = null;
+    		action = new QuestionUpdateService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //7. 회원 - 문의사항 글 수정 페이지 처리
+    	} else if(url_Command.equals("/questionWriteUpdateOk.do")) { //7. 회원 - 문의사항 글 수정 페이지 처리
     		//이동 + 처리
-    		action = null;
+    		action = new QuestionUpdateOkService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //8. 회원 - 문의사항 글 삭제 처리 기능
+    	} else if(url_Command.equals("/questionDeleteOk.do")) { //8. 회원 - 문의사항 글 삭제 처리 기능
     		//이동 + 처리
-    		action = null;
+    		action = new QuestionDeleteOkService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //9. 회원 - 문의사항 글 상세보기
+    	} else if(url_Command.equals("/questionDetail.do")) { //9. 회원 - 문의사항 글 상세보기
     		//이동 + 처리
-    		action = null;
+    		action = new QuestionDetailUserService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { // 10. 회원 - 문의사항 답글 작성 페이지 이동 
+    	} else if(url_Command.equals("/questionRewrite.do")) { // 10. 관리자 - 문의사항 답글 작성 페이지 이동 
     		// 이동+처리
-    		action = null;
+    		action = new QuestionRewriteService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //11. 회원(관리자) - 문의사항 답글 작성 처리
+    	} else if(url_Command.equals("/questionRewriteOk.do")) { //11. 회원(관리자) - 문의사항 답글 작성 처리
     		// 이동+처리
-    		action = null;
+    		action = new QuestionRewriteOkService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //12. 관리자 - 문의사항 글 상세보기
+    	} else if(url_Command.equals("/questionAdminDetail.do")) { //12. 관리자 - 문의사항 글 상세보기
     		// 이동+처리
-    		action = null;
+    		action = new QuestionDetailAdminService();
     		forward = action.execute(request, response);
     	}
     	//=================================================================//
     	//                                                     블로그
     	//=================================================================//
-    	 else if(url_Command.equals("")) { //13. 관리자 - 블로그 게시글 전체조회
+    	 else if(url_Command.equals("/blogAlllist.do")) { //13. 관리자 - 블로그 게시글 전체조회
      		// 이동+처리
-     		action = null;
+     		action = new BlogAllListService();
      		forward = action.execute(request, response);
-     	} else if(url_Command.equals("")) { //14. 관리자 - 블로그 게시글 like 조회
+     	} else if(url_Command.equals("/blogLike.do")) { //14. 관리자 - 블로그 게시글 like 조회
     		// 이동+처리
-    		action = null;
+    		action = new BlogLikeListService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //15. 회원 - 회원 블로그 페이지 보기
+    	} else if(url_Command.equals("/blogEnter.do")) { //15. 회원 - 회원 블로그 페이지 보기
     		// 이동+처리
-    		action = null;
+    		action = new BlogEnterService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //16. 회원 - 블로그 게시글 작성 페이지 이동
+    	} else if(url_Command.equals("/blogWrite.do")) { //16. 회원 - 블로그 게시글 작성 페이지 이동
     		// 이동
-    		action = null;
-    		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { // 17. 회원 - 블로그 게시글 작성 처리
+    		forward = new ActionForward();
+     		forward.setRedirect(false);
+     		forward.setPath("/WEB-INF/views");
+    	} else if(url_Command.equals("/blogWriteOk.do")) { // 17. 회원 - 블로그 게시글 작성 처리
     		// 이동 + 처리
-    		action = null;
+    		action = new BlogWriteService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { // 18. 회원 - 블로그 게시글 수정 페이지 이동
+    	} else if(url_Command.equals("/blogUpdate.do")) { // 18. 회원 - 블로그 게시글 수정 페이지 이동
     		// 이동+처리
-    		action = null;
+    		action = new BlogUpdateService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { // 19. 회원 - 블로그 게시글 수정 처리
+    	} else if(url_Command.equals("/blogUpdateOk.do")) { // 19. 회원 - 블로그 게시글 수정 처리
     		// 이동 + 처리
-    		action = null;
+    		action = new BlogUpdateOkService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { // 20. 회원 - 블로그 게시글 삭제 처리
+    	} else if(url_Command.equals("/blogDeleteOk.do")) { // 20. 회원 - 블로그 게시글 삭제 처리
     		// 처리 + 이동 ( 비동기 ?)
-    		action = null;
+    		action = new BlogDeleteService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //21. 회원 - 블로그 게시글 상세보기
+    	} else if(url_Command.equals("/blogDatail.do")) { //21. 회원 - 블로그 게시글 상세보기
     		// 이동 + 처리
-    		action = null;
+    		action = new BlogDetailService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //22.  관리자 - 블로그 게시글 수정 페이지 이동
+    	} else if(url_Command.equals("/blogUpdate.do")) { //22.  관리자 - 블로그 게시글 수정 페이지 이동
     		// 이동 + 처리
-    		action = null;
+    		action = new BlogAdminEdit();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //23. 관리자 - 블로그 게시글 수정 처리
+    	} else if(url_Command.equals("/blogUpdateOk.do")) { //23. 관리자 - 블로그 게시글 수정 처리
     		// 이동+처리
-    		action = null;
+    		action = new BlogAdminEditOk();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //24. 관리자 - 블로그 게시글 삭제 처리
+    	} else if(url_Command.equals("/blogDeleteOk.do")) { //24. 관리자 - 블로그 게시글 삭제 처리
     		// 처리+이동 (비동기?)
-    		action = null;
+    		action = new BlogAdminDeleteService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //25. 관리자 - 블로그 게시글 상세보기
+    	} else if(url_Command.equals("/blogAdminDetail.do")) { //25. 관리자 - 블로그 게시글 상세보기
     		// 이동+처리
-    		action = null;
+    		action = new BlogAdminDetailService();
     		forward = action.execute(request, response);
     	}
     	//=================================================================//
     	//                                                     책
     	//=================================================================//
-    	else if(url_Command.equals("")) { // 26. 관리자 - 책 전체조회
+    	else if(url_Command.equals("/bookAlllist.do")) { // 26. 관리자 - 책 전체조회
     		// 이동 + 처리
-    		action = null;
+    		action = new BookAllListService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { // 27. 회원 - 책 like 조회 ( 책검색 )
+    	} else if(url_Command.equals("/bookUserLikeList.do")) { // 27. 회원 - 책 like 조회 ( 책검색 )
     		// 이동 + 처리
-    		action = null;
+    		action = new BookLikeListService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { // 28 .관리자 - 책 like 조회
+    	} else if(url_Command.equals("/bookAdminLikeList.do")) { // 28 .관리자 - 책 like 조회
     		// 처리 (비동기)
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //29.관리자 - 책 추가 페이지 이동
+    	} else if(url_Command.equals("/bookAdd.do")) { //29.관리자 - 책 추가 페이지 이동
     		// 이동
-    		action = null;
-    		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //30.관리자 - 책 추가 처리
+    		forward = new ActionForward();
+     		forward.setRedirect(false);
+     		forward.setPath("/WEB-INF/views");
+    	} else if(url_Command.equals("/bookAddOk.do")) { //30.관리자 - 책 추가 처리
     		// 이동+처리
-    		action = null;
+    		action = new BookAddService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //31 관리자 - 책 수정 페이지 이동
+    	} else if(url_Command.equals("/bookUpdate.do")) { //31 관리자 - 책 수정 페이지 이동
     		// 이동+추가
-    		action = null;
-    		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //32  관리자 - 책 수정 처리
+    		forward = new ActionForward();
+     		forward.setRedirect(false);
+     		forward.setPath("/WEB-INF/views");
+    	} else if(url_Command.equals("/bookUpdateOk.do")) { //32  관리자 - 책 수정 처리
     		// 이동+처리
-    		action = null;
+    		action = new BookUpdateService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //33 관리자 - 책 삭제 처리
+    	} else if(url_Command.equals("/bookDeleteOk.do")) { //33 관리자 - 책 삭제 처리
     		// 처리(비동기?)
-    		action = null;
+    		action = new BookDeleteService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //34.회원 - 책 상세보기 페이지 이동
+    	} else if(url_Command.equals("/bookDetail.do")) { //34.회원 - 책 상세보기 페이지 이동
     		// 이동+처리
-    		action = null;
+    		action = new BookDetailService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //35. 관리자 - 책 상세보기 페이지 이동
+    	} else if(url_Command.equals("/bookAdminDetail.do")) { //35. 관리자 - 책 상세보기 페이지 이동
     		// 이동+처리
-    		action = null;
-    		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //36.회원 - 책 좋아요 기능
+    		forward = new ActionForward();
+     		forward.setRedirect(false);
+     		forward.setPath("/WEB-INF/views");
+    	} else if(url_Command.equals("/bookLike")) { //36.회원 - 책 좋아요 기능
     		// 처리(비동기)
-    		action = null;
+    		action = new BookLikeService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //37.관리자 - 추천책 설정 페이지 이동
+    	} else if(url_Command.equals("/bookRecommand.do")) { //37.관리자 - 추천책 설정 페이지 이동
     		// 이동+처리
-    		action = null;
+    		action = new RecommandBookListService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //38.관리자 - 추천책 추가
+    	} else if(url_Command.equals("/bookRecommandAdd.do")) { //38.관리자 - 추천책 추가
     		// 처리 (비동기)
-    		action = null;
+    		action = new RecommandBookAddService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //39.관리자 - 추천책 삭제
+    	} else if(url_Command.equals("/bookRecommandDeleteOk.do")) { //39.관리자 - 추천책 삭제
     		// 이동+처리
-    		action = null;
+    		action = new RecommandBookDeleteService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //40. 회원 - e-book 리스트 페이지 이동
+    	} else if(url_Command.equals("/ebookList.do")) { //40. 회원 - e-book 리스트 페이지 이동
     		// 이동+처리
-    		action = null;
+    		action = new EBookListService();
     		forward = action.execute(request, response);
     	}
      	//=================================================================//
      	//                                                     결제
      	//=================================================================//
-    	else if(url_Command.equals("")) { //41 회원 - 장바구니 페이지 이동
+    	else if(url_Command.equals("/cartList.do")) { //41 회원 - 장바구니 페이지 이동
     		// 이동+처리
-    		action = null;
+    		action = new CartListService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //42 회원 - 장바구니 추가
+    	} else if(url_Command.equals("/cartAdd.do")) { //42 회원 - 장바구니 추가
     		// 비동기
-    		action = null;
+    		action = new CartAddService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //43 회원 - 장바구니 삭제
+    	} else if(url_Command.equals("/cartDeleteOk.do")) { //43 회원 - 장바구니 삭제
     		// 비동기
-    		action = null;
+    		action = new CartDeleteService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //44 회원 - 결제 페이지 이동
+    	} else if(url_Command.equals("/payment.do")) { //44 회원 - 결제 페이지 이동
     		// 이동+처리
-    		action = null;
-    		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //45 회원 - 결제 처리
+    		forward = new ActionForward();
+     		forward.setRedirect(false);
+     		forward.setPath("/WEB-INF/views");
+    	} else if(url_Command.equals("/paymentOk.do")) { //45 회원 - 결제 처리
     		// 이동+처리
-    		action = null;
+    		action = new PaymentService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //46 회원 - 결제 내역 페이지 이동
+    	} else if(url_Command.equals("/paymentList.do")) { //46 회원 - 결제 내역 페이지 이동
     		// 이동+처리
-    		action = null;
+    		action = new PaymentLogLikeIdListService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //47 관리자 - 결제 전체 조회 페이지 이동
+    	} else if(url_Command.equals("/paymentAlllist.do")) { //47 관리자 - 결제 전체 조회 페이지 이동
     		// 이동+처리
-    		action = null;
+    		action = new PaymentLogAllListService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //48 관리자 - 결제 id 검색 기능
+    	} else if(url_Command.equals("/paymentLike.do")) { //48 관리자 - 결제 id 검색 기능
     		// 비동기?
-    		action = null;
+    		action = new PaymentLogLikeIdListService();
     		forward = action.execute(request, response);
     	}
      	//=================================================================//
