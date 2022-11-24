@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko" class="" style="height: auto; overflow: visible;">
 
@@ -10,16 +12,16 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:site_name" content="밀리의 서재">
+    <meta property="og:site_name" content="ë°ë¦¬ì ìì¬">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.millie.co.kr/">
-    <meta property="og:title" content="밀리의 서재">
+    <meta property="og:title" content="ë°ë¦¬ì ìì¬">
     <meta property="og:image" content="https://www.millie.co.kr/favicon/millie_og_v2_2.png">
-    <meta property="og:description" content="독서와 무제한 친해지리, 밀리의 서재에서 당신의 일상을 1밀리+ 더 멋지게 만들어 보세요">
+    <meta property="og:description" content="ëìì ë¬´ì í ì¹í´ì§ë¦¬, ë°ë¦¬ì ìì¬ìì ë¹ì ì ì¼ìì 1ë°ë¦¬+ ë ë©ì§ê² ë§ë¤ì´ ë³´ì¸ì">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="600">
     <meta property="fb:app_id" content="1621792108120563">
-    <meta name="description" content="독서와 무제한 친해지리, 밀리의 서재에서 당신의 일상을 1밀리+ 더 멋지게 만들어 보세요">
+    <meta name="description" content="ëìì ë¬´ì í ì¹í´ì§ë¦¬, ë°ë¦¬ì ìì¬ìì ë¹ì ì ì¼ìì 1ë°ë¦¬+ ë ë©ì§ê² ë§ë¤ì´ ë³´ì¸ì">
     <meta name="naver-site-verification" content="09f2fbb79dfd0f4fbb3159d7ebf0722ab613cc74">
     <meta name="google-site-verification" content="F_BvE8JmAqqhoTgJBKpQNQACdhJkXU-c7n9zdgjjRDc">
     <meta name="google-site-verification" content="fxHd7i7aN34YObihzhJqIMXq-ct60hZgtvBMFFJ6ckw">
@@ -54,7 +56,7 @@
     <link rel="apple-touch-icon" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="apple-touch-icon-precomposed" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="shortcut icon" type="image/png" href="https://www.millie.co.kr/favicon/android-icon.png">
-    <title>개인정보수정 | 밀리의 서재</title>
+    <title>ê°ì¸ì ë³´ìì  | ë°ë¦¬ì ìì¬</title>
     <link href="https://d3udu241ivsax2.cloudfront.net/v3/style/vendor.524cdf1d4325d722f545.css" rel="stylesheet">
     <link href="https://d3udu241ivsax2.cloudfront.net/v3/style/millie.4a1320ab272ffa081fae.css" rel="stylesheet">
     <style type="text/css">
@@ -330,27 +332,27 @@
                 <header data-v-e67dcbb6="">
                     <h1 data-v-e67dcbb6=""><a data-v-e67dcbb6="" href="/"><img data-v-e67dcbb6=""
                                 src="https://d3udu241ivsax2.cloudfront.net/v3/images/common/millie-logo.3884f0c52e69f1f7322c2fd4778f4830.png"
-                                alt="밀리의 서재"></a></h1>
+                                alt="ë°ë¦¬ì ìì¬"></a></h1>
                     <nav data-v-e67dcbb6="">
                         <ul data-v-e67dcbb6="" class="gnb">
-                            <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="/" class="gtm-today">투데이</a>
+                            <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="/" class="gtm-today">í¬ë°ì´</a>
                             </li>
                             <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="/v3/search"
-                                    class="gtm-search">검색</a></li>
+                                    class="gtm-search">ê²ì</a></li>
                             <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6=""
-                                    href="https://www.millie.co.kr/shelf/shelf_main.html" class="gtm-my">내서재</a></li>
+                                    href="https://www.millie.co.kr/shelf/shelf_main.html" class="gtm-my">ë´ìì¬</a></li>
                             <li data-v-e67dcbb6="" class="on"><a data-v-e67dcbb6="" href="/v3/management"
-                                    class="gtm-setting">관리</a></li>
+                                    class="gtm-setting">ê´ë¦¬</a></li>
                         </ul>
                     </nav>
                     <ul data-v-e67dcbb6="" class="util">
                         <li data-v-e67dcbb6="" class="alarm"><a data-v-e67dcbb6=""
-                                href="/v3/today/more/alarmCenter/push" title="알림" class="gtm-alarm"><i
+                                href="/v3/today/more/alarmCenter/push" title="ìë¦¼" class="gtm-alarm"><i
                                     data-v-e67dcbb6="" class="mds-icon--alarm-2"></i> <span data-v-e67dcbb6=""
                                     class="alarm-icon">1</span></a></li>
                         <!---->
                         <li data-v-e67dcbb6="" class="sign sign-in"><a data-v-e67dcbb6="" href="/v3/logout"
-                                class="">로그아웃</a></li>
+                                class="">ë¡ê·¸ìì</a></li>
                     </ul>
                 </header>
             </div>
@@ -364,94 +366,94 @@
                                 <div data-v-54204cd4="" class="back"><button data-v-54204cd4="" type="button"
                                         class="close-button"><i data-v-54204cd4=""
                                             class="mds-icon--arrow-left"></i></button>
-                                    <h2 data-v-54204cd4="">개인정보수정</h2>
+                                    <h2 data-v-54204cd4="">ê°ì¸ì ë³´ìì </h2>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div data-v-9baa251e="" class="inner-content">
-                        <p data-v-9baa251e="" class="sign-up-mark phone">휴대폰 계정 회원</p>
+                        <p data-v-9baa251e="" class="sign-up-mark phone">í´ëí° ê³ì  íì</p>
                         <div data-v-9baa251e="" class="picture-box">
                             <div data-v-9baa251e="" class="inner">
                                 <div data-v-9baa251e="" class="image-box"
                                     style="background-image: url(&quot;https://ofbxchnhqinp910256.cdn.ntruss.com/160/e5e634f89bd1050c99a5b84cc95caa64.png?type=w&amp;w=160&amp;quality=100&quot;);">
                                 </div> <label data-v-9baa251e="" class="picture-change-button"><input data-v-9baa251e=""
                                         type="file" id="file-input" accept="image/*"></label> <button data-v-9baa251e=""
-                                    type="button" class="picture-remove-button">사진 삭제</button>
+                                    type="button" class="picture-remove-button">ì¬ì§ ì­ì </button>
                             </div>
                         </div>
                         <div data-v-9baa251e="" class="input-item">
-                            <p data-v-9baa251e="" class="tit">아이디<span data-v-9baa251e="">*</span></p>
+                            <p data-v-9baa251e="" class="tit">ìì´ë<span data-v-9baa251e="">*</span></p>
                             <div data-v-9baa251e="" class="input-group">
                                 <div data-v-9baa251e="" class="input-box"><input data-v-9baa251e="" type="text"
-                                        placeholder="아이디 입력" class="input-text"></div> <button data-v-9baa251e=""
-                                    type="button" class="button">중복확인</button>
-                            </div> <span data-v-9baa251e="" class="exp">욕설, 비속어 사용 시 서비스 이용이 제한될 수 있습니다.</span>
+                                        placeholder="ìì´ë ìë ¥" class="input-text"></div> <button data-v-9baa251e=""
+                                    type="button" class="button">ì¤ë³µíì¸</button>
+                            </div> <span data-v-9baa251e="" class="exp">ìì¤, ë¹ìì´ ì¬ì© ì ìë¹ì¤ ì´ì©ì´ ì íë  ì ììµëë¤.</span>
                         </div>
                         <hr data-v-9baa251e="" class="line">
                         <div data-v-9baa251e="" class="input-item">
-                            <p data-v-9baa251e="" class="tit">이름<span data-v-9baa251e="">*</span>
+                            <p data-v-9baa251e="" class="tit">ì´ë¦<span data-v-9baa251e="">*</span>
                             </p>
                             <div data-v-9baa251e="" class="input-group">
                                 <div data-v-9baa251e="" class="input-box"><input data-v-9baa251e="" type="name"
-                                        placeholder="이름 입력" disabled="disabled" class="input-text"></div>
-                                <button data-v-9baa251e="" type="button" class="button">수정하기</button>
+                                        placeholder="ì´ë¦ ìë ¥" disabled="disabled" class="input-text"></div>
+                                <button data-v-9baa251e="" type="button" class="button">ìì íê¸°</button>
                             </div>
                         </div>
                         <div data-v-9baa251e="" class="input-item">
-                            <p data-v-9baa251e="" class="tit">주민번호<span data-v-9baa251e="">*</span></p>
+                            <p data-v-9baa251e="" class="tit">ì£¼ë¯¼ë²í¸<span data-v-9baa251e="">*</span></p>
                             <div data-v-9baa251e="" class="input-group">
                                 <div data-v-9baa251e="" class="input-box"><input data-v-9baa251e="" type="password"
-                                        id="input-password" placeholder="● ● ● ● ● ● ● ●" 
+                                        id="input-password" placeholder="â â â â â â â â" 
                                         class="input-text tooltip1">
 
-                                </div> <h3>ㅡ</h3>
+                                </div> <h3>ã¡</h3>
                                 <div data-v-9baa251e="" class="input-box"><input data-v-9baa251e="" type="password"
-                                        id="input-password" placeholder="● ● ● ● ● ● ● ●" disabled="disabled"
+                                        id="input-password" placeholder="â â â â â â â â" disabled="disabled"
                                         class="input-text tooltip1">
 
-                                </div> <button data-v-9baa251e="" type="button" class="button">수정하기</button>
+                                </div> <button data-v-9baa251e="" type="button" class="button">ìì íê¸°</button>
                             </div>
                         </div>
                         <div data-v-9baa251e="" class="input-item">
-                            <p data-v-9baa251e="" class="tit">휴대폰 번호<span data-v-9baa251e="">*</span>
+                            <p data-v-9baa251e="" class="tit">í´ëí° ë²í¸<span data-v-9baa251e="">*</span>
                             </p>
                             <div data-v-9baa251e="" class="input-group">
                                 <div data-v-9baa251e="" class="input-box"><input data-v-9baa251e="" type="tel"
-                                        placeholder="휴대폰 번호 입력 (‘-’ 제외)" disabled="disabled" class="input-text"></div>
-                                <button data-v-9baa251e="" type="button" class="button">수정하기</button>
+                                        placeholder="í´ëí° ë²í¸ ìë ¥ (â-â ì ì¸)" disabled="disabled" class="input-text"></div>
+                                <button data-v-9baa251e="" type="button" class="button">ìì íê¸°</button>
                             </div>
                         </div>
                         <div data-v-9baa251e="" class="input-item">
-                            <p data-v-9baa251e="" class="tit">비밀번호<span data-v-9baa251e="">*</span></p>
+                            <p data-v-9baa251e="" class="tit">ë¹ë°ë²í¸<span data-v-9baa251e="">*</span></p>
                             <div data-v-9baa251e="" class="input-group">
                                 <div data-v-9baa251e="" class="input-box"><input data-v-9baa251e="" type="password"
-                                        id="input-password" placeholder="● ● ● ● ● ● ● ●" disabled="disabled"
+                                        id="input-password" placeholder="â â â â â â â â" disabled="disabled"
                                         class="input-text tooltip1">
 
-                                </div> <button data-v-9baa251e="" type="button" class="button">수정하기</button>
+                                </div> <button data-v-9baa251e="" type="button" class="button">ìì íê¸°</button>
                             </div>
                         </div>
 
                         <div data-v-9baa251e="" class="input-item">
-                            <p data-v-9baa251e="" class="tit">이메일</p>
+                            <p data-v-9baa251e="" class="tit">ì´ë©ì¼</p>
                             <div data-v-9baa251e="" class="input-group">
                                 <div data-v-9baa251e="" class="input-box"><input data-v-9baa251e="" type="text"
-                                        placeholder="이메일 주소 입력" disabled="disabled" class="input-text"></div>
+                                        placeholder="ì´ë©ì¼ ì£¼ì ìë ¥" disabled="disabled" class="input-text"></div>
 
-                                <button data-v-9baa251e="" type="button" class="button">수정하기</button>
+                                <button data-v-9baa251e="" type="button" class="button">ìì íê¸°</button>
                             </div>
 
                         </div>
                         <hr data-v-9baa251e="" class="line">
                         <div data-v-9baa251e=""><input data-v-9baa251e="" type="checkbox" id="checkbox"
                                 class="input-check"> <label data-v-9baa251e="" for="checkbox"><span
-                                    data-v-9baa251e="">개인정보 수집 및 이용 동의</span></label></div>
+                                    data-v-9baa251e="">ê°ì¸ì ë³´ ìì§ ë° ì´ì© ëì</span></label></div>
                         <ul data-v-9baa251e="" class="warn-text">
-                            <li data-v-9baa251e="">개인정보 수집 목적 : 원활한 밀리의 서재 서비스 이용을 위해 수집합니다.</li>
-                            <li data-v-9baa251e="">개인정보 수집항목 : 프로필 이미지, 필명, 휴대폰 번호, 이메일</li>
-                            <li data-v-9baa251e="">개인정보 이용기간 : 회원 탈퇴 시 또는 개인정보처리방침에 따라 보유 및 파기 됩니다.</li>
-                        </ul> <button data-v-9baa251e="" type="button" class="confirm-btn">확인</button>
+                            <li data-v-9baa251e="">ê°ì¸ì ë³´ ìì§ ëª©ì  : ìíí ë°ë¦¬ì ìì¬ ìë¹ì¤ ì´ì©ì ìí´ ìì§í©ëë¤.</li>
+                            <li data-v-9baa251e="">ê°ì¸ì ë³´ ìì§í­ëª© : íë¡í ì´ë¯¸ì§, íëª, í´ëí° ë²í¸, ì´ë©ì¼</li>
+                            <li data-v-9baa251e="">ê°ì¸ì ë³´ ì´ì©ê¸°ê° : íì íí´ ì ëë ê°ì¸ì ë³´ì²ë¦¬ë°©ì¹¨ì ë°ë¼ ë³´ì  ë° íê¸° ë©ëë¤.</li>
+                        </ul> <button data-v-9baa251e="" type="button" class="confirm-btn">íì¸</button>
                     </div>
                 </div>
 

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko" class="" style="height: auto; overflow: visible;">
 
@@ -12,16 +14,16 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:site_name" content="밀리의 서재">
+    <meta property="og:site_name" content="ë°ë¦¬ì ìì¬">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.millie.co.kr/">
-    <meta property="og:title" content="밀리의 서재">
+    <meta property="og:title" content="ë°ë¦¬ì ìì¬">
     <meta property="og:image" content="https://www.millie.co.kr/favicon/millie_og_v2_2.png">
-    <meta property="og:description" content="독서와 무제한 친해지리, 밀리의 서재에서 당신의 일상을 1밀리+ 더 멋지게 만들어 보세요">
+    <meta property="og:description" content="ëìì ë¬´ì í ì¹í´ì§ë¦¬, ë°ë¦¬ì ìì¬ìì ë¹ì ì ì¼ìì 1ë°ë¦¬+ ë ë©ì§ê² ë§ë¤ì´ ë³´ì¸ì">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="600">
     <meta property="fb:app_id" content="1621792108120563">
-    <meta name="description" content="독서와 무제한 친해지리, 밀리의 서재에서 당신의 일상을 1밀리+ 더 멋지게 만들어 보세요">
+    <meta name="description" content="ëìì ë¬´ì í ì¹í´ì§ë¦¬, ë°ë¦¬ì ìì¬ìì ë¹ì ì ì¼ìì 1ë°ë¦¬+ ë ë©ì§ê² ë§ë¤ì´ ë³´ì¸ì">
     <meta name="naver-site-verification" content="09f2fbb79dfd0f4fbb3159d7ebf0722ab613cc74">
     <meta name="google-site-verification" content="F_BvE8JmAqqhoTgJBKpQNQACdhJkXU-c7n9zdgjjRDc">
     <meta name="google-site-verification" content="fxHd7i7aN34YObihzhJqIMXq-ct60hZgtvBMFFJ6ckw">
@@ -54,7 +56,7 @@
     <link rel="apple-touch-icon" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="apple-touch-icon-precomposed" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="shortcut icon" type="image/png" href="https://www.millie.co.kr/favicon/android-icon.png">
-    <title>검색 | 밀리의 서재</title>
+    <title>ê²ì | ë°ë¦¬ì ìì¬</title>
     <link href="https://d3udu241ivsax2.cloudfront.net/v3/style/vendor.524cdf1d4325d722f545.css" rel="stylesheet">
     <link href="https://d3udu241ivsax2.cloudfront.net/v3/style/millie.4a1320ab272ffa081fae.css" rel="stylesheet">
     
@@ -309,28 +311,28 @@
                 <header data-v-e67dcbb6="">
                     <h1 data-v-e67dcbb6=""><a data-v-e67dcbb6="" href="/"><img data-v-e67dcbb6=""
                                 src="https://d3udu241ivsax2.cloudfront.net/v3/images/common/millie-logo.3884f0c52e69f1f7322c2fd4778f4830.png"
-                                alt="밀리의 서재"></a></h1>
+                                alt="ë°ë¦¬ì ìì¬"></a></h1>
                     <nav data-v-e67dcbb6="">
                         <ul data-v-e67dcbb6="" class="gnb">
                             <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="/" class="gtm-today"></a>
                             </li>
                             <li data-v-e67dcbb6="" class="on"><a data-v-e67dcbb6=""
                                     href="https://www.millie.co.kr/v3/search?_ga=2.159273465.279460975.1669011906-1036664696.1665120667"
-                                    class="gtm-search">검색</a></li>
+                                    class="gtm-search">ê²ì</a></li>
                             <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6=""
-                                    href="https://www.millie.co.kr/shelf/shelf_main.html" class="gtm-my">내서재</a></li>
+                                    href="https://www.millie.co.kr/shelf/shelf_main.html" class="gtm-my">ë´ìì¬</a></li>
                             <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="/v3/management"
-                                    class="gtm-setting">관리</a></li>
+                                    class="gtm-setting">ê´ë¦¬</a></li>
                         </ul>
                     </nav>
                     <ul data-v-e67dcbb6="" class="util">
                         <li data-v-e67dcbb6="" class="alarm"><a data-v-e67dcbb6=""
-                                href="/v3/today/more/alarmCenter/push" title="알림" class="gtm-alarm"><i
+                                href="/v3/today/more/alarmCenter/push" title="ìë¦¼" class="gtm-alarm"><i
                                     data-v-e67dcbb6="" class="mds-icon--alarm-2"></i> <span data-v-e67dcbb6=""
                                     class="alarm-icon">200</span></a></li>
                         <!---->
                         <li data-v-e67dcbb6="" class="sign sign-in"><a data-v-e67dcbb6="" href="/v3/logout"
-                                class="">로그아웃</a></li>
+                                class="">ë¡ê·¸ìì</a></li>
                     </ul>
                 </header>
             </div>
@@ -353,8 +355,8 @@
                                                 <!----> <input autocomplete="off" id="input-475"
                                                     aria-labelledby="input-475-label"
                                                     aria-errormessage="input-475-message" type="text"
-                                                    placeholder="검색어를 입력하세요" class="mds-input-field"></div> <button
-                                                type="button" aria-label="내용 삭제"
+                                                    placeholder="ê²ìì´ë¥¼ ìë ¥íì¸ì" class="mds-input-field"></div> <button
+                                                type="button" aria-label="ë´ì© ì­ì "
                                                 class="mds-icon--input-delete clear-button"
                                                 style="display: none;"></button>
                                             <!---->
@@ -376,79 +378,79 @@
                     </section>
                     <!---->
                     <section data-v-02a040ec="" class="search-word recommand">
-                        <h2 data-v-02a040ec="" class="title">밀리 추천 검색어</h2>
+                        <h2 data-v-02a040ec="" class="title">ë°ë¦¬ ì¶ì² ê²ìì´</h2>
                         <div data-v-02a040ec="" class="slide-container no-swiper">
                             <ul data-v-02a040ec="" class="slide-wrapper">
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/어서 오세요 휴남동 서점입니다?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest1">어서 오세요 휴남동 서점입니다</a></li>
+                                        href="/v3/search/result/ì´ì ì¤ì¸ì í´ë¨ë ìì ìëë¤?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest1">ì´ì ì¤ì¸ì í´ë¨ë ìì ìëë¤</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/밀리의 발견?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest2">밀리의 발견</a></li>
+                                        href="/v3/search/result/ë°ë¦¬ì ë°ê²¬?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest2">ë°ë¦¬ì ë°ê²¬</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/불편한 편의점2?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest3">불편한 편의점2</a></li>
+                                        href="/v3/search/result/ë¶í¸í í¸ìì 2?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest3">ë¶í¸í í¸ìì 2</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/퇴마록?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest4">퇴마록</a></li>
+                                        href="/v3/search/result/í´ë§ë¡?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest4">í´ë§ë¡</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/글쓰기?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest5">글쓰기</a></li>
+                                        href="/v3/search/result/ê¸ì°ê¸°?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest5">ê¸ì°ê¸°</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/로맨스 베스트?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest6">로맨스 베스트</a></li>
+                                        href="/v3/search/result/ë¡ë§¨ì¤ ë² ì¤í¸?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest6">ë¡ë§¨ì¤ ë² ì¤í¸</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/데일리 연재?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest7">데일리 연재</a></li>
+                                        href="/v3/search/result/ë°ì¼ë¦¬ ì°ì¬?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest7">ë°ì¼ë¦¬ ì°ì¬</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/이병률?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest8">이병률</a></li>
+                                        href="/v3/search/result/ì´ë³ë¥ ?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest8">ì´ë³ë¥ </a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/가을?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest9">가을</a></li>
+                                        href="/v3/search/result/ê°ì?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest9">ê°ì</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/김초엽?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest10">김초엽</a></li>
+                                        href="/v3/search/result/ê¹ì´ì½?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest10">ê¹ì´ì½</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/베스트셀러 편집자 이연실?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest11">베스트셀러 편집자 이연실</a></li>
+                                        href="/v3/search/result/ë² ì¤í¸ìë¬ í¸ì§ì ì´ì°ì¤?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest11">ë² ì¤í¸ìë¬ í¸ì§ì ì´ì°ì¤</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/2022 노벨문학상?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest12">2022 노벨문학상</a></li>
+                                        href="/v3/search/result/2022 ë¸ë²¨ë¬¸íì?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest12">2022 ë¸ë²¨ë¬¸íì</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/매거진 베스트셀러?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest13">매거진 베스트셀러</a></li>
+                                        href="/v3/search/result/ë§¤ê±°ì§ ë² ì¤í¸ìë¬?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest13">ë§¤ê±°ì§ ë² ì¤í¸ìë¬</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/영화?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest14">영화</a></li>
+                                        href="/v3/search/result/ìí?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest14">ìí</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/김연수?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest15">김연수</a></li>
+                                        href="/v3/search/result/ê¹ì°ì?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
+                                        class="gtm-search-suggest15">ê¹ì°ì</a></li>
                             </ul>
                         </div>
                     </section>
                     <section data-v-02a040ec="" class="shortcuts">
-                        <h2 data-v-02a040ec="" class="title">바로가기</h2>
-                        <div data-v-02a040ec="" class="list"><a data-v-02a040ec="" href="/메인에 베스트셀러 페이지로"
-                                class="best-link gtm-search-direct-best">베스트</a> <a data-v-02a040ec=""
-                                href="/v3/today/more/publishBook" class="update-link gtm-search-direct-publishbook">한 달
-                                 이내 출간</a> <!--<a data-v-02a040ec="" href="/v3/book/comingsoon"
-                                class="coming-link gtm-search-direct-comingsoon">공개 예정</a> <a data-v-02a040ec=""
-                                href="/v3/book/end" class="end-link gtm-search-direct-end">종료 예정</a></div> -->
+                        <h2 data-v-02a040ec="" class="title">ë°ë¡ê°ê¸°</h2>
+                        <div data-v-02a040ec="" class="list"><a data-v-02a040ec="" href="/ë©ì¸ì ë² ì¤í¸ìë¬ íì´ì§ë¡"
+                                class="best-link gtm-search-direct-best">ë² ì¤í¸</a> <a data-v-02a040ec=""
+                                href="/v3/today/more/publishBook" class="update-link gtm-search-direct-publishbook">í ë¬
+                                 ì´ë´ ì¶ê°</a> <!--<a data-v-02a040ec="" href="/v3/book/comingsoon"
+                                class="coming-link gtm-search-direct-comingsoon">ê³µê° ìì </a> <a data-v-02a040ec=""
+                                href="/v3/book/end" class="end-link gtm-search-direct-end">ì¢ë£ ìì </a></div> -->
                     </section>
                     <hr data-v-02a040ec="">
                     <div data-v-02a040ec="" class="tab-wrap">
                         <ul data-v-02a040ec="" class="tab-list">
-                            <li data-v-02a040ec="" id="category" class="gtm-search-tab-category active">검색 결과</li>
+                            <li data-v-02a040ec="" id="category" class="gtm-search-tab-category active">ê²ì ê²°ê³¼</li>
                         </ul>
                     </div>
                     <section data-v-02a040ec="" class="page category-wrap">
-                        <h2 data-v-02a040ec="" class="title">검색 결과</h2>
+                        <h2 data-v-02a040ec="" class="title">ê²ì ê²°ê³¼</h2>
                         <ul data-v-02a040ec="" class="category-list">
                             <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
                                     href="http://127.0.0.1:5500/src/main/webapp/Detail.html">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">밀리 오리지널</strong>
-                                        <p data-v-02a040ec="">지금! 연재 중, 종이책 정기구독 라인업, 소설, SF, 추리.스릴러, 로맨스, 에세이</p>
+                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">ë°ë¦¬ ì¤ë¦¬ì§ë</strong>
+                                        <p data-v-02a040ec="">ì§ê¸! ì°ì¬ ì¤, ì¢ì´ì± ì ê¸°êµ¬ë ë¼ì¸ì, ìì¤, SF, ì¶ë¦¬.ì¤ë¦´ë¬, ë¡ë§¨ì¤, ìì¸ì´</p>
                                     </div>
                                     <div data-v-02a040ec="" class="bookcover">
                                         <div data-v-02a040ec="" class="inner">
@@ -459,15 +461,15 @@
                                                         srcset="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80 2x"
                                                         type="image/webp"> <img data-v-96e558f2=""
                                                         src="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
+                                                        alt=" ëì ì¸ë¤ì¼" width="125"></picture>
                                             </div>
                                         </div>
                                     </div>
                                 </a></li>
                             <li data-v-02a040ec="" class="list gtm-search-category active"><a data-v-02a040ec=""
                                     href="/v3/search/2depth/1474?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">오디오북</strong>
-                                        <p data-v-02a040ec="">소설, 인문, 경제경영, 자기계발, 에세이, 과학, 사회, 역사 등</p>
+                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">ì¤ëì¤ë¶</strong>
+                                        <p data-v-02a040ec="">ìì¤, ì¸ë¬¸, ê²½ì ê²½ì, ìê¸°ê³ë°, ìì¸ì´, ê³¼í, ì¬í, ì­ì¬ ë±</p>
                                     </div>
                                     <div data-v-02a040ec="" class="bookcover">
                                         <div data-v-02a040ec="" class="inner">
@@ -478,15 +480,15 @@
                                                         srcset="https://cover.millie.co.kr/service/cover/179572957/1a309391d5da49678c03438c3a7d22d7.jpg?w=125&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179572957/1a309391d5da49678c03438c3a7d22d7.jpg?w=250&amp;f=webp&amp;q=80 2x"
                                                         type="image/webp"> <img data-v-96e558f2=""
                                                         src="https://cover.millie.co.kr/service/cover/179572957/1a309391d5da49678c03438c3a7d22d7.jpg?w=125&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
+                                                        alt=" ëì ì¸ë¤ì¼" width="125"></picture>
                                             </div>
                                         </div>
                                     </div>
                                 </a></li>
                             <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
                                     href="/v3/search/2depth/1779?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">챗북</strong>
-                                        <p data-v-02a040ec="">백발백중! 별자리 운세, 챗북 인터뷰 시리즈, 돈키레터</p>
+                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">ì±ë¶</strong>
+                                        <p data-v-02a040ec="">ë°±ë°ë°±ì¤! ë³ìë¦¬ ì´ì¸, ì±ë¶ ì¸í°ë·° ìë¦¬ì¦, ëí¤ë í°</p>
                                     </div>
                                     <div data-v-02a040ec="" class="bookcover">
                                         <div data-v-02a040ec="" class="inner">
@@ -497,15 +499,15 @@
                                                         srcset="https://cover.millie.co.kr/service/cover/179548325/60e43be598bb4da9ab50b39f70c11895.jpg?w=125&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179548325/60e43be598bb4da9ab50b39f70c11895.jpg?w=250&amp;f=webp&amp;q=80 2x"
                                                         type="image/webp"> <img data-v-96e558f2=""
                                                         src="https://cover.millie.co.kr/service/cover/179548325/60e43be598bb4da9ab50b39f70c11895.jpg?w=125&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
+                                                        alt=" ëì ì¸ë¤ì¼" width="125"></picture>
                                             </div>
                                         </div>
                                     </div>
                                 </a></li>
                             <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
                                     href="/v3/search/2depth/1610?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">매거진</strong>
-                                        <p data-v-02a040ec="">경제·경영, 패션·트렌드, 대중문화, 인문·예술, 리빙·라이프스타일, 문학·교양, 시사, 스포츠 등
+                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">ë§¤ê±°ì§</strong>
+                                        <p data-v-02a040ec="">ê²½ì Â·ê²½ì, í¨ìÂ·í¸ë ë, ëì¤ë¬¸í, ì¸ë¬¸Â·ìì , ë¦¬ë¹Â·ë¼ì´íì¤íì¼, ë¬¸íÂ·êµì, ìì¬, ì¤í¬ì¸  ë±
                                         </p>
                                     </div>
                                     <div data-v-02a040ec="" class="bookcover">
@@ -517,15 +519,15 @@
                                                         srcset="https://cover.millie.co.kr/service/cover/179574370/325d6da16438435f956ca83ff17c4c4b.jpg?w=125&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179574370/325d6da16438435f956ca83ff17c4c4b.jpg?w=250&amp;f=webp&amp;q=80 2x"
                                                         type="image/webp"> <img data-v-96e558f2=""
                                                         src="https://cover.millie.co.kr/service/cover/179574370/325d6da16438435f956ca83ff17c4c4b.jpg?w=125&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
+                                                        alt=" ëì ì¸ë¤ì¼" width="125"></picture>
                                             </div>
                                         </div>
                                     </div>
                                 </a></li>
                             <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
                                     href="/v3/search/2depth/2032?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">디즈니</strong>
-                                        <p data-v-02a040ec="">디즈니, 픽사, 마블의 책이 보이는 영어 오디오북 ⓒDisney</p>
+                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">ëì¦ë</strong>
+                                        <p data-v-02a040ec="">ëì¦ë, í½ì¬, ë§ë¸ì ì±ì´ ë³´ì´ë ìì´ ì¤ëì¤ë¶ âDisney</p>
                                     </div>
                                     <div data-v-02a040ec="" class="bookcover">
                                         <div data-v-02a040ec="" class="inner">
@@ -536,15 +538,15 @@
                                                         srcset="https://cover.millie.co.kr/service/cover/179559925/fe449328632a454aadc7be506b0658e5.jpg?w=125&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179559925/fe449328632a454aadc7be506b0658e5.jpg?w=250&amp;f=webp&amp;q=80 2x"
                                                         type="image/webp"> <img data-v-96e558f2=""
                                                         src="https://cover.millie.co.kr/service/cover/179559925/fe449328632a454aadc7be506b0658e5.jpg?w=125&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
+                                                        alt=" ëì ì¸ë¤ì¼" width="125"></picture>
                                             </div>
                                         </div>
                                     </div>
                                 </a></li>
                             <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
                                     href="/v3/search/2depth/1223?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">소설</strong>
-                                        <p data-v-02a040ec="">추리・스릴러, 킬러 스파이, 법의학 스릴러, SF, 판타지</p>
+                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">ìì¤</strong>
+                                        <p data-v-02a040ec="">ì¶ë¦¬ã»ì¤ë¦´ë¬, í¬ë¬ ì¤íì´, ë²ìí ì¤ë¦´ë¬, SF, ííì§</p>
                                     </div>
                                     <div data-v-02a040ec="" class="bookcover">
                                         <div data-v-02a040ec="" class="inner">
@@ -555,15 +557,15 @@
                                                         srcset="https://cover.millie.co.kr/service/cover/179572960/de64957b6baa45fd8501d98efb14dfdf.jpg?w=125&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179572960/de64957b6baa45fd8501d98efb14dfdf.jpg?w=250&amp;f=webp&amp;q=80 2x"
                                                         type="image/webp"> <img data-v-96e558f2=""
                                                         src="https://cover.millie.co.kr/service/cover/179572960/de64957b6baa45fd8501d98efb14dfdf.jpg?w=125&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
+                                                        alt=" ëì ì¸ë¤ì¼" width="125"></picture>
                                             </div>
                                         </div>
                                     </div>
                                 </a></li>
                             <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
                                     href="/v3/search/2depth/1332?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">에세이</strong>
-                                        <p data-v-02a040ec="">시, 일상, 위로, 직업, 관계, 여행, 예술, 자연, 사랑, 가족, 나이듦</p>
+                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">ìì¸ì´</strong>
+                                        <p data-v-02a040ec="">ì, ì¼ì, ìë¡, ì§ì, ê´ê³, ì¬í, ìì , ìì°, ì¬ë, ê°ì¡±, ëì´ë¦</p>
                                     </div>
                                     <div data-v-02a040ec="" class="bookcover">
                                         <div data-v-02a040ec="" class="inner">
@@ -575,8 +577,8 @@
                                 </a></li>
                             <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
                                     href="/v3/search/2depth/1194?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">세계문학전집</strong>
-                                        <p data-v-02a040ec="">열린책들, 민음사, 펭귄클래식, 문예출판사, 을유문화사, 현대지성, 문예출판사</p>
+                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">ì¸ê³ë¬¸íì ì§</strong>
+                                        <p data-v-02a040ec="">ì´ë¦°ì±ë¤, ë¯¼ìì¬, í­ê·í´ëì, ë¬¸ìì¶íì¬, ìì ë¬¸íì¬, íëì§ì±, ë¬¸ìì¶íì¬</p>
                                     </div>
                                     <div data-v-02a040ec="" class="bookcover">
                                         <div data-v-02a040ec="" class="inner">
