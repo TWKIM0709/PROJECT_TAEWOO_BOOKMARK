@@ -1,15 +1,12 @@
 package kr.or.kosa.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 import kr.or.kosa.dto.Book;
 import kr.or.kosa.dto.Book_Payment;
 import kr.or.kosa.utils.ConnectionHelper;
@@ -78,7 +75,7 @@ public class PaymentDao implements BookMarkDao{
 					return totalcount;
 				}
 		
-		//책 추가하기
+		//장바구니에 책 추가하기
 		public int AddBook(String id, String isbn) {
 			Connection conn = ConnectionHelper.getConnection("oracle");
 			PreparedStatement pstmt = null;
@@ -226,5 +223,56 @@ public class PaymentDao implements BookMarkDao{
 			return allpaymentlist;
 		}
 		
+		//결제 추가
+		public int insertPayment(List<Book_Payment> list, String id) {
+			Connection conn = ConnectionHelper.getConnection("oracle");
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			int index = 1;
+			int row = 0;
+
+			try {
+				String sql ="insert all"
+						+ "into payment(payment_no, id, payment_addr, payment_detailaddr)"
+						+ "values (payment_no_seq.nextval, ?, ?, ?)";
+				for(Book_Payment book : list) {
+					sql += "into book_payment(payment_no, isbn, count, sumprice)"
+							+ "values(payment_no_seq.currentval, ?, ?, ?)";
+				}
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(index++, id);
+				pstmt.setString(index++, list.get(1).getPayment_addr());
+				pstmt.setString(index++, list.get(1).getPayment_detailaddr());
+				
+				for(Book_Payment book : list) { //결제된 모든 책
+					pstmt.setString(index++, book.getIsbn());
+					pstmt.setInt(index++, book.getCount());
+					pstmt.setInt(index++, book.getSumprice());
+				}
+				
+				row = pstmt.executeUpdate();
+				
+				if(row>0) {
+					sql = "delete from cart where id=? and isbn in (select isbn from book_payment where payment_no=(select max(paymnet_no) from book_paymnet where id=?))";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.setString(2, id);
+					
+					pstmt.executeUpdate();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					ConnectionHelper.close(pstmt);
+					ConnectionHelper.close(conn);
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return row;
+		}
 		
 }
