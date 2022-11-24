@@ -24,7 +24,7 @@
     	  orderId: 'qKsrgjWenNZ0DkvkzyBtd',
     	  orderName: '토스 티셔츠 외 2건',
     	  customerName: '박토스',
-    	  successUrl: 'http://localhost:8090/Team4_1031/index.html',
+    	  successUrl: 'http://localhost:8090/PROJECT_TAEWOO_BOOKMARK-2/index.html',
     	  failUrl: 'http://localhost:8080/fail',
     	  
     	})
