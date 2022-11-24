@@ -8,12 +8,13 @@ import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.QuestionDao;
 import kr.or.kosa.dto.Question_Board;
 
-public class QuestionDetailAdminService implements Action {
+public class QuestionDetailService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
-	
+		
+		String url = "";
 
 		String question_no = request.getParameter("question_no");
 		String cpage = request.getParameter("cp"); // current page
@@ -55,24 +56,39 @@ public class QuestionDetailAdminService implements Action {
 				request.setAttribute("ps", pagesize);
 				
 				forward.setRedirect(false); // forward
-				forward.setPath("/WEB-INF/views/board/board_content.jsp");
-			}
-			else {
+				if(request.getSession().getAttribute("admin") != null) {
+					forward.setPath("/WEB-INF/views/board/adminboard_content.jsp");
+				}else {
+					forward.setPath("/WEB-INF/views/board/board_content.jsp");
+				}
+				
+			} else {
 				String msg = "게시글을 불러오지 못했습니다";
-				String path = "questionlist.do";
+				if(request.getSession().getAttribute("admin") != null) {
+					url = "adminquestionlist.do";
+				}else {
+					url = "questionlist.do";
+				}
 				forward.setRedirect(false); // forward
+				
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", url);
 				forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 				String msg = "error";
-				String path = "questionlist.do";
-				forward.setRedirect(false); // forward
+				if(request.getSession().getAttribute("admin") != null) {
+					url = "adminquestionlist.do";
+				}else {
+					url = "questionlist.do";
+				}
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", url);
 				forward.setPath("/WEB-INF/views/utils/redirect.jsp");
+				forward.setRedirect(false); // forward
 		}
 		return forward;
 	}
-
-
 }

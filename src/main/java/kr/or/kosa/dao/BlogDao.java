@@ -236,35 +236,39 @@ public class BlogDao implements BookMarkDao{
 	
 	//글 작성
 	public int writeok(Blog_Board board) {
-
 		int row = 0;
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String boardsql = "insert into"
-					+ " blog_board(blog_no, id, blog_title, blog_content, hits)"
-					+ " values(blog_no_seq.nextval,?,?,?,?)";
-			//blog_no 에 _seq 추가 (11.21 김태우)
-			pstmt = conn.prepareStatement(boardsql);
-			
+			/*
+			 * String boardsql = "insert into" +
+			 * " blog_board(blog_no, id, blog_title, blog_content, hits)" +
+			 * " values(blog_no_seq.nextval,?,?,?,?)"; //blog_no 에 _seq 추가 (11.21 김태우) pstmt
+			 * = conn.prepareStatement(boardsql);
+			 * 
+			 * pstmt.setString(1, board.getId()); pstmt.setString(2, board.getBlog_title());
+			 * pstmt.setString(3, board.getBlog_content()); pstmt.setInt(4,
+			 * board.getHits()); row = pstmt.executeUpdate(); //파일이 있다면
+			 * ///////////////////////// if(board.getBlog_filename() != null) {
+			 * pstmt.close(); String filesql =
+			 * "insert into blogfile(blog_no, file_name) values(?,?)"; pstmt =
+			 * conn.prepareStatement(filesql); pstmt.setInt(1, board.getBlog_no());
+			 * ////////////이 부분은 어떻게 해야될까?? //TODO : 블로그 파일 테이블 인덱스 처리하기 //블로그테이블에서는
+			 * nextval로 인덱스를 증가시켰는데 //모든 글이 파일을 가지고 있는건 아니니까 여기선 그렇게 하면 안되는데 //그럼 인덱스를 어떻게
+			 * 같게 하지 ?? pstmt.setString(2, board.getBlog_filename()); pstmt.execute(); }
+			 */
+			String sql = "insert all"
+					+ "into blog_board(blog_no, id, blog_title, blog_content)"
+					+ "values(blog_no_seq.nextval, ?, ?, ?)"
+					+ "into blogfile(blog_no, file_name) values(blog_no_seq.currentval, ?)";
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getId());
 			pstmt.setString(2, board.getBlog_title());
 			pstmt.setString(3, board.getBlog_content());
-			pstmt.setInt(4, board.getHits());
+			pstmt.setString(4, board.getBlog_filename());
+			
 			row = pstmt.executeUpdate();
-			//파일이 있다면 /////////////////////////
-			if(board.getBlog_filename() != null) {
-				pstmt.close();
-				String filesql = "insert into blogfile(blog_no, file_name) values(?,?)";
-				pstmt = conn.prepareStatement(filesql);
-				pstmt.setInt(1, board.getBlog_no()); ////////////이 부분은 어떻게 해야될까??
-						//TODO : 블로그 파일 테이블 인덱스 처리하기
-						//블로그테이블에서는 nextval로 인덱스를 증가시켰는데
-						//모든 글이 파일을 가지고 있는건 아니니까 여기선 그렇게 하면 안되는데
-						//그럼 인덱스를 어떻게 같게 하지 ??
-				pstmt.setString(2, board.getBlog_filename());
-				pstmt.execute();
-			}
+			
 		} catch (Exception e) {
 			System.out.println("writeok 예외 : " + e.getMessage());
 		}finally {
@@ -280,23 +284,56 @@ public class BlogDao implements BookMarkDao{
 	}
 	
 	//글 수정
-	public int blogEdit(HttpServletRequest board) {
+	public int blogEdit(Blog_Board board) {
 		int row = 0;
 		
-		String blog_no = board.getParameter("blog_no");
+		int blog_no = board.getBlog_no();
 		//String id = board.getParameter("id");
-		String blog_title = board.getParameter("blog_title");
-		String blog_content = board.getParameter("blog_content");
+		String blog_title = board.getBlog_title();
+		String blog_content = board.getBlog_content();
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
+			conn.setAutoCommit(false);
 			String sql = "update blog_board set blog_title=?, blog_content=? "
 					+ "where blog_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, blog_title);
 			pstmt.setString(2, blog_content);
-			pstmt.setInt(3, Integer.parseInt(blog_no));
+			pstmt.setInt(3, blog_no);
 			
+			row = pstmt.executeUpdate();
+
+			sql = "select * from bolgfile where blog_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, blog_no);
+			rs = pstmt.executeQuery();
+			
+			//데이터베이스에 파일이 있으면 true
+			boolean dbfile = (rs.next()) ? true : false;
+			
+			
+			if(row>0) {//업데이트 성공하면
+				if(board.getBlog_filename().trim().equals("") || board.getBlog_filename() == null) {//수정페이지에서 파일이 없을 경우
+					if(dbfile) { //db에 파일이 있으면
+						sql = "delete from blogfile where blog_no=?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, blog_no);
+					}
+				}else { //수정페이지에서 파일이 있을 경우
+					if(dbfile) { //수정페이지, 데이터베이스 둘 다 있음 >> 변경
+						sql = "update blogfile set file_name = ? where blog_no=?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, board.getBlog_filename());
+						pstmt.setInt(2, blog_no);
+					}else { //데이터베이스에 파일이 없음 >> insert
+						sql = "insert into blogfile(blog_no, file_name) values(?,?)";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, blog_no);
+						pstmt.setString(2, board.getBlog_filename());
+					}
+				}
+			}
 			row = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("blogEdit 예외 : " + e.getMessage());
@@ -305,7 +342,7 @@ public class BlogDao implements BookMarkDao{
 				ConnectionHelper.close(pstmt);
 				ConnectionHelper.close(conn);
 			} catch (Exception e2) {
-				// TODO: handle exception
+				e2.printStackTrace();
 			}
 		}
 		

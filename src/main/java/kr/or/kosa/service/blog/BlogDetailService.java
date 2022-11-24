@@ -20,26 +20,37 @@ public class BlogDetailService implements Action {
 			
 			blog = dao.getContent(blogno);
 			
-			if(blog != null) {
-				dao.upHits(blogno);
-				request.setAttribute("content", blog);
-				forward.setPath("블로그상세보기.jsp");
-				forward.setRedirect(false);
-			} else {
-				request.setAttribute("msg", "없는 게시글 입니다.");
-				request.setAttribute("path", "main.do");
-				forward.setPath("redirect.jsp");
-				forward.setRedirect(false);
+			if(request.getSession().getAttribute("admin") != null) {
+				request.setAttribute("blog_detail", blog);
+				forward.setPath("");
+			}else {
+				if(blog != null) {
+					dao.upHits(blogno);
+					request.setAttribute("blog_detail", blog);
+					forward.setPath("블로그상세보기.jsp");
+				} else {
+					request.setAttribute("msg", "없는 게시글 입니다.");
+					request.setAttribute("url", "/blogEnter.do?blog_no=" + blogno);
+					forward.setPath("/WEB-INF/views/utils/redirect.jsp");
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			String msg  = "서버 오류 발생";
-			String path = "main.do";
-			request.setAttribute("msg", msg);
-			request.setAttribute("path", path);
-			forward.setPath("redirect.jsp");
-			forward.setRedirect(false);
+			
+			if(request.getSession().getAttribute("admin") != null) {
+				request.setAttribute("msg", "없는 게시글 입니다.");
+				request.setAttribute("url", "blog.do?id="+ (String)request.getSession().getAttribute("id"));
+				forward.setPath("/WEB-INF/views/utils/redirect.jsp");
+			}else {
+				String msg  = "서버 오류 발생";
+				String path = "/main.do";
+				request.setAttribute("msg", msg);
+				request.setAttribute("url", path);
+				forward.setPath("/WEB-INF/views/utils/redirect.jsp");
+			}
+			
 		} 
+		forward.setRedirect(false);
 		return forward;
 	}
 

@@ -16,6 +16,9 @@ public class BlogUpdateService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
+		String msg = "";
+		String url = "";
+		
 		try {
 			BlogDao dao = new BlogDao();
 			
@@ -23,15 +26,25 @@ public class BlogUpdateService implements Action {
 			
 			request.setAttribute("content", board);
 			
-			forward.setPath("blogedit.jsp");
-			forward.setRedirect(false);
+			if(request.getSession().getAttribute("admin") != null) {
+				forward.setPath("adminblogedit.jsp");
+			}else {
+				forward.setPath("blogedit.jsp");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			String msg  = "update error";
-			String path = "블로그게시글.do?" + request.getParameter("blog_no");
-		forward.setPath("redirect.jsp");
-		forward.setRedirect(false);
+			if(request.getSession().getAttribute("admin")!= null) {
+				msg  = "서버 오류 발생";
+				url = "main.do";
+			}else {
+				msg  = "update error";
+				url = "블로그게시글.do?" + request.getParameter("blog_no");
+			}
+			request.setAttribute("msg", msg);
+			request.setAttribute("path", url);
+			forward.setPath("redirect.jsp");
 		} 
+		forward.setRedirect(false);
 		return forward;
 	}
 

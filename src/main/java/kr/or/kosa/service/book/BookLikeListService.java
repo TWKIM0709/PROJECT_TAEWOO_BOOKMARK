@@ -24,8 +24,14 @@ public class BookLikeListService implements Action {
 			
 			request.setAttribute("booklist", booklist);
 			
+			if(request.getSession().getAttribute("admin") != null) {
+				forward.setPath("admin#");
+			}else {
+				forward.setPath("#");
+			}
+			
 			forward.setRedirect(false);
-			forward.setPath("#");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

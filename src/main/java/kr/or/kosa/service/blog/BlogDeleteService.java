@@ -20,20 +20,38 @@ public class BlogDeleteService implements Action {
 			int row = dao.deleteOk(blogno);
 			
 			//삭제에 성공하면
-			if(row != 0) {
-				msg = "게시글삭제를 성공했습니다.";
-			} else {
-				msg = "게시글 삭제를 실패했습니다.";
+			if(request.getSession().getAttribute("admin") != null) {
+				if(row != 0) {
+					msg = "게시글삭제를 성공했습니다.";
+				} else {
+					msg = "게시글 삭제를 실패했습니다.";
+				}
+				path = "adminblog.do?blogid=" + request.getParameter("blogid");
+			}else {
+				if(row != 0) {
+					msg = "게시글삭제를 성공했습니다.";
+				} else {
+					msg = "게시글 삭제를 실패했습니다.";
+				}
+				path = "blog.do?blogid=" + request.getParameter("blogid");
 			}
-			path = "blog.do?blogid=" + request.getParameter("blogid");
 		} catch (Exception e) {
 			e.printStackTrace();
-			msg  = "서버 오류 발생";
-			path = "blog.do?blogid=" + request.getParameter("blogid");
+			if(request.getSession().getAttribute("admin") != null) {
+				msg  = "서버 오류 발생";
+				path = "adminblog.do?blogid=" + request.getParameter("blogid");
+			}else {
+				msg  = "서버 오류 발생";
+				path = "blog.do?blogid=" + request.getParameter("blogid");
+			}
+			
 		} 
 		//팝업 보여주고 다른 페이지로
 		request.setAttribute("msg",msg);
 		request.setAttribute("url", path);
+		
+		forward.setRedirect(false);
+		forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		return forward;
 	}
 
