@@ -4,15 +4,18 @@ public class Book {
 	//책 DTO
 	private String isbn; //책코드
 	private String book_name; //책이름
+	private String author; //작가이름
 	private String description; //책설명
 	private String file_name;//파일이름
 	private int price;//가격
 	private String book_filename;//표지파일이름
 	public Book() {}
-	public Book(String isbn, String book_name, String description, String file_name, int price, String book_filename) {
+	public Book(String isbn, String book_name, String author, String description, String file_name, int price,
+			String book_filename) {
 		super();
 		this.isbn = isbn;
 		this.book_name = book_name;
+		this.author = author;
 		this.description = description;
 		this.file_name = file_name;
 		this.price = price;
@@ -29,6 +32,12 @@ public class Book {
 	}
 	public void setBook_name(String book_name) {
 		this.book_name = book_name;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	public String getDescription() {
 		return description;
@@ -56,7 +65,7 @@ public class Book {
 	}
 	@Override
 	public String toString() {
-		return "Book [isbn=" + isbn + ", book_name=" + book_name + ", description=" + description + ", file_name="
-				+ file_name + ", price=" + price + ", book_filename=" + book_filename + "]";
+		return "Book [isbn=" + isbn + ", book_name=" + book_name + ", author=" + author + ", description=" + description
+				+ ", file_name=" + file_name + ", price=" + price + ", book_filename=" + book_filename + "]";
 	}
 }
