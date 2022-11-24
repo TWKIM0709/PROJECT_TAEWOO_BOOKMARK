@@ -28,12 +28,12 @@ public class UserDetailService implements Action {
 			if(request.getSession().getAttribute("admin")!=null) { //관리자일 경우
 				path = "/WEB-INF/views/user/admin_user_detail.jsp";
 			}else { //일반 회원일 경우
-				path = "/WEB-INF/views/user/usermypage/user_mypage.jsp";
+				path = "/WEB-INF/views/userpage/mypage/mypage.html";
 			}
 			
 			
 			forward.setRedirect(false);
-			forward.setPath("userdetail.jsp");
+			forward.setPath(path);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
