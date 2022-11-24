@@ -36,33 +36,36 @@ public class BlogUpdateOkService implements Action {
 			 if(request.getSession().getAttribute("admin") != null) {
 				 if(row >0) {
 						msg = "update success";
-						url = "관리자블로그게시글.do?" + request.getParameter("blog_no");
+						url = "/WEB-INF/views/adminpage/blog/admin_blog_detail.do?" + request.getParameter("blog_no");
 					} else {
 						msg = "update fail";
-						url = "관리자블로그게시글.do?" + request.getParameter("blog_no");
+						url = "/WEB-INF/views/adminpage/blog/admin_blog_detail.do?" + request.getParameter("blog_no");
 					}
 			 }else {
 				 if(row >0) {
 						msg = "update success";
-						url = "블로그게시글.do?" + request.getParameter("blog_no");
+						url = "/WEB-INF/views/userpage/blog/user_blog_detail.do?" + request.getParameter("blog_no");
 					} else {
 						msg = "update fail";
-						url = "블로그게시글.do?" + request.getParameter("blog_no");
+						url = "/WEB-INF/views/userpage/blog/user_blog_detail.do?" + request.getParameter("blog_no");
 					}
 			 }
-			
+			request.setAttribute("msg",msg);
+			request.setAttribute("url", url);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			if(request.getSession().getAttribute("admin") != null) {
 				msg = "update error";
-				url = "블로그게시글.do?" + request.getParameter("blog_no");
+				url = "/WEB-INF/views/adminpage/blog/admin_blog_detail.do?" + request.getParameter("blog_no");
 			}else {
 				msg = "update error";
-				url = "블로그게시글.do?" + request.getParameter("blog_no");
+				url = "/WEB-INF/views/userpage/blog/user_blog_detail.do?" + request.getParameter("blog_no");
 			}
+			request.setAttribute("msg",msg);
+			request.setAttribute("url", url);
 		} 
-		forward.setPath("redirect.jsp");
+		forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

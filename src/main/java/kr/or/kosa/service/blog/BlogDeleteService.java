@@ -21,28 +21,29 @@ public class BlogDeleteService implements Action {
 			
 			//삭제에 성공하면
 			if(request.getSession().getAttribute("admin") != null) {
+				//관리자일경우
 				if(row != 0) {
 					msg = "게시글삭제를 성공했습니다.";
 				} else {
 					msg = "게시글 삭제를 실패했습니다.";
-				}
-				path = "adminblog.do?blogid=" + request.getParameter("blogid");
+				}//삭제 후 관리리스트로
+				path = "blogAlllist.do";
 			}else {
 				if(row != 0) {
 					msg = "게시글삭제를 성공했습니다.";
 				} else {
 					msg = "게시글 삭제를 실패했습니다.";
-				}
-				path = "blog.do?blogid=" + request.getParameter("blogid");
+				}//삭제 후 블로그로
+				path = "blogEnter.do?id=" + request.getParameter("id");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			if(request.getSession().getAttribute("admin") != null) {
 				msg  = "서버 오류 발생";
-				path = "adminblog.do?blogid=" + request.getParameter("blogid");
+				path = "blogAlllist.do";
 			}else {
 				msg  = "서버 오류 발생";
-				path = "blog.do?blogid=" + request.getParameter("blogid");
+				path = "blogEnter.do?id=" + request.getParameter("id");
 			}
 			
 		} 

@@ -26,23 +26,18 @@ public class BlogUpdateService implements Action {
 			
 			request.setAttribute("content", board);
 			
-			if(request.getSession().getAttribute("admin") != null) {
-				forward.setPath("adminblogedit.jsp");
-			}else {
-				forward.setPath("blogedit.jsp");
+			if(request.getSession().getAttribute("admin") != null) {//성공-관리자
+				forward.setPath("/WEB-INF/views/adminpage/blog/admin_blog_edit.jsp");
+			}else {//성공-유저
+				forward.setPath("/WEB-INF/views/userpage/blog/user_blog_edit.jsp");
 			}
-		} catch (Exception e) {
+		} catch (Exception e) {//실패하면 게시글로
 			e.printStackTrace();
-			if(request.getSession().getAttribute("admin")!= null) {
-				msg  = "서버 오류 발생";
-				url = "main.do";
-			}else {
-				msg  = "update error";
-				url = "블로그게시글.do?" + request.getParameter("blog_no");
-			}
+			msg  = "서버 오류 발생";
+			url = "blogDetail.do?blog_no=" + request.getParameter("blog_no");
 			request.setAttribute("msg", msg);
 			request.setAttribute("path", url);
-			forward.setPath("redirect.jsp");
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		} 
 		forward.setRedirect(false);
 		return forward;

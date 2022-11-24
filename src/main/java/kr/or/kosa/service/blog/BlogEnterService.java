@@ -27,13 +27,13 @@ public class BlogEnterService implements Action {
 			request.setAttribute("id", blogid);
 			request.setAttribute("blogboardlist", list);
 			
-			forward.setPath("블로그.jsp");
+			forward.setPath("/WEB-INF/views/userpage/blog/user_blog.jsp");
 			forward.setRedirect(false);
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "에러가 발생했습니다.");
 			request.setAttribute("url", "main.do");
-			forward.setPath("에러페이지");
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 			forward.setRedirect(true);
 		}
 		return forward;
