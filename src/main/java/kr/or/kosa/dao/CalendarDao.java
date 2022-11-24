@@ -20,7 +20,7 @@ public class CalendarDao implements BookMarkDao{
 	private String sql;
 	 
 	public CalendarDao() {
-		conn = ConnectionHelper.getConnection("oracle");
+//		conn = ConnectionHelper.getConnection("oracle");
 		pstmt = null;
 		rs = null;
 		sql = "";
@@ -30,8 +30,9 @@ public class CalendarDao implements BookMarkDao{
 	//일정 전체조회
 	public List<Calendar> CalendarAlllist(){
 		List<Calendar> calendaralllist = new ArrayList<Calendar>();
-		
+		//System.out.println("일정 전체 조회 함수 호출");
 		try {
+			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select calendar_no, id, calendar_start, calendar_end, calendar_content, calendar_status from calendar";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -40,8 +41,8 @@ public class CalendarDao implements BookMarkDao{
 				Calendar calendar = new Calendar();
 				calendar.setCalendar_no(rs.getInt(1));
 				calendar.setId(rs.getString(2));
-				calendar.setCalendar_start(rs.getDate(3));
-				calendar.setCalendar_end(rs.getDate(4));
+				calendar.setCalendar_start(rs.getString(3));
+				calendar.setCalendar_end(rs.getString(4));
 				calendar.setCalendar_content(rs.getString(5));
 				calendar.setCalendar_status(rs.getInt(6));
 				
@@ -63,10 +64,12 @@ public class CalendarDao implements BookMarkDao{
 	}
 	//일정 조건조회
 	public List<Calendar> CalendarLikeList(String content){
+		conn = ConnectionHelper.getConnection("oracle");
 		List<Calendar> calendaralllist = new ArrayList<Calendar>();
-		
+		//System.out.println("일정 조건조회 함수 호출");
 		try {
-			sql = "select calendar_no, id, calendar_start, calendar_end, calendar_content, calendar_status from calendar where calendar_content like ?";
+			
+			sql = "select calendar_no, id, to_char(calendar_start), to_char(calendar_end), calendar_content, calendar_status from calendar where calendar_content like ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+content+"%");
 			rs = pstmt.executeQuery();
@@ -75,8 +78,10 @@ public class CalendarDao implements BookMarkDao{
 				Calendar calendar = new Calendar();
 				calendar.setCalendar_no(rs.getInt(1));
 				calendar.setId(rs.getString(2));
-				calendar.setCalendar_start(rs.getDate(3));
-				calendar.setCalendar_end(rs.getDate(4));
+//				calendar.setCalendar_start(rs.getDate(3));
+//				calendar.setCalendar_end(rs.getDate(4));
+				calendar.setCalendar_start(rs.getString(3));
+				calendar.setCalendar_end(rs.getString(4));
 				calendar.setCalendar_content(rs.getString(5));
 				calendar.setCalendar_status(rs.getInt(6));
 				
@@ -99,13 +104,14 @@ public class CalendarDao implements BookMarkDao{
 	//일정 추가
 		public int CalendarAdd(Calendar calendar){
 			int row = 0;
-			
+			conn = ConnectionHelper.getConnection("oracle");
+			//System.out.println("일정 추가 함수 호출");
 			try {
 				sql = "insert into Calendar(calendar_no, id, calendar_start, calendar_end, calendar_content, calendar_status) values(calendar_no_seq.nextval, ?, ?, ?, ?, ?)";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, calendar.getId());
-				pstmt.setDate(2, (Date) calendar.getCalendar_start());
-				pstmt.setDate(3, (Date) calendar.getCalendar_end());
+				pstmt.setString(2, calendar.getCalendar_start());
+				pstmt.setString(3, calendar.getCalendar_end());
 				pstmt.setString(4, calendar.getCalendar_content());
 				pstmt.setInt(5, calendar.getCalendar_status());
 				
@@ -127,13 +133,14 @@ public class CalendarDao implements BookMarkDao{
 	//일정 수정
 		public int CalendarUpdate(Calendar calendar){
 			int row = 0;
-			
+			conn = ConnectionHelper.getConnection("oracle");
+			//System.out.println("일정 수정 함수 호출");
 			try {
 				sql = "update calendar set calendar_start=?, calendar_end=?, calendar_content=?, calendar_status=? where calendar_no =?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(5, calendar.getCalendar_no());
-				pstmt.setDate(1, (Date) calendar.getCalendar_start());
-				pstmt.setDate(2, (Date) calendar.getCalendar_end());
+				pstmt.setString(1, calendar.getCalendar_start());
+				pstmt.setString(2, calendar.getCalendar_end());
 				pstmt.setString(3, calendar.getCalendar_content());
 				pstmt.setInt(4, calendar.getCalendar_status());
 				
@@ -155,9 +162,10 @@ public class CalendarDao implements BookMarkDao{
 	//일정 삭제
 		public int CalendarDelete(int no){
 			int row = 0;
-			
+			conn = ConnectionHelper.getConnection("oracle");
+			//System.out.println("일정 삭제 함수 호출");
 			try {
-				sql = "delete calendar where calendar_no =?";
+				sql = "delete from calendar where calendar_no =?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, no);
 				
@@ -179,9 +187,11 @@ public class CalendarDao implements BookMarkDao{
 		}
 	//일정 상세조회
 		public Calendar CalendarDetail(int calendar_no){
+			conn = ConnectionHelper.getConnection("oracle");
+			//System.out.println("일정 상세 조회 함수 호출");
 			Calendar calendar = new Calendar();
 			try {
-				sql = "select calendar_no, id, calendar_start, calendar_end, calendar_content, calendar_status from calendar where calendar_no = ? ";
+				sql = "select calendar_no, id, to_char(calendar_start), to_char(calendar_end), calendar_content, calendar_status from calendar where calendar_no = ? ";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, calendar_no);
 				rs = pstmt.executeQuery();
@@ -189,8 +199,8 @@ public class CalendarDao implements BookMarkDao{
 				if(rs.next()) {
 					calendar.setCalendar_no(rs.getInt(1));
 					calendar.setId(rs.getString(2));
-					calendar.setCalendar_start(rs.getDate(3));
-					calendar.setCalendar_end(rs.getDate(4));
+					calendar.setCalendar_start(rs.getString(3));
+					calendar.setCalendar_end(rs.getString(4));
 					calendar.setCalendar_content(rs.getString(5));
 					calendar.setCalendar_status(rs.getInt(6));
 				}
