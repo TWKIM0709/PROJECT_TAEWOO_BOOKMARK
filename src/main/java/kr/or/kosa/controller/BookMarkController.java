@@ -91,6 +91,7 @@ public class BookMarkController extends HttpServlet {
     	Action action=null;
     	ActionForward forward=null;
     	//페이지 - 기능
+    	
     	//=================================================================//
     	//                                                     메인페이지이동
     	//=================================================================//
