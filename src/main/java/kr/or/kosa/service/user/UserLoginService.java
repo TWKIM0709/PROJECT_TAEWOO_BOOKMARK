@@ -18,6 +18,8 @@ public class UserLoginService implements Action {
 		String id = "";
 		String pwd = "";
 		
+		String path = ""; //뷰 path
+		
 		try {
 			UsersDao dao = new UsersDao();
 			PrintWriter out = response.getWriter();
@@ -29,10 +31,27 @@ public class UserLoginService implements Action {
 			
 			out.print(ok); //0:아이디 없음, 1:비밀번호틀림, 2:회원, 3:관리자
 			
-		} catch (Exception e) {
+			//TODO: 로그인 실패시 redirect에서 로그인 실패 메시지 띄우고 다시 로그인 창 띄울 것 ? ? 이거 뷰가 나와봐야 알듯
 			
+			
+			request.getSession().setAttribute("id", id);
+			if(ok == 3) { //관리자면
+				request.getSession().setAttribute("admin", 1);
+			}
+			
+			if(request.getSession().getAttribute("admin")!=null) { //관리자일 경우
+				path = ""; //관리자 페이지
+			}else { //일반 회원일 경우
+				path = ""; //메인 페이지
+			}
+			
+			forward.setRedirect(false);
+			forward.setPath(path);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		} 
-		return null;
+		return forward;
 	}
 
 }

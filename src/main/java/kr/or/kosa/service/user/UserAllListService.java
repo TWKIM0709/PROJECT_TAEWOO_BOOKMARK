@@ -18,6 +18,9 @@ public class UserAllListService implements Action {
 		ActionForward forward = new ActionForward();
 		String ps = "";
 		String cp = "";
+		
+		String path = "";
+		
 		try {
 			UsersDao dao = new UsersDao();
 			
@@ -63,8 +66,16 @@ public class UserAllListService implements Action {
 			request.setAttribute("userlist", userlist);
 			request.setAttribute("pager", pager);
 			
+			
+			if(request.getSession().getAttribute("admin")!=null) { //관리자일 경우
+				path = "/WEB-INF/views/user/admin_user_list.jsp";
+			}else { //일반 회원일 경우
+				path = "/WEB-INF/views/user/user_list.jsp";
+			}
+			
 			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/user/user_list.jsp");
+			forward.setPath(path);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

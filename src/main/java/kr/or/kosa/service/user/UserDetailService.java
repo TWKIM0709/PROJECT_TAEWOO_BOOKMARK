@@ -16,12 +16,21 @@ public class UserDetailService implements Action {
 		
 		String id = request.getParameter("id");
 		
+		String path = "";
+		
 		try {
 			UsersDao dao = new UsersDao();
 			
 			Users user = dao.getUserById(id);
 			
 			request.setAttribute("user", user);
+			
+			if(request.getSession().getAttribute("admin")!=null) { //관리자일 경우
+				path = "/WEB-INF/views/user/admin_user_detail.jsp";
+			}else { //일반 회원일 경우
+				path = "/WEB-INF/views/user/usermypage/user_mypage.jsp";
+			}
+			
 			
 			forward.setRedirect(false);
 			forward.setPath("userdetail.jsp");

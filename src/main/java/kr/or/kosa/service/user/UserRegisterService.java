@@ -41,7 +41,7 @@ public class UserRegisterService implements Action {
 				msg = "회원가입성공";
 				url = "login.do";
 			}else {
-				msg = "회원가입의 실패했습니다";
+				msg = "회원가입에 실패했습니다";
 				url = "#";
 			}
 			

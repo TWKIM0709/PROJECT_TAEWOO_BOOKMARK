@@ -24,10 +24,10 @@ public class UserDeleteService implements Action {
 			
 			if(result) {
 				msg = "회원삭제가 완료되었습니다.";
-				url = "userlist.do";
+				url = "userList.do";
 			}else {
-				msg = "회원삭제의 실패하였습니다.";
-				url = "userlist.do";
+				msg = "회원삭제를 실패하였습니다.";
+				url = "userList.do";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
