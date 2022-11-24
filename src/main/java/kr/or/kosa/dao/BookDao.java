@@ -33,7 +33,7 @@ public class BookDao implements BookMarkDao{
 			//sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn = b.isbn";
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select * from"
-				+ "(select rownum, a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from"
+				+ "(select rownum, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from"
 				+ "book a join ebook b on a.isbn=b.isbn where rownum<=?)where rownum >=?";
 			pstmt = conn.prepareStatement(sql);
 			
@@ -48,12 +48,13 @@ public class BookDao implements BookMarkDao{
 			while(rs.next()) {
 				Book book = new Book();
 				book.setIsbn(rs.getString(1));
-				book.setBook_name(rs.getString(2));
-				book.setDescription(rs.getString(3));
-				book.setPrice(rs.getInt(4));
-				book.setBook_filename(rs.getString(5));
+				book.setAuthor(rs.getString(2));
+				book.setBook_name(rs.getString(3));
+				book.setDescription(rs.getString(4));
+				book.setPrice(rs.getInt(5));
+				book.setBook_filename(rs.getString(6));
 				if(rs.getString(6) != null) {
-					book.setFile_name(rs.getString(6));
+					book.setFile_name(rs.getString(7));
 				}
 				
 				booklist.add(book);
@@ -104,7 +105,7 @@ public class BookDao implements BookMarkDao{
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn = b.isbn where book_name like ?";
+			sql = "select a.isbn as isbn, author,  book_name, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn = b.isbn where book_name like ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,  "%"+bookname+"%");
 			rs = pstmt.executeQuery();
@@ -112,12 +113,13 @@ public class BookDao implements BookMarkDao{
 			while(rs.next()) {
 				Book book = new Book();
 				book.setIsbn(rs.getString(1));
-				book.setBook_name(rs.getString(2));
-				book.setDescription(rs.getString(3));
-				book.setPrice(rs.getInt(4));
-				book.setBook_filename(rs.getString(5));
+				book.setAuthor(rs.getString(2));
+				book.setBook_name(rs.getString(3));
+				book.setDescription(rs.getString(4));
+				book.setPrice(rs.getInt(5));
+				book.setBook_filename(rs.getString(6));
 				if(rs.getString(6) != null) {
-					book.setFile_name(rs.getString(6));
+					book.setFile_name(rs.getString(7));
 				}
 				
 				booklike.add(book);
@@ -143,14 +145,15 @@ public class BookDao implements BookMarkDao{
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "insert into book(isbn, book_name, description, price, book_filename) values(?,?,?,?,?)";
+			sql = "insert into book(isbn, author, book_name, description, price, book_filename) values(?,?,?,?,?,?)";
 			conn.setAutoCommit(false);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, book.getIsbn());
-			pstmt.setString(2, book.getBook_name());
-			pstmt.setString(3, book.getDescription());
-			pstmt.setInt(4, book.getPrice());
-			pstmt.setString(5, book.getBook_filename());
+			pstmt.setString(2, book.getAuthor());
+			pstmt.setString(3, book.getBook_name());
+			pstmt.setString(4, book.getDescription());
+			pstmt.setInt(5, book.getPrice());
+			pstmt.setString(6, book.getBook_filename());
 			
 			row = pstmt.executeUpdate();
 			
@@ -192,13 +195,14 @@ public class BookDao implements BookMarkDao{
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			conn.setAutoCommit(false);
-			sql = "update book set book_name=?, description=?, price=?, book_filename=? where isbn=?";
+			sql = "update book set book_name=?, author=?, description=?, price=?, book_filename=? where isbn=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, book.getBook_name());
-			pstmt.setString(2, book.getDescription());
-			pstmt.setInt(3, book.getPrice());
-			pstmt.setString(4, book.getBook_filename());
-			pstmt.setString(5, book.getIsbn());
+			pstmt.setString(2, book.getAuthor());
+			pstmt.setString(3, book.getDescription());
+			pstmt.setInt(4, book.getPrice());
+			pstmt.setString(5, book.getBook_filename());
+			pstmt.setString(6, book.getIsbn());
 			
 			row = pstmt.executeUpdate();
 			
@@ -262,7 +266,7 @@ public class BookDao implements BookMarkDao{
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select book_name, description, price, book_filename b.file_name as file_name form book a left join ebook b on a.isbn=b.isbn where a.isbn=?";
+			sql = "select book_name, author, description, price, book_filename b.file_name as file_name form book a left join ebook b on a.isbn=b.isbn where a.isbn=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, isbn);
 			rs = pstmt.executeQuery();
@@ -270,10 +274,11 @@ public class BookDao implements BookMarkDao{
 			if(rs.next()) {
 				book.setIsbn(isbn);
 				book.setBook_name(rs.getString(1));
-				book.setDescription(rs.getString(2));
-				book.setPrice(rs.getInt(3));
-				book.setBook_filename(rs.getString(4));
-				book.setFile_name(rs.getString(5));
+				book.setAuthor(rs.getString(2));
+				book.setDescription(rs.getString(3));
+				book.setPrice(rs.getInt(4));
+				book.setBook_filename(rs.getString(5));
+				book.setFile_name(rs.getString(6));
 			}
 			
 		} catch (Exception e) {
@@ -619,6 +624,35 @@ public class BookDao implements BookMarkDao{
 		
 		return row;
 	}
+	
+	 //e-book리스트 전체 조회
+	   public List<String> getAllEbookList(){
+	      List<String> isbnlist = new ArrayList<String>();
+	      
+	      try {
+	         conn = ConnectionHelper.getConnection("oracle");
+	         sql = "select isbn from ebook";
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         
+	         while(rs.next()) {
+	            isbnlist.add(rs.getString("isbn"));
+	         }
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }finally {
+	         try {
+	            ConnectionHelper.close(rs);
+	            ConnectionHelper.close(pstmt);
+	            ConnectionHelper.close(conn);
+	         } catch (Exception e2) {
+	            e2.printStackTrace();
+	         }
+	      }
+	      return isbnlist;
+	   }
+
+	
 	//추천 책 추가
 	public int InsertBook_Recommend(String isbn, String recommend_content) {
 		int row = 0;
