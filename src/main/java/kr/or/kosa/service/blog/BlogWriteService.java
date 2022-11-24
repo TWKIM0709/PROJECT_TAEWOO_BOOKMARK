@@ -17,6 +17,7 @@ public class BlogWriteService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		MultipartRequest multi = null;
+		String id = "";
 		try {
 			BlogDao dao = new BlogDao();
 			
@@ -28,7 +29,7 @@ public class BlogWriteService implements Action {
 					new DefaultFileRenamePolicy()
 					);
 			
-			String id = (String)request.getSession().getAttribute("id");
+			id = (String)request.getSession().getAttribute("id");
 			String title = multi.getParameter("blog_title");
 			String content = multi.getParameter("blog_content");
 			String blog_filename = multi.getFilesystemName("file");
@@ -40,12 +41,13 @@ public class BlogWriteService implements Action {
 			board.setBlog_filename(blog_filename);
 			
 			forward.setRedirect(false);
-			forward.setPath("blog.do?id="+id);
+			//작성 후 블로그로
+			forward.setPath("blogEnter.do?id="+id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "에러가 발생했습니다.");
-			request.setAttribute("url", "main.do");
-			forward.setPath("에러페이지");
+			forward.setPath("blogEnter.do?id="+id);
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 			forward.setRedirect(true);
 		} 
 		return forward;

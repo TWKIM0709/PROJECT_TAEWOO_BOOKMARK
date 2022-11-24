@@ -20,13 +20,18 @@ public class CartAddService implements Action {
 			PaymentDao dao = new PaymentDao();
 			String id = request.getParameter("id");
 			String isbn = request.getParameter("isbn");
+			String type = request.getParameter("type");
+//			type true forwrd 동기 -> 결제 페이지로
+//			type false 비동기 -> 추가만하고 끝
 			
 			int result = dao.AddBook(id, isbn);
 			
 			if(result >0) {
+				//추가 성공
 				msg = "장바구니에 추가했습니다.";
-				url = ".do";		
+				url = ".do";
 			}else {
+				//추가 실패
 				msg = "추가에 실패했습니다.";
 				url = ".do";
 			}
