@@ -11,11 +11,11 @@ import kr.or.kosa.dao.QuestionDao;
 import kr.or.kosa.dto.Question_Board;
 import kr.or.kosa.utils.ThePager;
 
-public class QuestionAllListUserService implements Action {
+public class QuestionAllListService implements Action {
 //모든 문의사항 리스트로 보여주기
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward forward = null;
+		ActionForward forward =new ActionForward();
 		try {
 			QuestionDao qdao = new QuestionDao();
 
@@ -63,21 +63,29 @@ public class QuestionAllListUserService implements Action {
 			request.setAttribute("questionlist", qlist);
 			request.setAttribute("totalboardcount", totalboardcount);
 			request.setAttribute("pager", pager);
-
-			forward = new ActionForward();
-			forward.setRedirect(false); // forward
-			forward.setPath("/WEB-INF/views/board_list.jsp");
+			if(request.getSession().getAttribute("admin") != null) {
+				forward.setPath("/WEB-INF/views/adminboard_list.jsp");
+			}else {
+				forward.setPath("/WEB-INF/views/board_list.jsp");
+			}
+			
 		} catch (Exception e) {
 			
 			System.out.println(e.getMessage());
 			String msg = "error";
 			String url = "";
+			if(request.getSession().getAttribute("admin") != null) {
+				url = "";
+			}else {
+				url = "";
+			}
+			
 			request.setAttribute("msg",msg);
 			request.setAttribute("url", url);
 			
 			forward.setPath("redirect.jsp");
-			forward.setRedirect(false);
 		}
+		forward.setRedirect(false);
 		return forward;		
 	}
 

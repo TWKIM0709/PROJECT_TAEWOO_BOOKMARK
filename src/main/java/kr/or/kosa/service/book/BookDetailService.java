@@ -22,8 +22,13 @@ public class BookDetailService implements Action {
 			
 			request.setAttribute("book", book);
 			
+			if(request.getSession().getAttribute("admin")!=null) {
+				forward.setPath("adminbookdetail.jsp");
+			}else {
+				forward.setPath("bookdetail.jsp");
+			}
+			
 			forward.setRedirect(false);
-			forward.setPath("bookdetail.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

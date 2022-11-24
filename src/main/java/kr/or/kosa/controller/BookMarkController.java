@@ -41,10 +41,10 @@ import kr.or.kosa.service.payment.PaymentLogAllListService;
 import kr.or.kosa.service.payment.PaymentLogLikeIdListService;
 import kr.or.kosa.service.payment.PaymentService;
 import kr.or.kosa.service.question.QuestionAllListAdminService;
-import kr.or.kosa.service.question.QuestionAllListUserService;
+import kr.or.kosa.service.question.QuestionAllListService;
 import kr.or.kosa.service.question.QuestionDeleteOkService;
 import kr.or.kosa.service.question.QuestionDetailAdminService;
-import kr.or.kosa.service.question.QuestionDetailUserService;
+import kr.or.kosa.service.question.QuestionDetailService;
 import kr.or.kosa.service.question.QuestionLikeListService;
 import kr.or.kosa.service.question.QuestionRewriteOkService;
 import kr.or.kosa.service.question.QuestionRewriteService;
@@ -107,7 +107,7 @@ public class BookMarkController extends HttpServlet {
     	//=================================================================//
      	} else if(url_Command.equals("/question.do")) { //1. 회원 - 문의사항 페이지 이동
     		// 이동 + 처리
-    		action = new QuestionAllListUserService();
+    		action = new QuestionAllListService();
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/questionAdmin.do")) { //2. 관리자 - 문의사항 관리 페이지 이동
     		// 이동 + 처리
@@ -140,7 +140,7 @@ public class BookMarkController extends HttpServlet {
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/questionDetail.do")) { //9. 회원 - 문의사항 글 상세보기
     		//이동 + 처리
-    		action = new QuestionDetailUserService();
+    		action = new QuestionDetailService();
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/questionRewrite.do")) { // 10. 관리자 - 문의사항 답글 작성 페이지 이동 
     		// 이동+처리
