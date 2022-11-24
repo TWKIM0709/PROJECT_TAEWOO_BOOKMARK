@@ -246,63 +246,63 @@ public class BookMarkController extends HttpServlet {
      	//=================================================================//
      	//                                                     회원
      	//=================================================================//
-    	 else if(url_Command.equals("")) { //49  회원 - 로그인 페이지 이동
+    	 else if(url_Command.equals("/userLogin.do")) { //49  회원 - 로그인 페이지 이동
      		// 이동
      		action = null;
      		forward = action.execute(request, response);
-     	} else if(url_Command.equals("")) { //50  회원 - 로그인 처리 
+     	} else if(url_Command.equals("/userLoginOk.do")) { //50  회원 - 로그인 처리 
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //51  회원 - 회원가입 페이지 이동 
+    	} else if(url_Command.equals("/userJoin.do")) { //51  회원 - 회원가입 페이지 이동 
     		// 이동
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //52 회원 - 회원가입 처리
+    	} else if(url_Command.equals("/userJoinOk.do")) { //52 회원 - 회원가입 처리
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //53 회원 - 마이페이지 이동
+    	} else if(url_Command.equals("/userMypage.do")) { //53 회원 - 마이페이지 이동
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //54 회원 - 회원정보 수정 페이지 이동
+    	} else if(url_Command.equals("/userEdit.do")) { //54 회원 - 회원정보 수정 페이지 이동
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //55 회원 - 회원정보 수정 처리
+    	} else if(url_Command.equals("/userEditOk.do")) { //55 회원 - 회원정보 수정 처리
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //56 회원 - 회원탈퇴 처리
+    	} else if(url_Command.equals("/userWithdraw.do")) { //56 회원 - 회원탈퇴 처리
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //57 관리자 - 회원 리스트 페이지 이동
+    	} else if(url_Command.equals("/userList.do")) { //57 관리자 - 회원 리스트 페이지 이동
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //58 관리자 - 회원 like 검색
+    	} else if(url_Command.equals("/userSearch.do")) { //58 관리자 - 회원 like 검색
     		// 비동기?
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //59 관리자 - 회원 상세 페이지 이동
+    	} else if(url_Command.equals("/userDetail.do")) { //59 관리자 - 회원 상세 페이지 이동
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //60 관리자 - 회원정보 수정 페이지 이동
+    	} else if(url_Command.equals("/userUpdate.do")) { //60 관리자 - 회원정보 수정 페이지 이동
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //61 관리자 - 회원 정보 수정 처리
+    	} else if(url_Command.equals("/userUpdateOk.do")) { //61 관리자 - 회원 정보 수정 처리
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //62 관리자 - 회원 삭제 처리
+    	} else if(url_Command.equals("/userQuit.do")) { //62 관리자 - 회원 삭제 처리
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //63 회원 - 아이디 중복 체크
+    	} else if(url_Command.equals("/userIdCheck.do")) { //63 회원 - 아이디 중복 체크
     		// 비동기
     		action = null;
     		forward = action.execute(request, response);
@@ -310,27 +310,27 @@ public class BookMarkController extends HttpServlet {
      	//=================================================================//
      	//                                                     통계페이지
      	//=================================================================// 
-    	else if(url_Command.equals("")) { //64 관리자 - 통계 페이지 이동(남녀성비통계)
+    	else if(url_Command.equals("/statistics.do")) { //64 관리자 - 통계 페이지 이동(남녀성비통계)
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //65 관리자 - 연령 비율 통계
+    	} else if(url_Command.equals("/statisticsAge.do")) { //65 관리자 - 연령 비율 통계
     		// 비동기
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //66 관리자 - 일매출 통계
+    	} else if(url_Command.equals("/statisticsDaily.do")) { //66 관리자 - 일매출 통계
     		// 비동기
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //67 관리자 - 월매출 통계
+    	} else if(url_Command.equals("/statisticsMonthly.do")) { //67 관리자 - 월매출 통계
     		// 비동기
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //68 관리자 - 주 매출 통계
+    	} else if(url_Command.equals("/statisticsWeekly.do")) { //68 관리자 - 주 매출 통계
     		// 비동기
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //69 관리자 - 년 매출 통계
+    	} else if(url_Command.equals("/statisticsYearly.do")) { //69 관리자 - 년 매출 통계
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
@@ -343,27 +343,27 @@ public class BookMarkController extends HttpServlet {
     		System.out.println("calendarall.do 분기 진입");
     		action = new CalendarAllListService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //71 일정관리 검색
+    	} else if(url_Command.equals("/calendarSearch.do")) { //71 일정관리 검색
     		// 비동기
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //72 일정 추가
+    	} else if(url_Command.equals("/calendarAdd.do")) { //72 일정 추가
     		// 비동기
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //73 일정수정(비동기?동기?)
+    	} else if(url_Command.equals("/calendarEdit.do")) { //73 일정수정(비동기?동기?)
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //74 일정수정처리(비동기면 없어도됨/동기면 만들어야됨)
+    	} else if(url_Command.equals("/calendarEditOk.do")) { //74 일정수정처리(비동기면 없어도됨/동기면 만들어야됨)
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //75 일정 삭제
+    	} else if(url_Command.equals("/calendarDelete.do")) { //75 일정 삭제
     		// 비동기?
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //76 일정상세보기
+    	} else if(url_Command.equals("/calendarDetail.do")) { //76 일정상세보기
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
@@ -371,35 +371,35 @@ public class BookMarkController extends HttpServlet {
      	//=================================================================//
      	//                                                     팝업공지사항
      	//=================================================================// 
-    	else if(url_Command.equals("")) { // 77 관리자 - 팝업 공지사항 전체 조회
+    	else if(url_Command.equals("/popup.do")) { // 77 관리자 - 팝업 공지사항 전체 조회
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //78 관리자 - 팝업 공지사항 like 조회
+    	} else if(url_Command.equals("/popupSearch.do")) { //78 관리자 - 팝업 공지사항 like 조회
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //79 관리자 - 팝업 공지사항 추가 페이지 이동
+    	} else if(url_Command.equals("/popupAdd.do")) { //79 관리자 - 팝업 공지사항 추가 페이지 이동
     		// 이동
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //80 관리자 - 팝업 공지사항 추가 처리
+    	} else if(url_Command.equals("/popupAddOk.do")) { //80 관리자 - 팝업 공지사항 추가 처리
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //81 관리자 - 팝업 공지사항 수정 페이지 이동
+    	} else if(url_Command.equals("/popupEdit.do")) { //81 관리자 - 팝업 공지사항 수정 페이지 이동
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //82 관리자 - 팝업 공지사항 수정 처리
+    	} else if(url_Command.equals("/popupEditOk.do")) { //82 관리자 - 팝업 공지사항 수정 처리
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //83 관리자 - 팝업 공지사항 삭제
+    	} else if(url_Command.equals("/popupDelete.do")) { //83 관리자 - 팝업 공지사항 삭제
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("")) { //84 관리자 - 팝업 공지사항 상세보기
+    	} else if(url_Command.equals("/popupDetail.do")) { //84 관리자 - 팝업 공지사항 상세보기
     		// 이동+처리
     		action = null;
     		forward = action.execute(request, response);
