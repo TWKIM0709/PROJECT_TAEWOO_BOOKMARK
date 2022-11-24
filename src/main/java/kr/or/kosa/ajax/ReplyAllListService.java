@@ -49,6 +49,11 @@ public class ReplyAllListService extends HttpServlet {
 					json.put("step", reply.getStep());
 					jsonary.add(json);
 				}
+				if(list!=null) {
+					jsonobj.put("RESULT", "success");
+				} else {
+					jsonobj.put("RESULT", "fail");
+				}
 				jsonobj.put("BLOG", jsonary);
 				response.getWriter().print(jsonobj);
 			} else if(request.getParameter("type").equals("book")){
@@ -63,6 +68,11 @@ public class ReplyAllListService extends HttpServlet {
 					json.put("reply_content", reply.getReply_content());
 					json.put("reply_date", reply.getReply_date().toString());
 					jsonary.add(json);
+				}
+				if(list!=null) {
+					jsonobj.put("RESULT", "success");
+				} else {
+					jsonobj.put("RESULT", "fail");
 				}
 				jsonobj.put("BOOK", jsonary);
 				response.getWriter().print(jsonobj);
