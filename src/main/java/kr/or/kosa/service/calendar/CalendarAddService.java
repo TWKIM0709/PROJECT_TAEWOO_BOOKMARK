@@ -38,8 +38,8 @@ public class CalendarAddService implements Action {
 		try {
 			CalendarDao dao = new CalendarDao();
 			calendar.setCalendar_content(calendar_content);
-			calendar.setCalendar_start(formatter.dateParser(calendar_start));
-			calendar.setCalendar_end(formatter.dateParser(calendar_end));
+			calendar.setCalendar_start(calendar_start);
+			calendar.setCalendar_end(calendar_end);
 			//TODO:근데 status는 기본적으로 0으로 만들어지지 않나? default없나??
 			calendar.setCalendar_status(0);
 			

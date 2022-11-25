@@ -30,7 +30,7 @@ public class PopupAddService implements Action {
 			popup.setId(Id);
 			popup.setPopup_title(Popup_title);
 			popup.setPopup_filename(Popup_filename);
-			popup.setPopup_date(new Date(Popup_date));
+			popup.setPopup_date(Popup_date);
 			
 			int result = popupdao.InsertPopup(popup);
 			
