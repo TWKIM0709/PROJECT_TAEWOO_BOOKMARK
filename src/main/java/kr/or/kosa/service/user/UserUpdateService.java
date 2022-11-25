@@ -32,9 +32,9 @@ public class UserUpdateService implements Action {
 			request.setAttribute("user", user);
 			if(user != null) { //성공시
 				if(admin.equals("true")) { //성공 + 어드민일 경우
-					url = "/WEB-INF/adminpage/user/admin_user_Edit.jsp";
+					url = "/WEB-INF/views/adminpage/user/admin_user_Edit.jsp";
 				} else { //성공 + 유저일 경우
-					url = "/WEB-INF/userpage/mypage/user_mypage_info.jsp";
+					url = "/WEB-INF/views/userpage/mypage/mypageUpdate.jsp";
 				}
 			} else { //실패시 ( 데이터가 없으면)
 				if(admin.equals("true")) { //실패 + 어드민일 경우
@@ -43,7 +43,8 @@ public class UserUpdateService implements Action {
 					url = "userMyPage.do"; 
 				}
 			}
-			
+			forward.setRedirect(false);
+			forward.setPath(url);
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "에러");
