@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="apple-touch-icon-precomposed" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="shortcut icon" type="image/png" href="https://www.millie.co.kr/favicon/android-icon.png">
-    <title>어서 오세요, 휴남동 서점입니다 | 밀리의 서재</title>
+    <title>어서 오세요, 휴남동 서점입니다 | 갈피표</title>
     <link href="https://d3udu241ivsax2.cloudfront.net/v3/style/vendor.524cdf1d4325d722f545.css" rel="stylesheet">
     <link href="https://d3udu241ivsax2.cloudfront.net/v3/style/millie.4a1320ab272ffa081fae.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
