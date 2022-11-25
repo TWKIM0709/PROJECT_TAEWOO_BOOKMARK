@@ -39,10 +39,10 @@ public class UserRegisterService implements Action {
 			int result = dao.userRegister(user);
 			if(result > 0 ) {
 				msg = "회원가입성공";
-				url = "login.do";
+				url = "userLogin.do";
 			}else {
 				msg = "회원가입에 실패했습니다";
-				url = "/homepage.html";
+				url = "homepage.html";
 			}
 			
 			request.setAttribute("msg", msg);

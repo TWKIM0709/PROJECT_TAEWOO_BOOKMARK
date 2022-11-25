@@ -51,8 +51,8 @@ public class CalendarUpdateService implements Action {
 			}
 			
 			//수정사항 반영
-			calendar.setCalendar_start(formatter.dateParser(calendar_start));
-			calendar.setCalendar_end(formatter.dateParser(calendar_end));
+			calendar.setCalendar_start(calendar_start);
+			calendar.setCalendar_end(calendar_end);
 			calendar.setCalendar_content(calendar_content);
 			calendar.setCalendar_status(Integer.parseInt(calendar_status));
 			

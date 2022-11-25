@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="apple-touch-icon-precomposed" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="shortcut icon" type="image/png" href="https://www.millie.co.kr/favicon/android-icon.png">
-    <title>어서 오세요, 휴남동 서점입니다 | 밀리의 서재</title>
+    <title>어서 오세요, 휴남동 서점입니다 | 갈피표</title>
     <link href="https://d3udu241ivsax2.cloudfront.net/v3/style/vendor.524cdf1d4325d722f545.css" rel="stylesheet">
     <link href="https://d3udu241ivsax2.cloudfront.net/v3/style/millie.4a1320ab272ffa081fae.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
@@ -37,7 +37,8 @@
 
 
         </div>
-        <div data-v-e67dcbb6="" data-v-c1337ae8="" class="top-header background topHeaderArea">
+<jsp:include page="/WEB-INF/views/utils/include/top.jsp"></jsp:include>
+        <!-- <div data-v-e67dcbb6="" data-v-c1337ae8="" class="top-header background topHeaderArea">
             <div data-v-e67dcbb6="" class="inner">
                 <header data-v-e67dcbb6="">
                     <h1 data-v-e67dcbb6=""><a data-v-e67dcbb6="" href="/"><img data-v-e67dcbb6=""
@@ -66,7 +67,7 @@
                     </ul>
                 </header>
             </div>
-        </div>
+        </div> -->
         <section data-v-c1337ae8="" class="content">
             <div data-v-0d0ee47c="" data-v-c1337ae8="" class="book-detail">
                 <div data-v-0d0ee47c="" class="book-content">
@@ -377,7 +378,7 @@
                     </ul>
                     <div data-v-07a4da8a="" class="button">
                         <div data-v-07a4da8a="" class="inner"><button data-v-07a4da8a="" type="button"
-                                class="enter gtm-bdtl-readbtn e-book"><span data-v-07a4da8a="">구매하기</span></button>
+                                class="enter gtm-bdtl-readbtn e-book" onclick="location.href='aladinpayment.html'"><span data-v-07a4da8a="">구매하기</span></button>
                         </div>
                     </div>
                 </div>

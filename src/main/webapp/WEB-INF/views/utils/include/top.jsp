@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stypesheet" href="main.css">
 	<!-- /v3/join -->
-	<title>밀리의 서재</title>
+	<title>갈피표</title>
 	<link href="https://d3udu241ivsax2.cloudfront.net/v3/style/vendor.524cdf1d4325d722f545.css" rel="stylesheet">
 	<link href="https://d3udu241ivsax2.cloudfront.net/v3/style/millie.4a1320ab272ffa081fae.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css"
@@ -32,13 +32,13 @@
 			<div data-v-e67dcbb6="" class="inner">
 				<header data-v-e67dcbb6="">
 					<h1 data-v-e67dcbb6="">
-						<a data-v-e67dcbb6="" href="/"><img data-v-e67dcbb6=""
+						<a data-v-e67dcbb6="" href="main.do"><img data-v-e67dcbb6=""
 								src="https://d3udu241ivsax2.cloudfront.net/v3/images/common/millie-logo.3884f0c52e69f1f7322c2fd4778f4830.png"
 								alt="밀리의 서재"></a>
 					</h1>
 					<nav data-v-e67dcbb6="">
 						<ul data-v-e67dcbb6="" class="gnb">
-							<li data-v-e67dcbb6="" class="on"><a data-v-e67dcbb6="" href="/" class="gtm-today">투데이</a>
+							<li data-v-e67dcbb6="" class="on"><a data-v-e67dcbb6="" href="blogWrite.do" class="gtm-today">블로그</a>
 							</li>
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="bookUserLikeList.do"
 									class="gtm-search">검색</a></li>
@@ -46,6 +46,8 @@
 									href="https://www.millie.co.kr/shelf/shelf_main.html" class="gtm-my">내서재</a></li>
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="userMypage.do"
 									class="gtm-setting">관리</a></li>
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="calendarall.do"
+							class="gtm-setting">캘린더</a></li>
 						</ul>
 					</nav>
 					<ul data-v-e67dcbb6="" class="util">
@@ -54,7 +56,7 @@
 									data-v-e67dcbb6="" class="mds-icon--alarm-2"></i> <span data-v-e67dcbb6=""
 									class="alarm-icon">N</span></a></li>
 
-						<li data-v-e67dcbb6="" class="sign sign-in"><a data-v-e67dcbb6="" href="/v3/logout"
+						<li data-v-e67dcbb6="" class="sign sign-in"><a data-v-e67dcbb6="" href="homepage.html"
 								class="">로그아웃</a></li>
 					</ul>
 				</header>
