@@ -9,9 +9,10 @@ public class Blog_Board{
 	private String blog_title; //게시글 제목
 	private String blog_content; //게시글 내용
 	private int hits; //조회수
-	private Date blog_date; //작성일
+	private String blog_date; //작성일
 	private String blog_filename; //첨부 파일 이름
-	public Blog_Board(int blog_no, String id, String blog_title, String blog_content, int hits, Date blog_date,
+	public Blog_Board() {}
+	public Blog_Board(int blog_no, String id, String blog_title, String blog_content, int hits, String blog_date,
 			String blog_filename) {
 		super();
 		this.blog_no = blog_no;
@@ -22,7 +23,6 @@ public class Blog_Board{
 		this.blog_date = blog_date;
 		this.blog_filename = blog_filename;
 	}
-	public Blog_Board() {}
 	public int getBlog_no() {
 		return blog_no;
 	}
@@ -53,10 +53,10 @@ public class Blog_Board{
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-	public Date getBlog_date() {
+	public String getBlog_date() {
 		return blog_date;
 	}
-	public void setBlog_date(Date blog_date) {
+	public void setBlog_date(String blog_date) {
 		this.blog_date = blog_date;
 	}
 	public String getBlog_filename() {

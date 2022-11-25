@@ -20,7 +20,7 @@ public class QuestionDao implements BookMarkDao{
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select * from"
-					+ "    (select rownum rn,question_no, id, question_title,question_content,hits,question_date,"
+					+ "    (select rownum rn,question_no, id, question_title,question_content,hits,to_char(question_date),"
 					+ "    refer, depth, step, notice_no from"
 					+ "        ( SELECT * FROM question_board ORDER BY notice_no asc, refer DESC , step ASC )"
 					+ "    where rownum <= ?) where rn >= ?";
@@ -35,16 +35,16 @@ public class QuestionDao implements BookMarkDao{
 			
 			while(rs.next()) {
 				Question_Board question = new Question_Board();
-				question.setQuestion_no(rs.getInt(1));
-				question.setId(rs.getString(2));
-				question.setQuestion_title(rs.getString(3));
-				question.setQuestion_content(rs.getString(4));
-				question.setHits(rs.getInt(5));
-				question.setQuestion_date(rs.getDate(6));
-				question.setRefer(rs.getInt(7));
-				question.setDepth(rs.getInt(8));
-				question.setStep(rs.getInt(9));
-				question.setNotice_no(rs.getInt(10));
+				question.setQuestion_no(rs.getInt(2));
+				question.setId(rs.getString(3));
+				question.setQuestion_title(rs.getString(4));
+				question.setQuestion_content(rs.getString(5));
+				question.setHits(rs.getInt(6));
+				question.setQuestion_date(rs.getString(7));
+				question.setRefer(rs.getInt(8));
+				question.setDepth(rs.getInt(9));
+				question.setStep(rs.getInt(10));
+				question.setNotice_no(rs.getInt(11));
 				list.add(question);
 			}
 		} catch (Exception e) {
@@ -85,7 +85,7 @@ public class QuestionDao implements BookMarkDao{
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select * from"
-					+ "    (select rownum rn,question_no, id, question_title,question_content,hits,question_date,"
+					+ "    (select rownum rn,question_no, id, question_title,question_content,hits,to_char(question_date),"
 					+ "    refer, depth, step, notice_no from"
 					+ "        ( SELECT * FROM question_board where ? like ? ORDER BY notice_no asc, refer DESC , step ASC )"
 					+ "    where rownum <= ?) where rn >= ?";
@@ -101,16 +101,16 @@ public class QuestionDao implements BookMarkDao{
 			
 			while(rs.next()) {
 				Question_Board question = new Question_Board();
-				question.setQuestion_no(rs.getInt(1));
-				question.setId(rs.getString(2));
-				question.setQuestion_title(rs.getString(3));
-				question.setQuestion_content(rs.getString(4));
-				question.setHits(rs.getInt(5));
-				question.setQuestion_date(rs.getDate(6));
-				question.setRefer(rs.getInt(7));
-				question.setDepth(rs.getInt(8));
-				question.setStep(rs.getInt(9));
-				question.setNotice_no(rs.getInt(10));
+				question.setQuestion_no(rs.getInt(2));
+				question.setId(rs.getString(3));
+				question.setQuestion_title(rs.getString(4));
+				question.setQuestion_content(rs.getString(5));
+				question.setHits(rs.getInt(6));
+				question.setQuestion_date(rs.getString(7));
+				question.setRefer(rs.getInt(8));
+				question.setDepth(rs.getInt(9));
+				question.setStep(rs.getInt(10));
+				question.setNotice_no(rs.getInt(11));
 				list.add(question);
 			}
 		} catch (Exception e) {
@@ -325,7 +325,7 @@ public class QuestionDao implements BookMarkDao{
 		Question_Board question = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "select question_no, id, question_title,question_content,hits,question_date,refer, depth, step, notice_no where question_no=?";
+			String sql = "select question_no, id, question_title,question_content,hits,to_char(question_date),refer, depth, step, notice_no where question_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, questionNo);
 			rs = pstmt.executeQuery();
@@ -336,7 +336,7 @@ public class QuestionDao implements BookMarkDao{
 				question.setQuestion_title(rs.getString(3));
 				question.setQuestion_content(rs.getString(4));
 				question.setHits(rs.getInt(5));
-				question.setQuestion_date(rs.getDate(6));
+				question.setQuestion_date(rs.getString(6));
 				question.setRefer(rs.getInt(7));
 				question.setDepth(rs.getInt(8));
 				question.setStep(rs.getInt(9));

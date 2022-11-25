@@ -7,13 +7,14 @@ public class Blog_Reply implements ReplyInterface{
 	private int blog_reply_no; //댓글 번호
 	private int blog_no; //게시글 번호
 	private String id; //작성자 아이디
-	private Date reply_date; //작성일
+	private String reply_date; //작성일
 	private String reply_content; //댓글 내용
 	private int refer; //댓글 그룹
 	private int depth; //들여쓰기 정도
 	private int step; //그룹내 순서
 	private int del; //삭제 상태 (0 정상 | 1 삭제됨)
-	public Blog_Reply(int blog_reply_no, int blog_no, String id, Date reply_date, String reply_content, int refer,
+	public Blog_Reply() {}
+	public Blog_Reply(int blog_reply_no, int blog_no, String id, String reply_date, String reply_content, int refer,
 			int depth, int step, int del) {
 		super();
 		this.blog_reply_no = blog_reply_no;
@@ -26,7 +27,6 @@ public class Blog_Reply implements ReplyInterface{
 		this.step = step;
 		this.del = del;
 	}
-	public Blog_Reply() {}
 	public int getBlog_reply_no() {
 		return blog_reply_no;
 	}
@@ -45,10 +45,10 @@ public class Blog_Reply implements ReplyInterface{
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Date getReply_date() {
+	public String getReply_date() {
 		return reply_date;
 	}
-	public void setReply_date(Date reply_date) {
+	public void setReply_date(String reply_date) {
 		this.reply_date = reply_date;
 	}
 	public String getReply_content() {
@@ -87,5 +87,7 @@ public class Blog_Reply implements ReplyInterface{
 				+ reply_date + ", reply_content=" + reply_content + ", refer=" + refer + ", depth=" + depth + ", step="
 				+ step + ", del=" + del + "]";
 	}
+	
+	
 	
 }
