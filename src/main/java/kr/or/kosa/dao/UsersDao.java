@@ -160,7 +160,6 @@ public class UsersDao implements BookMarkDao{
 	//회원삭제
 	//delete from users where userid='';
 	public boolean deleteUser(String id) {
-		System.out.println("deleteUser 함수 호출");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		boolean result = false;
@@ -168,21 +167,16 @@ public class UsersDao implements BookMarkDao{
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql="delete from users where id=?";
 			pstmt = conn.prepareStatement(sql);
-			System.out.println("pstmt까지 싣었음");
 			pstmt.setString(1, id);
-			System.out.println("pstmtSetString했음");
-			int row = pstmt.executeUpdate();//////무한로딩.....
-			System.out.println("executeUpdate했음...result는 " + result + ", row는 " + row);
+			int row = pstmt.executeUpdate();
 			if(row > 0 ) {
 				result = true;
 			}
-			System.out.println("if문 이후의 result : "+ result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
-			System.out.println("fianlly 구문에서의 result : " + result);
 		}
 		return result;
 	}
