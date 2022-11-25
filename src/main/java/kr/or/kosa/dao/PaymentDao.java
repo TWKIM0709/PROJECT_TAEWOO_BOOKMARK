@@ -98,7 +98,7 @@ public class PaymentDao implements BookMarkDao{
 					ConnectionHelper.close(pstmt);
 					ConnectionHelper.close(conn);
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 			}
 			return row;
@@ -141,7 +141,7 @@ public class PaymentDao implements BookMarkDao{
 			List<Book_Payment> paymentlist = null;
 			
 			try {
-				String sql = "Select book_payment.payment_no,isbn,count,payment_date,sumprice from book_payment join payment on book_payment.payment_no = payment.payment_no where payment.id = ?";
+				String sql = "Select book_payment.payment_no,isbn,count,to_char(payment_date),sumprice from book_payment join payment on book_payment.payment_no = payment.payment_no where payment.id = ?";
 				pstmt.setString(1, id);
 				pstmt = conn.prepareStatement(sql);
 				
@@ -153,7 +153,7 @@ public class PaymentDao implements BookMarkDao{
 					bookpayment.setPayment_no(rs.getString("payment_no"));
 					bookpayment.setIsbn(rs.getString("isbn"));
 					bookpayment.setCount(rs.getInt("count"));
-					bookpayment.setPayment_date(rs.getDate("payment_date"));
+					bookpayment.setPayment_date(rs.getString("payment_date"));
 					bookpayment.setSumprice(rs.getInt("sumprice"));
 					
 					paymentlist.add(bookpayment);
@@ -182,7 +182,7 @@ public class PaymentDao implements BookMarkDao{
 			
 			try {
 				String sql = "select * from"
-						+ "    (select rownum rn,payment_no, isbn, count,payment_date,sumprice"
+						+ "    (select rownum rn,payment_no, isbn, count,to_char(payment_date),sumprice"
 						+ "    from"
 						+ "        ( SELECT * FROM book_payment ORDER BY payment_no asc )"
 						+ "    where rownum <= ?) where rn >= ?";
@@ -201,7 +201,7 @@ public class PaymentDao implements BookMarkDao{
 					bookpayment.setPayment_no(rs.getString("payment_no"));
 					bookpayment.setIsbn(rs.getString("isbn"));
 					bookpayment.setCount(rs.getInt("count"));
-					bookpayment.setPayment_date(rs.getDate("payment_date"));
+					bookpayment.setPayment_date(rs.getString("payment_date"));
 					bookpayment.setSumprice(rs.getInt("sumprice"));
 					
 					allpaymentlist.add(bookpayment);
@@ -216,7 +216,7 @@ public class PaymentDao implements BookMarkDao{
 					ConnectionHelper.close(pstmt);
 					ConnectionHelper.close(conn);
 				} catch (Exception e) {
-					// TODO: handle exception
+					e.printStackTrace();
 				}
 			}
 			

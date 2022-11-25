@@ -27,7 +27,7 @@ public class PopupDao {
 		
 		try {
 			conn=ConnectionHelper.getConnection("oracle");
-			sql = "select rownum popup_no, id, popup_title, popup_filename, popup_date from popup where rownum between ? and ?";
+			sql = "select rownum popup_no, id, popup_title, popup_filename, to_char(popup_date) from popup where rownum between ? and ?";
 			pstmt = conn.prepareStatement(sql);
 			
 			int start = cpage * pagesize - (pagesize -1); //1 * 5 - (5 - 1) >> 1
@@ -44,7 +44,7 @@ public class PopupDao {
 				pu.setId(rs.getString(2));
 				pu.setPopup_title(rs.getString(3));
 				pu.setPopup_filename(rs.getString(4));
-				pu.setPopup_date(rs.getDate(5));
+				pu.setPopup_date(rs.getString(5));
 				
 				pl.add(pu);
 			}
@@ -88,7 +88,7 @@ public class PopupDao {
 		
 		try {
 			conn=ConnectionHelper.getConnection("oracle");
-			sql = "select popup_no, id, popup_title, popup_filename, popup_date from popup where popup_title like ?";
+			sql = "select popup_no, id, popup_title, popup_filename, to_char(popup_date) from popup where popup_title like ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+title+"%");
 			rs = pstmt.executeQuery();
@@ -99,7 +99,7 @@ public class PopupDao {
 				pu.setId(rs.getString(2));
 				pu.setPopup_title(rs.getString(3));
 				pu.setPopup_filename(rs.getString(4));
-				pu.setPopup_date(rs.getDate(5));
+				pu.setPopup_date(rs.getString(5));
 				
 				pl.add(pu);
 			}
@@ -123,12 +123,11 @@ public class PopupDao {
 		
 		try {
 			conn=ConnectionHelper.getConnection("oracle");
-			sql = "insert into popup(popup_no, id, popup_title, popup_filename, popup_date) values(popup_no_seq.nextval, ?, ?, ?, ?)";
+			sql = "insert into popup(popup_no, id, popup_title, popup_filename) values(popup_no_seq.nextval, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, popup.getId());
 			pstmt.setString(2, popup.getPopup_title());
 			pstmt.setString(3, popup.getPopup_filename());
-			pstmt.setDate(4, (Date) popup.getPopup_date());
 			
 			row= pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -174,12 +173,11 @@ public class PopupDao {
 		
 		try {
 			conn=ConnectionHelper.getConnection("oracle");
-			sql = "update popup set popup_title=?, popup_filename=?, popup_date=? where popup_no=?";
+			sql = "update popup set popup_title=?, popup_filename=?, popup_date=sysdate where popup_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, popup.getPopup_title());
 			pstmt.setString(2, popup.getPopup_filename());
-			pstmt.setDate(3, (Date) popup.getPopup_date());
-			pstmt.setInt(4, popup.getPopup_no());
+			pstmt.setInt(3, popup.getPopup_no());
 			
 			row= pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -201,7 +199,7 @@ public class PopupDao {
 		
 		try {
 			conn=ConnectionHelper.getConnection("oracle");
-			sql = "select popup_no, id, popup_title, popup_filename, popup_date from popup where popup_no=?";
+			sql = "select popup_no, id, popup_title, popup_filename, to_char(popup_date) from popup where popup_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
@@ -211,7 +209,7 @@ public class PopupDao {
 				pu.setId(rs.getString(2));
 				pu.setPopup_title(rs.getString(3));
 				pu.setPopup_filename(rs.getString(4));
-				pu.setPopup_date(rs.getDate(5));
+				pu.setPopup_date(rs.getString(5));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -235,7 +233,7 @@ public class PopupDao {
 		
 		try {
 			conn=ConnectionHelper.getConnection("oracle");
-			sql = "select popup_no, id, popup_title, popup_filename, popup_date from popup where TO_CHAR(popup_date, 'YYYY-MM-DD HH24:MI:SS')>to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS')";
+			sql = "select popup_no, id, popup_title, popup_filename, to_char(popup_date) from popup where TO_CHAR(popup_date, 'YYYY-MM-DD HH24:MI:SS')>to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS')";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -245,7 +243,7 @@ public class PopupDao {
 				po.setId(rs.getString(2));
 				po.setPopup_title(rs.getString(3));
 				po.setPopup_filename(rs.getString(4));
-				po.setPopup_date(rs.getDate(5));
+				po.setPopup_date(rs.getString(5));
 				
 				pl.add(po);
 			}
