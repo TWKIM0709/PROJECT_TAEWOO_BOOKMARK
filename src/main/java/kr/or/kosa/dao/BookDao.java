@@ -32,29 +32,28 @@ public class BookDao implements BookMarkDao{
 		try {
 			//sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn = b.isbn";
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select * from"
-				+ "(select rownum, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from"
-				+ "book a join ebook b on a.isbn=b.isbn where rownum<=?)where rownum >=?";
+			sql = "select * from (select rownum, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from \r\n"
+					+ "book a left join ebook b on a.isbn=b.isbn where rownum<=?)where rownum >=?";
 			pstmt = conn.prepareStatement(sql);
 			
 			int start = cpage * pagesize-(pagesize-1);
 			int end = cpage*pagesize;
 			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setInt(2, start);
+			pstmt.setInt(1, end);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				Book book = new Book();
-				book.setIsbn(rs.getString(1));
-				book.setAuthor(rs.getString(2));
-				book.setBook_name(rs.getString(3));
-				book.setDescription(rs.getString(4));
-				book.setPrice(rs.getInt(5));
-				book.setBook_filename(rs.getString(6));
-				if(rs.getString(6) != null) {
-					book.setFile_name(rs.getString(7));
+				book.setIsbn(rs.getString(2));
+				book.setAuthor(rs.getString(3));
+				book.setBook_name(rs.getString(4));
+				book.setDescription(rs.getString(5));
+				book.setPrice(rs.getInt(6));
+				book.setBook_filename(rs.getString(7));
+				if(rs.getString(8) != null) {
+					book.setFile_name(rs.getString(8));
 				}
 				
 				booklist.add(book);
@@ -70,6 +69,7 @@ public class BookDao implements BookMarkDao{
 				e2.printStackTrace();
 			}
 		}
+		System.out.println(booklist);
 		return booklist;
 	}
 	//책 전체 count
@@ -78,7 +78,7 @@ public class BookDao implements BookMarkDao{
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select count(*) cnt form book";
+			sql = "select count(*) cnt from book";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -266,7 +266,7 @@ public class BookDao implements BookMarkDao{
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select book_name, author, description, price, book_filename b.file_name as file_name form book a left join ebook b on a.isbn=b.isbn where a.isbn=?";
+			sql = "select book_name, author, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn=b.isbn where a.isbn=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, isbn);
 			rs = pstmt.executeQuery();
@@ -374,9 +374,9 @@ public class BookDao implements BookMarkDao{
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select book_reply_no, reply_date, reply_content, isbn from book_reply where id =?";
+			sql = "select book_reply_no, reply_date, reply_content, isbn from book_reply where id like ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, '%'+id+'%');
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
