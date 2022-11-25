@@ -327,7 +327,8 @@
 <body style="height: auto; overflow: visible;" class="">
     <div data-v-c1337ae8="" id="wrap" class="show-top-header web-mount">
 
-        <div data-v-e67dcbb6="" data-v-c1337ae8="" class="top-header background topHeaderArea">
+<jsp:include page="/WEB-INF/views/utils/include/top.jsp"></jsp:include>
+        <!-- <div data-v-e67dcbb6="" data-v-c1337ae8="" class="top-header background topHeaderArea">
             <div data-v-e67dcbb6="" class="inner">
                 <header data-v-e67dcbb6="">
                     <h1 data-v-e67dcbb6=""><a data-v-e67dcbb6="" href="/"><img data-v-e67dcbb6=""
@@ -350,13 +351,13 @@
                                 href="/v3/today/more/alarmCenter/push" title="ìë¦¼" class="gtm-alarm"><i
                                     data-v-e67dcbb6="" class="mds-icon--alarm-2"></i> <span data-v-e67dcbb6=""
                                     class="alarm-icon">1</span></a></li>
-                        <!---->
+                       
                         <li data-v-e67dcbb6="" class="sign sign-in"><a data-v-e67dcbb6="" href="/v3/logout"
                                 class="">ë¡ê·¸ìì</a></li>
                     </ul>
                 </header>
             </div>
-        </div>
+        </div> -->
         <section data-v-c1337ae8="" class="content">
             <div data-v-9baa251e="" data-v-c1337ae8="" class="millie-inner">
                 <div data-v-9baa251e="">

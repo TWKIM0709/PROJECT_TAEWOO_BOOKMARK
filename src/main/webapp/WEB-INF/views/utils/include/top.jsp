@@ -32,7 +32,7 @@
 			<div data-v-e67dcbb6="" class="inner">
 				<header data-v-e67dcbb6="">
 					<h1 data-v-e67dcbb6="">
-						<a data-v-e67dcbb6="" href="/"><img data-v-e67dcbb6=""
+						<a data-v-e67dcbb6="" href="main.do"><img data-v-e67dcbb6=""
 								src="https://d3udu241ivsax2.cloudfront.net/v3/images/common/millie-logo.3884f0c52e69f1f7322c2fd4778f4830.png"
 								alt="밀리의 서재"></a>
 					</h1>
@@ -54,7 +54,7 @@
 									data-v-e67dcbb6="" class="mds-icon--alarm-2"></i> <span data-v-e67dcbb6=""
 									class="alarm-icon">N</span></a></li>
 
-						<li data-v-e67dcbb6="" class="sign sign-in"><a data-v-e67dcbb6="" href="/v3/logout"
+						<li data-v-e67dcbb6="" class="sign sign-in"><a data-v-e67dcbb6="" href="homepage.html"
 								class="">로그아웃</a></li>
 					</ul>
 				</header>

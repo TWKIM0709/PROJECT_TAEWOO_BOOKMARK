@@ -37,7 +37,8 @@
 
 
         </div>
-        <div data-v-e67dcbb6="" data-v-c1337ae8="" class="top-header background topHeaderArea">
+<jsp:include page="/WEB-INF/views/utils/include/top.jsp"></jsp:include>
+        <!-- <div data-v-e67dcbb6="" data-v-c1337ae8="" class="top-header background topHeaderArea">
             <div data-v-e67dcbb6="" class="inner">
                 <header data-v-e67dcbb6="">
                     <h1 data-v-e67dcbb6=""><a data-v-e67dcbb6="" href="/"><img data-v-e67dcbb6=""
@@ -66,7 +67,7 @@
                     </ul>
                 </header>
             </div>
-        </div>
+        </div> -->
         <section data-v-c1337ae8="" class="content">
             <div data-v-0d0ee47c="" data-v-c1337ae8="" class="book-detail">
                 <div data-v-0d0ee47c="" class="book-content">
@@ -377,7 +378,7 @@
                     </ul>
                     <div data-v-07a4da8a="" class="button">
                         <div data-v-07a4da8a="" class="inner"><button data-v-07a4da8a="" type="button"
-                                class="enter gtm-bdtl-readbtn e-book"><span data-v-07a4da8a="">구매하기</span></button>
+                                class="enter gtm-bdtl-readbtn e-book" onclick="location.href='aladinpayment.html'"><span data-v-07a4da8a="">구매하기</span></button>
                         </div>
                     </div>
                 </div>
