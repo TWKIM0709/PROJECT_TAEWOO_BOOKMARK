@@ -63,27 +63,27 @@ public class QuestionAllListService implements Action {
 			request.setAttribute("questionlist", qlist);
 			request.setAttribute("totalboardcount", totalboardcount);
 			request.setAttribute("pager", pager);
+			forward.setRedirect(false);
 			if(request.getSession().getAttribute("admin") != null) {
-				forward.setPath("/WEB-INF/views/adminboard_list.jsp");
+				forward.setPath("/WEB-INF/views/adminpage/question/admin_question_list.jsp");
 			}else {
-				forward.setPath("/WEB-INF/views/board_list.jsp");
+				forward.setPath("/WEB-INF/views/userpage/question/user_question_list.jsp");
 			}
-			
 		} catch (Exception e) {
 			
 			System.out.println(e.getMessage());
 			String msg = "error";
 			String url = "";
 			if(request.getSession().getAttribute("admin") != null) {
-				url = "";
+				url = "/WEB-INF/views/adminpage/admin_main.jsp";
 			}else {
-				url = "";
+				url = "main.do";
 			}
 			
 			request.setAttribute("msg",msg);
 			request.setAttribute("url", url);
 			
-			forward.setPath("redirect.jsp");
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		}
 		forward.setRedirect(false);
 		return forward;		

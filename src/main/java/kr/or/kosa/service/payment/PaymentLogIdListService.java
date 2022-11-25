@@ -28,15 +28,13 @@ public class PaymentLogIdListService implements Action {
 
 			forward = new ActionForward();
 			forward.setRedirect(false); // forward
-			forward.setPath("/WEB-INF/views/board_list.jsp");
+			forward.setPath("/WEB-INF/views/userpage/user_payment.jsp");
 		} catch (Exception e) {
-			
 			System.out.println(e.getMessage());
 			String msg = "error";
-			String url = "";
+			String url = "/WEB-INF/views/userpage/mypage/mypage.html";
 			request.setAttribute("msg",msg);
 			request.setAttribute("url", url);
-			
 			forward.setPath("redirect.jsp");
 			forward.setRedirect(false);
 		}

@@ -22,12 +22,13 @@ public class QuestionDeleteOkService implements Action {
 			
 			boolean result = qdao.deleteQuestion(question_no);
 			
+			
 			if(result) {
 				msg="delete success";
-				url=".do";
+				url="question.do";
 			}else {
 				msg="delete fail";
-				url=".do";
+				url="question.do";
 			}
 		request.setAttribute("msg", msg);
 		request.setAttribute("url" , url);
@@ -37,10 +38,10 @@ public class QuestionDeleteOkService implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 			msg = "error";
-			url = "";
+			url = "question.do";
 			request.setAttribute("msg",msg);
 			request.setAttribute("url", url);
-			forward.setPath("redirect.jsp");
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 			forward.setRedirect(false);
 		}
 		return forward;

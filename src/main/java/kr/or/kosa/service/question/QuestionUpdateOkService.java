@@ -33,16 +33,16 @@ public class QuestionUpdateOkService implements Action {
 			
 			if(question_no == null || question_no.trim().equals("")) {
 				msg = "글번호 입력 오류";
-				url = "BoardList.do";
+				url = "question.do";
 			}else {
 				int result = qdao.updateQuestion(board);
 				//TODO : ?
-				if(result > 0) {
+				if(result > 0) { //수정 성공
 					msg="edit success";
-					url = "BoardList.do";
+					url = "questionDetail.do?question_no=" +question_no;
 				} else {
 					msg = "edit fail";
-					url = "Board.do?question_no=" + question_no;
+					url = "questionEdit.do?question_no=" + question_no;
 				}
 			}
 			request.setAttribute("msg", msg);
@@ -53,6 +53,11 @@ public class QuestionUpdateOkService implements Action {
 			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
+			request.setAttribute("msg", "error");
+			request.setAttribute("url", "question.do");
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		}
 		return forward;
 	}

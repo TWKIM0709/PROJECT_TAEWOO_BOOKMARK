@@ -21,20 +21,21 @@ public class PopupDetailService implements Action {
 			int popupno = Integer.parseInt(request.getParameter("popup_no"));
 			
 			popup = dao.DetailPopup(popupno);
+			
 			if(popup != null) {
 				request.setAttribute("popup", popup);
-				forward.setPath("팝업상세보기.jsp");
+				forward.setPath("/WEB-INF/views/adminpage/popup/admin_popup_detail.jsp");
 				forward.setRedirect(false);
 			} else {
 				request.setAttribute("msg", "없는 게시글 입니다.");
-				request.setAttribute("url", "main.do");
+				request.setAttribute("url", "/WEB-INF/views/adminpage/admin_main.jsp");
 				forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 				forward.setRedirect(false);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			String msg  = "서버 오류 발생";
-			String path = "main.do";
+			String path = "/WEB-INF/views/adminpage/admin_main.jsp";
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", path);
 			forward.setPath("/WEB-INF/views/utils/redirect.jsp");

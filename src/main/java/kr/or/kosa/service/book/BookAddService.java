@@ -19,6 +19,7 @@ public class BookAddService implements Action {
 		String url = "";
 		
 		String isbn = request.getParameter("isbn");
+		String author = request.getParameter("author");
 		String book_name = request.getParameter("book_name");
 		String description = request.getParameter("description");
 		String p = request.getParameter("price");
@@ -27,6 +28,7 @@ public class BookAddService implements Action {
 		String file_name = request.getParameter("file_name");
 		
 		book.setIsbn(isbn);
+		book.setAuthor(author);
 		book.setBook_name(book_name);
 		book.setDescription(description);
 		book.setPrice(price);

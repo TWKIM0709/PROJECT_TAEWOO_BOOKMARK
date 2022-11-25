@@ -40,11 +40,11 @@
 						<ul data-v-e67dcbb6="" class="gnb">
 							<li data-v-e67dcbb6="" class="on"><a data-v-e67dcbb6="" href="/" class="gtm-today">투데이</a>
 							</li>
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="/v3/search"
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="bookUserLikeList.do"
 									class="gtm-search">검색</a></li>
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6=""
 									href="https://www.millie.co.kr/shelf/shelf_main.html" class="gtm-my">내서재</a></li>
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="/v3/management"
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="userMypage.do"
 									class="gtm-setting">관리</a></li>
 						</ul>
 					</nav>

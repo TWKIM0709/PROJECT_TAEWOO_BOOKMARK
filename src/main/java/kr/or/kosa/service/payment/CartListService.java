@@ -14,7 +14,7 @@ import kr.or.kosa.dto.Question_Board;
 import kr.or.kosa.utils.ThePager;
 
 public class CartListService implements Action {
-
+//장바구니 이동 페이지
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
@@ -30,16 +30,15 @@ public class CartListService implements Action {
 
 			forward = new ActionForward();
 			forward.setRedirect(false); // forward
-			forward.setPath("/WEB-INF/views/board_list.jsp");
+			forward.setPath("/WEB-INF/views/userpage/user_cart.jsp");
 		} catch (Exception e) {
-			
 			System.out.println(e.getMessage());
-			String msg = "error";
-			String url = "";
+			String msg = "서버에러발생";
+			String url = "main.do";
 			request.setAttribute("msg",msg);
 			request.setAttribute("url", url);
 			
-			forward.setPath("redirect.jsp");
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 			forward.setRedirect(false);
 		}
 		return forward;		

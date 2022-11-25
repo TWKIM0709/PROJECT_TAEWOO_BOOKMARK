@@ -13,7 +13,8 @@ import kr.or.kosa.dto.Blog_Board;
 import kr.or.kosa.dto.Popup;
 
 public class PopupLikeListService implements Action {
-//관리자 - 팝업조회
+//관리자 - 팝업 like 조회
+	//바꿔야됨!!!!111!1!11!1!1!111!
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();

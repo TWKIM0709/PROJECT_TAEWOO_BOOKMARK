@@ -6,12 +6,12 @@ public class Calendar {
 	//일정 DTO
 	private int calendar_no; //일정번호
 	private String id; //작성자
-	private Date calendar_start; //시작일
-	private Date calendar_end; //종료일
+	private String calendar_start; //시작일
+	private String calendar_end; //종료일
 	private String calendar_content; //일정 내용
 	private int calendar_status; //상태 (진행중 0 | 성공 1 | 실패 2)
 	public Calendar(){}
-	public Calendar(int calendar_no, String id, Date calendar_start, Date calendar_end, String calendar_content,
+	public Calendar(int calendar_no, String id, String calendar_start, String calendar_end, String calendar_content,
 			int calendar_status) {
 		super();
 		this.calendar_no = calendar_no;
@@ -33,16 +33,16 @@ public class Calendar {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Date getCalendar_start() {
+	public String getCalendar_start() {
 		return calendar_start;
 	}
-	public void setCalendar_start(Date calendar_start) {
+	public void setCalendar_start(String calendar_start) {
 		this.calendar_start = calendar_start;
 	}
-	public Date getCalendar_end() {
+	public String getCalendar_end() {
 		return calendar_end;
 	}
-	public void setCalendar_end(Date calendar_end) {
+	public void setCalendar_end(String calendar_end) {
 		this.calendar_end = calendar_end;
 	}
 	public String getCalendar_content() {

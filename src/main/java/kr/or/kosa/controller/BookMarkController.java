@@ -97,7 +97,7 @@ public class BookMarkController extends HttpServlet {
      		// 이동+처리
     		forward = new ActionForward();
      		forward.setRedirect(false);
-     		forward.setPath("/WEB-INF/views");
+     		forward.setPath("/WEB-INF/views/userpage/user_main.jsp");
     	//=================================================================//
     	//                                                     문의사항
     	//=================================================================//
@@ -113,7 +113,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동
     		forward = new ActionForward();
      		forward.setRedirect(false);
-     		forward.setPath("/WEB-INF/views");
+     		forward.setPath("/WEB-INF/views/userpage/question/user_question_write.jsp");
     	} else if(url_Command.equals("/questionWriteok.do")) { //4. 회원 - 문의사항 글쓰기 처리
     		// 이동 + 처리
     		action = new QuestionWriteOkService();
@@ -162,7 +162,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동
     		forward = new ActionForward();
      		forward.setRedirect(false);
-     		forward.setPath("/WEB-INF/views");
+     		forward.setPath("/WEB-INF/views/userpage/blog/user_blog_write.jsp");
     	} else if(url_Command.equals("/blogWriteOk.do")) { // 15. 회원 - 블로그 게시글 작성 처리
     		// 이동 + 처리
     		action = new BlogWriteService();
@@ -199,7 +199,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동
     		forward = new ActionForward();
      		forward.setRedirect(false);
-     		forward.setPath("/WEB-INF/views");
+     		forward.setPath("/WEB-INF/views/adminpage/book/admin_book_add.jsp");
     	} else if(url_Command.equals("/bookAddOk.do")) { //23.관리자 - 책 추가 처리
     		// 이동+처리
     		action = new BookAddService();
@@ -208,7 +208,6 @@ public class BookMarkController extends HttpServlet {
     		// 이동+추가
     		forward = new ActionForward();
      		forward.setRedirect(false);
-     		forward.setPath("/WEB-INF/views");
     	} else if(url_Command.equals("/bookUpdateOk.do")) { //25  관리자 - 책 수정 처리
     		// 이동+처리
     		action = new BookUpdateService();
@@ -261,7 +260,6 @@ public class BookMarkController extends HttpServlet {
     		// 이동+처리
     		forward = new ActionForward();
      		forward.setRedirect(false);
-     		forward.setPath("/WEB-INF/views");
     	} else if(url_Command.equals("/paymentOk.do")) { //37 회원 - 결제 처리
     		// 이동+처리
     		action = new PaymentService();
@@ -286,7 +284,7 @@ public class BookMarkController extends HttpServlet {
      		// 이동
     			forward = new ActionForward();
     			forward.setRedirect(false);
-    			forward.setPath(""); //TODO: 아직 뷰 없음
+    			forward.setPath("/login.html");
      	} else if(url_Command.equals("/userLoginOk.do")) { //42  회원 - 로그인 처리 
     		// 이동+처리
     		action =  new UserLoginService();
@@ -295,7 +293,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동
     		forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath(""); //TODO: 아직 뷰 없음
+			forward.setPath("/register.html"); //TODO: 아직 뷰 없음
     		
 			//TODO : 회원과 관리자의 서비스 우선 같게 해둠
     		//forward = action.execute(request, response);
@@ -309,11 +307,11 @@ public class BookMarkController extends HttpServlet {
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/userEdit.do")) { //46 회원, 관리자 - 회원정보 수정 페이지 이동
     		// 이동+처리
-    		action = new UserUpdateService();
+    		action = null ;
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/userEditOk.do")) { //47 회원, 관리자 - 회원정보 수정 처리
     		// 이동+처리
-    		action = null; //TODO :  There is no ok service
+    		action = new UserUpdateService(); //TODO :  There is no ok service
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/userWithdraw.do")) { //48 회원, 관리자 - 회원탈퇴 처리
     		// 이동+처리
@@ -412,7 +410,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동
     		forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath(""); //TODO: 아직 뷰 없음
+			forward.setPath("/WEB-INF/views/adminpage/popup/admin_popup_add.jsp"); //TODO: 아직 뷰 없음
     	} else if(url_Command.equals("/popupAddOk.do")) { //69 관리자 - 팝업 공지사항 추가 처리
     		// 이동+처리
     		action =new PopupAddService();
