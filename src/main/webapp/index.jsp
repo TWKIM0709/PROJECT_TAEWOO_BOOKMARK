@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/utils/include/top.jsp"></jsp:include>
 		<a href="${pageContext.request.contextPath}/calendarall.do">CALENDAR</a>
 </body>
 </html>

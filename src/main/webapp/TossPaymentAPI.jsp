@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>결제하기</title>
-  <script src="https://js.tosspayments.com/v1/payment"></script>
 </head>
 <body style="background-color:blue">
 <div id="test">
@@ -14,6 +13,7 @@
 	테스트
 </button>
 </body>
+  <script src="https://js.tosspayments.com/v1/payment"></script>
 	 <script>
 	 function test(){
     var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
