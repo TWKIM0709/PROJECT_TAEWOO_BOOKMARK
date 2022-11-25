@@ -33,14 +33,13 @@ public class QuestionRewriteService implements Action {
 		request.setAttribute("question_title", question_title);
 		
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/views/board/board_rewrite.jsp");
+		forward.setPath("/WEB-INF/views/adminpage/question/admin_question_rewrite.jsp");
 			
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.getStackTrace();
 			 request.setAttribute("msg","error");
-				request.setAttribute("url","" );
-			forward.setPath("redirect.jsp");
+			request.setAttribute("url","question.do" );
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 			forward.setRedirect(false);
 			e.printStackTrace();
 		}

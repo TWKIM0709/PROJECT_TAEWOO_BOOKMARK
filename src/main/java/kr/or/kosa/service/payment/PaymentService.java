@@ -55,33 +55,25 @@ public class PaymentService implements Action {
 			
 			int result = dao.insertPayment(list, id);
 			
+			//결제 성공시
 			if(result > 0) {
 				msg = "결제가 완료되었습니다";
-				url = "장바구니";
-			}else {
+				url = "cartList.do?id=" + request.getParameter("id");
+			}else {//결제 실패시
 				msg = "결제의 실패하였습니다";
-				url = "장바구니";
+				url = "cartList.do?id=" + request.getParameter("id");
 			}
-			
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			
-			
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
+			request.setAttribute("msg", "서버오류");
+			request.setAttribute("url", "/WEB-INF/views/utils/redirect.jsp");
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		} 
-		
-		/*
-		 * 버튼클릭
-		 * function(){
-		 * 		토스api 보여주고
-		 * 		form.submit();
-		 * } */
-		//팝업 보여주고 다른 페이지로
-		request.setAttribute("msg","");
-		request.setAttribute("url", "");
 		return forward;
 	}
 

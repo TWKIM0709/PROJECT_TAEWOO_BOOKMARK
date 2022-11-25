@@ -64,10 +64,13 @@ public class PopupAllListService implements Action {
 
 			forward = new ActionForward();
 			forward.setRedirect(false); // forward
-			forward.setPath("/WEB-INF/views/Popup/PopupAllList.jsp");
-			
+			forward.setPath("/WEB-INF/views/adminpage/popup/admin_popup_list.jsp");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			request.setAttribute("msg", "error");
+			request.setAttribute("msg", "/WEB-INF/views/adminpage/admin_main.jsp");
+			forward.setRedirect(false); // forward
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		} 
 		return forward;
 	}

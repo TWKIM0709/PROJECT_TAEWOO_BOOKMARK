@@ -1,5 +1,6 @@
 package kr.or.kosa.service.payment;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,13 +10,18 @@ import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.PaymentDao;
 import kr.or.kosa.dto.Book_Payment;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 public class PaymentLogLikeIdListService implements Action {
-	//관리자가 회원 아이디로 결제내역을 검색하는 서비스
+	//관리자가 회원 아이디로 결제내역을 검색하는 서비스 (비동기)
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 	ActionForward forward = new ActionForward();
-		
+
+	JSONObject jsonobj = new JSONObject();
+	JSONArray jsonary = new JSONArray();
+	JSONObject json = new JSONObject();
 		try {
 			PaymentDao pdao = new PaymentDao();
 
@@ -23,22 +29,27 @@ public class PaymentLogLikeIdListService implements Action {
 			
 			List<Book_Payment> paymentlist = pdao.paymentlist(id);
 			
-			request.setAttribute("paymentlist", paymentlist);
-
-			forward = new ActionForward();
-			forward.setRedirect(false); // forward
-			forward.setPath(""); //TODO : Cart 뷰 페이지
+			for(Object obj : paymentlist) {
+				Book_Payment p = (Book_Payment)obj;
+				json.put("payment_no", p.getPayment_no());
+				json.put("isbn", p.getIsbn());
+				json.put("count", p.getCount());
+				json.put("payment_date", p.getPayment_date());
+				json.put("sumprice", p.getSumprice());
+				json.put("payment_addr", p.getPayment_addr());
+				json.put("payment_detailaddr", p.getPayment_detailaddr());
+				jsonary.add(json);
+			}
+		jsonobj.put("RESULT", "success");
+		jsonobj.put("BOOKPAYMENT", jsonary);
 		} catch (Exception e) {
-			
-			System.out.println(e.getMessage());
-			String msg = "error";
-			String url = "";
-			request.setAttribute("msg",msg);
-			request.setAttribute("url", url);
-			
-			forward.setPath("redirect.jsp");
-			forward.setRedirect(false);
+			jsonobj.put("RESULT", "fail");
 		}
-		return forward;		
+		try {
+			response.getWriter().print(jsonobj);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;		
 	}
 }

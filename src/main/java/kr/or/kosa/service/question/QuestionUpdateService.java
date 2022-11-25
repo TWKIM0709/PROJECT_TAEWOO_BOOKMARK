@@ -21,7 +21,7 @@ public class QuestionUpdateService implements Action {
 		ActionForward forward = null;
 		try {		
 			if(question_no == null || question_no.trim().equals("")){
-				response.sendRedirect("BoardList.do"); //cpage=1 , ps=5
+				response.sendRedirect("question.do"); //cpage=1 , ps=5
 				return null;
 			}
 
@@ -29,8 +29,9 @@ public class QuestionUpdateService implements Action {
 			
 			 Question_Board qboard = qdao.getQuestionByNo(question_no);
 			if(qboard == null){
+				//실패일때
 				msg ="데이터 오류";
-				url ="BoardList.do";
+				url ="questionEdit.do?question_no=" + question_no;
 				
 				request.setAttribute("msg", msg);
 				request.setAttribute("url", url);
@@ -40,9 +41,9 @@ public class QuestionUpdateService implements Action {
 				forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 				
 			}else {
+				//성공일때
 				request.setAttribute("question_no", question_no);
 				request.setAttribute("qboard", qboard);
-				
 				forward = new ActionForward();
 				forward.setRedirect(false);
 				forward.setPath("/WEB-INF/views/board/board_edit.jsp");
@@ -50,7 +51,7 @@ public class QuestionUpdateService implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 			 request.setAttribute("msg","error");
-				request.setAttribute("url","" );
+			request.setAttribute("url","questionDetail.do?question_no=" + question_no );
 			forward.setPath("redirect.jsp");
 			forward.setRedirect(false);
 			e.printStackTrace();

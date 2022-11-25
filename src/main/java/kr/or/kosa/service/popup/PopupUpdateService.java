@@ -11,7 +11,7 @@ import kr.or.kosa.dao.PopupDao;
 import kr.or.kosa.dto.Popup;
 
 public class PopupUpdateService implements Action {
-
+//팝업 공지사항 업데이트
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
@@ -37,12 +37,12 @@ public class PopupUpdateService implements Action {
 			String msg = "";
 			String url = "";
 			if(result !=0 ) {
-				msg = "update success";
-				url = "글목록.do";
+				msg = "update success"; //성공시 팝업 상세보기로
+				url = "popupDetail.do?popup_no=" + Popup_no;
 				
 			}else {
-				msg = "update fail";
-				url = "글쓰기.do";
+				msg = "update fail"; //실패시 수정페이지로?
+				url = "popupEdit.do?popup_no=" + Popup_no;
 			}
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
@@ -52,7 +52,7 @@ public class PopupUpdateService implements Action {
 		} 
 		
 		forward.setRedirect(false);
-		forward.setPath("redirecg.jsp");
+		forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		return forward;
 	}
 
