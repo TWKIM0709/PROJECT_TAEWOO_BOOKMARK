@@ -35,20 +35,21 @@ public class UserDeleteService implements Action {
 				//일반회원일 경우
 				if(result) {
 					msg = "회원 탈퇴가 완료되었습니다.";
-					url = "main.do";
+					url = "/homepage.html";
 				}else {
 					msg = "회원 탈퇴에 실패하였습니다.";
-					url = "main.do"; //TODO:회원 탈퇴 기능이 있는 페이지 (뒤로가기 ??느낌)
+					url = "userDetail.do"; //TODO:회원 탈퇴 기능이 있는 페이지 (뒤로가기 ??느낌)
 				}
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			msg = "서버에러.";
+			url = "main.do";
 		} 
 		
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		

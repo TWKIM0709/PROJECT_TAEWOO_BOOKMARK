@@ -9,44 +9,47 @@ import kr.or.kosa.dao.UsersDao;
 import kr.or.kosa.dto.Users;
 
 public class UserUpdateService implements Action {
-
+//유저 정보 수정 페이지로 이동
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
-		Users user = new Users();
 		
-		String msg = "";
 		String url = "";
-		
-		String id = request.getParameter("id");
-		String pwd = request.getParameter("password");
-		String name = request.getParameter("name");
-		String addr = request.getParameter("addr");
-		String detail_addr = request.getParameter("detail_addr");
-		String regist_no = request.getParameter("regist_no");
-		String phone = request.getParameter("phone");
-		
 		try {
+			String id = "";
+			String admin = "";
+			if(request.getSession().getAttribute("admin") != null) { //관리자면
+				id = request.getParameter("id");
+				admin = "true";
+			} else {
+				id = (String)request.getSession().getAttribute("id");
+				admin = "false";
+			}
 			UsersDao dao = new UsersDao();
 			
-			boolean result = dao.updateUser(user);
+			Users user = dao.getUserById(id);
 			
-			if(result) {
-				msg = "수정성공";
-				url = "main.do";
-			}else {
-				msg = "수정실패";
-				url = "#";
+			request.setAttribute("user", user);
+			if(user != null) { //성공시
+				if(admin.equals("true")) { //성공 + 어드민일 경우
+					url = "/WEB-INF/adminpage/user/admin_user_Edit.jsp";
+				} else { //성공 + 유저일 경우
+					url = "/WEB-INF/userpage/mypage/user_mypage_info.jsp";
+				}
+			} else { //실패시 ( 데이터가 없으면)
+				if(admin.equals("true")) { //실패 + 어드민일 경우
+					url = "userList.do";
+				} else { //실패 + 유저일 경우
+					url = "userMyPage.do"; 
+				}
 			}
 			
-			forward.setRedirect(false);
-			forward.setPath(url);
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("msg", msg);
-			request.setAttribute("url", "마이페이지.do");
+			request.setAttribute("msg", "에러");
+			request.setAttribute("url", "userDetail.do");
 			forward.setRedirect(false);
-			forward.setPath(url);
+			forward.setPath("");
 		} 
 		return forward;
 	}

@@ -13,31 +13,30 @@ public class UserDetailService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
-		
-		String id = request.getParameter("id");
-		
 		String path = "";
-		
 		try {
-			UsersDao dao = new UsersDao();
 			
-			Users user = dao.getUserById(id);
+			if(request.getSession().getAttribute("admin")!=null) { //관리자일 경우 유저 상세보기 페이지로
+				String id = request.getParameter("id");
 			
-			request.setAttribute("user", user);
-			
-			if(request.getSession().getAttribute("admin")!=null) { //관리자일 경우
+				UsersDao dao = new UsersDao();
+				
+				Users user = dao.getUserById(id);
+				
+				request.setAttribute("user", user);
 				path = "/WEB-INF/views/user/admin_user_detail.jsp";
-			}else { //일반 회원일 경우
+			}else { //일반 회원일 경우 -> 회원 정보 수정 페이지로
 				path = "/WEB-INF/views/userpage/mypage/mypage.html";
 			}
-			
-			
 			forward.setRedirect(false);
 			forward.setPath(path);
 		} catch (Exception e) {
 			e.printStackTrace();
+			request.setAttribute("msg", "서버오류");
+			request.setAttribute("url", "main.do");
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		}
-		
 		return forward;
 	}
 
