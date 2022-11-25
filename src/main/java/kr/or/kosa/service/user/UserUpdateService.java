@@ -39,13 +39,14 @@ public class UserUpdateService implements Action {
 				url = "#";
 			}
 			
-			request.setAttribute("msg", msg);
-			request.setAttribute("url", url);
-			
 			forward.setRedirect(false);
-			forward.setPath("WEB-INF/views/utils/redirect.jsp");
+			forward.setPath(url);
 		} catch (Exception e) {
 			e.printStackTrace();
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", "마이페이지.do");
+			forward.setRedirect(false);
+			forward.setPath(url);
 		} 
 		return forward;
 	}

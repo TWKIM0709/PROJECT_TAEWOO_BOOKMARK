@@ -284,7 +284,7 @@ public class BookMarkController extends HttpServlet {
      		// 이동
     			forward = new ActionForward();
     			forward.setRedirect(false);
-    			forward.setPath("/WEB-INF/views/userpage/user_login.jsp");
+    			forward.setPath("/login.html");
      	} else if(url_Command.equals("/userLoginOk.do")) { //42  회원 - 로그인 처리 
     		// 이동+처리
     		action =  new UserLoginService();
@@ -293,7 +293,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동
     		forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/userpage/user_register.jsp"); //TODO: 아직 뷰 없음
+			forward.setPath("/register.html"); //TODO: 아직 뷰 없음
     		
 			//TODO : 회원과 관리자의 서비스 우선 같게 해둠
     		//forward = action.execute(request, response);
@@ -307,11 +307,11 @@ public class BookMarkController extends HttpServlet {
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/userEdit.do")) { //46 회원, 관리자 - 회원정보 수정 페이지 이동
     		// 이동+처리
-    		action = new UserUpdateService();
+    		action = null ;
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/userEditOk.do")) { //47 회원, 관리자 - 회원정보 수정 처리
     		// 이동+처리
-    		action = null; //TODO :  There is no ok service
+    		action = new UserUpdateService(); //TODO :  There is no ok service
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/userWithdraw.do")) { //48 회원, 관리자 - 회원탈퇴 처리
     		// 이동+처리
