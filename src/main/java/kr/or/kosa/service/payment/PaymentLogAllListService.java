@@ -67,15 +67,13 @@ public class PaymentLogAllListService implements Action {
 
 			forward = new ActionForward();
 			forward.setRedirect(false); // forward
-			forward.setPath("/WEB-INF/views/board_list.jsp");
+			forward.setPath("/WEB-INF/views/adminpage/admin_payment.jsp");
 		} catch (Exception e) {
-			
 			System.out.println(e.getMessage());
 			String msg = "error";
-			String url = "";
+			String url = "/WEB-INF/views/adminpage/admin_main.jsp";
 			request.setAttribute("msg",msg);
 			request.setAttribute("url", url);
-			
 			forward.setPath("redirect.jsp");
 			forward.setRedirect(false);
 		}

@@ -38,11 +38,11 @@ public class PopupAddService implements Action {
 			String url = "";
 			if(result !=0 ) {
 				msg = "insert success";
-				url = "글목록.do";
+				url = "popup.do";
 				
 			}else {
 				msg = "insert fail";
-				url = "글쓰기.do";
+				url = "popup.do";
 			}
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
@@ -52,7 +52,7 @@ public class PopupAddService implements Action {
 		} 
 		
 		forward.setRedirect(false);
-		forward.setPath("redirecg.jsp");
+		forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		return forward;
 	}
 

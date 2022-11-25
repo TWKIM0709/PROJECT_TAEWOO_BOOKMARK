@@ -7,9 +7,11 @@ import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.PaymentDao;
 import kr.or.kosa.dto.Book;
+import net.sf.json.JSONObject;
 
 public class CartAddService implements Action {
-
+//장바구니 추가 페이지
+//parameter type이 true일 경우 결제페이지로
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
@@ -25,25 +27,31 @@ public class CartAddService implements Action {
 //			type false 비동기 -> 추가만하고 끝
 			
 			int result = dao.AddBook(id, isbn);
-			
-			if(result >0) {
-				//추가 성공
-				msg = "장바구니에 추가했습니다.";
-				url = ".do";
-			}else {
-				//추가 실패
-				msg = "추가에 실패했습니다.";
-				url = ".do";
+
+			if(type.equals("true")) { //동기 -> 장바구니페이지로
+				if(result >0) {	//추가 성공
+					forward.setPath("cartList.do");
+					forward.setRedirect(false);
+				}else {//추가 실패
+					forward.setPath("bookDetail.do?isbn=" + isbn);
+					forward.setRedirect(false);
+				}
+			} else { //비동기 -> 성공/실패 여부 json
+				if(result >0) {//추가 성공
+					JSONObject json = new JSONObject();
+					json.put("RESULT","success");
+					response.getWriter().print(json);
+				}else {//추가 실패
+					JSONObject json = new JSONObject();
+					json.put("RESULT","fail" );
+					response.getWriter().print(json);
+				}
+				return null;
 			}
-			  request.setAttribute("msg",msg);
-			  request.setAttribute("url", url);
-			  
-			  forward.setRedirect(false);
-			  forward.setPath("redirect.jsp");
 		} catch (Exception e) {
 			request.setAttribute("msg","error");
-			request.setAttribute("url","" );
-			forward.setPath("redirect.jsp");
+			request.setAttribute("url","bookDetail.do?isbn=" + request.getParameter("isbn") );
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 			forward.setRedirect(false);
 			e.printStackTrace();
 		} 

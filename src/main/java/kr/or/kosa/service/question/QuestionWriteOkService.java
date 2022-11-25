@@ -32,34 +32,22 @@ public class QuestionWriteOkService implements Action {
 	    	 
 		    if(result > 0){
 		    	msg ="insert success";
-		    	url ="_list.jsp";
+		    	url ="question.do";
 		    }else{
 		    	msg="insert fail";
-		    	url="_write.jsp";
+		    	url="questionWrite.do";
 		    }
-		    
-	    	
-	   
 	    request.setAttribute("msg",msg);
 	    request.setAttribute("url", url);
-	    
-	    
 	    forward.setRedirect(false);
 	    forward.setPath("redirect.jsp");
 		} catch (Exception e) {
 			request.setAttribute("msg","error");
-			request.setAttribute("url","" );
-			forward.setPath("redirect.jsp");
+			request.setAttribute("url","question.do" );
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 			forward.setRedirect(false);
 			e.printStackTrace();
 		}
-	    
-		
-			    
-	    //write.jsp 화면  >> writeok.jsp 처리 >> service >> dao > DB 작업 > 
-	    //return dao > return service >  writeok.jsp 결과처리 >> 이동 (공통) >> redirect.jsp
-	    		
-	    
 		return forward;
 	}
 }

@@ -57,37 +57,28 @@ public class QuestionDetailService implements Action {
 				
 				forward.setRedirect(false); // forward
 				if(request.getSession().getAttribute("admin") != null) {
-					forward.setPath("/WEB-INF/views/board/adminboard_content.jsp");
+					forward.setPath("/WEB-INF/views/adminpage/question/admin_question_detail.jsp");
 				}else {
-					forward.setPath("/WEB-INF/views/board/board_content.jsp");
+					forward.setPath("/WEB-INF/views/userpage/question/user_question_detail.jsp");
 				}
 				
 			} else {
 				String msg = "게시글을 불러오지 못했습니다";
-				if(request.getSession().getAttribute("admin") != null) {
-					url = "adminquestionlist.do";
-				}else {
-					url = "questionlist.do";
-				}
-				forward.setRedirect(false); // forward
-				
+				url = "question.do";
 				request.setAttribute("msg", msg);
 				request.setAttribute("url", url);
+				forward.setRedirect(false); // forward
 				forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 				String msg = "error";
-				if(request.getSession().getAttribute("admin") != null) {
-					url = "adminquestionlist.do";
-				}else {
-					url = "questionlist.do";
-				}
+				url = "question.do";
 				request.setAttribute("msg", msg);
 				request.setAttribute("url", url);
-				forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 				forward.setRedirect(false); // forward
+				forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		}
 		return forward;
 	}

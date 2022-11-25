@@ -40,28 +40,20 @@ public class QuestionRewriteOkService implements Action {
 
 		    if(result > 0){
 		    	msg ="rewrite insert success";
-		    	url ="BoardList.do";
+		    	url ="question.do";
 		    }else{
 		    	msg="rewrite insert fail";
-		    	url="BoardContent.do?idx="+board.getQuestion_no();
+		    	url="questionDetail.do?question_no="+board.getQuestion_no();
 		    }
-		request.setAttribute("msg",msg);
-		request.setAttribute("url", url);
-		
-		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/views/utils/redirect.jsp");
-		    
 		} catch (Exception e) {
 			 msg = "error";
-			 url = "";
-			 request.setAttribute("msg",msg);
-				request.setAttribute("url", url);
-			forward.setPath("redirect.jsp");
-			forward.setRedirect(false);
+			 url = "question.do";
 			e.printStackTrace();
 		}
-		
-		
+		request.setAttribute("msg",msg);
+		request.setAttribute("url", url);
+		forward.setRedirect(false);
+		forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		return forward;
 	}
 

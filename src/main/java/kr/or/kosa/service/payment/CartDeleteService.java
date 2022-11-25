@@ -1,14 +1,17 @@
 package kr.or.kosa.service.payment;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.PaymentDao;
+import net.sf.json.JSONObject;
 
 public class CartDeleteService implements Action {
-
+//장바구니 삭제 (비동기)
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
@@ -16,35 +19,29 @@ public class CartDeleteService implements Action {
 		String url = "";
 		String id = request.getParameter("id");
 		String isbn = request.getParameter("isbn");
-		
+		JSONObject json = new JSONObject();
 		try {
 			
 			PaymentDao pdao = new PaymentDao();
 			
 			int result = pdao.deleteOk(id,isbn);
 			
-			if(result>0) {
-				msg="delete success";
-				url=".do";
-			}else {
-				msg="delete fail";
-				url=".do";
+			if(result>0) {//성공시
+				json.put("RESULT","success");
+			}else {//실패시
+				json.put("RESULT","fail");
 			}
-		request.setAttribute("msg", msg);
-		request.setAttribute("url" , url);
 		
-		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
-			msg = "error";
-			url = "";
-			request.setAttribute("msg",msg);
-			request.setAttribute("url", url);
-			forward.setPath("redirect.jsp");
-			forward.setRedirect(false);
+			json.put("RESULT","fail");
 		} 
-		return forward;
+		try {
+			response.getWriter().print(json);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
