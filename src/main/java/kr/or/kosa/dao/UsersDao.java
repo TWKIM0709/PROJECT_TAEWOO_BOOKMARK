@@ -71,7 +71,8 @@ public class UsersDao implements BookMarkDao{
 			row = pstmt.executeUpdate();
 			
 			if(row != 0) {
-				sql = "insert into user_detail(id,addr,detail_addr,regist_no,phone) value(?,?,?,?,?)";
+				ConnectionHelper.close(pstmt);
+				sql = "insert into user_detail(id,addr,detail_addr,regist_no,phone) values(?,?,?,?,?)";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, user.getId());
 				pstmt.setString(2,user.getAddr());
@@ -146,12 +147,20 @@ public class UsersDao implements BookMarkDao{
 		}finally {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
+			//
+			try {
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return result;
 	}
 	//회원삭제
 	//delete from users where userid='';
 	public boolean deleteUser(String id) {
+		System.out.println("deleteUser 함수 호출");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		boolean result = false;
@@ -159,19 +168,21 @@ public class UsersDao implements BookMarkDao{
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql="delete from users where id=?";
 			pstmt = conn.prepareStatement(sql);
-			
+			System.out.println("pstmt까지 싣었음");
 			pstmt.setString(1, id);
-			
-			int row = pstmt.executeUpdate();
-			
+			System.out.println("pstmtSetString했음");
+			int row = pstmt.executeUpdate();//////무한로딩.....
+			System.out.println("executeUpdate했음...result는 " + result + ", row는 " + row);
 			if(row > 0 ) {
 				result = true;
 			}
+			System.out.println("if문 이후의 result : "+ result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
+			System.out.println("fianlly 구문에서의 result : " + result);
 		}
 		return result;
 	}
@@ -201,13 +212,13 @@ public class UsersDao implements BookMarkDao{
 			
 			while(rs.next()) {
 				Users user = new Users();
-				user.setId(rs.getString(1));
-				user.setPassword(rs.getString(2));
-				user.setName(rs.getString(3));
-				user.setState(rs.getInt(4));
-				user.setAddr(rs.getString(5));
-				user.setDetail_addr(rs.getString(6));
-				user.setRegist_no(rs.getString(7));
+				user.setId(rs.getString(2));
+				user.setPassword(rs.getString(3));
+				user.setName(rs.getString(4));
+				user.setState(rs.getInt(5));
+				user.setAddr(rs.getString(6));
+				user.setDetail_addr(rs.getString(7));
+				user.setRegist_no(rs.getString(8));
 				user.setPhone(rs.getString(8));
 				list.add(user);
 			}
@@ -256,17 +267,18 @@ public class UsersDao implements BookMarkDao{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<Users> list = new ArrayList<Users>();
+		List<Users> userlist = new ArrayList<Users>();
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select "
 					+ "u.id, u.password, u.name, u.state, d.addr, "
 					+ "d.detail_addr, d.regist_no, d.phone "
-					+ "from users u left join user_detail d on u.id = d.id"
-					+ "where ? like ?";
+					+ "from users u join user_detail d on u.id = d.id "
+					+ "where " + type +" like  '%'||?||'%'";
+			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, type);
-			pstmt.setString(2,"%"+ value+"%");
+//			pstmt.setString(1, type);
+			pstmt.setString(1, value);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -279,7 +291,7 @@ public class UsersDao implements BookMarkDao{
 				user.setDetail_addr(rs.getString(6));
 				user.setRegist_no(rs.getString(7));
 				user.setPhone(rs.getString(8));
-				list.add(user);
+				userlist.add(user);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -287,8 +299,10 @@ public class UsersDao implements BookMarkDao{
 			ConnectionHelper.close(rs);
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
+			System.out.println("userList 출력 : " + userlist);
+			System.out.println("userList 길이 : " + userlist.size());
 		}
-		return list;
+		return userlist;
 	}
 	//회원 조회
 	//select * from users where id=[아이디]
@@ -302,8 +316,8 @@ public class UsersDao implements BookMarkDao{
 			String sql = "select "
 					+ "u.id, u.password, u.name, u.state, d.addr, "
 					+ "d.detail_addr, d.regist_no, d.phone "
-					+ "from users u left join user_detail d on u.id = d.id"
-					+ "where id = ?";
+					+ "from users u left join user_detail d on u.id = d.id "
+					+ "where u.id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
