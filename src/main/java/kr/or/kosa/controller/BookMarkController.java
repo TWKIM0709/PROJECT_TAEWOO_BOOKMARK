@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.service.blog.BlogAllListService;
@@ -29,7 +30,12 @@ import kr.or.kosa.service.book.EBookListService;
 import kr.or.kosa.service.book.RecommandBookAddService;
 import kr.or.kosa.service.book.RecommandBookDeleteService;
 import kr.or.kosa.service.book.RecommandBookListService;
+import kr.or.kosa.service.calendar.CalendarAddService;
 import kr.or.kosa.service.calendar.CalendarAllListService;
+import kr.or.kosa.service.calendar.CalendarDeleteService;
+import kr.or.kosa.service.calendar.CalendarDetailService;
+import kr.or.kosa.service.calendar.CalendarSearchListService;
+import kr.or.kosa.service.calendar.CalendarUpdateService;
 import kr.or.kosa.service.payment.CartAddService;
 import kr.or.kosa.service.payment.CartDeleteService;
 import kr.or.kosa.service.payment.CartListService;
@@ -37,6 +43,12 @@ import kr.or.kosa.service.payment.PaymentLogAllListService;
 import kr.or.kosa.service.payment.PaymentLogIdListService;
 import kr.or.kosa.service.payment.PaymentLogLikeIdListService;
 import kr.or.kosa.service.payment.PaymentService;
+import kr.or.kosa.service.popup.PopupAddService;
+import kr.or.kosa.service.popup.PopupAllListService;
+import kr.or.kosa.service.popup.PopupDeleteService;
+import kr.or.kosa.service.popup.PopupDetailService;
+import kr.or.kosa.service.popup.PopupLikeListService;
+import kr.or.kosa.service.popup.PopupUpdateService;
 import kr.or.kosa.service.question.QuestionAllListService;
 import kr.or.kosa.service.question.QuestionDeleteOkService;
 import kr.or.kosa.service.question.QuestionDetailService;
@@ -46,18 +58,6 @@ import kr.or.kosa.service.question.QuestionRewriteService;
 import kr.or.kosa.service.question.QuestionUpdateOkService;
 import kr.or.kosa.service.question.QuestionUpdateService;
 import kr.or.kosa.service.question.QuestionWriteOkService;
-import kr.or.kosa.service.calendar.CalendarAddService;
-import kr.or.kosa.service.calendar.CalendarAllListService;
-import kr.or.kosa.service.calendar.CalendarDeleteService;
-import kr.or.kosa.service.calendar.CalendarDetailService;
-import kr.or.kosa.service.calendar.CalendarSearchListService;
-import kr.or.kosa.service.calendar.CalendarUpdateService;
-import kr.or.kosa.service.popup.PopupAddService;
-import kr.or.kosa.service.popup.PopupAllListService;
-import kr.or.kosa.service.popup.PopupDeleteService;
-import kr.or.kosa.service.popup.PopupDetailService;
-import kr.or.kosa.service.popup.PopupLikeListService;
-import kr.or.kosa.service.popup.PopupUpdateService;
 import kr.or.kosa.service.statistics.AgeService;
 import kr.or.kosa.service.statistics.DailySalesService;
 import kr.or.kosa.service.statistics.GenderService;
@@ -71,6 +71,7 @@ import kr.or.kosa.service.user.UserIdCheckService;
 import kr.or.kosa.service.user.UserLikeListService;
 import kr.or.kosa.service.user.UserLoginService;
 import kr.or.kosa.service.user.UserRegisterService;
+import kr.or.kosa.service.user.UserUpdateOkService;
 import kr.or.kosa.service.user.UserUpdateService;
 
 @WebServlet("*.do")
@@ -307,11 +308,11 @@ public class BookMarkController extends HttpServlet {
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/userEdit.do")) { //46 회원, 관리자 - 회원정보 수정 페이지 이동
     		// 이동+처리
-    		action = null ;
+    		action = new UserUpdateService() ;
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/userEditOk.do")) { //47 회원, 관리자 - 회원정보 수정 처리
     		// 이동+처리
-    		action = new UserUpdateService(); //TODO :  There is no ok service
+    		action = new UserUpdateOkService(); //TODO :  There is no ok service
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/userWithdraw.do")) { //48 회원, 관리자 - 회원탈퇴 처리
     		// 이동+처리

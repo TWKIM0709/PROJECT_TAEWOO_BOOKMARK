@@ -19,10 +19,10 @@ public class UserRegisterService implements Action {
 		String url = "";
 		
 		String id = request.getParameter("id");
-		String pwd = request.getParameter("passward");
+		String pwd = request.getParameter("password");
 		String name = request.getParameter("name");
 		String addr = request.getParameter("addr");
-		String detail_addr = request.getParameter("detail_addr");
+		String detail_addr = request.getParameter("detail_addr1") + request.getParameter("detail_addr2");
 		String register_no = request.getParameter("register_no");
 		String phone = request.getParameter("phone");
 		
@@ -42,16 +42,19 @@ public class UserRegisterService implements Action {
 				url = "login.do";
 			}else {
 				msg = "회원가입에 실패했습니다";
-				url = "#";
+				url = "/homepage.html";
 			}
 			
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			
 			forward.setRedirect(false);
 			forward.setPath("WEB-INF/views/utils/redirect.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
+			request.setAttribute("msg", "회원가입에러");
+			request.setAttribute("url", "userJoin.do");
+			forward.setRedirect(false);
+			forward.setPath("WEB-INF/views/utils/redirect.jsp");
 		} 
 		return forward;
 	}
