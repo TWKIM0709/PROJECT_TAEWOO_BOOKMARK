@@ -301,22 +301,22 @@ public class BookDao implements BookMarkDao{
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select book_reply_no, reply_date, reply_content, id from book_reply where isbn=?";
+			sql = "select book_reply_no, to_char(reply_date) as re_date, reply_content, id from book_reply where isbn= ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, isbn);
 			rs = pstmt.executeQuery();
-			
 			while(rs.next()) {
+				System.out.println(1);
 				Book_Reply br = new Book_Reply();
 				
 				br.setBook_reply_no(rs.getInt(1));
-				br.setIsbn(isbn);
-				br.setReply_date(rs.getDate(2));
+				br.setReply_date(rs.getString(2));
 				br.setReply_content(rs.getString(3));
 				br.setId(rs.getString(4));
 				
 				brl.add(br);
 			}
+			System.out.println(brl);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -346,7 +346,7 @@ public class BookDao implements BookMarkDao{
 					Book_Reply br = new Book_Reply();
 					
 					br.setBook_reply_no(rs.getInt(1));
-					br.setReply_date(rs.getDate(2));
+					br.setReply_date(rs.getString(2));
 					br.setReply_content(rs.getString(3));
 					br.setId(rs.getString(4));
 					br.setIsbn(rs.getString(5));
@@ -383,7 +383,7 @@ public class BookDao implements BookMarkDao{
 				Book_Reply br = new Book_Reply();
 				br.setBook_reply_no(rs.getInt(1));
 				br.setIsbn(rs.getString(2));
-				br.setReply_date(rs.getDate(3));
+				br.setReply_date(rs.getString(3));
 				br.setReply_content(rs.getString(4));
 				br.setId(id);
 				

@@ -1,5 +1,6 @@
 package kr.or.kosa.service.statistics;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.StatisticsDao;
 import kr.or.kosa.dto.Statistics;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 public class WeeklySalesService implements Action {
 
@@ -18,19 +20,35 @@ public class WeeklySalesService implements Action {
 		ActionForward forward = new ActionForward();
 		
 		List<Statistics> week = null;
+		JSONObject jsonobj = new JSONObject();
+		JSONArray jsonary = new JSONArray();
+		JSONObject json = new JSONObject();
 		try {
 			StatisticsDao dao = new StatisticsDao();
 			
 			week = dao.curWeekSales();
-			
-			request.setAttribute("week", week);
+
+			for(Object obj : week) {
+				Statistics s = (Statistics)obj;
+				json.put("NAME", s.getStatistics_name());
+				json.put("VALUE", s.getStatistics_num());
+				jsonary.add(json);
+			}
+			if(week != null) {
+				jsonobj.put("RESULT", "success");
+			} else {
+				jsonobj.put("RESULT", "fail");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			jsonobj.put("RESULT", "fail");
 		} 
-		
-		JSONArray weekjson = JSONArray.fromObject(week);
-		
+		jsonobj.put("STATISTICS", jsonary);
+		try {
+			response.getWriter().print(jsonobj);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
-
 }

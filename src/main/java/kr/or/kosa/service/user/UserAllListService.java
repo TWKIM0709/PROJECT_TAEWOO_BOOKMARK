@@ -68,17 +68,21 @@ public class UserAllListService implements Action {
 			
 			
 			if(request.getSession().getAttribute("admin")!=null) { //관리자일 경우
-				path = "/WEB-INF/views/user/admin_user_list.jsp";
+				path = "/WEB-INF/views/adminpage/user/admin_user_list.jsp";
 			}else { //일반 회원일 경우
-				path = "/WEB-INF/views/user/user_list.jsp";
+				request.setAttribute("msg", "권한이 없습니다.");
+				request.setAttribute("url", "main.do");
+				path = "/WEB-INF/views/utils/redirect.jsp";
 			}
-			
-			forward.setRedirect(false);
-			forward.setPath(path);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			request.setAttribute("msg", "에러.");
+			request.setAttribute("url", "/homepage.html");
+			path = "/WEB-INF/views/utils/redirect.jsp";
 		} 
+		forward.setRedirect(false);
+		forward.setPath(path);
 		return forward;
 	}
 }

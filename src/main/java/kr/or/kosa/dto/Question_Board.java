@@ -9,14 +9,14 @@ public class Question_Board {
 	private String question_title; //제목
 	private String question_content; //내용
 	private int hits; //조회수
-	private Date question_date; //작성일
+	private String question_date; //작성일
 	private int refer; // 게시글 그룹번호
 	private int depth; //들여쓰기 정도
 	private int step; //그룹 내 순번
 	private int notice_no; //공지사항 유무( 0 일반게시글 | 1 공지사항)
 	public Question_Board() {}
 	public Question_Board(int question_no, String id, String question_title, String question_content, int hits,
-			Date question_date, int refer, int depth, int step, int notice_no) {
+			String question_date, int refer, int depth, int step, int notice_no) {
 		super();
 		this.question_no = question_no;
 		this.id = id;
@@ -59,10 +59,10 @@ public class Question_Board {
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-	public Date getQuestion_date() {
+	public String getQuestion_date() {
 		return question_date;
 	}
-	public void setQuestion_date(Date question_date) {
+	public void setQuestion_date(String question_date) {
 		this.question_date = question_date;
 	}
 	public int getRefer() {
@@ -95,4 +95,5 @@ public class Question_Board {
 				+ ", question_content=" + question_content + ", hits=" + hits + ", question_date=" + question_date
 				+ ", refer=" + refer + ", depth=" + depth + ", step=" + step + ", notice_no=" + notice_no + "]";
 	}
+	
 }

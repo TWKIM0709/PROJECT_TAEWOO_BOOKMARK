@@ -46,7 +46,7 @@ public class BlogDao implements BookMarkDao{
 		List<Blog_Board> boardList = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql=  "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, a.blog_date, b.file_name "
+			String sql=  "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, to_char(a.blog_date), b.file_name "
 					+ "from blog_board a left join blogfile b "
 					+ "on a.blog_no = b.blog_no ";
 			pstmt = conn.prepareStatement(sql);
@@ -67,7 +67,7 @@ public class BlogDao implements BookMarkDao{
 				board.setBlog_title(rs.getString(3)); //제목
 				board.setBlog_content(rs.getString(4));//내용
 				board.setHits(rs.getInt(5));//조회수
-				board.setBlog_date(rs.getDate(6)); //날짜
+				board.setBlog_date(rs.getString(6)); //날짜
 				board.setBlog_filename(rs.getString(7)); //파일이름
 				
 				boardList.add(board);
@@ -97,7 +97,7 @@ public class BlogDao implements BookMarkDao{
 
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql=  "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, a.blog_date, b.file_name "
+			String sql=  "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, to_char(a.blog_date), b.file_name "
 					+ "from blog_board a left join blogfile b "
 					+ "on a.blog_no = b.blog_no where a.id = ?";
 			pstmt = conn.prepareStatement(sql);
@@ -119,7 +119,7 @@ public class BlogDao implements BookMarkDao{
 				board.setBlog_title(rs.getString(3)); //제목
 				board.setBlog_content(rs.getString(4));//내용
 				board.setHits(rs.getInt(5));//조회수
-				board.setBlog_date(rs.getDate(6)); //날짜
+				board.setBlog_date(rs.getString(6)); //날짜
 				board.setBlog_filename(rs.getString(7)); //파일이름
 				
 				boardList.add(board);
@@ -171,7 +171,7 @@ public class BlogDao implements BookMarkDao{
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, a.blog_date, b.file_name "
+			String sql = "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, to_char(a.blog_date), b.file_name "
 					+ "from blog_board a left join blogfile b "
 					+ "on a.blog_no = b.blog_no "
 					+ "where a.blog_no = ?";
@@ -185,7 +185,7 @@ public class BlogDao implements BookMarkDao{
 				String blog_title = rs.getString("blog_title");
 				String blog_content = rs.getString("blog_content");
 				int hits = rs.getInt("hits");
-				java.sql.Date blog_date = rs.getDate("blog_date");
+				String blog_date = rs.getString("blog_date");
 				String file_name = rs.getString("file_name");
 				
 				board = new Blog_Board(blog_no, id, blog_title, blog_content, hits, blog_date, file_name);
@@ -375,7 +375,7 @@ public class BlogDao implements BookMarkDao{
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "select blog_reply_no,blog_no, id, refer, depth, step, reply_date, reply_content, del "
+			String sql = "select blog_reply_no,blog_no, id, refer, depth, step, to_char(reply_date), reply_content, del "
 					+ "from blog_reply";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -392,7 +392,7 @@ public class BlogDao implements BookMarkDao{
 				int refer = rs.getInt("refer");
 				int depth = rs.getInt("depth");
 				int step = rs.getInt("step");
-				java.sql.Date reply_date = rs.getDate("reply_date");
+				String reply_date = rs.getString("reply_date");
 				String reply_content = rs.getString("reply_content");
 				int del = rs.getInt("del");
 				
@@ -421,7 +421,7 @@ public class BlogDao implements BookMarkDao{
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "select blog_reply_no,blog_no, id, refer, depth, step, reply_date, reply_content, del "
+			String sql = "select blog_reply_no,blog_no, id, refer, depth, step, to_char(reply_date), reply_content, del "
 					+ "from blog_reply where id like ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchid+"%");
@@ -438,7 +438,7 @@ public class BlogDao implements BookMarkDao{
 				int refer = rs.getInt("refer");
 				int depth = rs.getInt("depth");
 				int step = rs.getInt("step");
-				java.sql.Date reply_date = rs.getDate("reply_date");
+				String reply_date = rs.getString("reply_date");
 				String reply_content = rs.getString("reply_content");
 				int del = rs.getInt("del");
 				
@@ -467,7 +467,7 @@ public class BlogDao implements BookMarkDao{
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "select blog_reply_no, id, refer, depth, step, reply_date, reply_content, del "
+			String sql = "select blog_reply_no, id, refer, depth, step, to_char(reply_date), reply_content, del "
 					+ "from blog_reply where blog_no = ?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -484,7 +484,7 @@ public class BlogDao implements BookMarkDao{
 				int refer = rs.getInt("refer");
 				int depth = rs.getInt("depth");
 				int step = rs.getInt("step");
-				java.sql.Date reply_date = rs.getDate("reply_date");
+				String reply_date = rs.getString("reply_date");
 				String reply_content = rs.getString("reply_content");
 				int del = rs.getInt("del");
 				

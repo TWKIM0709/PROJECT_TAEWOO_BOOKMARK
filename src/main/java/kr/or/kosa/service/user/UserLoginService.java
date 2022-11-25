@@ -39,17 +39,17 @@ public class UserLoginService implements Action {
 				request.getSession().setAttribute("admin", 1);
 			}
 			
-			if(request.getSession().getAttribute("admin")!=null) { //관리자일 경우
-				path = ""; //관리자 페이지
-			}else { //일반 회원일 경우
-				path = ""; //메인 페이지
-			}
+			path="main.do";
 			
 			forward.setRedirect(false);
 			forward.setPath(path);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			request.setAttribute("msg", "로그인에러");
+			request.setAttribute("url", "/homepage.html");
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		} 
 		return forward;
 	}
