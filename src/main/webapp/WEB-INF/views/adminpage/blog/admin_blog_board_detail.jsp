@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<jsp:include page="/WEB-INF/views/utils/include/admintop.jsp"></jsp:include>
+어드민 블로그 디테일
 </body>
 </html>

@@ -36,19 +36,19 @@
 					<h1 data-v-e67dcbb6="">
 						<a data-v-e67dcbb6="" href="main.do"><img data-v-e67dcbb6=""
 								src="https://d3udu241ivsax2.cloudfront.net/v3/images/common/millie-logo.3884f0c52e69f1f7322c2fd4778f4830.png"
-								alt="밀리의 서재"></a>
+								alt="갈피표"></a>
 					</h1>
 					<nav data-v-e67dcbb6="">
 						<ul data-v-e67dcbb6="" class="gnb">
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="" class="gtm-today">블로그</a></li>
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="" class="gtm-today">책</a></li>
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="" class="gtm-today">일정</a></li>
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="" class="gtm-today">팝업</a></li>
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="" class="gtm-today">문의사항</a></li>
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="" class="gtm-today">유저</a></li>
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="" class="gtm-today">결제내역</a></li>
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="" class="gtm-today">댓글</a></li>
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="" class="gtm-today">통계</a></li>
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="blogAlllist.do" class="gtm-today">블로그</a></li>
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="bookAlllist.do" class="gtm-today">책</a></li>
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="calendarall.do" class="gtm-today">일정</a></li>
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="popup.do" class="gtm-today">팝업</a></li>
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="question.do" class="gtm-today">문의사항</a></li>
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="userList.do" class="gtm-today">회원</a></li>
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="paymentAlllist.do" class="gtm-today">결제내역</a></li>
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="replylAllList.do" class="gtm-today">댓글</a></li>
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="statistics.do" class="gtm-today">통계</a></li>
 						</ul>
 					</nav>
 					<ul data-v-e67dcbb6="" class="util">
