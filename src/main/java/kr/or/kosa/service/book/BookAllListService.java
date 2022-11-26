@@ -18,6 +18,7 @@ public class BookAllListService implements Action {
 		ActionForward forward = new ActionForward();
 		String ps = "";
 		String cp = "";
+		String path = "";
 		try {
 			BookDao dao = new BookDao();
 			
@@ -59,8 +60,15 @@ public class BookAllListService implements Action {
 			request.setAttribute("booklist", booklist);
 			request.setAttribute("pager", pager);
 			
+			
+			//관리자 / 일반회원 세션 구분
+			if(request.getSession().getAttribute("admin") != null) {
+				forward.setPath("admin#");
+			}else {
+				forward.setPath("/WEB-INF/views/userpage/book/Search.jsp");
+			}
 			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/user/book_list.jsp");
+			//forward.setPath("/WEB-INF/views/user/book_list.jsp");
 		} catch (Exception e) {
 			
 		} 
