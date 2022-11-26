@@ -85,18 +85,17 @@ public class QuestionDao implements BookMarkDao{
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select * from"
-					+ "    (select rownum rn,question_no, id, question_title,question_content,hits,to_char(question_date),"
+					+ "    (select rownum rn,question_no, id, question_title,question_content,hits,to_char(question_date) as question_date,"
 					+ "    refer, depth, step, notice_no from"
-					+ "        ( SELECT * FROM question_board where ? like ? ORDER BY notice_no asc, refer DESC , step ASC )"
+					+ "        ( SELECT * FROM question_board where "+type+" like ? ORDER BY notice_no asc, refer DESC , step ASC )"
 					+ "    where rownum <= ?) where rn >= ?";
 			pstmt = conn.prepareStatement(sql);
 			int start = cpage * pagesize - (pagesize -1); //1 * 5 - (5 - 1) >> 1
 			int end = cpage * pagesize; // 1 * 5 >> 5
-			
-			pstmt.setString(1, type);
-			pstmt.setString(2, value);
-			pstmt.setInt(3, end);
-			pstmt.setInt(4, start);
+//			pstmt.setString(1, type);
+			pstmt.setString(1, "%" +value+"%");
+			pstmt.setInt(2, end);
+			pstmt.setInt(3, start);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -130,10 +129,10 @@ public class QuestionDao implements BookMarkDao{
 				int totalcount = 0;
 				try {
 					conn = ConnectionHelper.getConnection("oracle"); //연결객체
-					String sql = "select count(*) as cnt from question_board where ? like ?";
+					String sql = "select count(*) as cnt from question_board where "+type+" like ?";
 					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, type);
-					pstmt.setString(2, value);
+//					pstmt.setString(1, type);
+					pstmt.setString(1, "%"+value+"%");
 					rs = pstmt.executeQuery();
 					if(rs.next()) {
 						totalcount = rs.getInt("cnt");

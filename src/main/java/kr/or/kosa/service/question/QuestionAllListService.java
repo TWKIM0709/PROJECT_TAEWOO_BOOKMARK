@@ -54,7 +54,7 @@ public class QuestionAllListService implements Action {
 			List<Question_Board> qlist = qdao.getQuestionAllList(cpage, pagesize); // list >> 1 , 20
 			
 			int pagersize=3; //[1][2][3]
-			ThePager pager = new ThePager(totalboardcount,cpage,pagesize,pagersize,".do");
+			ThePager pager = new ThePager(totalboardcount,cpage,pagesize,pagersize,"question.do");
 			
 			
 			request.setAttribute("pagesize", pagesize);
