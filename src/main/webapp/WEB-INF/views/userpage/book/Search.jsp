@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <html lang="ko" class="" style="height: auto; overflow: visible;">
 
 <head>
@@ -34,6 +35,9 @@
         src="https://www.googletagmanager.com/gtag/js?id=G-3WR64L2XW1&amp;l=dataLayer&amp;cx=c"></script>
     <script async="" src="//static.ads-twitter.com/uwt.js"></script>
     <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+    <!-- 제이쿼리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--  -->
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script>
         var preload = {
@@ -342,7 +346,7 @@
                     <div data-v-28783d35="" data-v-02a040ec="" class="search-input search-index">
                         <article data-v-28783d35="" class="search-inner">
                             <!---->
-                            <div data-v-28783d35="" class="input-area"><button data-v-28783d35="" type="button"
+                            <div data-v-28783d35="" class="input-area"><button data-v-28783d35="" type="button" id="searchBtn" 
                                     class="mds-icon--searchbar mds-button mds-button--tertiary mds-button--flex mds-button--h56">
                                     <!----></button>
                                 <div data-v-28783d35=""
@@ -385,7 +389,7 @@
                                         class="gtm-search-suggest1">어서 오세요 휴남동 서점입니다</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
                                         href="/v3/search/result/밀리의 발견?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest2">밀리의 발견</a></li>
+                                        class="gtm-search-suggest2">태우의 발견</a></li>
                                 <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
                                         href="/v3/search/result/불편한 편의점2?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
                                         class="gtm-search-suggest3">불편한 편의점2</a></li>
@@ -445,7 +449,7 @@
                     </div>
                     <section data-v-02a040ec="" class="page category-wrap">
                         <h2 data-v-02a040ec="" class="title">검색 결과</h2>
-                        <ul data-v-02a040ec="" class="category-list">
+                        <ul data-v-02a040ec="" id="searchResultList" class="category-list">
                             <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
                                     href="bookDetail.do">
                                     <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">어서 오세요 휴남동 서점입니다</strong>
@@ -695,5 +699,112 @@
         style="display: none;" data-gtm-yt-inspected-9643057_1512="true" data-gtm-yt-inspected-9643057_2182="true"
         data-gtm-yt-inspected-18="true"></iframe>
 </body>
+	<script type="text/javascript">
+		$('#searchBtn').on("click", function(){
+			let inputtxt = $('#input-475').val(); //검색어
+			console.log(inputtxt);
+
+            //태그들 생성
+            let li = document.createElement("li");
+            let a = document.createElement("a");
+
+
+            //비동기
+            $.ajax({
+			url : "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/bookUserLikelist.do",
+			type : "get",
+		//	data : "id=abc&pwd=123",
+			data : { book_name: inputtxt,
+                    pagesize : "",
+                    cpage : "",
+                }, // 이 값을 가지고 servlet으로 간다.
+			dataType: 'JSON',
+		// 매우중요!!	
+			success : function(result) { // Ajax 목적 : result를 얻기 위함
+		//		alert('success');
+		//		alert(result);
+		//		alert(JSON.stringify(result));// 날린 데이터 확인
+		
+		//  1개 데이터
+		//		alert(result.str); 
+		
+		// 	여러개 데이터
+		//		alert(result.map.title); 		// 날린 데이터 확인
+		//		alert(result.map.content);
+		
+		//	Dto데이터 날리기
+		//		alert(result); // object날라옴
+		//		alert(JSON.stringify(result)); // json데이터 날라옴
+		//		alert(result.list);
+				alert(result.list[0].number); // 날린 데이터 확인
+				alert(result.list[0].name);
+		// for문과 foreach문 사용해서 데이터 전체를 뽑을 수 있다.		
+		
+			},
+			errer : function() {
+				alert('errer');
+			}
+		});
+
+
+
+
+
+            /*
+            //생성돼서 append된 태그들에 클래스, 속성 추가해주기
+			//$('#searchResultList').children().remove();
+            $('#searchResultList').empty();
+            $('#searchResultList').append(`<li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
+                                    href="bookDetail.do">
+                                    <div data-v-02a040ec=""  class="metadata"><strong id="hjtitle" data-v-02a040ec=""></strong>
+                                        <p data-v-02a040ec="" id="hjp"></p>
+                                    </div>
+                                    <div data-v-02a040ec="" class="bookcover">
+                                        <div data-v-02a040ec="" class="inner">
+                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
+                                                data-observe="true">
+                                                <picture data-v-96e558f2="">
+                                                    <source data-v-96e558f2="" id="hjpicture"
+                                                      
+                                                        type="image/webp"> <img data-v-96e558f2=""
+                                                        id="hjcover"
+                                                        alt=" 도서 썸네일" width="125"></picture>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a></li>`)
+            $('#hjtitle').append(inputtxt); //여기에 서비스에서 받아온 리스트의 제목, 작가, 사진 넣기
+            $('#hjp').append("저자 이름")   //for문으로 list길이만큼 태그 추가
+            $('#hjcover').attr("src","https:\/\/image.aladin.co.kr\/product\/24394\/98\/cover\/k612630314_1.jpg")
+            $('#hjpicture').attr("srcset","https:\/\/image.aladin.co.kr\/product\/24394\/98\/cover\/k612630314_1.jpg, https:\/\/image.aladin.co.kr\/product\/24394\/98\/cover\/k612630314_1.jpg 2x")
+
+            */
+
+            // src="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80"
+            //  srcset="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80 2x"
+            /*
+            <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
+                                    href="bookDetail.do">
+                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">어서 오세요 휴남동 서점입니다</strong>
+                                        <p data-v-02a040ec="">황보름</p>
+                                    </div>
+                                    <div data-v-02a040ec="" class="bookcover">
+                                        <div data-v-02a040ec="" class="inner">
+                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
+                                                data-observe="true">
+                                                <picture data-v-96e558f2="">
+                                                    <source data-v-96e558f2=""
+                                                        srcset="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80 2x"
+                                                        type="image/webp"> <img data-v-96e558f2=""
+                                                        src="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80"
+                                                        alt=" 도서 썸네일" width="125"></picture>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a></li>
+            */
+
+		})
+	</script>
 
 </html>
