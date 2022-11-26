@@ -29,12 +29,6 @@ public class UserIdCheckService implements Action {
 			} else { //사용 가능한 아이디
 				response.getWriter().print("true");
 			}
-//			boolean ok =true;
-//			PrintWriter out = response.getWriter();
-//			if(user) { //중복검사 중복됨
-//				ok = false;
-//			}
-//			out.print(ok);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

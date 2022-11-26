@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- /v3/login -->
 
-
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="apple-touch-icon" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="apple-touch-icon-precomposed" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="shortcut icon" type="image/png" href="https://www.millie.co.kr/favicon/android-icon.png">
@@ -937,8 +937,6 @@
                                             type="text" placeholder="ID입력"
                                             class="mds-input-field"></div> <button type="button" aria-label="내용 삭제"
                                         class="mds-icon--input-delete clear-button" style="display: none;"></button>
-                                    <!---->
-                                    <!---->
                                 </div>
                             </label>
                             <!---->
@@ -963,9 +961,9 @@
                         </div>
                         <!---->
                      </div>
-                    <div data-v-4174ad9d="" class="button-area mt16"><input data-v-4174ad9d="" type="submit"
+                    <div data-v-4174ad9d="" class="button-area mt16"><button data-v-4174ad9d="" type="button"
                             
-                            class="next-button mds-button mds-button--primary mds-button--h56 mds-button--r4" value="로그인"   ><!-- <span>로그인</span></button> -->
+                            class="next-button mds-button mds-button--primary mds-button--h56 mds-button--r4" value="로그인"  id="loginbtn" onclick="loginbtnevent()">로그인</button>
                     </div>
                     <ul data-v-4174ad9d="" class="login-sub-menu">
                         <li data-v-4174ad9d=""><a data-v-4174ad9d="" href="userJoin.do">회원가입</a></li>
@@ -983,6 +981,33 @@
         <!---->
         <!---->
     </div>
+    <script type="text/javascript">
+    	function loginbtnevent(){
+    		$.ajax({
+    			url : "userLoginOk.do" , 
+    			type : "POST",
+    			data : {id : $('#input-14').val(),
+    			password : $('#input-15').val()
+    			},
+    			datatype : "text",
+    			success : function(result){
+    				if(result == 0){
+    					alert('아이디없음');
+    				}else if(result == 1){
+    					alert('비밀번호가 올바르지 않습니다.')
+    				}else if(result ==2 ||result ==3){
+    					alert('로그인 성공');
+    					location.href="main.do";
+    				}else{
+    					alert("로그인 오류");
+    				}
+    			},
+				error : function (result){
+					alert("로그인 오류");
+				}
+    		});
+    	}
+    </script>
     <!-- <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/vendor.0be117fe15cd3682b23e.js"></script> -->
     <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/millie.b91a9f57d4b10d47052a.js"></script>
     <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>

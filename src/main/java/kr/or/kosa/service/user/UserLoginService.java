@@ -13,45 +13,38 @@ public class UserLoginService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward forward = new ActionForward();
+		ActionForward forward = null;
 		
 		String id = "";
 		String pwd = "";
-		
+		int ok=0;
 		String path = ""; //뷰 path
-		
+		PrintWriter out = null;
 		try {
 			UsersDao dao = new UsersDao();
-			PrintWriter out = response.getWriter();
+			out = response.getWriter();
 			
 			id = request.getParameter("id");
-			pwd = request.getParameter("passward");
+			pwd = request.getParameter("password");
 			
-			int ok = dao.userLogin(id, pwd);
+			ok = dao.userLogin(id, pwd);
 			
-			out.print(ok); //0:아이디 없음, 1:비밀번호틀림, 2:회원, 3:관리자
 			
 			//TODO: 로그인 실패시 redirect에서 로그인 실패 메시지 띄우고 다시 로그인 창 띄울 것 ? ? 이거 뷰가 나와봐야 알듯
 			
-			
-			request.getSession().setAttribute("id", id);
+			if(ok == 2 || ok == 3) {
+				request.getSession().setAttribute("id", id);
+			}
 			if(ok == 3) { //관리자면
 				request.getSession().setAttribute("admin", 1);
 			}
 			
-			path="main.do";
-			
-			forward.setRedirect(false);
-			forward.setPath(path);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("msg", "로그인에러");
-			request.setAttribute("url", "/homepage.html");
-			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
+			ok=4;
 		} 
-		return forward;
+			out.print(ok); //0:아이디 없음, 1:비밀번호틀림, 2:회원, 3:관리자, 4:error
+		return null;
 	}
 
 }
