@@ -257,34 +257,39 @@ public class UsersDao implements BookMarkDao{
 	}
 	//회원like조회
 	//select * from users where [type] like '[value]'
-	public List<Users> getUserListByLike(String type, String value){
+	//221126 페이징 추가
+	public List<Users> getUserListByLike(String type, String value, int cpage, int pagesize){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Users> userlist = new ArrayList<Users>();
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "select "
-					+ "u.id, u.password, u.name, u.state, d.addr, "
-					+ "d.detail_addr, d.regist_no, d.phone "
-					+ "from users u join user_detail d on u.id = d.id "
-					+ "where " + type +" like  '%'||?||'%'";
+			String sql = "select * from "
+					+ "(select rownum rn, u.id, u.password, u.name, u.state, d.addr, d.detail_addr, d.regist_no, d.phone "
+					+ "from users u left join user_detail d on u.id = d.id where name like ?) "
+					+ "where rn >= ? and rn <=?";
+			
+			int start = cpage*pagesize - (pagesize-1); //1*5 - (5-1) >> 1
+			int end = cpage * pagesize; //1*5 >> 5
 			
 			pstmt = conn.prepareStatement(sql);
 //			pstmt.setString(1, type);
-			pstmt.setString(1, value);
+			pstmt.setString(1, "%" + value + "%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				Users user = new Users();
-				user.setId(rs.getString(1));
-				user.setPassword(rs.getString(2));
-				user.setName(rs.getString(3));
-				user.setState(rs.getInt(4));
-				user.setAddr(rs.getString(5));
-				user.setDetail_addr(rs.getString(6));
-				user.setRegist_no(rs.getString(7));
-				user.setPhone(rs.getString(8));
+				user.setId(rs.getString(2));
+				user.setPassword(rs.getString(3));
+				user.setName(rs.getString(4));
+				user.setState(rs.getInt(5));
+				user.setAddr(rs.getString(6));
+				user.setDetail_addr(rs.getString(7));
+				user.setRegist_no(rs.getString(8));
+				user.setPhone(rs.getString(9));
 				userlist.add(user);
 			}
 		} catch (Exception e) {
@@ -298,6 +303,29 @@ public class UsersDao implements BookMarkDao{
 		}
 		return userlist;
 	}
+	//like검색 총 건수 구하기
+	public int totalUserCountByLike(String type, String value) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int totalcount = 0;
+		try {
+			conn = ConnectionHelper.getConnection("oracle");
+			String sql = "select count(*) as cnt from users where " + type + " like ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + value + "%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalcount = rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("totalUserCountByLike 예외 : " + e.getMessage());
+		}
+		return totalcount;
+	}
+	
 	//회원 조회
 	//select * from users where id=[아이디]
 	public Users getUserById(String id){
