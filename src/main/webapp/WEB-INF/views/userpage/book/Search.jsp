@@ -711,7 +711,7 @@
 
             //비동기
             $.ajax({
-			url : "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/bookUserLikelist.do",
+			url : "bookUserLikelist.do",
 			type : "get",
 		//	data : "id=abc&pwd=123",
 			data : { book_name: inputtxt,

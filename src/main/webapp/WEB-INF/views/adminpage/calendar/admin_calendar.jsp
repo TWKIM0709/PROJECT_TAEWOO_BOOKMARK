@@ -155,6 +155,16 @@
 					data :{
 						"calendar_start" : $('#startdate').val(),
 						"calendar_end" : $('#enddate').val(),
+						"calendar_content" : $('#title').val()
+					},
+					success : function(result){
+						if(result == 1){ // 글쓰기 성공
+							
+						} else { //글쓰기 실패
+							
+						}
+					},
+					error:function(result){
 						
 					}
 				});
