@@ -223,6 +223,9 @@ public class PaymentDao implements BookMarkDao{
 			return allpaymentlist;
 		}
 		
+		//비동기 
+		
+		
 		//결제 추가
 		public int insertPayment(List<Book_Payment> list, String id) {
 			Connection conn = ConnectionHelper.getConnection("oracle");

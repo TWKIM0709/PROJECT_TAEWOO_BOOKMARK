@@ -49,7 +49,7 @@ public class ReplyAllListService extends HttpServlet {
 					json.put("step", reply.getStep());
 					jsonary.add(json);
 				}
-				if(list!=null) {
+				if(list != null) {
 					jsonobj.put("RESULT", "success");
 				} else {
 					jsonobj.put("RESULT", "fail");

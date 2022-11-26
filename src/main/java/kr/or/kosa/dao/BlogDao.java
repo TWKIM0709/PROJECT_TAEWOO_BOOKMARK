@@ -375,7 +375,7 @@ public class BlogDao implements BookMarkDao{
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "select blog_reply_no,blog_no, id, refer, depth, step, to_char(reply_date), reply_content, del "
+			String sql = "select blog_reply_no,blog_no, id, refer, depth, step, to_char(reply_date) as reply_date , reply_content, del "
 					+ "from blog_reply";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -518,7 +518,7 @@ public class BlogDao implements BookMarkDao{
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "insert into blog_reply(blog_reply_no, blog_no, id, refer, reply_content, del)"
-					+ " values(blog_reply_no_seq.nextval,?,?,?,?)";
+					+ " values(blog_reply_no_seq.nextval,?,?,?,?,?)";
 			//blog__reply_no_ 에 seq 추가 (11.21 김태우)
 			pstmt = conn.prepareStatement(sql);
 			
