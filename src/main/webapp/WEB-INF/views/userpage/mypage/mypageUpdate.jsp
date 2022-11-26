@@ -377,7 +377,7 @@
 						</div>
 					</div>
 					<div data-v-9baa251e="" class="inner-content">
-						<p data-v-9baa251e="" class="sign-up-mark phone">휴대폰 계정 회원</p>
+				<!-- 
 						<div data-v-9baa251e="" class="picture-box">
 							<div data-v-9baa251e="" class="inner">
 								<div data-v-9baa251e="" class="image-box"
@@ -387,17 +387,19 @@
 								<button data-v-9baa251e="" type="button"
 									class="picture-remove-button">사진 삭제</button>
 							</div>
-						</div>
+						</div> -->
+						<br>
+						<br>
 						<div data-v-9baa251e="" class="input-item">
 							<p data-v-9baa251e="" class="tit">
-								필명<span data-v-9baa251e="">*</span>
+							 아이디<span data-v-9baa251e="">*</span>
 							</p>
 							<div data-v-9baa251e="" class="input-group">
 								<div data-v-9baa251e="" class="input-box">
-									<input data-v-9baa251e="" type="text" placeholder="필명 입력"
-										class="input-text">
+									<input data-v-9baa251e="" type="text" placeholder="아이디 입력"disabled="disabled"
+										class="input-text"  >
 								</div>
-								<button data-v-9baa251e="" type="button" class="button">중복확인</button>
+							
 							</div>
 							<span data-v-9baa251e="" class="exp">욕설, 비속어 사용 시 서비스 이용이
 								제한될 수 있습니다.</span>
@@ -410,11 +412,12 @@
 							</p>
 							<div data-v-9baa251e="" class="input-group">
 								<div data-v-9baa251e="" class="input-box">
-									<input data-v-9baa251e="" type="tel"
-										placeholder="휴대폰 번호 입력 (‘-’ 제외)" disabled="disabled"
+									<input data-v-9baa251e="" type="number" 
+									maxlength="11" oninput="maxLengthChk(this)" placeholder="01012345678" pattern="\d*" maxlength="6"
+										placeholder="휴대폰 번호 입력 (‘-’ 제외)" 
 										class="input-text">
 								</div>
-								<button data-v-9baa251e="" type="button" class="button">수정하기</button>
+							
 							</div>
 							<!---->
 						</div>
@@ -424,30 +427,61 @@
 							</p>
 							<div data-v-9baa251e="" class="input-group">
 								<div data-v-9baa251e="" class="input-box">
-									<input data-v-9baa251e="" type="password" id="input-password"
-										placeholder="● ● ● ● ● ● ● ●" disabled="disabled"
+									<input data-v-9baa251e="" type= type="text" id="id" name="wr_2" onkeyup="PwdCheck(this)"
+									placeholder="비밀번호 입력" id="input-password"
+										 
 										class="input-text tooltip1">
 									<!---->
 								</div>
-								<button data-v-9baa251e="" type="button" class="button">수정하기</button>
+				
 							</div>
 						</div>
 						<!---->
 						<div data-v-9baa251e="" class="input-item">
-							<p data-v-9baa251e="" class="tit">이메일</p>
-							<div data-v-9baa251e="" class="input-group">
-								<div data-v-9baa251e="" class="input-box">
-									<input data-v-9baa251e="" type="text" placeholder="이메일 주소 입력"
-										disabled="disabled" class="input-text">
+							<p data-v-9baa251e="" class="tit">우편번호<span data-v-9baa251e="">*</span></p>
+							<div data-v-9baa251e="" class="input-group"> 
+								<div data-v-9baa251e="" class="input-box"></div>
+									<input data-v-9baa251e="" type="text" placeholder="우편번호 입력" id="zipcode"  readonly
+									
+										 class="input-text"> <position: absolute>  <button type="button" value="우편번호찾기" onclick = "kakaopost()" >우편번호찾기</button></position:>
+										
 								</div>
 								<!---->
 								<!---->
-								<button data-v-9baa251e="" type="button" class="button">수정하기</button>
+					
 							</div>
 							<!---->
 							<!---->
 							<!---->
 						</div>
+						<div data-v-9baa251e="" class="input-item">
+							<p data-v-9baa251e="" class="tit">
+							 주소<span data-v-9baa251e="">*</span>
+							</p>
+							<div data-v-9baa251e="" class="input-group">
+								<div data-v-9baa251e="" class="input-box">
+									<input data-v-9baa251e="" type="text" placeholder="주소 입력" 
+										readonly class="input-text"  >
+								</div>
+								</div>
+								</div>
+								<!---->
+							<!---->
+							<!---->
+								<div data-v-9baa251e="" class="input-item">
+							<p data-v-9baa251e="" class="tit">
+							 상세주소<span data-v-9baa251e="">*</span>
+							</p>
+							<div data-v-9baa251e="" class="input-group">
+								<div data-v-9baa251e="" class="input-box">
+									<input data-v-9baa251e="" type="text" placeholder="상세주소 입력"
+										class="input-text"  >
+								</div>
+								</div>
+								</div>
+								<!---->
+							<!---->
+							<!---->
 						<hr data-v-9baa251e="" class="line">
 						<div data-v-9baa251e="">
 							<input data-v-9baa251e="" type="checkbox" id="checkbox"
@@ -475,6 +509,23 @@
 		<!---->
 		<!---->
 	</div>
+	<script type="text/javascript">
+	//숫자 글자수 제한
+  function maxLengthChk(object){
+    if (object.value.length > object.maxLength){
+      object.value = object.value.slice(0, object.maxLength);
+    }    
+  }
+//비밀번호 정규식
+  function PwdCheck(obj){
+  	var passwordRule = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
+  	
+  	if( passwordRule.test(obj.value) ){
+  		alert("영문, 숫자, 특수문자를 포함 8자리를 입력해주세요.");
+  		obj.value = obj.value.substring( 0 , obj.value.length - 1 ); // 입력한 특수문자 한자리 지움
+  		}
+  	}
+</script>
 	<script async=""
 		src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
 	<script async=""
