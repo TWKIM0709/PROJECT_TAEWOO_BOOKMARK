@@ -9,33 +9,105 @@ import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.BookDao;
 import kr.or.kosa.dto.Book;
+import kr.or.kosa.utils.ThePager;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 public class BookLikeListService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
+		JSONObject json = new JSONObject();
+		JSONArray jsonary = new JSONArray();
+		JSONObject jsonobj = new JSONObject();
 		
-		String name = request.getParameter("name");
+		String name = request.getParameter("book_name");
+		String ps = "";
+		String cp = "";
 		try {
 			BookDao dao = new BookDao();
 			
-			List<Book> booklist = dao.BookLikeList(name);
+			int count = dao.BooklikeListCount(name);
 			
-			request.setAttribute("booklist", booklist);
+			ps = request.getParameter("pagezise");
+			cp = request.getParameter("cpage");
+			
+			if(ps ==null || ps.trim().equals("")) {
+				ps = "5";
+			}
+			
+			if(cp==null || cp.trim().equals("")) {
+				cp="1";
+			}
+			
+			int pagesize = Integer.parseInt(ps);
+			int cpage = Integer.parseInt(cp);
+			int pagecount = 0;
+			if (count % pagesize == 0) {
+				pagecount = count / pagesize; // 20 << 100/5
+			} else {
+				pagecount = (count / pagesize) + 1;
+			}
+			
+			List<Book> booklist = dao.BookLikeList(name, cpage, pagesize);
+			
+			int pagersize = 3;
+			ThePager pager = new ThePager(count, cpage, pagesize, pagersize, "BookLikeList.do");
+			
+			
+			//for문으로 list를 json에 넣기
+			//ISBN, AUTHOR, BOOK_NAME, DESCRIPTION, PRICE, BOOK_FILENAME, FILE_NAME
+			for(Book b : booklist) {
+				json.put("isbn",  b.getIsbn());
+				json.put("author", b.getAuthor());
+				json.put("description", b.getDescription());
+				json.put("price", b.getPrice());
+				json.put("book_filename", b.getBook_filename());
+				json.put("file_name", b.getFile_name());
+				
+				jsonary.add(json);
+			}
+			
+			jsonobj.put("RESULT", "success");
+			
+			jsonobj.put("pagesize", pagesize);
+			jsonobj.put("cpage", cpage);
+			jsonobj.put("pagecount", pagecount);
+			jsonobj.put("count", count);
+			
+			json.put("pager", pager.toString());
+			
+			jsonobj.put("booklist", jsonary);
+			
+			
+			
+//			request.setAttribute("pagesize", pagesize);
+//			request.setAttribute("cpage", cpage);
+//			request.setAttribute("pagecount", pagecount);
+//			request.setAttribute("count", count);
+//			request.setAttribute("booklist", booklist);
+//			request.setAttribute("pager", pager);
 			
 			if(request.getSession().getAttribute("admin") != null) {
 				forward.setPath("admin#");
 			}else {
-				forward.setPath("/WEB-INF/views/userpage/book/Search.html");
+				forward.setPath("/WEB-INF/views/userpage/book/Search.jsp");
 			}
 			
 			forward.setRedirect(false);
 			
 		} catch (Exception e) {
+			jsonobj.put("RESULT", "fail");
 			e.printStackTrace();
 		} 
-		return forward;
+		try {
+			response.getWriter().print(jsonobj);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return null; //비동기
 	}
 
 }

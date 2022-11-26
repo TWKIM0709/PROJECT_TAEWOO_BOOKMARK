@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="ko" class="">
 <head>
@@ -315,41 +318,26 @@
                     </ul>
                     <p data-v-0807f0e5="" class="menu-title">서비스 관리</p>
                     <ul data-v-0807f0e5="">
-                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/v3/mileage" class="">구매내역 관리</a></li>
-                        <!---->
+                       
+                        <!---->	
                         <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/v3/viewer" class="">내 e-book 관리</a>
                         </li>
-                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/v3/device" class="">내 블로그 관리</a></li>
+                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/ebookList.do" class="">내 블로그 관리</a></li>
                     </ul>
                     <p data-v-0807f0e5="" class="menu-title">서비스 안내</p>
                     <ul data-v-0807f0e5="">
-                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/팝업 공지사항 띄워준다">공지사항</a>
-                        </li>
-                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/v3/terms/list">약관 및 정책 / 이용 동의</a></li>
-                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/v3/customer?nav_hidden=y">고객센터</a></li>
+                     
+                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/userWithdraw.do">회원탈퇴</a></li>
                     </ul>
                 </div>
-                <div data-v-0807f0e5="" class="share-list">
-                    <p data-v-0807f0e5="" class="menu-title">공유</p>
-                    <div data-v-0807f0e5="">
-                        <p data-v-0807f0e5="">친구 초대</p>
-                        <ul data-v-0807f0e5="">
-                            <li data-v-0807f0e5="" class="kakao"><a data-v-0807f0e5="" href="javascript:"
-                                    target="_blank">카카오톡 공유</a></li>
-                            <li data-v-0807f0e5="" class="facebook"><a data-v-0807f0e5="" href="javascript:">페이스북 공유</a>
-                            </li>
-                            <li data-v-0807f0e5="" class="twitter"><a data-v-0807f0e5=""
-                                    href="http://twitter.com/intent/tweet?text=밀리의서재&amp;url=https://www.millie.co.kr/"
-                                    target="_blank">트위터 공유</a></li>
-                        </ul>
-                    </div>
-                </div>
+                
                 <div data-v-0807f0e5="" class="btn-area"><button data-v-0807f0e5="" type="button"
-                        class="logout">로그아웃</button></div>
+                        class="logout"><a href="homepage.html">로그아웃</a></button></div>
+                        
             </div>
         </section>
        
-    </div>
+    </div><%-- 
     <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/millie.b91a9f57d4b10d47052a.js"></script>
     <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
     <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-NTPPL2M"></script>
@@ -434,7 +422,7 @@
         <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
             <div></div>
         </div>
-    </div>
+    </div> --%>
 </body>
 
 </html>

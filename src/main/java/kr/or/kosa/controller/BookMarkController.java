@@ -221,7 +221,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동+처리
     		action = new BookDetailService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/bookLike")) { //28.회원 - 책 좋아요 기능
+    	} else if(url_Command.equals("/bookLike.do")) { //28.회원 - 책 좋아요 기능
     		// 처리(비동기)
     		action = new BookLikeService();
     		forward = action.execute(request, response);
@@ -432,6 +432,11 @@ public class BookMarkController extends HttpServlet {
     		// 이동+처리
     		action = new PopupDetailService();
     		forward = action.execute(request, response);
+    	} else if(url_Command.equals("/replyAllList.do")) { //74 관리자 - 전체 댓글 확인
+    		// 이동+처리
+    		forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/adminpage/admin_reply_list.jsp");
     	}
     	 
     	//=================================================================//

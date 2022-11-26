@@ -64,6 +64,7 @@ public class ReplyWriteService extends HttpServlet {
 				Book_Reply bookreply = new Book_Reply();
 				String isbn = request.getParameter("isbn");
 				String content = request.getParameter("reply_content");
+//				String id = request.getParameter("id");
 				String id = (String)request.getSession().getAttribute("id");
 				
 				bookreply.setIsbn(isbn);
