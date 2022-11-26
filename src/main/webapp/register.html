@@ -205,30 +205,6 @@
             z-index: 1
         }
     </style>
-    <script src="https://connect.facebook.net/ko_KR/sdk.js?hash=43a6dcb3242ddd38066c9c4fe0a68b68" async=""
-        crossorigin="anonymous"></script>
-    <script async="true" type="text/javascript"
-        src="https://sslwidget.criteo.com/event?a=55644&amp;v=5.12.3&amp;p0=e%3Dexd%26site_type%3Dd&amp;p1=e%3Dvh&amp;p2=e%3Ddis&amp;adce=1&amp;bundle=rdahEV95MUU4clk0aUk2JTJCWHpOWUg3NzF6SEIzMnVyRTdzYUcwRjQwY2w1WEhnZE5QN2lPUnBYajBOcDBlSSUyRjZXbXVsZlNiV1lTS2hzJTJGMCUyQmNJaWxXSUlDQXhRaWd3dTZlNHNRR3gxNFU1cXlUYkZlSVFVYSUyQmVOWXlkd09CRFN1Z1FtWmtVS2xlSFZVQjdNVktySjJOTDM2MldnJTNEJTNE&amp;tld=millie.co.kr&amp;fu=https%253A%252F%252Fwww.millie.co.kr%252Fv3%252Fjoin&amp;pu=https%253A%252F%252Fwww.millie.co.kr%252Fv3%252Fbrand%252Fupdate&amp;dtycbr=62622"
-        data-owner="criteo-tag"></script>
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script type="text/javascript" async=""
-        src="https://www.googletagmanager.com/gtag/js?id=G-3WR64L2XW1&amp;l=dataLayer&amp;cx=c"></script>
-    <script async="" src="//static.ads-twitter.com/uwt.js"></script>
-    <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script type="text/javascript" async=""
-        src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1&amp;l=dataLayer&amp;cx=c"></script>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1" rel="preconnect" charset="utf-8">
-    </script>
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/mds-icon-v3.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Regular.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Bold.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/NotoSerifKR-Black.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <script charset="utf-8" src="https://d3udu241ivsax2.cloudfront.net/v3/js/3.5df2a7676bf066038084.js"></script>
     <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/login~resolution.f7b7a1694c2b0591f7a5.css">
     <script charset="utf-8" src="https://d3udu241ivsax2.cloudfront.net/v3/js/login~resolution.97d517a9ac3a32eb5411.js">
@@ -269,7 +245,7 @@
         }
 
         .fb_invisible {
-            display: none
+            display:none
         }
 
         .fb_reset {
@@ -939,52 +915,47 @@
                                      <div class="input"><span id="input-14-label" class="label">ID
                                             <!----></span> <input autocomplete="off" name="id"
                                             aria-labelledby="input-14-label" aria-errormessage="input-14-message"
-                                           type="text" id="id" name="wr_2" onkeyup="IDCheck(this)"
+                                           type="text" id="id" name="wr_2" onkeyup="IDCheck(this)" onkeydown="registck()"
                                             placeholder="ID 입력" class="mds-input-field" maxlength="50">
                                             </div>
                                 </div>
-                                       
-                   
                                        	<!-- 	<button style="position:absolute;top:30%;left:81%;"value="중복체크" onclick = "idck()" >중복체크</button> -->
-                                       		<span style="position:absolute;top:30%;left:81%;"value="중복체크" onclick = "idck()" >	중복체크</span>
+                                       		<span style="position:absolute;top:30%;left:81%; cursor:hand; "value="중복체크"  id="idck"  >	중복체크</span>
                                     	
                                     	<script>
-	$('.input_id').focusout(function(){
-		let userId = $('.input_id').val(); // input_id에 입력되는 값
-		
-		$.ajax({
-			url : "IdCheckService",
-			type : "post",
-			data : {userId: userId},
-			dataType : 'json',
-			success : function(result){
-				if(result == 0){
-					$("#checkId").html('사용할 수 없는 아이디입니다.');
-					$("#checkId").attr('color','red');
-				} else{
-					$("#checkId").html('사용할 수 있는 아이디입니다.');
-					$("#checkId").attr('color','green');
-				} 
-			},
-			error : function(){
-				alert("서버요청실패");
-			}
-		})
-		 
-	})
+						$('#idck').click(function(){
+							let userId = $('#id').val(); 
+							console.log(userId);
+							$.ajax({
+								url : "userIdCheck.do",
+								type : "post",
+								data : {"id": userId},
+								dataType : 'text',
+								success : function(result){
+									console.log(result);
+									if(result == "false"){
+										alert("이미 있는 아이디입니다.")
+									}else if($('#id').val().length < 6 ){
+										 alert("아이디는 6글자 이상이어야 합니다.")
+									}
+									else {
+										alert("사용 가능한 아이디입니다.");
+									} 
+								},
+								error : function(){
+									alert("서버요청실패");
+								}
+							})
+							 
+						})
  </script>
-                                    	
-                                    	
+                                    	<!-- 
                                     	<script type="text/javascript">
                                     		function idck(){
-
                                     			alert('실행됨');
-                                    			
-                                    			
                                     			return false;
-                                    			
                                     		}
-                                    	</script>
+                                    	</script> -->
                             </label>
                             <!---->
                         </div>
@@ -994,10 +965,11 @@
                                 <div class="inner">
                                     <!---->
                                     <div class="input"><span id="input-14-label" class="label">비밀번호
-                                            <!----></span> <input autocomplete="off" id="input-14"
+                                            <!----></span> <input autocomplete="off" id="password"  oninput="PwdCheck(this)"
                                             aria-labelledby="input-14-label" aria-errormessage="input-14-message" name="password"
-                                            type= type="text" id="id" name="wr_2" onkeyup="PwdCheck(this)"
-                                            placeholder="비밀번호 입력" class="mds-input-field"></div> <button
+
+                                            type="password" placeholder="비밀번호 입력" class="mds-input-field" onkeydown="registck()"></div> <button
+
                                         type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
                                         style="display: none;"></button>
                                     <!---->                                
@@ -1006,15 +978,16 @@
                             </label>
                             <!---->
                         </div>
+                        <span id="passwordcktext"></span>
                     </div>
                         <div data-v-6e5aa5a2="" class="input-item fade-in">
                         <div data-v-6e5aa5a2="" class="mds-input input mds-input--default mds-input--left"><label>
                                 <div class="inner">
                                     <!---->
                                     <div class="input"><span id="input-14-label" class="label">이름
-                                            <!----></span> <input autocomplete="off" id="input-14"
+                                            <!----></span> <input autocomplete="off" id="name"
                                             aria-labelledby="input-14-label" aria-errormessage="input-14-message" name="name"
-                                            type="text" id="wr_2" name="wr_2" onkeyup="CharacterCheck(this)" onkeydown="CharacterCheck(this)"
+                                            type="text" id="wr_2" name="wr_2" onkeyup="CharacterCheck(this)" onkeydown="registck()"
                                             maxlength='8' placeholder="이름 입력" class="mds-input-field"></div> <button
                                         type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
                                         style="display: none;"></button>
@@ -1050,7 +1023,7 @@
                                     <div class="input"><span id="input-14-label" class="label">주소
                                             <!----></span> <input autocomplete="off" 
                                             aria-labelledby="input-14-label" aria-errormessage="input-14-message" name="detail_addr1"
-                                            type="text" placeholder="주소 입력" class="mds-input-field" id="address"></div> <button
+                                            type="text" placeholder="주소 입력" class="mds-input-field" id="address" readonly></div> <button
                                         type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
                                         style="display: none;"></button>
                                     <!---->                                
@@ -1066,15 +1039,10 @@
                                     <!---->
                                     <div class="input"><span id="input-14-label" class="label">상세주소
                                             <!----></span> <input autocomplete="off" id="input-14"
-                                            aria-labelledby="input-14-label" aria-errormessage="input-14-message"name="detail_addr2"
-                                            type="text" placeholder="상세주소 입력" class="mds-input-field" ></div> <button
-                                        type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
-                                        style="display: none;"></button>
-                                    <!---->                                
-                                    <!---->
+                                            aria-labelledby="input-14-label" aria-errormessage="input-14-message" name="detail_addr2"
+                                            type="text" placeholder="상세주소 입력" class="mds-input-field"  id="detailaddress"></div> 
                                 </div>
                             </label>
-                            <!---->
                         </div>
                     </div>
                     <div data-v-6e5aa5a2="" class="input-item fade-in">
@@ -1085,10 +1053,10 @@
                                         <div class="inner">
                                             <!---->
                                             <div class="input"><span id="input-15-label" class="label">생년월일, 성별
-                                                    <!----></span> <input autocomplete="off" id="input-15" name="register_no"
-                                                    aria-labelledby="input-15-label"
+                                                    <!----></span> <input autocomplete="off" name="register_no"
+                                                    aria-labelledby="input-15-label" onkeyup="registck()"
                                                     aria-errormessage="input-15-message"  type="number" maxlength="6" oninput="maxLengthChk(this)"
-                                                    placeholder="생년월일" pattern="\d*" class="mds-input-field"  pattern="\d*" maxlength="6"></div>
+                                                    placeholder="생년월일" pattern="\d*" class="mds-input-field"  pattern="\d*" maxlength="6" id="regist_no"></div>
                                             <!---->
                                             <!---->
                                             <!---->
@@ -1104,7 +1072,7 @@
                                             <!---->
                                             <div class="input">
                                                 <!----> <input autocomplete="off" id="input-16"
-                                                    aria-labelledby="input-16-label" 
+                                                    aria-labelledby="input-16-label"  onkeydown="registck()"
                                                     aria-errormessage="input-16-message" type="number"maxlength="1" oninput="maxLengthChk(this)" placeholder="0"
                                                     pattern="\d*" class="mds-input-field"></div>
                                             <!---->
@@ -1125,9 +1093,9 @@
                                 <div class="inner">
                                     <!---->
                                     <div class="input"><span id="input-18-label" class="label">휴대폰 번호
-                                            <!----></span> <input autocomplete="off" id="input-18"
+                                            <!----></span> <input autocomplete="off" id="phone"  onkeydown="registck()"
                                             aria-labelledby="input-18-label" aria-errormessage="input-18-message" name="phone"
-                                            type="number" maxlength="11" oninput="maxLengthChk(this)" placeholder="01012345678" pattern="\d*" maxlength="6"
+                                            type="number" maxlength="11" oninput="maxLengthChk(this)" placeholder="01012345678" pattern="\d*" 
                                             class="mds-input-field"></div> <button type="button" aria-label="내용 삭제"
                                         class="mds-icon--input-delete clear-button" style="display: none;"></button>
                                     <!---->
@@ -1140,17 +1108,29 @@
                  
                     <div data-v-6e5aa5a2="" class="button-area"><input data-v-6e5aa5a2="" type="submit"
                  
-                            class="next-button mds-button mds-button--primary mds-button--h56 mds-button--r4" value="회원가입">
+                            class="next-button mds-button mds-button--primary mds-button--h56 mds-button--r4" value="회원가입" id="register" disabled >
                     </div>
               </form>
                 </div>
             </div>
         </section>
-        <!---->
-        <!---->
-        <!---->
-        <!---->
+      
     </div>
+<script>
+    	 function registck(){
+    		 console.log('실행됨');
+			console.log( $("#regist_no").val().length);
+    		if($("#id").val()=='' || !pwck || $("#name").val()=='' || $("#zipcode").val()==''
+    				|| $("#address").val()=='' || $("#detailaddress").val()==''|| $("#regist_no").val().length != 6  || $("#phone").val().length != 10 ){
+    			$("#register").attr("disabled",true);
+    		}else{
+    			$("#register").attr("disabled",false);
+    		}
+    		
+    	}
+    </script>
+
+    
     <!-- <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/vendor.0be117fe15cd3682b23e.js"></script>
     <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/millie.b91a9f57d4b10d47052a.js"></script> -->
     <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
@@ -1232,11 +1212,14 @@
     if (object.value.length > object.maxLength){
       object.value = object.value.slice(0, object.maxLength);
     }    
+    
   }
   
 </script>
     <script>
-// 이름에 특수문자 입력 방지
+
+    let pwck = false;
+// 특수문자 입력 방지
 function CharacterCheck(obj){
 var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; 
 
@@ -1245,7 +1228,7 @@ if( regExp.test(obj.value) ){
 	obj.value = obj.value.substring( 0 , obj.value.length - 1 ); 
 	}
 }
-//아이디정규식
+
 function IDCheck(obj){
 	var idReg = /^[A-za-z0-9]*$/g;
 
@@ -1253,16 +1236,67 @@ function IDCheck(obj){
 		alert("한글 및 특수문자는 입력하실수 없습니다.");
 		obj.value = obj.value.substring( 0 , obj.value.length - 1 ); // 입력한 특수문자 한자리 지움
 		}
-	}
-//비밀번호 정규식
+
+}
+
 function PwdCheck(obj){
-	var passwordRule = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
-	
-	if( !passwordRule.test(obj.value) ){
-		alert("영문, 숫자, 특수문자를 포함 8자리를 입력해주세요.");
-		obj.value = obj.value.substring( 0 , obj.value.length - 1 ); // 입력한 특수문자 한자리 지움
+	var idReg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
+	if( !idReg.test(obj.value) ){
+
+		$('#passwordcktext').text('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
+		pwck = false;
+		//obj.value = obj.value.substring( 0 , obj.value.length - 1 ); // 입력한 특수문자 한자리 지움
+		} else {
+			pwck= true;
+	    	$('#passwordcktext').text('올바른 비밀번호입니다.');
+
 		}
 	}
+
+function checkPw() {
+    let id = $("#id").val();
+    let pw = $("#password").val();
+    let number = pw.search(/[0-9]/g);
+    let english = pw.search(/[a-z]/ig);
+    let spece = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+    let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
+    if (pw.length < 8 || pw.length > 20) {
+    	$('#passwordcktext').text("8자리 ~ 20자리 이내로 입력해주세요.");
+        pwck = false;
+
+    } else if (pw.search(/\s/) != -1) {
+    	$('#passwordcktext').text("비밀번호는 공백 없이 입력해주세요.");
+        pwck = false;
+
+    } else if (number < 0 || english < 0 || spece < 0) {
+    	$('#passwordcktext').text("영문,숫자,특수문자를 혼합하여 입력해주세요.");
+        pwck = false;
+
+    } else if ((number < 0 && english < 0) || (english < 0 && spece < 0) || (spece < 0 && number < 0)) {
+    	$('#passwordcktext').text("영문,숫자, 특수문자 중 2가지 이상을 혼합하여 입력해주세요.");
+        pwck = false;
+
+    } else if (/(\w)\1\1\1/.test(pw)) {
+    	$('#passwordcktext').text('같은 문자를 4번 이상 사용하실 수 없습니다.');
+        pwck = false;
+
+    
+    } else {
+    	$('#passwordcktext').text("비밀번호가 정상적으로 입력되었습니다.");
+        pwck = true;
+    }
+
+    if (false === reg.test(pw)) {
+    	$('#passwordcktext').text('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
+        pwck = false;
+    } else {
+    	$('#passwordcktext').text("비밀번호가 정상적으로 입력되었습니다.");
+        pwck = true;
+    }
+
+}
 	</script>
     <!-- <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/vendor.0be117fe15cd3682b23e.js"></script>
     <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/millie.b91a9f57d4b10d47052a.js"></script> -->

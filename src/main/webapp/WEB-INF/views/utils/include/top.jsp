@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%><html lang="ko" class="">
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	<html>
 <head>
 	<meta charset="UTF-8">
@@ -56,8 +58,7 @@
 									data-v-e67dcbb6="" class="mds-icon--alarm-2"></i> <span data-v-e67dcbb6=""
 									class="alarm-icon">N</span></a></li>
 
-						<li data-v-e67dcbb6="" class="sign sign-in"><a data-v-e67dcbb6="" href="homepage.html"
-								class="">로그아웃</a></li>
+						<li data-v-e67dcbb6="" class="sign sign-in"  onclick="logout()">로그아웃</li>
 					</ul>
 				</header>
 			</div>
@@ -65,4 +66,10 @@
 	<div id="wp_tg_cts" style="display: block;"></div>
 	<!-- Code injected by live-server -->
 </body>
+<script type="text/javascript">
+	function logout(){
+		sessionStorage.clear();
+		location.href="homepage.html";
+	}
+</script>
 </html>
