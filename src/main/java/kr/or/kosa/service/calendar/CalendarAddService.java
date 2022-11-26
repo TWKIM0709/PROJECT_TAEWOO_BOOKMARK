@@ -14,9 +14,6 @@ public class CalendarAddService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
-		String msg = "";
-		String url = "";
-		
 		System.out.println("캘린더추가 서비스 진입");
 		
 //calendar_no, id, calendar_start, calendar_end, calendar_content, calendar_status
@@ -27,6 +24,8 @@ public class CalendarAddService implements Action {
 		String calendar_start = request.getParameter("calendar_start");
 		String calendar_end = request.getParameter("calendar_end");
 		String calendar_content = request.getParameter("calendar_content");
+		//session 작업 아직 안해서 domaya로 기본값 설정
+		String id = (request.getSession().getAttribute("id") == null) ? "domaya" : (String)request.getSession().getAttribute("id");
 		//String calendar_status = request.getParameter("calendar_status");
 		
 		//TODO : calendar에는 date가 어떤 포맷으로 들어가지...
@@ -37,6 +36,7 @@ public class CalendarAddService implements Action {
 		
 		try {
 			CalendarDao dao = new CalendarDao();
+			calendar.setId(id);
 			calendar.setCalendar_content(calendar_content);
 			calendar.setCalendar_start(calendar_start);
 			calendar.setCalendar_end(calendar_end);
@@ -46,23 +46,15 @@ public class CalendarAddService implements Action {
 			int result = dao.CalendarAdd(calendar);
 			
 			if(result > 0) {
-				msg = "캘린더 추가 성공";
-				//url = ""; 캘린더 성공 서블릿
+				response.getWriter().print(1);
 			}else {
-				msg = "캘린더 추가 실패";
-				//url = ""캘린더 실패 서블릿
+				response.getWriter().print(2);
 			}
 			
-			//TODO: 이거 파라미터값
-			request.setAttribute("msg", msg);
-			request.setAttribute("url", url);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
-		forward.setRedirect(false);
-		//TODO:뷰 설정
-		forward.setPath("");
-		return forward;
+		return null;
 	}
 
 }

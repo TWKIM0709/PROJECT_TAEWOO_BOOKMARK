@@ -21,22 +21,61 @@
 			display:none;
 		}
 		.calendarPopup{
-			width:200px;
-			height:200px;
-			background-color:#a389ff;
+			position: relative;
+			width:180px;
+			height:150px;
+			background-color:#d5caff;
 			position: absolute;
 			z-index: 1;
+			border: solid 3px black;
+			border-radius: 12px;
+		}
+		#calendar{
+			width: 100%;
+			height:100%;
+		}
+		.calendarPopup .closebtn{
+			position: absolute;
+			top: 5px;
+			left:87%;
+		}
+		.calendarPopup button{
+			margin-left:3px;
+		}
+		.calendarPopup input{
+			background-color:white;
+		}
+		.calendarPopup p{
+			margin-top: 5px;
+			margin-bottom: 5px;
 		}
 	</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/utils/include/admintop.jsp"></jsp:include>
 	<div id='calendar'></div>
 	<div class='hide calendarPopup' id="test">
 		<div style="padding:5px">
+			<button class="closebtn" id="addclosebtn"><i class="fa fa-close"></i></button>
 			<p>Content:<input type="text" id="title"></p>
 			<p>start:<input type="date" id="startdate" value=""></p>
 			<p>end:<input type="date" id="enddate"></p>
-			<p><button id="popupbutton">추가하기</button></p>
+			<p><button id="popupbutton" class="btn btn-light">추가하기</button></p>
+		</div>
+	</div>
+	<div class='hide calendarPopup' id="updatetest">
+		<div style="padding:5px">
+			<button class="closebtn" id="updateclosebtn"><i class="fa fa-close"></i></button>
+			<input type="hidden" id="updateid">
+			<p><span>title:</span><input type="text" id="updatetitle"></p>
+			<p>start:<input type="date" id="updatestartdate"></p>
+			<p>end:<input type="date" id="updateenddate"></p>
+			<p><button id="updatepopupbutton" class="btn btn-light">수정하기</button><button id="deletepopupbutton"class="btn btn-light">삭제하기</button></p>
 		</div>
 	</div>
 	<hr>
@@ -66,6 +105,7 @@
 				events:[
 		            <c:forEach var="items" items="${requestScope.calendarList}" varStatus="status">
 	                {
+	                	id:'${items.calendar_no}',
 	                    title: '${items.calendar_content}',
 	                    start: '${items.calendar_start}',
 	                    end: '${items.calendar_end}',
@@ -76,16 +116,20 @@
 				],
 				dateClick:function(event){
 					$('#test #startdate').val(event.dateStr);
+					$('#test #enddate').val();
 					$('#test').toggleClass('hide');
 					$('#test').css('top',event.jsEvent.y);
 					$('#test').css('left',event.jsEvent.x);
-					//console.log(event);
-					//console.log(event.dateStr);
-					//console.log(event.jsEvent.pageY);
-					//console.log(event.jsEvent.pageX);
 				},
-				eventClick:function(event){
-					console.log(event);
+				eventClick:function(event){ //일정 클릭할 때 생기는 이벤트
+					$('#updatetest').toggleClass('hide');
+					$('#updatetest').css('top',event.jsEvent.y);
+					$('#updatetest').css('left',event.jsEvent.x);
+
+					$('#updateid').val(event.event._def.publicId);
+					$('#updatetitle').val(event.event.title);
+					$('#updatestartdate').val(dateFormat(new Date(event.event.start)));
+					$('#updateenddate').val(dateFormat(new Date(event.event.end)));
 				},
 				nowIndicator: true, // 현재 시간 마크
 				locale: 'ko' // 한국어 설정
@@ -96,14 +140,42 @@
 		$('#popupbutton').on({
 			click:()=>{
 				console.log($('#title').val() + " " + $('#startdate').val() + " " + $('#enddate').val());
-				calendarOption.events.push({title:$('#title').val(),
+				let url = "calendarAdd.do?calendar_start="+ $('#startdate').val() + "&calendar_end=" +$('#enddate').val() + "&calendar_content="+$('#title').val();
+				console.log(url);
+				/* calendarOption.events.push({title:$('#title').val(),
 																	start:$('#startdate').val(),
 																	end:$('#enddate').val(),
 																	backgroundColor:'#333'
 																});
-				console.log(calendarOption.events);
+				console.log(calendarOption.events); */
+				//ajax start
+				$.ajax({
+					"url":url,
+					type:"post",
+					data :{
+						"calendar_start" : $('#startdate').val(),
+						"calendar_end" : $('#enddate').val(),
+						
+					}
+				});
+				//ajax end
 			}
 		});
 	})
+	function dateFormat(date) {
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+
+        month = month >= 10 ? month : '0' + month;
+        day = day >= 10 ? day : '0' + day;
+
+        return date.getFullYear() + '-' + month + '-' + day;
+}
+$('#updateclosebtn').click(function(){
+	$('#updatetest').toggleClass('hide');
+})
+$('#addclosebtn').click(function(){
+	$('#test').toggleClass('hide');
+})
 </script>
 </html>

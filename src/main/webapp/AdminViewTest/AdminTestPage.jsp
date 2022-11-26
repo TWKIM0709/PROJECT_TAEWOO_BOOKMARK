@@ -14,7 +14,7 @@
 <hr>
 <button id="btn1" onclick="admin()">어드민버튼</button>
 <hr>
-<a id="a1"></a>
+<a id="a1" href="/PROJECT_TAEWOO_BOOKMARK/main.do">메인으로</a>
 <hr>
 </body>
 <script type="text/javascript">
