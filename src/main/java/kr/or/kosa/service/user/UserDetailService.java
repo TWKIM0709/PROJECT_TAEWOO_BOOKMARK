@@ -24,9 +24,9 @@ public class UserDetailService implements Action {
 				Users user = dao.getUserById(id);
 				
 				request.setAttribute("user", user);
-				path = "/WEB-INF/views/user/admin_user_detail.jsp";
+				path = "/WEB-INF/views/adminpage/user/admin_user_detail.jsp";
 			}else { //일반 회원일 경우 -> 회원 정보 수정 페이지로
-				path = "/WEB-INF/views/userpage/mypage/mypage.html";
+				path = "/WEB-INF/views/userpage/mypage/mypage.jsp";
 			}
 			forward.setRedirect(false);
 			forward.setPath(path);

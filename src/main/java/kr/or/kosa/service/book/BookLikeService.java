@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.BookDao;
+import net.sf.json.JSONObject;
 
 public class BookLikeService implements Action {
 
@@ -21,28 +22,29 @@ public class BookLikeService implements Action {
 		try {
 			BookDao dao = new BookDao();
 			
-			int result = dao.Book_Like(isbn, id);
+			int result = dao.Book_Like(isbn, id); //좋아요 처리
 			
-			if(result == 1) {
-				msg = "종아요";
-				url = "#";
-			}else if(result == 2) {
-				msg = "좋아요 취소";
-				url = "#";
-			}else {
-				msg = "오류발생";
-				url = "#";
-			}
+			int like = dao.Book_Likestatus(isbn,id); //상태
 			
-			request.setAttribute("msg", msg);
-			request.setAttribute("url", url);
+			int likecount = dao.Book_LikeCount(isbn); //개수
 			
-			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
+			JSONObject json = new JSONObject();
+			
+			json.put("like", like);
+			json.put("count", likecount);
+			
+			response.getWriter().print(json);
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
-		return forward;
+		}
+		return null;
 	}
-
 }
+
+
+/*
+ * let result = {
+ * 	like:1,
+ * count:35
+ * }
+  */

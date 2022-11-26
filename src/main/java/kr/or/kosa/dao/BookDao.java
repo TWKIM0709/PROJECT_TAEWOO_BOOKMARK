@@ -32,7 +32,7 @@ public class BookDao implements BookMarkDao{
 		try {
 			//sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn = b.isbn";
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select * from (select rownum, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from \r\n"
+			sql = "select * from (select rownum, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from"
 					+ "book a left join ebook b on a.isbn=b.isbn where rownum<=?)where rownum >=?";
 			pstmt = conn.prepareStatement(sql);
 			
@@ -100,14 +100,19 @@ public class BookDao implements BookMarkDao{
 		return count;
 	}
 	//책 like조회
-	public List<Book> BookLikeList(String bookname){
+	public List<Book> BookLikeList(String bookname, int cpage, int pagesize){
 		List<Book> booklike = new ArrayList<Book>();
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select a.isbn as isbn, author,  book_name, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn = b.isbn where book_name like ?";
+			sql = "select * from (select rownum, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from"
+					+ "book a left join ebook b on a.isbn=b.isbn where rownum<=?)where rownum >=? and book_name like ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,  "%"+bookname+"%");
+			int start = cpage * pagesize-(pagesize-1);
+			int end = cpage*pagesize;
+			pstmt.setInt(1, end);
+			pstmt.setInt(2, start);
+			pstmt.setString(3,  "%"+bookname+"%");
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -138,6 +143,33 @@ public class BookDao implements BookMarkDao{
 		}
 		
 		return booklike;
+	}
+	//책 like 카운트 조회
+	public int BooklikeListCount(String bookname) {
+		int count = 0;
+		
+		try {
+			conn = ConnectionHelper.getConnection("oracle");
+			sql = "select count(*) cnt from book where book_name like ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,  "%"+bookname+"%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return count;
 	}
 	//책 추가
 	public int InsertBook(Book book) {
@@ -179,6 +211,7 @@ public class BookDao implements BookMarkDao{
 			e.printStackTrace();
 		}finally {
 			try {
+				conn.setAutoCommit(true);
 				ConnectionHelper.close(pstmt);
 				ConnectionHelper.close(conn);
 			} catch (Exception e2) {
@@ -227,6 +260,7 @@ public class BookDao implements BookMarkDao{
 			e.printStackTrace();
 		}finally {
 			try {
+				conn.setAutoCommit(true);
 				ConnectionHelper.close(pstmt);
 				ConnectionHelper.close(conn);
 			} catch (Exception e2) {
@@ -406,7 +440,8 @@ public class BookDao implements BookMarkDao{
 	//책 댓글쓰기
 	public int InsertBook_Reply(Book_Reply br) {
 		int row = 0;
-		
+		System.out.println("dao들어옴");
+		System.out.println(br);
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "insert into book_reply(book_reply_no, isbn, reply_content, id)" +
@@ -493,7 +528,7 @@ public class BookDao implements BookMarkDao{
 			pstmt.setString(2, id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				sql = "delete book_like where isbn=? and id=?";
+				sql = "delete from book_like where isbn=? and id=?";
 				pstmt=conn.prepareStatement(sql);
 				pstmt.setString(1, isbn);
 				pstmt.setString(2, id);
@@ -527,7 +562,63 @@ public class BookDao implements BookMarkDao{
 				e2.printStackTrace();
 			}
 		}
+		return row;
+	}
+	//책 좋아요 여부 
+	public int Book_Likestatus(String isbn, String id) {
+		int result = 0;
 		
+		try {
+			conn = ConnectionHelper.getConnection("oracle");
+			sql = "select * from book_like where isbn = ? and id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, isbn);
+			pstmt.setString(2, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = 1;
+			}else {
+				result = -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}
+	//책 좋아요 갯수
+	public int Book_LikeCount(String isbn) {
+		int row = 0;
+		
+		try {
+			conn = ConnectionHelper.getConnection("oracle");
+			sql = "select nvl(count(*),0) from book_like where isbn=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, isbn);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				row = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(conn);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 		return row;
 	}
 	//좋아요 순 순위 조회

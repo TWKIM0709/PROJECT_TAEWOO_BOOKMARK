@@ -68,9 +68,14 @@ public class BookAllListService implements Action {
 				forward.setPath("/WEB-INF/views/userpage/book/Search.jsp");
 			}
 			forward.setRedirect(false);
-			//forward.setPath("/WEB-INF/views/user/book_list.jsp");
-		} catch (Exception e) {
 			
+			if(request.getSession().getAttribute("admin") != null) {
+				forward.setPath("admin#");
+			}else {
+				forward.setPath("/WEB-INF/views/user/book_list.jsp");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		} 
 		return forward;
 	}

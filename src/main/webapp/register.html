@@ -988,7 +988,7 @@
                             </label>
                             <!---->
                         </div>
-                    </div>
+                    </div> 
                         <div data-v-6e5aa5a2="" class="input-item fade-in">
                         <div data-v-6e5aa5a2="" class="mds-input input mds-input--default mds-input--left"><label>
                                 <div class="inner">
@@ -996,7 +996,8 @@
                                     <div class="input"><span id="input-14-label" class="label">비밀번호
                                             <!----></span> <input autocomplete="off" id="input-14"
                                             aria-labelledby="input-14-label" aria-errormessage="input-14-message" name="password"
-                                            type="password" placeholder="비밀번호 입력" class="mds-input-field"></div> <button
+                                            type= type="text" id="id" name="wr_2" onkeyup="PwdCheck(this)"
+                                            placeholder="비밀번호 입력" class="mds-input-field"></div> <button
                                         type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
                                         style="display: none;"></button>
                                     <!---->                                
@@ -1234,10 +1235,8 @@
   }
   
 </script>
-    <!-- <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/vendor.0be117fe15cd3682b23e.js"></script>
-    <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/millie.b91a9f57d4b10d47052a.js"></script> -->
     <script>
-// 특수문자 입력 방지
+// 이름에 특수문자 입력 방지
 function CharacterCheck(obj){
 var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; 
 
@@ -1246,6 +1245,7 @@ if( regExp.test(obj.value) ){
 	obj.value = obj.value.substring( 0 , obj.value.length - 1 ); 
 	}
 }
+//아이디정규식
 function IDCheck(obj){
 	var idReg = /^[A-za-z0-9]*$/g;
 
@@ -1254,16 +1254,19 @@ function IDCheck(obj){
 		obj.value = obj.value.substring( 0 , obj.value.length - 1 ); // 입력한 특수문자 한자리 지움
 		}
 	}
+//비밀번호 정규식
 function PwdCheck(obj){
-	var idReg = /^[A-za-z0-9]*$/g;
-
-	if( !idReg.test(obj.value) ){
-		alert("한글 및 특수문자는 입력하실수 없습니다.");
+	var passwordRule = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
+	
+	if( !passwordRule.test(obj.value) ){
+		alert("영문, 숫자, 특수문자를 포함 8자리를 입력해주세요.");
 		obj.value = obj.value.substring( 0 , obj.value.length - 1 ); // 입력한 특수문자 한자리 지움
 		}
 	}
 	</script>
-
+    <!-- <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/vendor.0be117fe15cd3682b23e.js"></script>
+    <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/millie.b91a9f57d4b10d47052a.js"></script> -->
+	
     <script type="text/javascript" id="">
         window.criteo_q = window.criteo_q || [];
         window.criteo_q.push({
