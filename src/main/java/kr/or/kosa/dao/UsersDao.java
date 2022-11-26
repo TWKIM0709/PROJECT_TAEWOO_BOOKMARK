@@ -303,6 +303,29 @@ public class UsersDao implements BookMarkDao{
 		}
 		return userlist;
 	}
+	//like검색 총 건수 구하기
+	public int totalUserCountByLike(String type, String value) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int totalcount = 0;
+		try {
+			conn = ConnectionHelper.getConnection("oracle");
+			String sql = "select count(*) as cnt from users where " + type + " like ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + value + "%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalcount = rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("totalUserCountByLike 예외 : " + e.getMessage());
+		}
+		return totalcount;
+	}
+	
 	//회원 조회
 	//select * from users where id=[아이디]
 	public Users getUserById(String id){
