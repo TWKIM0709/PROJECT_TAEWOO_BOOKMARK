@@ -10,6 +10,7 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<!-- fullcalendar css -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
@@ -52,7 +53,7 @@
 	</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+  
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -82,10 +83,10 @@
 
 	
 </body>
+<!-- 페이지로드 , 일정추가 , 창닫기 , Date Format 함수 있는 스크립트 -->
 <script type="text/javascript">
-	console.log("썅놈아~");
+//페이지로드 - FullCalendar 생성 area
 	document.addEventListener('DOMContentLoaded', function() {
-		
 		// new FullCalendar.Calendar(대상 DOM객체, {속성:속성값, 속성2:속성값2..})
 		let calendarEl = document.getElementById('calendar');
 		let calendarOption = {
@@ -98,7 +99,7 @@
 				titleFormat : function(date) {
 					return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
 				},
-				//initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
+				initialDate: new Date(), // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
 				selectable : true, // 달력 일자 드래그 설정가능
 				droppable : true,
 				editable : true,
@@ -107,8 +108,8 @@
 	                {
 	                	id:'${items.calendar_no}',
 	                    title: '${items.calendar_content}',
-	                    start: '${items.calendar_start}',
-	                    end: '${items.calendar_end}',
+	                    start: new Date(dateFormat(new Date('${items.calendar_start}'))),
+	                    end: new Date(dateFormat(new Date('${items.calendar_end}'))),
 	                    color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
 	                },
 	            </c:forEach>
@@ -137,41 +138,82 @@
 		var calendar = new FullCalendar.Calendar(calendarEl, calendarOption);
 		console.log(calendarOption.events);
 		calendar.render();
+//페이지로드 - FullCalendar 생성 area end
+//FullCalendar 재시작 함수
+	function reload(type){
+		//success ajax start
+		$.ajax({
+			"url":"calendarall.do?qlehdrl=qlehdrl",
+			type:"post",
+			dataType:"json",
+			success:function(result){
+				console.log(result);
+				calendarOption.events.length = 0;
+				for(let c of result.calendar){//for start
+					let calendarobj = {
+							"id":c.id,
+							"title":c.content,
+							"start":new Date(dateFormat(new Date(c.start))),
+							"end":new Date(dateFormat(new Date(c.end))),
+							color : '#' + Math.round(Math.random() * 0xffffff).toString(16)
+					};
+					calendarOption.events.push(calendarobj); //캘린더 일정들 설정
+					if(type == 'add'){
+						calendarOption.initialDate = new Date(dateFormat(new Date($('#startdate').val()))); //캘린더 시작 화면 설정
+					} else {
+						calendarOption.initialDate = new Date(dateFormat(new Date($('#updatestartdate').val()))); //캘린더 시작 화면 설정
+					}
+					var calendar = new FullCalendar.Calendar(calendarEl, calendarOption); //캘린더 객체 생성
+					calendar.render(); //다시 랜더하기
+				}//for end
+				$('#test').toggleClass('hide');
+			},//success end
+			error:function(error){
+				alert("일정 추가 처리 에러");
+			}
+		});
+	//success ajax end
+	}
+//	일정 추가 함수 start
 		$('#popupbutton').on({
 			click:()=>{
-				console.log($('#title').val() + " " + $('#startdate').val() + " " + $('#enddate').val());
-				let url = "calendarAdd.do?calendar_start="+ $('#startdate').val() + "&calendar_end=" +$('#enddate').val() + "&calendar_content="+$('#title').val();
-				console.log(url);
-				/* calendarOption.events.push({title:$('#title').val(),
-																	start:$('#startdate').val(),
-																	end:$('#enddate').val(),
-																	backgroundColor:'#333'
-																});
-				console.log(calendarOption.events); */
+				if($('#title').val() == "" || $('#title').val() == null){
+					alert('일정내용을 입력하세요');
+					return;
+				}
+				if($('#enddate').val() == null || $('#enddate').val() ==""){
+					alert("끝 날짜를 입력하세요");
+					return;
+				}
 				//ajax start
 				$.ajax({
-					"url":url,
+					"url":"calendarAdd.do",
 					type:"post",
+					dataType:"text",
 					data :{
 						"calendar_start" : $('#startdate').val(),
 						"calendar_end" : $('#enddate').val(),
 						"calendar_content" : $('#title').val()
 					},
 					success : function(result){
-						if(result == 1){ // 글쓰기 성공
-							
-						} else { //글쓰기 실패
-							
+						console.log(result);
+						if(result == 1){ // 일정 추가 성공
+							alert("일정추가성공");
+							reload('add');
+						} else { //일정 추가 실패
+							alert("일정추가실패");
 						}
 					},
 					error:function(result){
-						
+						alert("일정추가오류");
 					}
-				});
+				}); 
 				//ajax end
 			}
 		});
 	})
+//	일정 추가 함수 start end
+// Date Format 함수 start
 	function dateFormat(date) {
         let month = date.getMonth() + 1;
         let day = date.getDate();
@@ -181,6 +223,8 @@
 
         return date.getFullYear() + '-' + month + '-' + day;
 }
+// Date Format 함수 end
+// 일정 추가, 수정, 삭제 창 닫기 함수
 $('#updateclosebtn').click(function(){
 	$('#updatetest').toggleClass('hide');
 })
@@ -188,4 +232,20 @@ $('#addclosebtn').click(function(){
 	$('#test').toggleClass('hide');
 })
 </script>
+<!-- 수정, 업데이트 비동기 함수 만들 곳 -->
+<script type="text/javascript">
+// = = = 수정하기 버튼 = = =
+	$('#updatepopupbutton').on({
+		click:function(){
+			
+		}
+	});
+// = = = 삭제하기 버튼 = = = 
+	$('#deletepopupbutton').on({
+		click:function(){
+			
+		}
+	});
+</script>
+
 </html>
