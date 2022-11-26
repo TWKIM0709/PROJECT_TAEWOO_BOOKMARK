@@ -15,12 +15,18 @@ public class BookDetailService implements Action {
 		ActionForward forward = new ActionForward();
 		
 		String isbn = request.getParameter("isbn");
+		String id = request.getParameter("id");
 		try {
 			BookDao dao = new BookDao();
 			
 			Book book = dao.getBookListByIsbn(isbn);
+			int likecount = dao.Book_LikeCount(isbn);
+			int likestatus = dao.Book_Likestatus(isbn, id);
+			
 			
 			request.setAttribute("book", book);
+			request.setAttribute("likecount", likecount);
+			request.setAttribute("likestatus", likestatus);
 			
 			if(request.getSession().getAttribute("admin")!=null) {
 				forward.setPath("adminbookdetail.jsp");
