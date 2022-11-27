@@ -379,59 +379,8 @@
                     <section data-v-02a040ec="" class="ranking">
                        
                     </section>
-                    <!---->
-                    <section data-v-02a040ec="" class="search-word recommand">
-                        <h2 data-v-02a040ec="" class="title">밀리 추천 검색어</h2>
-                        <div data-v-02a040ec="" class="slide-container no-swiper">
-                            <ul data-v-02a040ec="" class="slide-wrapper">
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/어서 오세요 휴남동 서점입니다?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest1">어서 오세요 휴남동 서점입니다</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/밀리의 발견?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest2">태우의 발견</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/불편한 편의점2?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest3">불편한 편의점2</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/퇴마록?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest4">퇴마록</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/글쓰기?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest5">글쓰기</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/로맨스 베스트?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest6">로맨스 베스트</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/데일리 연재?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest7">데일리 연재</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/이병률?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest8">이병률</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/가을?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest9">가을</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/김초엽?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest10">김초엽</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/베스트셀러 편집자 이연실?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest11">베스트셀러 편집자 이연실</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/2022 노벨문학상?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest12">2022 노벨문학상</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/매거진 베스트셀러?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest13">매거진 베스트셀러</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/영화?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest14">영화</a></li>
-                                <li data-v-02a040ec="" class="slide-item"><a data-v-02a040ec=""
-                                        href="/v3/search/result/김연수?type=total&amp;category=0&amp;searchBack=y&amp;nav_hidden=y&amp;referrer=hotsearch"
-                                        class="gtm-search-suggest15">김연수</a></li>
-                            </ul>
-                        </div>
-                    </section>
+                   
+                   
                     <section data-v-02a040ec="" class="shortcuts">
                         <h2 data-v-02a040ec="" class="title">바로가기</h2>
                         <div data-v-02a040ec="" class="list"><a data-v-02a040ec="" href="/메인에 베스트셀러 페이지로"
@@ -444,11 +393,11 @@
                     <hr data-v-02a040ec="">
                     <div data-v-02a040ec="" class="tab-wrap">
                         <ul data-v-02a040ec="" class="tab-list">
-                            <li data-v-02a040ec="" id="category" class="gtm-search-tab-category active">검색 결과</li>
+                            <li data-v-02a040ec="" id="category" class="gtm-search-tab-category active">전체 목록</li>
                         </ul>
                     </div>
                     <section data-v-02a040ec="" class="page category-wrap">
-                        <h2 data-v-02a040ec="" class="title">검색 결과</h2>
+                        <h2 data-v-02a040ec="" class="title" id="searchTag"></h2>
                         <ul data-v-02a040ec="" id="searchResultList" class="category-list">
                             <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
                                     href="bookDetail.do">
@@ -710,10 +659,13 @@
 		$('#searchBtn').on("click", function(){
 			let inputtxt = $('#input-475').val(); //검색어
 			// console.log(inputtxt);
+            $('#category').empty();
+            $('#category').append("검색 결과");
+            
             $('#searchResultList').empty(); //검색목록 지우기
             //태그들 생성
-            let li = document.createElement("li");
-            let a = document.createElement("a");
+            // let li = document.createElement("li");
+            // let a = document.createElement("a");
 
 
             //비동기
