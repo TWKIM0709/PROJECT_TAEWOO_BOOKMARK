@@ -155,7 +155,7 @@
 				calendarOption.events.length = 0;
 				for(let c of result.calendar){//for start
 					let calendarobj = {
-							"id":c.id,
+							"id":c.no,
 							"title":c.content,
 							"start":new Date(dateFormat(new Date(c.start))),
 							"end":new Date(dateFormat(new Date(c.end))),

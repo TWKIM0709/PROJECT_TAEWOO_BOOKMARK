@@ -19,6 +19,7 @@ public class CalendarDeleteService implements Action {
 		System.out.println("캘린더 삭제 서비스 진입");
 		
 		String calendar_no = request.getParameter("calendar_no");
+		System.out.println("calendarno : " + calendar_no);
 		String msg = "";
 		String url = "";
 		PrintWriter out = null;
