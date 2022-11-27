@@ -1,5 +1,7 @@
 package kr.or.kosa.service.calendar;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,7 +11,7 @@ import kr.or.kosa.dao.CalendarDao;
 import kr.or.kosa.dto.Calendar;
 
 public class CalendarDeleteService implements Action {
-
+// 일정 삭제(비동기) || 0 : 입력안함 || 1 : 성공 || 2 : 실패 || 3 : 오류
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
@@ -19,27 +21,26 @@ public class CalendarDeleteService implements Action {
 		String calendar_no = request.getParameter("calendar_no");
 		String msg = "";
 		String url = "";
-		
+		PrintWriter out = null;
 		try {
+			out = response.getWriter();
 			CalendarDao dao = new CalendarDao();
-			
+			//일정번호 없으면 0
+			if(calendar_no == null || calendar_no == "") {
+				out.print(0);
+			}
 			int result = dao.CalendarDelete(Integer.parseInt(calendar_no));
 			
-			if(result > 0) {
-				msg = "일정 삭제 성공";
-				url = ""; //TODO : 캘린더 리스트
-			}else {
-				msg = "일정 삭제 실패";
-				url = "";//TODO:캘린더 리스트
+			if(result > 0) {//성공 1
+				out.print(1);
+			}else {//실패 2
+				out.print(2);
 			}
-			
-			forward.setRedirect(false);
-			forward.setPath(""); //TODO:뷰 지정
-			
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); //에러 3
+			out.print(3);
 		} 
-		return forward;
+		return null;
 	}
 
 }

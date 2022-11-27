@@ -1,5 +1,7 @@
 package kr.or.kosa.service.calendar;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,7 +11,7 @@ import kr.or.kosa.dao.CalendarDao;
 import kr.or.kosa.dto.Calendar;
 
 public class CalendarUpdateService implements Action {
-
+//비동기 ... 0 : 일정번호 입력안됨 || 1 : 없는 일정을 조회함 || 2 : 성공 || 3 : 실패 || 4 : 에러
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
@@ -27,27 +29,22 @@ public class CalendarUpdateService implements Action {
 		
 		String msg = "";
 		String url = "";
-		
+		PrintWriter out  = null;
 		try {
+			out = response.getWriter();
 			CalendarDao dao = new CalendarDao();
 			Calendar calendar = dao.CalendarDetail(Integer.parseInt(calendar_no));//이 함수로 가져오는거 맞지?
 			
-			//인덱스가 잘못됐을 경우
+			//일정 번호를 입력하지 않았을 경우
 			if(calendar_no == null || calendar_no.trim().equals("")) {
-				response.sendRedirect(""); //TODO:캘린더 목록으로 가도록
+				out.print(0);
 				return null;
 			}
 			
-			//수정하려는 calendar가 null일 경우
+			//수정하려는 캘린더가 없을 경우
 			if(calendar == null) {
-				msg = "캘린더 데이터 오류";
-				url = "";//TODO:캘린더 목록으로 가도록
-				
-				request.setAttribute("msg", msg);
-				request.setAttribute("url", url);
-				
-				forward.setRedirect(false);
-				forward.setPath(""); //TODO: redirect.jsp
+				out.print(1);
+				return null;
 			}
 			
 			//수정사항 반영
@@ -58,26 +55,17 @@ public class CalendarUpdateService implements Action {
 			
 			int result = dao.CalendarUpdate(calendar);
 			
+			//수정 성공 2
 			if(result > 0) {
-				msg = "캘린더 수정 성공";
-				url = ""; //TODO:리스트로 뷰 지정
-			}else {
-				msg = "캘린더 수정 실패";
-				url ="";//TODO:리스트로 뷰 지정
+				out.print(2);
+			}else { //수정실패3
+				out.print(3);
 			}
-			
-			request.setAttribute("msg", msg);
-			request.setAttribute("url", url);
-			
-			forward.setRedirect(false);
-			//TODO:뷰 지정 리다이렉트.jsp
-			forward.setPath("");
-			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
-		
-		return forward;
+			out.print(4);
+		}
+		return null;
 	}
 
 }
