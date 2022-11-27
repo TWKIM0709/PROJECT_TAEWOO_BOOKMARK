@@ -738,9 +738,11 @@
 
                     let listlen = resultData.booklist.length;
                     for(let i=0; i < listlen; i++){
+                        let isbn = resultData.booklist[i].isbn;
+                        let hreflink = "bookDetail.do?isbn=" + isbn;
                         let imgsrc = resultData.booklist[i].book_filename + ', ' + resultData.booklist[i].book_filename + ' 2x'
                         $('#searchResultList').append('<li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""'+
-                                    'href="/v3/search/2depth/1194?nav_hidden=y">'+
+                                    'href="' + hreflink + '">'+
                                     '<div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">' + resultData.booklist[i].book_name + '</strong>'+
                                         '<p data-v-02a040ec="">' + resultData.booklist[i].author + '</p>'+
                                     '</div>'+
