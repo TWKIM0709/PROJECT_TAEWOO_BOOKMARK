@@ -14,21 +14,13 @@ import kr.or.kosa.utils.ConnectionHelper;
 
 public class CalendarDao implements BookMarkDao{
 
-	private Connection conn;
-	private PreparedStatement pstmt;
-	private ResultSet rs;
-	private String sql;
-	 
-	public CalendarDao() {
-//		conn = ConnectionHelper.getConnection("oracle");
-		pstmt = null;
-		rs = null;
-		sql = "";
-		
-	}
 	
 	//일정 전체조회
 	public List<Calendar> CalendarAlllist(){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
 		List<Calendar> calendaralllist = new ArrayList<Calendar>();
 		//System.out.println("일정 전체 조회 함수 호출");
 		try {
@@ -64,6 +56,10 @@ public class CalendarDao implements BookMarkDao{
 	}
 	//일정 조건조회
 	public List<Calendar> CalendarLikeList(String content){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
 		conn = ConnectionHelper.getConnection("oracle");
 		List<Calendar> calendaralllist = new ArrayList<Calendar>();
 		//System.out.println("일정 조건조회 함수 호출");
@@ -103,6 +99,10 @@ public class CalendarDao implements BookMarkDao{
 	}
 	//일정 추가
 		public int CalendarAdd(Calendar calendar){
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "";
 			int row = 0;
 			conn = ConnectionHelper.getConnection("oracle");
 			//System.out.println("일정 추가 함수 호출");
@@ -132,6 +132,10 @@ public class CalendarDao implements BookMarkDao{
 		}
 	//일정 수정
 		public int CalendarUpdate(Calendar calendar){
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "";
 			int row = 0;
 			conn = ConnectionHelper.getConnection("oracle");
 			//System.out.println("일정 수정 함수 호출");
@@ -161,6 +165,10 @@ public class CalendarDao implements BookMarkDao{
 		}
 	//일정 삭제
 		public int CalendarDelete(int no){
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "";
 			int row = 0;
 			conn = ConnectionHelper.getConnection("oracle");
 			//System.out.println("일정 삭제 함수 호출");
@@ -187,6 +195,10 @@ public class CalendarDao implements BookMarkDao{
 		}
 	//일정 상세조회
 		public Calendar CalendarDetail(int calendar_no){
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "";
 			conn = ConnectionHelper.getConnection("oracle");
 			//System.out.println("일정 상세 조회 함수 호출");
 			Calendar calendar = new Calendar();

@@ -75,20 +75,12 @@ public class StatisticsDao implements BookMarkDao {
 //				ID
 //			);
 	
-	Connection conn;
-	PreparedStatement pstmt;
-	ResultSet rs;
-	String sql;
-
-	public StatisticsDao(){
-		conn = null;
-		pstmt = null;
-		rs = null;
-		sql = "";
-	}
 	
 	//남녀 성비 통계
 	public Statistics genderStatistics(String gender) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
 		Statistics femaleStatistics = null;
 		Statistics maleStatistics = null;
@@ -143,6 +135,9 @@ public class StatisticsDao implements BookMarkDao {
 	
 	//남녀성비 return 리스트로
 	public List<Statistics> getGender(){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		List<Statistics> genderArr = new ArrayList<>();
 		List<String> gender = new ArrayList<>();
@@ -312,6 +307,9 @@ public class StatisticsDao implements BookMarkDao {
 	//연령 통계 쿼리로
 	public List<Statistics> getAgeQuery(){
 		List<Statistics> ageArr = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
 		try {
 			conn = ConnectionHelper.getConnection("orcle");
@@ -359,6 +357,9 @@ public class StatisticsDao implements BookMarkDao {
 	public List<Statistics> dailySales(){
 		
 		List<Statistics> dailyarr = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		try {
 			conn = ConnectionHelper.getConnection("orcle");
@@ -393,6 +394,9 @@ public class StatisticsDao implements BookMarkDao {
 	//월별 매출 통계
 	public List<Statistics> monthlySales(){
 		List<Statistics> monthlyarr = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		try {
 			conn = ConnectionHelper.getConnection("orcle");
@@ -431,6 +435,9 @@ public class StatisticsDao implements BookMarkDao {
 	public List<Statistics> curWeekSales(){
 		List<Statistics> curWeekarr = new ArrayList<>();
 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("orcle");
 			String sql = "SELECT"
@@ -469,7 +476,10 @@ public class StatisticsDao implements BookMarkDao {
 	//연간 매출 통계 ....
 	public List<Statistics> yearlySales(){
 		List<Statistics> yearlyarr = new ArrayList<>();
-		
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("orcle");
 			String sql = "select substr(payment_date, 0,4) as yearly, sum(sumprice) as total "
@@ -503,7 +513,10 @@ public class StatisticsDao implements BookMarkDao {
 	//검색 기간 매출 조회
 	public List<Statistics> searchList(String date1, String date2){ //TODO : 파라미터 date? string?
 		List<Statistics> searchArr = new ArrayList<>();
-		
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("orcle");
 			String sql = "select sumprice "

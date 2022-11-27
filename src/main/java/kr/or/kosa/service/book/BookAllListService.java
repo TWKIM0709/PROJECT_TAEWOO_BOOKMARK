@@ -63,7 +63,7 @@ public class BookAllListService implements Action {
 			
 			//관리자 / 일반회원 세션 구분
 			if(request.getSession().getAttribute("admin") != null) {
-				forward.setPath("/WEB-INF/views/adminpage/admin_book_list.jsp");
+				forward.setPath("/WEB-INF/views/adminpage/book/admin_book_list.jsp");
 			}else {
 				forward.setPath("/WEB-INF/views/userpage/book/Search.jsp");
 			}

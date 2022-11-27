@@ -11,18 +11,11 @@ import kr.or.kosa.dto.Popup;
 import kr.or.kosa.utils.ConnectionHelper;
 
 public class PopupDao {
-	Connection conn;
-	PreparedStatement pstmt;
-	ResultSet rs;
-	String sql;
-	public PopupDao() {
-		conn=ConnectionHelper.getConnection("oracle");
-		pstmt=null;
-		rs=null;
-		sql="";
-	}
 	//공지사항 전체조회
 	public List<Popup> AllListPopup(int cpage , int pagesize){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		List<Popup> pl = new ArrayList<Popup>();
 		
 		try {
@@ -132,6 +125,10 @@ public class PopupDao {
 	//공지사항 등록
 	public int InsertPopup(Popup popup) {
 		int row = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
 		
 		try {
 			conn=ConnectionHelper.getConnection("oracle");
@@ -157,6 +154,10 @@ public class PopupDao {
 	}
 	//공지사항 삭제
 	public int DeletePopup(int no) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
 		int row = 0;
 		
 		try {
@@ -181,6 +182,10 @@ public class PopupDao {
 	}
 	//공지사항 수정
 	public int UpdatePopup(Popup popup) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
 		int row = 0;
 		
 		try {
@@ -207,6 +212,10 @@ public class PopupDao {
 	}
 	//공지사항 상세보기(관리용)
 	public Popup DetailPopup(int no) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
 		Popup pu = new Popup();
 		
 		try {
@@ -241,6 +250,10 @@ public class PopupDao {
 	//공지사항 필터링
 	//select * from popup where popupdate > sysdate
 	public List<Popup> FilterPopup(){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
 		List<Popup> pl = new ArrayList<Popup>();
 		
 		try {
