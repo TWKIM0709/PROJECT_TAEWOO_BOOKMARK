@@ -700,6 +700,13 @@
         data-gtm-yt-inspected-18="true"></iframe>
 </body>
 	<script type="text/javascript">
+
+        $('#input-475').keydown(function(keyNum){
+            if(keyNum.keyCode == 13){
+                $('#searchBtn').click();
+            }
+        })
+
 		$('#searchBtn').on("click", function(){
 			let inputtxt = $('#input-475').val(); //검색어
 			// console.log(inputtxt);
@@ -815,7 +822,6 @@
             //		alert(result); // object날라옴
             //		alert(JSON.stringify(result)); // json데이터 날라옴
             //		alert(result.list);
-                    alert("성공했어요");
                     //console.log(result.booklist[0].isbn); // 날린 데이터 확인
                     //console.log(result.booklist[0].author);
             // for문과 foreach문 사용해서 데이터 전체를 뽑을 수 있다.		
