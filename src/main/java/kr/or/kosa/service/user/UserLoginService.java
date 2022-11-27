@@ -36,6 +36,7 @@ public class UserLoginService implements Action {
 				request.getSession().setAttribute("id", id);
 			}
 			if(ok == 3) { //관리자면
+				System.out.println("관리자");
 				request.getSession().setAttribute("admin", 1);
 			}
 			

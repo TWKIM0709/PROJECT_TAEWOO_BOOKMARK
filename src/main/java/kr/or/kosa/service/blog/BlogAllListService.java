@@ -25,7 +25,7 @@ public class BlogAllListService implements Action {
 			System.out.println(list);
 			request.setAttribute("blogboardlist", list);
 			
-			forward.setPath("관리자블로그게시글조회.do");
+			forward.setPath("/WEB-INF/views/adminpage/blog/admin_blog_board_list.jsp");
 			forward.setRedirect(false);
 		} catch (Exception e) {
 			e.printStackTrace();

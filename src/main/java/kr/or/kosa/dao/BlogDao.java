@@ -19,31 +19,13 @@ import kr.or.kosa.dto.Blog_Reply;
 import kr.or.kosa.utils.ConnectionHelper;
 
 public class BlogDao implements BookMarkDao{
-
-	//TODO : autoCommit 어떻게 해야되는지?
-	//TODO : 시퀀스 사용 제대로 되는지 확인
-	
-	
-	Connection conn;
-	PreparedStatement pstmt;
-	ResultSet rs;
-	String sql;
-
-	
-	public BlogDao() {
-		try {
-			conn = ConnectionHelper.getConnection("orcle");
-			pstmt = null;
-			rs = null;
-			sql = "";
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
 	//블로그 글 전체 불러오기
 	public List<Blog_Board> AllBoard(){//int cpage , int pagesize){
 		List<Blog_Board> boardList = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql=  "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, to_char(a.blog_date), b.file_name "
@@ -95,6 +77,9 @@ public class BlogDao implements BookMarkDao{
 	public List<Blog_Board> getBoardListById(String id){//int cpage , int pagesize){
 		List<Blog_Board> boardList = null;
 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql=  "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, to_char(a.blog_date), b.file_name "
@@ -144,6 +129,9 @@ public class BlogDao implements BookMarkDao{
 	public int totalBoardCount() {
 
 		int totalcount = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select count(*) as cnt from blog_board";
@@ -168,7 +156,10 @@ public class BlogDao implements BookMarkDao{
 	public Blog_Board getContent(int blog_no) {
 
 		Blog_Board board = null;
-		
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, to_char(a.blog_date), b.file_name "
@@ -206,6 +197,9 @@ public class BlogDao implements BookMarkDao{
 	
 	//게시글 조회수 증가
 	public boolean upHits(int blog_no) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		boolean result = false;
 		
 		try {
@@ -237,6 +231,9 @@ public class BlogDao implements BookMarkDao{
 	//글 작성
 	public int writeok(Blog_Board board) {
 		int row = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
@@ -286,6 +283,9 @@ public class BlogDao implements BookMarkDao{
 	//글 수정
 	public int blogEdit(Blog_Board board) {
 		int row = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		int blog_no = board.getBlog_no();
 		//String id = board.getParameter("id");
@@ -352,6 +352,9 @@ public class BlogDao implements BookMarkDao{
 	//글 삭제
 	public int deleteOk(int blog_no) {
 		int row = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
@@ -372,7 +375,10 @@ public class BlogDao implements BookMarkDao{
 	public List<Blog_Reply> getAllReply() {
 
 		ArrayList<Blog_Reply> replylist = null;
-		
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select blog_reply_no,blog_no, id, refer, depth, step, to_char(reply_date) as reply_date , reply_content, del "
@@ -418,7 +424,10 @@ public class BlogDao implements BookMarkDao{
 	public List<Blog_Reply> getAllReplyByLike(String searchid) {
 
 		ArrayList<Blog_Reply> replylist =  new ArrayList<Blog_Reply>();
-		
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select blog_reply_no,blog_no, id, refer, depth, step, to_char(reply_date), reply_content, del "
@@ -464,7 +473,10 @@ public class BlogDao implements BookMarkDao{
 	public List<Blog_Reply> getReply(int blog_no) {
 
 		ArrayList<Blog_Reply> replylist = null;
-		
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select blog_reply_no, id, refer, depth, step, to_char(reply_date), reply_content, del "
@@ -510,6 +522,9 @@ public class BlogDao implements BookMarkDao{
 	//댓글 작성
 	public int replyWrite(int blog_no, String id, String content){
 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		int resultrow = 0;
 		int maxrefer = getMaxRefer();
 		int refer = maxrefer + 1;
@@ -549,6 +564,9 @@ public class BlogDao implements BookMarkDao{
 	private int getMaxRefer() {
 
 		int refer_max = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
@@ -581,6 +599,9 @@ public class BlogDao implements BookMarkDao{
 	public int replyRewrite(Blog_Reply reply) {
 		int result = 0;
 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			int blog_reply_no = reply.getBlog_reply_no(); //현재 댓글의 번호
@@ -639,7 +660,10 @@ public class BlogDao implements BookMarkDao{
 		int row = 0;
 		String blog_reply_no = reply.getParameter("blog_reply_no");
 		String reply_content = reply.getParameter("reply_content");
-		
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			//TODO : 수정 시간 반영하기 (sysdate)
@@ -666,6 +690,9 @@ public class BlogDao implements BookMarkDao{
 	//댓글 삭제
 	public int replyDelete(int blog_reply_no) {
 		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
