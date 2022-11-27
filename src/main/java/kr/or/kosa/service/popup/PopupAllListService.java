@@ -52,7 +52,7 @@ public class PopupAllListService implements Action {
 			List<Popup> list = dao.AllListPopup(cpage, pagesize); // list >> 1 , 20
 			
 			int pagersize=3; //[1][2][3]
-			ThePager pager = new ThePager(totalpopupcount,cpage,pagesize,pagersize,"PopupAllList.do");
+			ThePager pager = new ThePager(totalpopupcount,cpage,pagesize,pagersize,"popup.do");
 			
 			
 			request.setAttribute("pagesize", pagesize);

@@ -24,8 +24,8 @@ public class BookAllListService implements Action {
 			
 			int totalbookcount = dao.BookListCount();
 			
-			ps = request.getParameter("pagesize");
-			cp = request.getParameter("cpage");
+			ps = request.getParameter("ps");
+			cp = request.getParameter("cp");
 			
 			if (ps == null || ps.trim().equals("")) {
 				// default 값 설정
@@ -51,7 +51,7 @@ public class BookAllListService implements Action {
 			List<Book> booklist = dao.BookAlllist(cpage, pagesize);
 			
 			int pagersize = 3;
-			ThePager pager = new ThePager(totalbookcount,cpage,pagesize,pagersize, "BookList.do");
+			ThePager pager = new ThePager(totalbookcount,cpage,pagesize,pagersize, "bookAlllist.do");
 			
 			request.setAttribute("pagesize", pagesize);
 			request.setAttribute("cpage", cpage);

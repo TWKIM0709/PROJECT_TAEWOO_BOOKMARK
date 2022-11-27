@@ -47,7 +47,7 @@
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="question.do" class="gtm-today">문의사항</a></li>
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="userList.do" class="gtm-today">회원</a></li>
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="paymentAlllist.do" class="gtm-today">결제내역</a></li>
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="replylAllList.do" class="gtm-today">댓글</a></li>
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="replyAllList.do" class="gtm-today">댓글</a></li>
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="statistics.do" class="gtm-today">통계</a></li>
 						</ul>
 					</nav>

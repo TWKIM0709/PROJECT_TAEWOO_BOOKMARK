@@ -29,7 +29,7 @@ public class BookDetailService implements Action {
 			request.setAttribute("likestatus", likestatus);
 			
 			if(request.getSession().getAttribute("admin")!=null) {
-				forward.setPath("adminbookdetail.jsp");
+				forward.setPath("/WEB-INF/views/adminpage/book/admin_book_detail.jsp");
 			}else {
 				forward.setPath("/WEB-INF/views/userpage/book/detail.jsp");
 			}

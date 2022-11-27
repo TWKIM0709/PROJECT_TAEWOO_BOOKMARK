@@ -26,12 +26,12 @@ public class BookDao implements BookMarkDao{
 			//sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn = b.isbn";
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select * from (select rownum, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from"
-					+ "book a left join ebook b on a.isbn=b.isbn where rownum<=?)where rownum >=?";
+					+ " book a left join ebook b on a.isbn=b.isbn where rownum<=?)where rownum >=?";
 			pstmt = conn.prepareStatement(sql);
 			
 			int start = cpage * pagesize-(pagesize-1);
 			int end = cpage*pagesize;
-			
+			System.out.println("start : "+start + "end : " + end);
 			pstmt.setInt(2, start);
 			pstmt.setInt(1, end);
 			
