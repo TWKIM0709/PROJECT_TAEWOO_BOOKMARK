@@ -14,21 +14,14 @@ import kr.or.kosa.dto.Book_Reply;
 import kr.or.kosa.utils.ConnectionHelper;
 
 public class BookDao implements BookMarkDao{
-	Connection conn;
-	PreparedStatement pstmt;
-	ResultSet rs;
-	String sql;
-	public BookDao() {
-		conn = null;
-		pstmt = null;
-		rs = null;
-		sql = "";
-	}
 	
 	//책 전체조회
 	public List<Book> BookAlllist(int cpage, int pagesize){
 		List<Book> booklist = new ArrayList<Book>();
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			//sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn = b.isbn";
 			conn = ConnectionHelper.getConnection("oracle");
@@ -75,7 +68,10 @@ public class BookDao implements BookMarkDao{
 	//책 전체 count
 	public int BookListCount() {
 		int count = 0;
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select count(*) cnt from book";
@@ -102,7 +98,10 @@ public class BookDao implements BookMarkDao{
 	//책 like조회
 	public List<Book> BookLikeList(String bookname, int cpage, int pagesize){
 		List<Book> booklike = new ArrayList<Book>();
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select * from (select rownum, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from"
@@ -147,7 +146,10 @@ public class BookDao implements BookMarkDao{
 	//책 like 카운트 조회
 	public int BooklikeListCount(String bookname) {
 		int count = 0;
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select count(*) cnt from book where book_name like ?";
@@ -174,7 +176,9 @@ public class BookDao implements BookMarkDao{
 	//책 추가
 	public int InsertBook(Book book) {
 		int row = 0;
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "insert into book(isbn, author, book_name, description, price, book_filename) values(?,?,?,?,?,?)";
@@ -224,7 +228,9 @@ public class BookDao implements BookMarkDao{
 	//책 수정
 	public int UpdateBook(Book book) {
 		int row = 0;
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			conn.setAutoCommit(false);
@@ -273,7 +279,10 @@ public class BookDao implements BookMarkDao{
 	//책 삭제
 	public int DeleteBook(String isbn) {
 		int row = 0;
-
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "delete from book where isbn=?";
@@ -297,7 +306,10 @@ public class BookDao implements BookMarkDao{
 	//책 상세
 	public Book getBookListByIsbn(String isbn) {
 		Book book = new Book();
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select book_name, author, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn=b.isbn where a.isbn=?";
@@ -332,7 +344,10 @@ public class BookDao implements BookMarkDao{
 	//책 댓글 전체조회
 	public List<Book_Reply> Book_ReplyIsbnList(String isbn){
 		List<Book_Reply> brl = new ArrayList<Book_Reply>();
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select book_reply_no, to_char(reply_date) as re_date, reply_content, id from book_reply where isbn= ?";
@@ -369,7 +384,10 @@ public class BookDao implements BookMarkDao{
 	//관리자용 책 댓글 전체조회
 		public List<Book_Reply> Book_ReplyAllList(){
 			List<Book_Reply> brl = new ArrayList<Book_Reply>();
-			
+			Connection conn = null;
+			String sql = "";
+			PreparedStatement pstmt = null;
+			ResultSet rs =null;
 			try {
 				conn = ConnectionHelper.getConnection("oracle");
 				sql = "select book_reply_no, reply_date, reply_content, id, isbn from book_reply";
@@ -405,7 +423,10 @@ public class BookDao implements BookMarkDao{
 	//책 댓글 like조회
 	public List<Book_Reply> Book_ReplyLikeList(String id){
 		List<Book_Reply> brl = new ArrayList<Book_Reply>();
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select book_reply_no, reply_date, reply_content, isbn from book_reply where id like ?";
@@ -440,8 +461,9 @@ public class BookDao implements BookMarkDao{
 	//책 댓글쓰기
 	public int InsertBook_Reply(Book_Reply br) {
 		int row = 0;
-		System.out.println("dao들어옴");
-		System.out.println(br);
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "insert into book_reply(book_reply_no, isbn, reply_content, id)" +
@@ -469,7 +491,9 @@ public class BookDao implements BookMarkDao{
 	//책 댓글 수정
 	public int UpdateBook_Reply(Book_Reply br) {
 		int row = 0;
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "update book_reply set reply_date=sysdate, reply_content=? where book_reply_no =?";
@@ -494,7 +518,9 @@ public class BookDao implements BookMarkDao{
 	//책 댓글 삭제
 	public int DeleteBook_Reply(int no) {
 		int row = 0;
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "delete book_reply where book_reply_no = ?";
@@ -519,7 +545,10 @@ public class BookDao implements BookMarkDao{
 	//책 좋아요 추가
 	public int Book_Like(String isbn, String id) {
 		int row = 0;
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select id, isbn from book_like where isbn=? and id=?";
@@ -567,7 +596,10 @@ public class BookDao implements BookMarkDao{
 	//책 좋아요 여부 
 	public int Book_Likestatus(String isbn, String id) {
 		int result = 0;
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select * from book_like where isbn = ? and id = ?";
@@ -597,7 +629,10 @@ public class BookDao implements BookMarkDao{
 	//책 좋아요 갯수
 	public int Book_LikeCount(String isbn) {
 		int row = 0;
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select nvl(count(*),0) from book_like where isbn=?";
@@ -625,14 +660,16 @@ public class BookDao implements BookMarkDao{
 	public List<Book> RankBook_Like(String startdate, String enddate){
 		List<Book> hmr = new ArrayList<Book>();
 		System.out.println(startdate + "/" +enddate);
+		Connection con = null;
+		PreparedStatement ps = null;
 		ResultSet rs1 = null;
 		try {
-			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select rownum, isbn from (select isbn, count(isbn) as likecount from book_like where like_date between ? and ? group by isbn order by 2 desc) where rownum between 0 and 10";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, startdate);
-			pstmt.setString(2, enddate);
-			rs1 = pstmt.executeQuery();
+			con = ConnectionHelper.getConnection("oracle");
+			String sql = "select rownum, isbn from (select isbn, count(isbn) as likecount from book_like where like_date between ? and ? group by isbn order by 2 desc) where rownum between 0 and 10";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, startdate);
+			ps.setString(2, enddate);
+			rs1 = ps.executeQuery();
 			while(rs1.next()) {
 				Book book = getBookListByIsbn(rs1.getString(2));
 				//book.setIsbn(rs.getString(2));
@@ -641,13 +678,13 @@ public class BookDao implements BookMarkDao{
 			}
 			
 		} catch (Exception e) {
-//			e.printStackTrace();
-			System.out.println("like조회 터짐" + e.getMessage());
+			e.printStackTrace();
+			//System.out.println("like조회 터짐" + e.getMessage());
 		}finally {
 			System.out.println("finally ㅇ");
-			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(ps);
 			ConnectionHelper.close(rs1);
-			ConnectionHelper.close(conn);
+			ConnectionHelper.close(con);
 		}
 		System.out.println("함수끝 ");
 		return hmr;
@@ -655,7 +692,10 @@ public class BookDao implements BookMarkDao{
 	//e-book리스트 조회
 	public List<Book> EbookList(String id){
 		List<Book> ebl = new ArrayList<Book>();
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from book a join ebook b on a.isbn = b.isbn where isbn in (select isbn from ebook_list where id = ?)";
@@ -691,7 +731,9 @@ public class BookDao implements BookMarkDao{
 	//e-book리스트 추가
 	public int InsertEbookList(String isbn, String id) {
 		int row = 0;
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "insert into ebook_list(id, isbn) values(?,?)";
@@ -717,7 +759,10 @@ public class BookDao implements BookMarkDao{
 	 //e-book리스트 전체 조회
 	   public List<String> getAllEbookList(){
 	      List<String> isbnlist = new ArrayList<String>();
-	      
+	      Connection conn = null;
+			String sql = "";
+			PreparedStatement pstmt = null;
+			ResultSet rs =null;
 	      try {
 	         conn = ConnectionHelper.getConnection("oracle");
 	         sql = "select isbn from ebook";
@@ -745,7 +790,9 @@ public class BookDao implements BookMarkDao{
 	//추천 책 추가
 	public int InsertBook_Recommend(String isbn, String recommend_content) {
 		int row = 0;
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "insert into book_recommend(isbn, recommend_content) values(?,?)";
@@ -769,7 +816,9 @@ public class BookDao implements BookMarkDao{
 	//추천 책 삭제
 	public int DeleteBook_Recommend(String isbn) {
 		int row = 0;
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "delete book_recommend where isbn=?";
@@ -793,7 +842,10 @@ public class BookDao implements BookMarkDao{
 	//추천책 리스트 조회
 	public List<Book_Recommend> Book_RecommendList(){
 		List<Book_Recommend> bl = new ArrayList<Book_Recommend>();
-		
+		Connection conn = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.recommend_content as recommend_content from book a join book_recommend b on a.isbn = b.isbn";
@@ -828,15 +880,17 @@ public class BookDao implements BookMarkDao{
 	//책 매출 순위조회
 	public List<Book> SellBookList(String start, String end){
 		List<Book> hmr = new ArrayList<Book>();
+		Connection con = null;
 		ResultSet rs1 = null;
+		PreparedStatement ps = null;
 		try {
-			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select a.isbn, count(b.isbn) as likecount from book a join book_payment b on a.isbn=b.isbn where payment_date between ? and ? group by a.isbn order by 2 desc";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, start);
-			pstmt.setString(2, end);
+			con = ConnectionHelper.getConnection("oracle");
+			String sql = "select a.isbn, count(b.isbn) as likecount from book a join book_payment b on a.isbn=b.isbn where payment_date between ? and ? group by a.isbn order by 2 desc";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, start);
+			ps.setString(2, end);
 			
-			rs1 = pstmt.executeQuery();
+			rs1 = ps.executeQuery();
 			
 			while(rs1.next()) {
 					Book book = getBookListByIsbn(rs1.getString(1));
@@ -847,8 +901,8 @@ public class BookDao implements BookMarkDao{
 			e.printStackTrace();
 		}finally {
 				ConnectionHelper.close(rs1);
-				ConnectionHelper.close(pstmt);
-				ConnectionHelper.close(conn);
+				ConnectionHelper.close(ps);
+				ConnectionHelper.close(con);
 		}
 		
 		return hmr;
