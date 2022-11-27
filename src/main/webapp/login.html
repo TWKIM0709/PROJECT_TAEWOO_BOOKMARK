@@ -982,6 +982,14 @@
         <!---->
     </div>
     <script type="text/javascript">
+
+        $('#input-15').keydown(function(e){
+            if(e.keyCode == '13'){
+                loginbtnevent();
+                
+            }
+        })
+
     	function loginbtnevent(){
     		$.ajax({
     			url : "userLoginOk.do" , 
