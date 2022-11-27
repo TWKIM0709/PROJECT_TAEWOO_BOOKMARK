@@ -30,7 +30,7 @@ public class BookLikeListService implements Action {
 			//검색 결과 길이
 			int count = dao.BooklikeListCount(name);
 			
-			ps = request.getParameter("pagezise");
+			ps = request.getParameter("pagesize");
 			cp = request.getParameter("cpage");
 			
 			if(ps ==null || ps.trim().equals("")) {
