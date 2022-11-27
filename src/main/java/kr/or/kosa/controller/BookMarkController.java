@@ -207,8 +207,8 @@ public class BookMarkController extends HttpServlet {
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/bookUpdate.do")) { //24. 관리자 - 책 수정 페이지 이동
     		// 이동+추가
-    		forward = new ActionForward();
-     		forward.setRedirect(false);
+    		action = new BookUpdateService();
+     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/bookUpdateOk.do")) { //25  관리자 - 책 수정 처리
     		// 이동+처리
     		action = new BookUpdateService();

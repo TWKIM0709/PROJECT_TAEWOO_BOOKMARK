@@ -33,6 +33,7 @@ public class BookDao implements BookMarkDao{
 			
 			int start = cpage * pagesize-(pagesize-1);
 			int end = cpage*pagesize;
+			System.out.println(start +"||"+end);
 			pstmt.setInt(2, start);
 			pstmt.setInt(1, end);
 			
