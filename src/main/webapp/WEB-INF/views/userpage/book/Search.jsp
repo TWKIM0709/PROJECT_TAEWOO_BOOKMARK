@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ko" class="" style="height: auto; overflow: visible;">
 
 <head>
@@ -399,154 +400,38 @@
                     <section data-v-02a040ec="" class="page category-wrap">
                         <h2 data-v-02a040ec="" class="title" id="searchTag"></h2>
                         <ul data-v-02a040ec="" id="searchResultList" class="category-list">
-                            <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
-                                    href="bookDetail.do">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">어서 오세요 휴남동 서점입니다</strong>
-                                        <p data-v-02a040ec="">황보름</p>
-                                    </div>
-                                    <div data-v-02a040ec="" class="bookcover">
-                                        <div data-v-02a040ec="" class="inner">
-                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
-                                                data-observe="true">
-                                                <picture data-v-96e558f2="">
-                                                    <source data-v-96e558f2=""
-                                                        srcset="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80 2x"
-                                                        type="image/webp"> <img data-v-96e558f2=""
-                                                        src="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li data-v-02a040ec="" class="list gtm-search-category active"><a data-v-02a040ec=""
-                                    href="/v3/search/2depth/1474?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">오디오북</strong>
-                                        <p data-v-02a040ec="">소설, 인문, 경제경영, 자기계발, 에세이, 과학, 사회, 역사 등</p>
-                                    </div>
-                                    <div data-v-02a040ec="" class="bookcover">
-                                        <div data-v-02a040ec="" class="inner">
-                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
-                                                data-observe="true">
-                                                <picture data-v-96e558f2="">
-                                                    <source data-v-96e558f2=""
-                                                        srcset="https://cover.millie.co.kr/service/cover/179572957/1a309391d5da49678c03438c3a7d22d7.jpg?w=125&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179572957/1a309391d5da49678c03438c3a7d22d7.jpg?w=250&amp;f=webp&amp;q=80 2x"
-                                                        type="image/webp"> <img data-v-96e558f2=""
-                                                        src="https://cover.millie.co.kr/service/cover/179572957/1a309391d5da49678c03438c3a7d22d7.jpg?w=125&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
-                                    href="/v3/search/2depth/1779?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">챗북</strong>
-                                        <p data-v-02a040ec="">백발백중! 별자리 운세, 챗북 인터뷰 시리즈, 돈키레터</p>
-                                    </div>
-                                    <div data-v-02a040ec="" class="bookcover">
-                                        <div data-v-02a040ec="" class="inner">
-                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
-                                                data-observe="true">
-                                                <picture data-v-96e558f2="">
-                                                    <source data-v-96e558f2=""
-                                                        srcset="https://cover.millie.co.kr/service/cover/179548325/60e43be598bb4da9ab50b39f70c11895.jpg?w=125&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179548325/60e43be598bb4da9ab50b39f70c11895.jpg?w=250&amp;f=webp&amp;q=80 2x"
-                                                        type="image/webp"> <img data-v-96e558f2=""
-                                                        src="https://cover.millie.co.kr/service/cover/179548325/60e43be598bb4da9ab50b39f70c11895.jpg?w=125&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
-                                    href="/v3/search/2depth/1610?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">매거진</strong>
-                                        <p data-v-02a040ec="">경제·경영, 패션·트렌드, 대중문화, 인문·예술, 리빙·라이프스타일, 문학·교양, 시사, 스포츠 등
-                                        </p>
-                                    </div>
-                                    <div data-v-02a040ec="" class="bookcover">
-                                        <div data-v-02a040ec="" class="inner">
-                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
-                                                data-observe="true">
-                                                <picture data-v-96e558f2="">
-                                                    <source data-v-96e558f2=""
-                                                        srcset="https://cover.millie.co.kr/service/cover/179574370/325d6da16438435f956ca83ff17c4c4b.jpg?w=125&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179574370/325d6da16438435f956ca83ff17c4c4b.jpg?w=250&amp;f=webp&amp;q=80 2x"
-                                                        type="image/webp"> <img data-v-96e558f2=""
-                                                        src="https://cover.millie.co.kr/service/cover/179574370/325d6da16438435f956ca83ff17c4c4b.jpg?w=125&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
-                                    href="/v3/search/2depth/2032?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">디즈니</strong>
-                                        <p data-v-02a040ec="">디즈니, 픽사, 마블의 책이 보이는 영어 오디오북 ⓒDisney</p>
-                                    </div>
-                                    <div data-v-02a040ec="" class="bookcover">
-                                        <div data-v-02a040ec="" class="inner">
-                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
-                                                data-observe="true">
-                                                <picture data-v-96e558f2="">
-                                                    <source data-v-96e558f2=""
-                                                        srcset="https://cover.millie.co.kr/service/cover/179559925/fe449328632a454aadc7be506b0658e5.jpg?w=125&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179559925/fe449328632a454aadc7be506b0658e5.jpg?w=250&amp;f=webp&amp;q=80 2x"
-                                                        type="image/webp"> <img data-v-96e558f2=""
-                                                        src="https://cover.millie.co.kr/service/cover/179559925/fe449328632a454aadc7be506b0658e5.jpg?w=125&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
-                                    href="/v3/search/2depth/1223?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">소설</strong>
-                                        <p data-v-02a040ec="">추리・스릴러, 킬러 스파이, 법의학 스릴러, SF, 판타지</p>
-                                    </div>
-                                    <div data-v-02a040ec="" class="bookcover">
-                                        <div data-v-02a040ec="" class="inner">
-                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
-                                                data-observe="true">
-                                                <picture data-v-96e558f2="">
-                                                    <source data-v-96e558f2=""
-                                                        srcset="https://cover.millie.co.kr/service/cover/179572960/de64957b6baa45fd8501d98efb14dfdf.jpg?w=125&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179572960/de64957b6baa45fd8501d98efb14dfdf.jpg?w=250&amp;f=webp&amp;q=80 2x"
-                                                        type="image/webp"> <img data-v-96e558f2=""
-                                                        src="https://cover.millie.co.kr/service/cover/179572960/de64957b6baa45fd8501d98efb14dfdf.jpg?w=125&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
-                                    href="/v3/search/2depth/1332?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">에세이</strong>
-                                        <p data-v-02a040ec="">시, 일상, 위로, 직업, 관계, 여행, 예술, 자연, 사랑, 가족, 나이듦</p>
-                                    </div>
-                                    <div data-v-02a040ec="" class="bookcover">
-                                        <div data-v-02a040ec="" class="inner">
-                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture">
-                                                <!---->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a></li>
-                            <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
-                                    href="/v3/search/2depth/1194?nav_hidden=y">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">세계문학전집</strong>
-                                        <p data-v-02a040ec="">열린책들, 민음사, 펭귄클래식, 문예출판사, 을유문화사, 현대지성, 문예출판사</p>
-                                    </div>
-                                    <div data-v-02a040ec="" class="bookcover">
-                                        <div data-v-02a040ec="" class="inner">
-                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture">
-                                                <!---->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a></li>
+                                <!--  TODO:페이징 처리 -->
+                                <c:forEach  var="book"  items="${requestScope.booklist}" varStatus="status">
+	                                	 <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
+	                                    href="bookDetail.do">
+		                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">${book.book_name }</strong>
+		                                        <p data-v-02a040ec="">${book.author }</p>
+		                                    </div>
+		                                    <div data-v-02a040ec="" class="bookcover">
+		                                        <div data-v-02a040ec="" class="inner">
+		                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
+		                                                data-observe="true">
+		                                                <picture data-v-96e558f2="">
+		                                                    <source data-v-96e558f2=""
+		                                                        srcset="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80 2x"
+		                                                        type="image/webp"> <img data-v-96e558f2=""
+		                                                        src="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80"
+		                                                        alt=" 도서 썸네일" width="125"></picture>
+		                                            </div>
+		                                        </div>
+		                                    </div>
+		                                </a></li>
+                                </c:forEach>
+                            
                           
                         </ul>
+                        ${requestScope.pager }
                     </section>
                     
                 </div>
             </section>
         </section>
+        ${requestScope.booklist }<br>
         <!---->
         <!---->
         <!---->
@@ -674,7 +559,7 @@
 			type : "get",
 		//	data : "id=abc&pwd=123",
 			data : { book_name: inputtxt,
-                    pagesize : "",
+                    pagesize : "10",
                     cpage : "",
                 }, // 이 값을 가지고 servlet으로 간다.
 			dataType: 'JSON',
