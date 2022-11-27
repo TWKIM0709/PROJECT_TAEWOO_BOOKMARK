@@ -40,14 +40,14 @@ public class BookAllListService implements Action {
 			int pagesize = Integer.parseInt(ps);
 			int cpage = Integer.parseInt(cp);
 			int pagecount = 0;
-
 			// 23건 % 5
 			if (totalbookcount % pagesize == 0) {
 				pagecount = totalbookcount / pagesize; // 20 << 100/5
 			} else {
 				pagecount = (totalbookcount / pagesize) + 1;
 			}
-			
+
+			System.out.println(pagesize + "," + cpage + "," + pagecount);
 			List<Book> booklist = dao.BookAlllist(cpage, pagesize);
 			
 			int pagersize = 3;

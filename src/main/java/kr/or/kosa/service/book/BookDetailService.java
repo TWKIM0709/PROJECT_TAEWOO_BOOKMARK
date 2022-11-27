@@ -15,7 +15,7 @@ public class BookDetailService implements Action {
 		ActionForward forward = new ActionForward();
 		
 		String isbn = request.getParameter("isbn");
-		String id = request.getParameter("id");
+		String id = (String)request.getSession().getAttribute("id");
 		try {
 			BookDao dao = new BookDao();
 			

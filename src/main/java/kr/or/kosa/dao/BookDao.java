@@ -26,8 +26,8 @@ public class BookDao implements BookMarkDao{
 			//sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from book a left join ebook b on a.isbn = b.isbn";
 			conn = ConnectionHelper.getConnection("oracle");
 
-			sql = "select * from (select rownum, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from"
-					+ " book a left join ebook b on a.isbn=b.isbn where rownum<=?)where rownum >=?";
+			sql = "select * from (select rownum as rn, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from"
+					+ " book a left join ebook b on a.isbn=b.isbn where rownum<=?)where rn >=?";
 
 			pstmt = conn.prepareStatement(sql);
 			
@@ -105,8 +105,8 @@ public class BookDao implements BookMarkDao{
 		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select * from (select rownum, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from "
-					+ "book a left join ebook b on a.isbn=b.isbn where rownum<=? and book_name like ? )where rownum >=? ";
+			sql = "select * from (select rownum as rn, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from "
+					+ "book a left join ebook b on a.isbn=b.isbn where rownum<=? and book_name like ? )where rn >=? ";
 			pstmt = conn.prepareStatement(sql);
 			int start = cpage * pagesize-(pagesize-1);
 			int end = cpage*pagesize;
