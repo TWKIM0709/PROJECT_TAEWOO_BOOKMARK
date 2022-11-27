@@ -105,13 +105,14 @@ public class BookDao implements BookMarkDao{
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select * from (select rownum, a.isbn as isbn, author, book_name, description, price, book_filename, b.file_name as file_name from "
-					+ "book a left join ebook b on a.isbn=b.isbn where rownum<=?)where rownum >=? and book_name like ?";
+					+ "book a left join ebook b on a.isbn=b.isbn where rownum<=? and book_name like ? )where rownum >=? ";
 			pstmt = conn.prepareStatement(sql);
 			int start = cpage * pagesize-(pagesize-1);
 			int end = cpage*pagesize;
 			pstmt.setInt(1, end);
-			pstmt.setInt(2, start);
-			pstmt.setString(3,  "%"+bookname+"%");
+			pstmt.setString(2,  "%"+bookname+"%");
+			pstmt.setInt(3, start);
+			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
