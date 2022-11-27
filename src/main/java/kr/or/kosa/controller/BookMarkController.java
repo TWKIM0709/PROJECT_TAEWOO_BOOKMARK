@@ -36,6 +36,7 @@ import kr.or.kosa.service.calendar.CalendarDeleteService;
 import kr.or.kosa.service.calendar.CalendarDetailService;
 import kr.or.kosa.service.calendar.CalendarSearchListService;
 import kr.or.kosa.service.calendar.CalendarUpdateService;
+import kr.or.kosa.service.main.mainService;
 import kr.or.kosa.service.payment.CartAddService;
 import kr.or.kosa.service.payment.CartDeleteService;
 import kr.or.kosa.service.payment.CartListService;
@@ -86,7 +87,7 @@ public class BookMarkController extends HttpServlet {
     	String requestURI = request.getRequestURI();
     	String contextPath = request.getContextPath();
     	String url_Command = requestURI.substring(contextPath.length());
-	
+	System.out.println(url_Command);
     	Action action=null;
     	ActionForward forward=null;
     	//페이지 - 기능
@@ -96,9 +97,8 @@ public class BookMarkController extends HttpServlet {
     	//=================================================================//
     	 if(url_Command.equals("/main.do")) { //0. 메인 페이지 이동
      		// 이동+처리
-    		forward = new ActionForward();
-     		forward.setRedirect(false);
-     		forward.setPath("/WEB-INF/views/userpage/user_main.jsp");
+    		action = new mainService();
+    		forward = action.execute(request, response);
     	//=================================================================//
     	//                                                     문의사항
     	//=================================================================//

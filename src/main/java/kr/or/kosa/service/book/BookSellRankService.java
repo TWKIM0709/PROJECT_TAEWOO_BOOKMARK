@@ -21,14 +21,10 @@ public class BookSellRankService implements Action {
 		String sd = request.getParameter("startdate");
 		String ed = request.getParameter("enddate");
 		
-		SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-DD");
-		try {
-			Date startdate = df.parse(sd);
-			Date enddate = df.parse(ed);
-			
+		try {	
 			BookDao dao = new BookDao();
 			
-			List<Book> booksellrank = dao.SellBookList(startdate, enddate);
+			List<Book> booksellrank = dao.SellBookList(sd, ed);
 			
 			request.setAttribute("booksellrank", booksellrank);
 			
