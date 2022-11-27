@@ -5,6 +5,7 @@
 
 <head>
 <meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <meta name="viewport"
 	content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -351,6 +352,7 @@
 	src="https://d3udu241ivsax2.cloudfront.net/v3/js/management.290a60841f92b77fd5e6.js">
     </script>
 <link rel="stylesheet" type="text/css" href="ddd.css">
+     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 
 <body class="" style="height: auto; overflow: visible;">
@@ -427,15 +429,17 @@
 							</p>
 							<div data-v-9baa251e="" class="input-group">
 								<div data-v-9baa251e="" class="input-box">
-									<input data-v-9baa251e="" type= type="text" id="id" name="wr_2" onkeyup="PwdCheck(this)"
-									placeholder="비밀번호 입력" id="input-password"
-										 
-										class="input-text tooltip1">
-									<!---->
+								<div type="text" placeholder="비밀번호 입력" class="mds-input-field" ">
+									<input data-v-9baa251e="" type="text" id="password" name="password" oninput="PwdCheck(this)"
+									autocomplete="off"
+									placeholder="비밀번호 입력" class="input-text tooltip1">
 								</div>
-				
 							</div>
+							</div>
+							<span id="passwordcktext"></span>
 						</div>
+                    
+                    
 						<!---->
 						<div data-v-9baa251e="" class="input-item">
 							<p data-v-9baa251e="" class="tit">우편번호<span data-v-9baa251e="">*</span></p>
@@ -443,7 +447,7 @@
 								<div data-v-9baa251e="" class="input-box"></div>
 									<input data-v-9baa251e="" type="text" placeholder="우편번호 입력" id="zipcode"  readonly
 									
-										 class="input-text"> <position: absolute>  <button type="button" value="우편번호찾기" onclick = "kakaopost()" >우편번호찾기</button></position:>
+										 class="input-text"> <button style="position: absolute;left: 87%;" type="button" value="우편번호찾기" onclick = "kakaopost()" >우편번호찾기</button>
 										
 								</div>
 								<!---->
@@ -496,7 +500,9 @@
 							<li data-v-9baa251e="">개인정보 이용기간 : 회원 탈퇴 시 또는 개인정보처리방침에 따라
 								보유 및 파기 됩니다.</li>
 						</ul>
+						<form  action='userEditOk.do'>
 						<button data-v-9baa251e="" type="button" class="confirm-btn">확인</button>
+						</form>
 					</div>
 				</div>
 				<!---->
@@ -509,23 +515,18 @@
 		<!---->
 		<!---->
 	</div>
-	<script type="text/javascript">
-	//숫자 글자수 제한
-  function maxLengthChk(object){
-    if (object.value.length > object.maxLength){
-      object.value = object.value.slice(0, object.maxLength);
-    }    
-  }
-//비밀번호 정규식
-  function PwdCheck(obj){
-  	var passwordRule = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
-  	
-  	if( passwordRule.test(obj.value) ){
-  		alert("영문, 숫자, 특수문자를 포함 8자리를 입력해주세요.");
-  		obj.value = obj.value.substring( 0 , obj.value.length - 1 ); // 입력한 특수문자 한자리 지움
-  		}
-  	}
-</script>
+	  <script>
+    function kakaopost() {
+      new daum.Postcode({
+        oncomplete: function (data) {
+        	console.log(data.zonecode);
+        	console.log(data.address);
+        	$('#zipcode').val(data.zonecode);
+        	$('#address').val(data.address);
+        }
+      }).open();
+    }
+  </script>
 	<script async=""
 		src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
 	<script async=""
@@ -580,5 +581,27 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	//숫자 글자수 제한
+  function maxLengthChk(object){
+    if (object.value.length > object.maxLength){
+      object.value = object.value.slice(0, object.maxLength);
+    }    
+  }
+//비밀번호 정규식
+  function PwdCheck(obj){
+	console.log('a');
+   var idReg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
+   if( !idReg.test(obj.value) ){
+
+      $('#passwordcktext').text('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
+      pwck = false;
+      //obj.value = obj.value.substring( 0 , obj.value.length - 1 ); // 입력한 특수문자 한자리 지움
+      } else {
+         pwck= true;
+          $('#passwordcktext').text('올바른 비밀번호입니다.');
+      }
+   }
+</script>
 </html>

@@ -312,7 +312,7 @@
                 </div>
             
                 <div data-v-0807f0e5="" class="menu-list">
-                    <p data-v-0807f0e5="" class="menu-title">기본 설정</p>
+                    <p data-v-0807f0e5="" class="menu-title" >기본 설정</p>
                     <ul data-v-0807f0e5="">
                         <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="userEdit.do" class="">내 정보 관리</a></li>
                     </ul>
@@ -320,9 +320,9 @@
                     <ul data-v-0807f0e5="">
                        
                         <!---->	
-                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/v3/viewer" class="">내 e-book 관리</a>
+                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/ebookList.do" class="">내 e-book 관리</a>
                         </li>
-                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/ebookList.do" class="">내 블로그 관리</a></li>
+                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/blogEnter.do" class="">내 블로그 관리</a></li>
                     </ul>
                     <p data-v-0807f0e5="" class="menu-title">서비스 안내</p>
                     <ul data-v-0807f0e5="">
@@ -332,7 +332,7 @@
                 </div>
                 
                 <div data-v-0807f0e5="" class="btn-area"><button data-v-0807f0e5="" type="button"
-                        class="logout"><a href="homepage.html">로그아웃</a></button></div>
+                        class="logout" style = "background-color:#fbd91c"><a href="homepage.html">로그아웃</a></button></div>
                         
             </div>
         </section>
