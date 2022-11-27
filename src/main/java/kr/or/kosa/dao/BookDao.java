@@ -622,36 +622,34 @@ public class BookDao implements BookMarkDao{
 		return row;
 	}
 	//좋아요 순 순위 조회
-	public List<Book> RankBook_Like(java.util.Date startdate, java.util.Date enddate){
+	public List<Book> RankBook_Like(String startdate, String enddate){
 		List<Book> hmr = new ArrayList<Book>();
-		
+		System.out.println(startdate + "/" +enddate);
+		ResultSet rs1 = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select isbn, count(isbn) as likecount from book_like where like_date between ? and ? group by isbn order by 2 desc";
+			sql = "select rownum, isbn from (select isbn, count(isbn) as likecount from book_like where like_date between ? and ? group by isbn order by 2 desc) where rownum between 0 and 10";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setDate(1, (Date)startdate);
-			pstmt.setDate(2, (Date)enddate);
-			rs = pstmt.executeQuery();
-			
-			for(int i = 10; i>=1; i--) {
-				if(!rs.next()) {
-					break;
-				}else {
-					Book book = getBookListByIsbn(rs.getString(1));
-					hmr.add(book);
-				}
+			pstmt.setString(1, startdate);
+			pstmt.setString(2, enddate);
+			rs1 = pstmt.executeQuery();
+			while(rs1.next()) {
+				Book book = getBookListByIsbn(rs1.getString(2));
+				//book.setIsbn(rs.getString(2));
+				System.out.println(book);
+				hmr.add(book);
 			}
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("like조회 터짐" + e.getMessage());
 		}finally {
-			try {
-				
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			System.out.println("finally ㅇ");
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(rs1);
+			ConnectionHelper.close(conn);
 		}
-		
+		System.out.println("함수끝 ");
 		return hmr;
 	}
 	//e-book리스트 조회
@@ -828,37 +826,29 @@ public class BookDao implements BookMarkDao{
 		return bl;
 	}
 	//책 매출 순위조회
-	public List<Book> SellBookList(java.util.Date start, java.util.Date end){
+	public List<Book> SellBookList(String start, String end){
 		List<Book> hmr = new ArrayList<Book>();
-		
+		ResultSet rs1 = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "select a.isbn, count(b.isbn) as likecount from book a join book_payment b on a.isbn=b.isbn where payment_date between ? and ? group by a.isbn order by 2 desc";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setDate(1, (Date) start);
-			pstmt.setDate(2, (Date) end);
+			pstmt.setString(1, start);
+			pstmt.setString(2, end);
 			
-			rs = pstmt.executeQuery();
+			rs1 = pstmt.executeQuery();
 			
-			for(int i = 10; i>=1; i--) {
-				if(!rs.next()) {
-					break;
-				}else {
-					Book book = getBookListByIsbn(rs.getString(1));
+			while(rs1.next()) {
+					Book book = getBookListByIsbn(rs1.getString(1));
 					hmr.add(book);
-				}
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			try {
-				ConnectionHelper.close(rs);
+				ConnectionHelper.close(rs1);
 				ConnectionHelper.close(pstmt);
 				ConnectionHelper.close(conn);
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
 		}
 		
 		return hmr;

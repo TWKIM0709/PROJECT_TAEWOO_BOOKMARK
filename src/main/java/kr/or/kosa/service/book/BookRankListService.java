@@ -20,16 +20,12 @@ public class BookRankListService implements Action {
 		
 		String sd = request.getParameter("startdate");
 		String ed = request.getParameter("enddate");
-		
-		SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-DD");
-		
+		System.out.println("들어오는지 여부" + ed);
 		try {
-			Date startdate = df.parse(sd);
-			Date enddate = df.parse(ed);
-			
+						
 			BookDao dao = new BookDao();
 			
-			List<Book> bookranklist = dao.RankBook_Like(startdate, enddate);
+			List<Book> bookranklist = dao.RankBook_Like(sd, ed);
 			
 			request.setAttribute("bookrank", bookranklist);
 			
