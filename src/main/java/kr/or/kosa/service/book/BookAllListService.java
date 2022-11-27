@@ -29,7 +29,7 @@ public class BookAllListService implements Action {
 			
 			if (ps == null || ps.trim().equals("")) {
 				// default 값 설정
-				ps = "5"; // 5개씩
+				ps = "10"; // 10개씩
 			}
 
 			if (cp == null || cp.trim().equals("")) {
@@ -47,8 +47,10 @@ public class BookAllListService implements Action {
 				pagecount = (totalbookcount / pagesize) + 1;
 			}
 
-			System.out.println(pagesize + "," + cpage + "," + pagecount);
 			List<Book> booklist = dao.BookAlllist(cpage, pagesize);
+			
+			System.out.println("서비스단 booklist");
+			System.out.println(booklist);
 			
 			int pagersize = 3;
 			ThePager pager = new ThePager(totalbookcount,cpage,pagesize,pagersize, "bookAlllist.do");
