@@ -403,7 +403,7 @@
                                 <!--  TODO:페이징 처리 -->
                                 <c:forEach  var="book"  items="${requestScope.booklist}" varStatus="status">
 	                                	 <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
-	                                    href="bookDetail.do">
+	                                    href="bookDetail.do?isbn=${book.isbn}">
 		                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">${book.book_name }</strong>
 		                                        <p data-v-02a040ec="">${book.author }</p>
 		                                    </div>
@@ -413,9 +413,9 @@
 		                                                data-observe="true">
 		                                                <picture data-v-96e558f2="">
 		                                                    <source data-v-96e558f2=""
-		                                                        srcset="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80 2x"
+		                                                        srcset="${book.book_filename }, ${book.book_filename } 2x"
 		                                                        type="image/webp"> <img data-v-96e558f2=""
-		                                                        src="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80"
+		                                                        src="${book.book_filename }"
 		                                                        alt=" 도서 썸네일" width="125"></picture>
 		                                            </div>
 		                                        </div>
