@@ -12,6 +12,7 @@
 	<!-- fullcalendar css -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
@@ -76,7 +77,8 @@
 			<p><span>title:</span><input type="text" id="updatetitle"></p>
 			<p>start:<input type="date" id="updatestartdate"></p>
 			<p>end:<input type="date" id="updateenddate"></p>
-			<p><button id="updatepopupbutton" class="btn btn-light">수정하기</button><button id="deletepopupbutton"class="btn btn-light">삭제하기</button></p>
+			<p><button id="updatepopupbutton" class="btn btn-light">수정하기</button>
+			<button id="deletepopupbutton"class="btn btn-light">삭제하기</button></p>
 		</div>
 	</div>
 	<hr>
@@ -86,7 +88,7 @@
 <!-- 페이지로드 , 일정추가 , 창닫기 , Date Format 함수 있는 스크립트 -->
 <script type="text/javascript">
 //페이지로드 - FullCalendar 생성 area
-	document.addEventListener('DOMContentLoaded', function() {
+	//document.addEventListener('DOMContentLoaded', function() {
 		// new FullCalendar.Calendar(대상 DOM객체, {속성:속성값, 속성2:속성값2..})
 		let calendarEl = document.getElementById('calendar');
 		let calendarOption = {
@@ -134,12 +136,14 @@
 				},
 				nowIndicator: true, // 현재 시간 마크
 				locale: 'ko' // 한국어 설정
-			};
+			}; //option end
 		var calendar = new FullCalendar.Calendar(calendarEl, calendarOption);
 		console.log(calendarOption.events);
 		calendar.render();
 //페이지로드 - FullCalendar 생성 area end
-//FullCalendar 재시작 함수
+	//}) //onload end
+
+	//FullCalendar 재시작 함수
 	function reload(type){
 		//success ajax start
 		$.ajax({
@@ -166,53 +170,51 @@
 					var calendar = new FullCalendar.Calendar(calendarEl, calendarOption); //캘린더 객체 생성
 					calendar.render(); //다시 랜더하기
 				}//for end
-				$('#test').toggleClass('hide');
 			},//success end
 			error:function(error){
 				alert("일정 추가 처리 에러");
 			}
 		});
-	//success ajax end
+	//ajax end
 	}
 //	일정 추가 함수 start
-		$('#popupbutton').on({
-			click:()=>{
-				if($('#title').val() == "" || $('#title').val() == null){
-					alert('일정내용을 입력하세요');
-					return;
-				}
-				if($('#enddate').val() == null || $('#enddate').val() ==""){
-					alert("끝 날짜를 입력하세요");
-					return;
-				}
-				//ajax start
-				$.ajax({
-					"url":"calendarAdd.do",
-					type:"post",
-					dataType:"text",
-					data :{
-						"calendar_start" : $('#startdate').val(),
-						"calendar_end" : $('#enddate').val(),
-						"calendar_content" : $('#title').val()
-					},
-					success : function(result){
-						console.log(result);
-						if(result == 1){ // 일정 추가 성공
-							alert("일정추가성공");
-							reload('add');
-						} else { //일정 추가 실패
-							alert("일정추가실패");
-						}
-					},
-					error:function(result){
-						alert("일정추가오류");
-					}
-				}); 
-				//ajax end
+	$('#popupbutton').on({
+		click:()=>{
+			if($('#title').val() == "" || $('#title').val() == null){
+				swal('일정내용을 입력하세요');
+				return;
 			}
-		});
-	})
-//	일정 추가 함수 start end
+			if($('#enddate').val() == null || $('#enddate').val() ==""){
+				swal("끝 날짜를 입력하세요");
+				return;
+			}
+			//ajax start
+			$.ajax({
+				"url":"calendarAdd.do",
+				type:"post",
+				dataType:"text",
+				data :{
+					"calendar_start" : $('#startdate').val(),
+					"calendar_end" : $('#enddate').val(),
+					"calendar_content" : $('#title').val()
+				},
+				success : function(result){
+					console.log(result);
+					if(result == 1){ // 일정 추가 성공
+						swal("SUCCESS", "일정 추가 성공!", "success");
+						reload('add');
+						$('#test').toggleClass('hide');
+					} else { //일정 추가 실패
+						swal("FAIL...", "일정 추가 실패...", "warning");
+					}
+				},
+				error:function(result){
+					swal("FAIL...", "일정 추가 오류...", "error");
+				}
+			}); 
+			//ajax end
+		}
+	});//	일정 추가 함수 end
 // Date Format 함수 start
 	function dateFormat(date) {
         let month = date.getMonth() + 1;
@@ -231,21 +233,85 @@ $('#updateclosebtn').click(function(){
 $('#addclosebtn').click(function(){
 	$('#test').toggleClass('hide');
 })
-</script>
-<!-- 수정, 업데이트 비동기 함수 만들 곳 -->
-<script type="text/javascript">
+//<!-- 수정, 업데이트 비동기 함수 만들 곳 -->
 // = = = 수정하기 버튼 = = =
 	$('#updatepopupbutton').on({
 		click:function(){
-			
+			$.ajax({
+				url:"calendarEdit.do",
+				type:"post",
+				data:{
+					"calendar_no":$('#updateid').val(),
+					"calendar_start":$('#updatestartdate').val(),
+					"calendar_end":$('#updateenddate').val(),
+					"calendar_content":$('#updatetitle').val(),
+					"calendar_status":"0"
+				},
+				dataType:"text",
+				success:function(event){
+					console.log(event);
+					if(event == "0"){ //일정번호가 잘못 되었을 겅유
+						console.log("일정번호를 입력해주세요");
+						swal("FAIL...", "일정번호를 입력해주세요...", "warning");
+					} else if (event == "1"){ //수정하려는 캘린더가 없을 경우
+						console.log("없는 일정 입니다.");
+						swal("FAIL...", "없는 일정 입니다...", "warning");
+					} else if (event == "2"){ //수정 성공
+						console.log("일정 수정 성공");
+						swal("SUCCESS!", "일정 수정 성공!", "success");
+						reload('update');
+					} else if (event == "3"){ //수정 실패
+						console.log("일정 수정 실패");
+						swal("FAIL...", "일정 수정 실패...", "error");
+					} else if (event == "4"){ //에러 ( 실패 )
+						console.log("일정 수정 에러");
+						swal("ERROR...", "일정 수정 에러...", "error");
+					}
+					$('#updatetest').toggleClass('hide');
+				},
+				error:function(error){
+					console.log("일정 수정 에러");
+					swal("ERROR...", "일정 수정 에러...", "error");
+				}
+			});
 		}
 	});
 // = = = 삭제하기 버튼 = = = 
-	$('#deletepopupbutton').on({
-		click:function(){
-			
-		}
-	});
+$('#deletepopupbutton').on({
+			click:function(){
+				$.ajax({
+					url:"calendarDelete.do",
+					type:"post",
+					data:{
+						"calendar_no":$('#updateid').val()
+					},
+					dataType:"text",
+					success:function(event){
+						console.log(event);
+						if(event == "0"){ //일정번호가 잘못 되었을 겅유
+							console.log("일정번호를 입력해주세요");
+							swal("FAIL...", "일정번호를 입력해주세요...", "warning");
+						} else if (event == "1"){ //삭제 성공
+							console.log("일정 삭제 성공");
+							swal("SUCCESS!", "일정 삭제 성공!", "success");
+							reload('update');
+						} else if (event == "2"){ //삭제 실패
+							console.log("일정 삭제 실패");
+							swal("FAIL...", "일정 삭제 실패...", "error");
+						} else if (event == "3"){ //삭제 실패
+							console.log("일정 삭제 오류");
+							swal("FAIL...", "일정 삭제 실패...", "error");
+						} //if - else if end
+						$('#updatetest').toggleClass('hide');
+					}, //success end
+					error:function(error){
+						console.log("일정 삭제 에러");
+						swal("ERROR...", "일정 삭제 에러...", "error");
+					} //error end
+				});//ajax end
+			} //click function end
+		}); //on end
+	
 </script>
 
 </html>
