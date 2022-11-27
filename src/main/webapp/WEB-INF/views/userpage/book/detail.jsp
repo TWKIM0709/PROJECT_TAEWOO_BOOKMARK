@@ -201,7 +201,7 @@
 	                                               for(let index in result.BOOK){
 	                                              	 console.log(result.BOOK[index]);
 	                                              	 text += '<li data-v-da7fb214=""><div data-v-da7fb214="" class="info"><p data-v-da7fb214="" class="nickname">'+
-	                                              	 result.BOOK[index].id+'</p> <span data-v-da7fb214="" class="date">'+result.BOOK[index].reply_date+'</span><pre data-v-da7fb214="" class="cont">'+result.BOOK[index].reply_content+'</pre></div></li>'                	 
+	                                              	 result.BOOK[index].id+'</p> <span data-v-da7fb214="" class="date">'+result.BOOK[index].reply_date+'</span><pre data-v-da7fb214="" class="cont">'+result.BOOK[index].reply_content+'</pre></div></li>'
 	                                               }
 	                                               $("#reply").append(text);
 	                                               $('#textarea-39').val("");
@@ -281,9 +281,17 @@
                  let text = "";
                  for(let index in result.BOOK){
                 	 console.log(result.BOOK[index]);
+                	 let id = result.BOOK[index].id;
                 	 text += '<li data-v-da7fb214=""><div data-v-da7fb214="" class="info"><p data-v-da7fb214="" class="nickname">'+
-                	 result.BOOK[index].id+'</p> <span data-v-da7fb214="" class="date">'+result.BOOK[index].reply_date+'</span><pre data-v-da7fb214="" class="cont">'+result.BOOK[index].reply_content+'</pre></div></li>'                	 
+                	 result.BOOK[index].id+'</p> <span data-v-da7fb214="" class="date">'+result.BOOK[index].reply_date+'</span><pre data-v-da7fb214="" class="cont">'+result.BOOK[index].reply_content+'</pre></div>';
+                	if("${sessionScope.id}" == id){
+                		console.log("id 같음");
+                		text += '<button>삭제</button><button disabled>|</button><button>수정</button>';
+                	}
+                	 text +='</li>'                	 
                  }
+                 console.log(text);
+                 console.log('${sessionScope.id}');
                  $("#reply").append(text);
                },
                error : function(){

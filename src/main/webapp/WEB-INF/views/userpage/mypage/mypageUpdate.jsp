@@ -366,6 +366,7 @@
 		<section data-v-c1337ae8="" class="content">
 			<div data-v-9baa251e="" data-v-c1337ae8="" class="millie-inner">
 				<div data-v-9baa251e="">
+						<form action='userEditOk.do' method = "post" >
 					<div data-v-54204cd4="" data-v-9baa251e="" class="back-component">
 						<div data-v-54204cd4="" class="back-wrap">
 							<div data-v-54204cd4="">
@@ -457,8 +458,7 @@
 							<!---->
 							<!---->
 							<!---->
-						</div>
-						<div data-v-9baa251e="" class="input-item">
+							<div data-v-9baa251e="" class="input-item">
 							<p data-v-9baa251e="" class="tit">
 							 주소<span data-v-9baa251e="">*</span>
 							</p>
@@ -483,6 +483,7 @@
 								</div>
 								</div>
 								</div>
+						</div>
 								<!---->
 							<!---->
 							<!---->
@@ -500,9 +501,10 @@
 							<li data-v-9baa251e="">개인정보 이용기간 : 회원 탈퇴 시 또는 개인정보처리방침에 따라
 								보유 및 파기 됩니다.</li>
 						</ul>
-						<form  action='userEditOk.do'>
-						<button data-v-9baa251e="" type="button" class="confirm-btn">확인</button>
+						
+						<button data-v-9baa251e="" type="submit" class="confirm-btn">확인</button>
 						</form>
+						
 					</div>
 				</div>
 				<!---->
