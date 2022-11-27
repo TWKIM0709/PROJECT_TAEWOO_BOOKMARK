@@ -27,7 +27,7 @@ public class BookLikeListService implements Action {
 		String cp = "";
 		try {
 			BookDao dao = new BookDao();
-			
+			//검색 결과 길이
 			int count = dao.BooklikeListCount(name);
 			
 			ps = request.getParameter("pagezise");
@@ -50,8 +50,12 @@ public class BookLikeListService implements Action {
 				pagecount = (count / pagesize) + 1;
 			}
 			
+			//책 검색 결과
 			List<Book> booklist = dao.BookLikeList(name, cpage, pagesize);
+		
 			
+			
+			System.out.println(booklist);
 			int pagersize = 3;
 			ThePager pager = new ThePager(count, cpage, pagesize, pagersize, "BookLikeList.do");
 			
@@ -60,6 +64,7 @@ public class BookLikeListService implements Action {
 			//ISBN, AUTHOR, BOOK_NAME, DESCRIPTION, PRICE, BOOK_FILENAME, FILE_NAME
 			for(Book b : booklist) {
 				json.put("isbn",  b.getIsbn());
+				json.put("book_name", b.getBook_name());
 				json.put("author", b.getAuthor());
 				json.put("description", b.getDescription());
 				json.put("price", b.getPrice());
@@ -80,7 +85,7 @@ public class BookLikeListService implements Action {
 			
 			jsonobj.put("booklist", jsonary);
 			
-			
+			System.out.println(jsonary);
 			
 //			request.setAttribute("pagesize", pagesize);
 //			request.setAttribute("cpage", cpage);
