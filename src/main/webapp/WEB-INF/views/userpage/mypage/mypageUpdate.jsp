@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko" class="" style="height: auto; overflow: visible;">
 
@@ -356,6 +357,10 @@
 </head>
 
 <body class="" style="height: auto; overflow: visible;">
+<c:set var="user" value="${requestScope.user}"/>
+<script type="text/javascript">
+	
+</script>
 	<div data-v-c1337ae8="" id="wrap" class="show-top-header web-mount">
 		<!---->
 		<!---->
@@ -366,7 +371,7 @@
 		<section data-v-c1337ae8="" class="content">
 			<div data-v-9baa251e="" data-v-c1337ae8="" class="millie-inner">
 				<div data-v-9baa251e="">
-						<form action='userEditOk.do' method = "post" >
+				<form action='userEditOk.do' method = "post" >
 					<div data-v-54204cd4="" data-v-9baa251e="" class="back-component">
 						<div data-v-54204cd4="" class="back-wrap">
 							<div data-v-54204cd4="">
@@ -400,7 +405,7 @@
 							<div data-v-9baa251e="" class="input-group">
 								<div data-v-9baa251e="" class="input-box">
 									<input data-v-9baa251e="" type="text" placeholder="아이디 입력"disabled="disabled"
-										class="input-text"  >
+										class="input-text" value="${user.id}" name ="id" >
 								</div>
 							
 							</div>
@@ -408,6 +413,38 @@
 								제한될 수 있습니다.</span>
 						</div>
 						<hr data-v-9baa251e="" class="line">
+						<div data-v-9baa251e="" class="input-item">
+							<p data-v-9baa251e="" class="tit">
+								이름<span data-v-9baa251e="">*</span>
+								<!---->
+							</p>
+							<div data-v-9baa251e="" class="input-group">
+								<div data-v-9baa251e="" class="input-box">
+									<input data-v-9baa251e="" type="text" 
+									
+										placeholder="이름 입력 (‘-’ 제외)" 
+										class="input-text" value="${user.name}" name = "name" >
+								</div>
+							
+							</div>
+							<!---->
+						</div>
+						<div data-v-9baa251e="" class="input-item">
+							<p data-v-9baa251e="" class="tit">
+								생년월일<span data-v-9baa251e="">*</span>
+								<!---->
+							</p>
+							<div data-v-9baa251e="" class="input-group">
+								<div data-v-9baa251e="" class="input-box">
+									<input data-v-9baa251e="" type="text" 
+									maxlength="11" oninput="maxLengthChk(this)" placeholder="01012345678" pattern="\d*" maxlength="11"
+										placeholder="생년월일입력 (‘-’ 제외)" 
+										class="input-text" value="${user.regist_no}" name = "regist_no" readonly>
+								</div>
+							
+							</div>
+							<!---->
+						</div>
 						<div data-v-9baa251e="" class="input-item">
 							<p data-v-9baa251e="" class="tit">
 								휴대폰 번호<span data-v-9baa251e="">*</span>
@@ -418,7 +455,7 @@
 									<input data-v-9baa251e="" type="number" 
 									maxlength="11" oninput="maxLengthChk(this)" placeholder="01012345678" pattern="\d*" maxlength="6"
 										placeholder="휴대폰 번호 입력 (‘-’ 제외)" 
-										class="input-text">
+										class="input-text" value="${user.phone}" name = "phone">
 								</div>
 							
 							</div>
@@ -433,7 +470,7 @@
 								<div type="text" placeholder="비밀번호 입력" class="mds-input-field" ">
 									<input data-v-9baa251e="" type="text" id="password" name="password" oninput="PwdCheck(this)"
 									autocomplete="off"
-									placeholder="비밀번호 입력" class="input-text tooltip1">
+									placeholder="비밀번호 입력" class="input-text tooltip1" 	value="${user.password}">
 								</div>
 							</div>
 							</div>
@@ -448,7 +485,7 @@
 								<div data-v-9baa251e="" class="input-box"></div>
 									<input data-v-9baa251e="" type="text" placeholder="우편번호 입력" id="zipcode"  readonly
 									
-										 class="input-text"> <button style="position: absolute;left: 87%;" type="button" value="우편번호찾기" onclick = "kakaopost()" >우편번호찾기</button>
+										 class="input-text" value="${user.addr}" name = "addr" > <button style="position: absolute;left: 87%;" type="button" value="우편번호찾기" onclick = "kakaopost()" >우편번호찾기</button>
 										
 								</div>
 								<!---->
@@ -458,49 +495,29 @@
 							<!---->
 							<!---->
 							<!---->
+							 <div class="inner">
 							<div data-v-9baa251e="" class="input-item">
 							<p data-v-9baa251e="" class="tit">
 							 주소<span data-v-9baa251e="">*</span>
-							</p>
+							</p> 
 							<div data-v-9baa251e="" class="input-group">
 								<div data-v-9baa251e="" class="input-box">
-									<input data-v-9baa251e="" type="text" placeholder="주소 입력" 
-										readonly class="input-text"  >
+									<input data-v-9baa251e="" 
+									 type="text" placeholder="상세주소 입력" 
+										id="address"  class="input-text" value="${user.detail_addr}"  name = "detail_addr" >
 								</div>
 								</div>
 								</div>
+									</div>
+							
 								<!---->
 							<!---->
 							<!---->
-								<div data-v-9baa251e="" class="input-item">
-							<p data-v-9baa251e="" class="tit">
-							 상세주소<span data-v-9baa251e="">*</span>
-							</p>
-							<div data-v-9baa251e="" class="input-group">
-								<div data-v-9baa251e="" class="input-box">
-									<input data-v-9baa251e="" type="text" placeholder="상세주소 입력"
-										class="input-text"  >
-								</div>
-								</div>
-								</div>
-						</div>
-								<!---->
-							<!---->
-							<!---->
+							  
+								
 						<hr data-v-9baa251e="" class="line">
-						<div data-v-9baa251e="">
-							<input data-v-9baa251e="" type="checkbox" id="checkbox"
-								class="input-check"> <label data-v-9baa251e=""
-								for="checkbox"><span data-v-9baa251e="">개인정보 수집 및
-									이용 동의</span></label>
-						</div>
-						<ul data-v-9baa251e="" class="warn-text">
-							<li data-v-9baa251e="">개인정보 수집 목적 : 원활한 밀리의 서재 서비스 이용을 위해
-								수집합니다.</li>
-							<li data-v-9baa251e="">개인정보 수집항목 : 프로필 이미지, 필명, 휴대폰 번호, 이메일</li>
-							<li data-v-9baa251e="">개인정보 이용기간 : 회원 탈퇴 시 또는 개인정보처리방침에 따라
-								보유 및 파기 됩니다.</li>
-						</ul>
+					
+					
 						
 						<button data-v-9baa251e="" type="submit" class="confirm-btn">확인</button>
 						</form>
@@ -517,18 +534,20 @@
 		<!---->
 		<!---->
 	</div>
-	  <script>
-    function kakaopost() {
-      new daum.Postcode({
-        oncomplete: function (data) {
-        	console.log(data.zonecode);
-        	console.log(data.address);
-        	$('#zipcode').val(data.zonecode);
-        	$('#address').val(data.address);
-        }
-      }).open();
-    }
-  </script>
+	
+  <script>
+    	 function registck(){
+    		 console.log('실행됨');
+			console.log( $("#regist_no").val().length);
+    		if($("#id").val()=='' || !pwck || $("#name").val()=='' || $("#zipcode").val()==''
+    				|| $("#address").val()=='' || $("#detailaddress").val()==''|| $("#regist_no").val().length != 6  || $("#phone").val().length != 10 ){
+    			$("#register").attr("disabled",true);
+    		}else{
+    			$("#register").attr("disabled",false);
+    		}
+    		
+    	}
+    </script>
 	<script async=""
 		src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
 	<script async=""
@@ -606,4 +625,16 @@
       }
    }
 </script>
+  <script>
+    function kakaopost() {
+      new daum.Postcode({
+        oncomplete: function (data) {
+        	console.log(data.zonecode);
+        	console.log(data.address);
+        	$('#zipcode').val(data.zonecode);
+        	$('#address').val(data.address);
+        }
+      }).open();
+    }
+  </script>
 </html>

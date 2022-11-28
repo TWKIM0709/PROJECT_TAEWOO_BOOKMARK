@@ -19,16 +19,24 @@ public class UserUpdateOkService implements Action {
 		String url = "";
 		
 		try {
-			String id = request.getParameter("id");
+			String id = (String) request.getSession().getAttribute("id");
 			String pwd = request.getParameter("password");
 			String name = request.getParameter("name");
 			String addr = request.getParameter("addr");
 			String detail_addr = request.getParameter("detail_addr");
 			String regist_no = request.getParameter("regist_no");
 			String phone = request.getParameter("phone");
+			
+			user.setId(id);
+			user.setPassword(pwd);
+			user.setName(name);
+			user.setAddr(addr);
+			user.setDetail_addr(detail_addr);
+			user.setRegist_no(regist_no);
+			user.setPhone(phone);
 		
 			UsersDao dao = new UsersDao();
-			
+			System.out.println(user);
 			boolean result = dao.updateUser(user);
 			
 			if(result) {
@@ -38,9 +46,10 @@ public class UserUpdateOkService implements Action {
 				msg = "수정실패";
 				url = "userEdit.do";
 			}
-			
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
 			forward.setRedirect(false);
-			forward.setPath(url);
+			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", msg);
