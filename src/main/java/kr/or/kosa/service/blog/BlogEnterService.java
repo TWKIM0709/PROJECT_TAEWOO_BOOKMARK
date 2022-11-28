@@ -21,7 +21,7 @@ public class BlogEnterService implements Action {
 		
 		try {
 			BlogDao dao = new BlogDao();
-			String blogid = request.getParameter("id");
+			String blogid = (String) request.getSession().getAttribute("id");
 			List<Blog_Board> list = dao.getBoardListById(blogid);
 			
 			request.setAttribute("id", blogid);
