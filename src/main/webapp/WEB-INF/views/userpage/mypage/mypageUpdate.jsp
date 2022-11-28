@@ -371,7 +371,7 @@
 		<section data-v-c1337ae8="" class="content">
 			<div data-v-9baa251e="" data-v-c1337ae8="" class="millie-inner">
 				<div data-v-9baa251e="">
-				<form action='userEditOk.do' method = "post" >
+				<form action='userEditOk.do?id=${user.id}' method = "post" >
 					<div data-v-54204cd4="" data-v-9baa251e="" class="back-component">
 						<div data-v-54204cd4="" class="back-wrap">
 							<div data-v-54204cd4="">
@@ -405,7 +405,7 @@
 							<div data-v-9baa251e="" class="input-group">
 								<div data-v-9baa251e="" class="input-box">
 									<input data-v-9baa251e="" type="text" placeholder="아이디 입력"disabled="disabled"
-										class="input-text" value="${user.id}" name ="id" >
+										class="input-text" value="${user.id}" name ="idx" id="id">
 								</div>
 							
 							</div>
