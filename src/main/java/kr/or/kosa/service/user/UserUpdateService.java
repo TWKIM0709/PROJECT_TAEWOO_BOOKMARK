@@ -18,7 +18,7 @@ public class UserUpdateService implements Action {
 		try {
 			String id = "";
 			String admin = "";
-			if(request.getSession().getAttribute("admin") != null) { //관리자면
+			if(request.getSession().getAttribute("admin").equals("admin")) { //관리자면
 				id = request.getParameter("id");
 				admin = "true";
 			} else {

@@ -56,7 +56,7 @@ public class QuestionDetailService implements Action {
 				request.setAttribute("ps", pagesize);
 				
 				forward.setRedirect(false); // forward
-				if(request.getSession().getAttribute("admin") != null) {
+				if(request.getSession().getAttribute("admin").equals("admin")) {
 					forward.setPath("/WEB-INF/views/adminpage/question/admin_question_detail.jsp");
 				}else {
 					forward.setPath("/WEB-INF/views/userpage/question/user_question_detail.jsp");

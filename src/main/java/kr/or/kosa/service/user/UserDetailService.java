@@ -16,7 +16,7 @@ public class UserDetailService implements Action {
 		String path = "";
 		try {
 			
-			if(request.getSession().getAttribute("admin")!=null) { //관리자일 경우 유저 상세보기 페이지로
+			if(request.getSession().getAttribute("admin").equals("admin")) { //관리자일 경우 유저 상세보기 페이지로
 				String id = request.getParameter("id");
 			
 				UsersDao dao = new UsersDao();

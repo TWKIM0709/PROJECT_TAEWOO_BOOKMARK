@@ -42,18 +42,12 @@ public class BookUpdateService implements Action {
 		//MultipartRequest end
 		
 		String isbn = multi.getParameter("isbn");
-		System.out.println(isbn);
 		String author = multi.getParameter("author");
-		System.out.println(author);
 		String book_name = multi.getParameter("book_name");
-		System.out.println(book_name);
 		String description = multi.getParameter("description");
-		System.out.println(description);
 		String p = multi.getParameter("price");
-		System.out.println(p);
 		int price = Integer.parseInt(p);
 		String book_filename = multi.getParameter("book_filename"); //표지 링크
-		System.out.println(book_filename);
 		String update_file_original_name = multi.getOriginalFileName("ebook"); //업로드한 파일의 오리지널 이름
 		String update_file_system_name = multi.getFilesystemName("ebook"); //업로드한 파일의 시스템 등록 이름
 		
@@ -61,9 +55,6 @@ public class BookUpdateService implements Action {
 			BookDao dao = new BookDao();
 			String beforeFile = dao.getFilenameByIsbn(isbn);
 			
-			System.out.println("DB-BOOK : " + beforeFile);
-			System.out.println("UPLOAD ORI : " + update_file_original_name);
-			System.out.println("UPLOAD SYS : " + update_file_system_name);
 			boolean insert = false;
 			if(beforeFile == null || beforeFile.trim().equals("")) {
 				//등록된 ebook이 없으면 업로드한 파일을 적용한다.

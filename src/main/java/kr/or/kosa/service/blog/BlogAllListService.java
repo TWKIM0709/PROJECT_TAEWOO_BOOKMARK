@@ -23,7 +23,7 @@ public class BlogAllListService implements Action {
 			System.out.println(list);
 			request.setAttribute("blogboardlist", list);
 			
-			if(request.getSession().getAttribute("admin") != null) {//관리자일경우
+			if(request.getSession().getAttribute("admin").equals("admin")) {//관리자일경우
 				forward.setPath("/WEB-INF/views/adminpage/blog/admin_blog_board_list.jsp");
 			}else {//user일 경우
 				forward.setPath("/WEB-INF/views/userpage/blog/user_blog.jsp");

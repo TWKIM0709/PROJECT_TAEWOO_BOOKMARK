@@ -26,7 +26,7 @@ public class BlogUpdateService implements Action {
 			
 			request.setAttribute("content", board);
 			
-			if(request.getSession().getAttribute("admin") != null) {//성공-관리자
+			if(request.getSession().getAttribute("admin").equals("admin")) {//성공-관리자
 				forward.setPath("/WEB-INF/views/adminpage/blog/admin_blog_edit.jsp");
 			}else {//성공-유저
 				forward.setPath("/WEB-INF/views/userpage/blog/user_blog_edit.jsp");
