@@ -22,7 +22,7 @@ public class UserDeleteService implements Action {
 			
 			boolean result = dao.deleteUser(id);
 			
-			if(request.getSession().getAttribute("admin")!=null) {
+			if(request.getSession().getAttribute("admin").equals("admin")) {
 				//관리자일 경우
 				if(result) {
 					msg = "회원삭제가 완료되었습니다.";

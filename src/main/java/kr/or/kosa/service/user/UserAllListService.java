@@ -67,7 +67,7 @@ public class UserAllListService implements Action {
 			request.setAttribute("pager", pager);
 			
 			
-			if(request.getSession().getAttribute("admin")!=null) { //관리자일 경우
+			if(request.getSession().getAttribute("admin").equals("admin")) { //관리자일 경우
 				path = "/WEB-INF/views/adminpage/user/admin_user_list.jsp";
 			}else { //일반 회원일 경우
 				request.setAttribute("msg", "권한이 없습니다.");

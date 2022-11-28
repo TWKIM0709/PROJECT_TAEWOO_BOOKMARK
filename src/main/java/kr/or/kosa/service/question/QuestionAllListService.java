@@ -64,7 +64,7 @@ public class QuestionAllListService implements Action {
 			request.setAttribute("totalboardcount", totalboardcount);
 			request.setAttribute("pager", pager);
 			forward.setRedirect(false);
-			if(request.getSession().getAttribute("admin") != null) {
+			if(request.getSession().getAttribute("admin").equals("admin")) {
 				forward.setPath("/WEB-INF/views/adminpage/question/admin_question_list.jsp");
 			}else {
 				forward.setPath("/WEB-INF/views/userpage/question/user_question_list.jsp");
@@ -74,7 +74,7 @@ public class QuestionAllListService implements Action {
 			System.out.println(e.getMessage());
 			String msg = "error";
 			String url = "";
-			if(request.getSession().getAttribute("admin") != null) {
+			if(request.getSession().getAttribute("admin").equals("admin")) {
 				url = "/WEB-INF/views/adminpage/admin_main.jsp";
 			}else {
 				url = "main.do";

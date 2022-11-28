@@ -33,7 +33,7 @@ public class BlogUpdateOkService implements Action {
 			
 			 int row = dao.blogEdit(blog);
 			 
-			 if(request.getSession().getAttribute("admin") != null) {
+			 if(request.getSession().getAttribute("admin").equals("admin")) {
 				 if(row >0) {
 						msg = "update success";
 						url = "/WEB-INF/views/adminpage/blog/admin_blog_detail.do?" + request.getParameter("blog_no");
@@ -55,7 +55,7 @@ public class BlogUpdateOkService implements Action {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			if(request.getSession().getAttribute("admin") != null) {
+			if(request.getSession().getAttribute("admin").equals("admin")) {
 				msg = "update error";
 				url = "/WEB-INF/views/adminpage/blog/admin_blog_detail.do?" + request.getParameter("blog_no");
 			}else {

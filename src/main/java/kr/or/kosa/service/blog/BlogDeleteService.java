@@ -20,7 +20,7 @@ public class BlogDeleteService implements Action {
 			int row = dao.deleteOk(blogno);
 			
 			//삭제에 성공하면
-			if(request.getSession().getAttribute("admin") != null) {
+			if(request.getSession().getAttribute("admin").equals("admin")) {
 				//관리자일경우
 				if(row != 0) {
 					msg = "게시글삭제를 성공했습니다.";
@@ -38,7 +38,7 @@ public class BlogDeleteService implements Action {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			if(request.getSession().getAttribute("admin") != null) {
+			if(request.getSession().getAttribute("admin").equals("admin")) {
 				msg  = "서버 오류 발생";
 				path = "blogAlllist.do";
 			}else {

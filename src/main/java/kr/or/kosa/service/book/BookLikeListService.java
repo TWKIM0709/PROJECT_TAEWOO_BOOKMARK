@@ -96,7 +96,7 @@ public class BookLikeListService implements Action {
 //			request.setAttribute("booklist", booklist);
 //			request.setAttribute("pager", pager);
 			
-			if(request.getSession().getAttribute("admin") != null) {
+			if(request.getSession().getAttribute("admin").equals("admin")) {
 				forward.setPath("admin#");
 			}else {
 				forward.setPath("/WEB-INF/views/userpage/book/Search.jsp");

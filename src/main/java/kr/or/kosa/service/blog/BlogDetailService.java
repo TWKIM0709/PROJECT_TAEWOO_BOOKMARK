@@ -20,7 +20,7 @@ public class BlogDetailService implements Action {
 			
 			blog = dao.getContent(blogno);
 			
-			if(request.getSession().getAttribute("admin") != null) {//관리자일경우
+			if(request.getSession().getAttribute("admin").equals("admin")) {//관리자일경우
 				request.setAttribute("blog", blog);
 				forward.setPath("/WEB-INF/views/adminpage/blog/admin_blog_detail.jsp");
 			}else {
@@ -37,7 +37,7 @@ public class BlogDetailService implements Action {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			if(request.getSession().getAttribute("admin") != null) {
+			if(request.getSession().getAttribute("admin").equals("admin")) {
 				request.setAttribute("msg", "없는 게시글 입니다.");
 				request.setAttribute("url", "blogEnter.do?id=" + request.getParameter("id"));
 				forward.setPath("/WEB-INF/views/utils/redirect.jsp");
