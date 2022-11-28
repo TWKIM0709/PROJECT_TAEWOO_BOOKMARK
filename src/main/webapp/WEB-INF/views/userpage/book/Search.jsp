@@ -380,17 +380,7 @@
                     <section data-v-02a040ec="" class="ranking">
                        
                     </section>
-                   
-                   
-                    <section data-v-02a040ec="" class="shortcuts">
-                        <h2 data-v-02a040ec="" class="title">바로가기</h2>
-                        <div data-v-02a040ec="" class="list"><a data-v-02a040ec="" href="/메인에 베스트셀러 페이지로"
-                                class="best-link gtm-search-direct-best">베스트</a> <a data-v-02a040ec=""
-                                href="/v3/today/more/publishBook" class="update-link gtm-search-direct-publishbook">한 달
-                                 이내 출간</a> <!--<a data-v-02a040ec="" href="/v3/book/comingsoon"
-                                class="coming-link gtm-search-direct-comingsoon">공개 예정</a> <a data-v-02a040ec=""
-                                href="/v3/book/end" class="end-link gtm-search-direct-end">종료 예정</a></div> -->
-                    </section>
+
                     <hr data-v-02a040ec="">
                     <div data-v-02a040ec="" class="tab-wrap">
                         <ul data-v-02a040ec="" class="tab-list">
@@ -425,13 +415,15 @@
                             
                           
                         </ul>
-                        ${requestScope.pager }
+                        <div id="hjPager" style="text-align: center; margin-top: 13px; font-size: 18px;">
+                            ${requestScope.pager}
+                        </div>
                     </section>
                     
                 </div>
             </section>
         </section>
-        ${requestScope.booklist }<br>
+        ${searchBoolean}<br>
         <!---->
         <!---->
         <!---->
@@ -566,7 +558,7 @@
 		// 매우중요!!	
 			    success : function(result) { // Ajax 목적 : result를 얻기 위함
 
-                    
+                    $('#hjPager').empty();
 
                     let resultData = result;
                     console.log(resultData);
@@ -598,74 +590,14 @@
                                                         '"alt=" 도서 썸네일" width="125"></picture>" '+
                                             '</div></div></div></a></li>'
                                     )
+                           
                             // $('#hjtitle').append(booklist.book_name); //여기에 서비스에서 받아온 리스트의 제목, 작가, 사진 넣기
                             // $('#hjp').append(booklist.author);   //for문으로 list길이만큼 태그 추가
                             // $('#hjcover').attr("src",booklist.book_filename);
                             // $('#hjpicture').attr("srcset",booklist.book_filename, booklist.book_filename + " 2x");
                     }
 
-
-                    /*
-                    for(let i=0; i < listlen; i++){
-                        // console.log(resultData.booklist[i].book_filename)
-                        test += ' <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec="" href="/v3/search/2depth/1223?nav_hidden=y">'+
-                                    '<div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">' + resultData.booklist[i].book_name + '</strong>'+
-                                        '<p data-v-02a040ec="">' + resultData.booklist[i].author + '</p>'
-                                    '</div><div data-v-02a040ec="" class="bookcover"><div data-v-02a040ec="" class="inner"><div data-v-96e558f2="" data-v-02a040ec=""'+
-                                          'class="book-picture imageLoaded"'+
-                                                'data-observe="true">'+
-                                                '<picture data-v-96e558f2=""><source data-v-96e558f2="" srcset="https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg, https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg 2x" type="image/webp"> <img data-v-96e558f2="" src="https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg" alt=" 도서 썸네일" width="125"></picture>' +
-                                            '</div></div></div></a></li>'
-                       
-                    }
-                    $('#searchResultList').append(test);
-                    */
-                    
-
-                    //소스 !!!!
-                    /*
-                    <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
-                                    href="bookDetail.do">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">어서 오세요 휴남동 서점입니다</strong>
-                                        <p data-v-02a040ec="">황보름</p>
-                                    </div>
-                                    <div data-v-02a040ec="" class="bookcover">
-                                        <div data-v-02a040ec="" class="inner">
-                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
-                                                data-observe="true">
-                                                <picture data-v-96e558f2="">
-                                                    <source data-v-96e558f2=""
-                                                        srcset="https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg, https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg 2x"
-                                                        type="image/webp"> <img data-v-96e558f2=""
-                                                        src="https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg"
-                                                        alt=" 도서 썸네일" width="125"></picture>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a></li>
-                    */
-
-
-            //		alert('success');
-            //		alert(result);
-            //		alert(JSON.stringify(result));// 날린 데이터 확인
-            
-            //  1개 데이터
-            //		alert(result.str); 
-            
-            // 	여러개 데이터
-            //		alert(result.map.title); 		// 날린 데이터 확인
-            //		alert(result.map.content);
-            
-            //	Dto데이터 날리기
-            //		alert(result); // object날라옴
-            //		alert(JSON.stringify(result)); // json데이터 날라옴
-            //		alert(result.list);
-                    //console.log(result.booklist[0].isbn); // 날린 데이터 확인
-                    //console.log(result.booklist[0].author);
-            // for문과 foreach문 사용해서 데이터 전체를 뽑을 수 있다.		
-            
-            
+                    $('#hjPager').append(resultData.pager);
             
                 },
 			error : function() {

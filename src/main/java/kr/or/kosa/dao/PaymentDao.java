@@ -134,41 +134,42 @@ public class PaymentDao implements BookMarkDao{
 		}
 		//유저 한명의 결제목록
 		public List<Book_Payment> paymentlist(String id){
-			Connection conn = ConnectionHelper.getConnection("oracle");
+			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			
 			List<Book_Payment> paymentlist = null;
 			
 			try {
-				String sql = "Select book_payment.payment_no,isbn,count,to_char(payment_date),sumprice from book_payment join payment on book_payment.payment_no = payment.payment_no where payment.id = ?";
-				pstmt.setString(1, id);
-				pstmt = conn.prepareStatement(sql);
+				conn = ConnectionHelper.getConnection("oracle");
+				String sql = "select book_payment.payment_no,isbn,count,to_char(payment_date),sumprice from book_payment join payment on book_payment.payment_no = payment.payment_no where payment.id = ?";
+				System.out.println(sql);
+				System.out.println(id);
 				
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
 				
 				paymentlist = new ArrayList<Book_Payment>();
 				while(rs.next()) {
+					
 					Book_Payment bookpayment = new Book_Payment();
-					bookpayment.setPayment_no(rs.getString("payment_no"));
-					bookpayment.setIsbn(rs.getString("isbn"));
-					bookpayment.setCount(rs.getInt("count"));
-					bookpayment.setPayment_date(rs.getString("payment_date"));
-					bookpayment.setSumprice(rs.getInt("sumprice"));
 					
+					bookpayment.setPayment_no(rs.getString(1));					
+					bookpayment.setIsbn(rs.getString(2));				
+					bookpayment.setCount(rs.getInt(3));					
+					bookpayment.setPayment_date(rs.getString(4));
+					bookpayment.setSumprice(rs.getInt(5));
 					paymentlist.add(bookpayment);
-					
 				}
+				System.out.println(3);
 			} catch (Exception e) {
 				e.getStackTrace();
 			}finally {
-				try {
 					ConnectionHelper.close(rs);
 					ConnectionHelper.close(pstmt);
 					ConnectionHelper.close(conn);
-				} catch (Exception e2) {
-				
-				}
 			}
 			return paymentlist;
 		} 
@@ -182,7 +183,7 @@ public class PaymentDao implements BookMarkDao{
 			
 			try {
 				String sql = "select * from"
-						+ "    (select rownum rn,payment_no, isbn, count,to_char(payment_date),sumprice"
+						+ "    (select rownum rn,payment_no, isbn, count,to_char(payment_date) as payment_date,sumprice"
 						+ "    from"
 						+ "        ( SELECT * FROM book_payment ORDER BY payment_no asc )"
 						+ "    where rownum <= ?) where rn >= ?";

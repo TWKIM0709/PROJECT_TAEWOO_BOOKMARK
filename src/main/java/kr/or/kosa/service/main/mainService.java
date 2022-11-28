@@ -25,9 +25,11 @@ public class mainService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
+		String admin = (String)request.getSession().getAttribute("admin");
 		
 		try {
-			if(request.getSession().getAttribute("admin") != null) {
+			if(admin.equals("admin")) {
+				System.out.println("adminpage in");
 				forward.setRedirect(false);
 				forward.setPath("/WEB-INF/views/adminpage/admin_main.jsp");
 				return forward;
@@ -54,40 +56,32 @@ public class mainService implements Action {
 			cal.setTime(date);
 			cal.add(Calendar.DATE, 1);
 			today = sdformat.format(cal.getTime());  
-			 System.out.println(today);
 			// 하루전
 			 cal.setTime(date);
 			cal.add(Calendar.DATE, -1);
 			day = sdformat.format(cal.getTime());  
-			System.out.println(day);
 			 
 			// 일주일 전
 			cal.setTime(date);
 			cal.add(Calendar.DATE, -7);
 			week = sdformat.format(cal.getTime());
-			System.out.println(week);
 			 
 			// 한달전
 			cal.setTime(date);
 			cal.add(Calendar.MONTH, -1);
 			month = sdformat.format(cal.getTime());
-			System.out.println(month);
 			 
 			//1년전
 			cal.setTime(date);
 			cal.add(Calendar.YEAR, -1);
 			year = sdformat.format(cal.getTime());
-			System.out.println(year);
 			
 			//일간
 			System.out.println(1);
 			List<Book> dlikerank = dao.RankBook_Like(day, today);
-			System.out.println(2);
 			List<Book> dpayrank = dao.SellBookList(day, today);
 			//주간
-			System.out.println(3);
 			List<Book> wlikerank = dao.RankBook_Like(week, today);
-			System.out.println(4);
 			List<Book> wpayrank = dao.SellBookList(week, today);			
 			//월간
 			List<Book> mlikerank = dao.RankBook_Like(month, today);
@@ -96,13 +90,6 @@ public class mainService implements Action {
 			//연간
 			//List<Book> ylikerank = dao.RankBook_Like(year, today); 
 			//List<Book> ypayrank = dao.SellBookList(year, today);
-			
-			System.out.println(dlikerank);
-			System.out.println(dpayrank);
-			System.out.println(wlikerank);
-			System.out.println(wpayrank);
-			System.out.println(mlikerank);
-			System.out.println(mpayrank);
 			//System.out.println(ylikerank);
 			//System.out.println(ypayrank);
 			
@@ -118,6 +105,7 @@ public class mainService implements Action {
 			request.setAttribute("dpayrank", dpayrank);
 			request.setAttribute("dlikerank", dlikerank);
 			
+			System.out.println("userpage in");
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/userpage/user_main.jsp");	
 		} catch (Exception e) {

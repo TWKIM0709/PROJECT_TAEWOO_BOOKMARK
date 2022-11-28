@@ -48,9 +48,7 @@ public class BookAllListService implements Action {
 			}
 
 			List<Book> booklist = dao.BookAlllist(cpage, pagesize);
-			
-			System.out.println("서비스단 booklist");
-			System.out.println(booklist);
+	
 			
 			int pagersize = 3;
 			ThePager pager = new ThePager(totalbookcount,cpage,pagesize,pagersize, "bookAlllist.do");
@@ -64,7 +62,7 @@ public class BookAllListService implements Action {
 			
 			
 			//관리자 / 일반회원 세션 구분
-			if(request.getSession().getAttribute("admin") != null) {
+			if(request.getSession().getAttribute("admin").equals("admin")) {
 				forward.setPath("/WEB-INF/views/adminpage/book/admin_book_list.jsp");
 			}else {
 				forward.setPath("/WEB-INF/views/userpage/book/Search.jsp");

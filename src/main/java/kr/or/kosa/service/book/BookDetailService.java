@@ -27,6 +27,7 @@ public class BookDetailService implements Action {
 			request.setAttribute("book", book);
 			request.setAttribute("likecount", likecount);
 			request.setAttribute("likestatus", likestatus);
+			request.setAttribute("isbn", book.getIsbn());
 			
 			if(request.getSession().getAttribute("admin")!=null) {
 				forward.setPath("/WEB-INF/views/adminpage/book/admin_book_detail.jsp");

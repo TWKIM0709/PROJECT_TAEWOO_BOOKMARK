@@ -20,12 +20,14 @@ public class PaymentLogIdListService implements Action {
 		try {
 			PaymentDao pdao = new PaymentDao();
 
-			String id = request.getParameter("id");
-			
+			String id = (String)request.getSession().getAttribute("id");
+			System.out.println(id);
 			List<Book_Payment> paymentlist = pdao.paymentlist(id);
 			
+			System.out.println(paymentlist);
+			
 			request.setAttribute("paymentlist", paymentlist);
-
+			
 			forward = new ActionForward();
 			forward.setRedirect(false); // forward
 			forward.setPath("/WEB-INF/views/userpage/user_payment.jsp");
