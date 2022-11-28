@@ -17,17 +17,22 @@ public class CartAddService implements Action {
 		ActionForward forward = new ActionForward();
 		String msg="";
 	    String url="";
+
 		
 		try {
 			PaymentDao dao = new PaymentDao();
+	
+//			type true forwrd 동기 -> 결제 페이지로
+//			type false 비동기 -> 추가만하고 끝
+
 			String id = request.getParameter("id");
 			String isbn = request.getParameter("isbn");
 			String type = request.getParameter("type");
-//			type true forwrd 동기 -> 결제 페이지로
-//			type false 비동기 -> 추가만하고 끝
-			
+			System.out.println("isbn : " + isbn);
+			System.out.println("id : " + id);
+			System.out.println("type : " + type);
 			int result = dao.AddBook(id, isbn);
-
+			System.out.println(type.getClass().getName());
 			if(type.equals("true")) { //동기 -> 장바구니페이지로
 				if(result >0) {	//추가 성공
 					forward.setPath("cartList.do");
