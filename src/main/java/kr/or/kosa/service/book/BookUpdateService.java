@@ -64,10 +64,11 @@ public class BookUpdateService implements Action {
 			System.out.println("DB-BOOK : " + beforeFile);
 			System.out.println("UPLOAD ORI : " + update_file_original_name);
 			System.out.println("UPLOAD SYS : " + update_file_system_name);
-			
+			boolean insert = false;
 			if(beforeFile == null || beforeFile.trim().equals("")) {
 				//등록된 ebook이 없으면 업로드한 파일을 적용한다.
 				book.setFile_name(update_file_system_name);
+				insert = true;
 			} else { 
 				//등록되어 있던 파일이 있으면
 				if(beforeFile.equals(update_file_original_name)) { 
@@ -86,10 +87,10 @@ public class BookUpdateService implements Action {
 			book.setPrice(price);
 			book.setBook_filename(book_filename);
 			
-			int result = dao.UpdateBook(book);
+			int result = dao.UpdateBook(book,insert);
 			System.out.println("result : "+result);
 			if(result == 1) {
-				msg = "ebook 뺴고 book만 수정됨";
+				msg = "book만 수정됨";
 				url = "bookAlllist.do";
 			}else if(result ==2) {
 				msg = "ebook도 수정되었습니다";

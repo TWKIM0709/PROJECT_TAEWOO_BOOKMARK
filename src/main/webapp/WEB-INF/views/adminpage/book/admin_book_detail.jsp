@@ -4,11 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+ <!--  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+	 -->
+	 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	 <meta charset="UTF-8">
+	<title>Insert title here</title>
+  	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 	<style type="text/css">
 		#sign{
@@ -70,15 +73,30 @@
 </div>
 </body>
 <script type="text/javascript">
-	$('#updatebtn').on({
-		click:function(){
-			if()
-			alert('updatebtn');
-		}
-	});
 	$('#deletebtn').on({
 		click:()=>{
-			alert('삭제하기버튼');
+			$.ajax({
+				url:"bookDeleteOk.do",
+				type : "post",
+				data : {
+					isbn : $('#isbn').val()
+				},
+				dataType : "text",
+				success : function(result){
+					console.log(result);
+					if(result == 0){
+						alert('삭제됨');
+						location.href = "bookAlllist.do";
+					} else if (result == 1){
+						alert('삭제 실패');
+					} else if (result == 2){
+						alert('삭제 에러');
+					}
+				},
+				error : function(){
+					alert('삭제 에러');
+				}
+			});
 		}
 	});
 	$('#canclebtn').on({

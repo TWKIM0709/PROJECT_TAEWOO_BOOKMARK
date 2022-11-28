@@ -277,14 +277,30 @@ public class BookDao implements BookMarkDao{
 			row = pstmt.executeUpdate();
 			System.out.println("update book row : " + row);
 			
-			if(book.getFile_name() != null) {
-				sql = "update ebook set file_name=? where isbn=?";
+			//기존 파일이 없으면
+			if(insertck) {
+				System.out.println("insert 실행");
+				sql = "insert into ebook(isbn,file_name) values(?,?)";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, book.getFile_name());
-				pstmt.setString(2, book.getIsbn());
+				pstmt.setString(1, book.getIsbn());
+				pstmt.setString(2, book.getFile_name());
 				
 				if(pstmt.executeUpdate() > 0) {
-					row +=1;
+					row += 1;
+				}
+			}
+			else {
+				System.out.println("insert 안함");
+				if(book.getFile_name() != null) {
+					System.out.println("update 실행");
+					sql = "update ebook set file_name=? where isbn=?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, book.getFile_name());
+					pstmt.setString(2, book.getIsbn());
+					
+					if(pstmt.executeUpdate() > 0) {
+						row +=1;
+					}
 				}
 			}
 			

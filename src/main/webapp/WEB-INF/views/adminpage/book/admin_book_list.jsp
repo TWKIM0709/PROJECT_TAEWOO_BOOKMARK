@@ -6,6 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -62,7 +63,21 @@
 <script type="text/javascript">
 $('#search').keydown(function(keyNum){
     if(keyNum.keyCode == 13){
-        alert('enter');
+        alert('bookUserLikeList.do');
+        $.ajax({
+        	url : "bookUserLikeList.do",
+        	data : {book_name : $('#search').val()},
+        	type:"post",
+        	dataType:"json",
+        	success : function(result){
+        		console.log(result);
+        	},
+        	error : function(error){
+        		alert('error');
+        		console.log(error);
+        	}
+        	
+        })
     }
 });
 $('#bookaddbtn').on({

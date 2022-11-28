@@ -1,5 +1,7 @@
 package kr.or.kosa.service.book;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,7 +10,7 @@ import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.BookDao;
 
 public class BookDeleteService implements Action {
-
+//비동기 0 성공 1 실패 2 에러
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
@@ -16,23 +18,22 @@ public class BookDeleteService implements Action {
 		String url = "";
 		
 		String isbn = request.getParameter("isbn");
+		PrintWriter out = null;
 		try {
 			BookDao dao = new BookDao();
+			out = response.getWriter();
 			int result = dao.DeleteBook(isbn);
 			
 			if(result>0) {
-				msg = "삭제되었습니다";
-				url = "#";
+				out.print(0);
 			}else {
-				msg = "삭제에 실패하였습니다";
-				url = "#";
+				out.print(1);
 			}
-			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
+			out.print(2);
 		} 
-		return forward;
+		return null;
 	}
 
 }
