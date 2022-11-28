@@ -10,10 +10,22 @@
   	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  	<style type="text/css">
+  		#search{
+  			background-color:white;
+  			width:100%;
+  		}
+  		.pager{
+  			text-align:center;
+  		}
+  		#bookaddbtn{
+  			min-width:41px;
+  		}
+  	</style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/utils/include/admintop.jsp"></jsp:include>
-어드민 책 리스트
 <div class="container">        
   <table class="table table-striped">
     <thead>
@@ -28,7 +40,7 @@
     <tbody>
 		<c:forEach var="book"  items="${requestScope.booklist}"> 
 		      <tr onclick="location.href= 'bookDetail.do?isbn=${book.isbn}&id=${sessionScope.id }' ">
-					<td><img alt="책표지" src="${book.book_filename }"></td>
+					<td style="max-width: 160px;"><img alt="책표지" src="${book.book_filename }"></td>
 					<td>${book.isbn }</td>
 					<td>${book.book_name }</td>
 					<td>${book.author }</td>
@@ -36,13 +48,27 @@
 		      </tr>
 		</c:forEach>
 		<tr>
-			<td colspan="5">
+			<td><input class="form-control"type="text" name="search" id="search" placeholder="ISBN검색"></td>
+			<td colspan="3" class="pager">
 			${requestScope.pager }
 			</td>
+			<td><button type="button" class="btn btn-outline-dark" id="bookaddbtn">책추가</button></td>
 		</tr>
     </tbody>
   </table>
   
 </div>
 </body>
+<script type="text/javascript">
+$('#search').keydown(function(keyNum){
+    if(keyNum.keyCode == 13){
+        alert('enter');
+    }
+});
+$('#bookaddbtn').on({
+	click:function(){
+		location.href="bookAdd.do"
+	}
+});
+</script>
 </html>

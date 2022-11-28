@@ -64,6 +64,7 @@
 </body>
 <script type="text/javascript">
 	function logout(){
+		alert('로그아웃');
 		sessionStorage.clear();
 		location.href="homepage.html";
 	}

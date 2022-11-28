@@ -227,6 +227,10 @@ public class BookDao implements BookMarkDao{
 		
 		return row;
 	}
+	//파일 유무 확인
+	public String getFileByIsbn(String isbn) {
+		return null;
+	}
 	//책 수정
 	public int UpdateBook(Book book) {
 		int row = 0;

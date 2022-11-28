@@ -51,9 +51,8 @@
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="statistics.do" class="gtm-today">통계</a></li>
 						</ul>
 					</nav>
-					<ul data-v-e67dcbb6="" class="util">
-						<li data-v-e67dcbb6="" class="sign sign-in"><a data-v-e67dcbb6="" href="/PROJECT_TAEWOO_BOOKMARK/homepage.html"
-								class="">로그아웃</a></li>
+				<ul data-v-e67dcbb6="" class="util">
+						<li data-v-e67dcbb6="" class="sign sign-in"  onclick="logout()">로그아웃</li>
 					</ul>
 				</header>
 			</div>
@@ -61,4 +60,11 @@
 	<div id="wp_tg_cts" style="display: block;"></div>
 	<!-- Code injected by live-server -->
 </body>
+<script type="text/javascript">
+	function logout(){
+		alert('로그아웃');
+		sessionStorage.clear();
+		location.href="homepage.html";
+	}
+</script>
 </html>
