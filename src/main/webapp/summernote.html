@@ -25,7 +25,7 @@
 <div>
 <input id="inputTitle" placeholder="제목을 작성해주세요" />
 </div>
-<textarea id="summernote" name="content" ></textarea>
+<textarea id="summernote" name="content"  maxlength="50"></textarea>
 <div id="test_cnt">(0 / 100)</div>
 <button id="test">테스트</button>
 <script>
@@ -53,10 +53,38 @@
             ['view', ['fullscreen', 'help']]
           ],
         fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-        fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+        fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+        callbacks :{
+        	
+        	onChange:function(contents, $editable){ //텍스트 글자수 및 이미지등록개수
+        		console.log(contents);
+                setContentsLength(contents, 0);
+            }
+        	
+        }
        
-	
 	});
+	
+	function setContentsLength(str, index) {
+	    var status = false;
+	    var textCnt = 0; //총 글자수
+	    var maxCnt = 100; //최대 글자수
+	    var editorText = f_SkipTags_html(str); //에디터에서 태그를 삭제하고 내용만 가져오기
+	    editorText = editorText.replace(/\s/gi,""); //줄바꿈 제거
+	    editorText = editorText.replace(/&nbsp;/gi, ""); //공백제거
+
+        textCnt = editorText.length;
+	    if(maxCnt > 0) {
+        	if(textCnt > maxCnt) {
+                status = true;
+        	}
+	    }
+
+	    if(status) {
+        	var msg = "등록오류 : 글자수는 최대 "+maxCnt+"까지 등록이 가능합니다. / 현재 글자수 : "+textCnt+"자";
+        	console.log(msg);
+	    }
+	}
 	 $('#summernote').on('keyup', function() {
 	        $('#test_cnt').html("("+$(this).val().length+" / 100)");
 	 
