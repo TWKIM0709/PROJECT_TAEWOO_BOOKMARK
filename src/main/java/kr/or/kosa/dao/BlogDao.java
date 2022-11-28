@@ -74,28 +74,30 @@ public class BlogDao implements BookMarkDao{
 	}
 	
 	//특정 아이디의 블로그 게시글 전체 조회 추가 김태우 (11.21)//블로그 글 전체 불러오기
-	public List<Blog_Board> getBoardListById(String id){//int cpage , int pagesize){
+	public List<Blog_Board> getBoardListById(String type, String value){//int cpage , int pagesize){
 		List<Blog_Board> boardList = null;
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql=  "select a.blog_no, a.id, a.blog_title, a.blog_content, a.hits, to_char(a.blog_date), b.file_name "
 					+ "from blog_board a left join blogfile b "
-					+ "on a.blog_no = b.blog_no where a.id = ?";
+					+ "on a.blog_no = b.blog_no where a." + type;
+			sql += (type.equals("id")) ? " =  ?" : " like ?"; 
+			System.out.println(sql);
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			//공식같은 로직
-//			int start = cpage * pagesize - (pagesize -1); //1 * 5 - (5 - 1) >> 1
-//			int end = cpage * pagesize; // 1 * 5 >> 5
-//			
-//			pstmt.setInt(1, end);
-//			pstmt.setInt(2, start);
-			
+			System.out.println(10);
+			if(type.equals("id")) {
+				pstmt.setString(1, value);
+			}else {
+				pstmt.setString(1, '%'+value+'%');
+			}
+			System.out.println(value);
 			rs = pstmt.executeQuery();
-			boardList = new ArrayList<>();
+			boardList = new ArrayList<Blog_Board>();
 			
 			while(rs.next()) {
 				Blog_Board board = new Blog_Board();
@@ -121,7 +123,7 @@ public class BlogDao implements BookMarkDao{
 				System.out.println(e2.getMessage());
 			}
 		}
-		
+		System.out.println(boardList);
 		return boardList;
 	}
 	

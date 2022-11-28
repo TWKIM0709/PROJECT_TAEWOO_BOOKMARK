@@ -306,7 +306,7 @@
                 <div data-v-0807f0e5="" class="product">
                     
                     <p data-v-0807f0e5="" class="nick-name">
-                        태우큄<br data-v-0807f0e5="">
+                        ${sessionScope.id}님 환영합니다*.☆⸜(⑉˙ᗜ˙⑉)⸝♡.*<br data-v-0807f0e5="">
                     </p>
                    
                 </div>
@@ -320,19 +320,19 @@
                     <ul data-v-0807f0e5="">
                        
                         <!---->	
-                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/ebookList.do" class="">내 e-book 관리</a>
+                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="ebookList.do" class="">내 e-book 관리</a>
                         </li>
-                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/blogEnter.do" class="">내 블로그 관리</a></li>
+                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="blogEnter.do" class="">내 블로그 관리</a></li>
                     </ul>
                     <p data-v-0807f0e5="" class="menu-title">서비스 안내</p>
                     <ul data-v-0807f0e5="">
-                     
-                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="/userWithdraw.do">회원탈퇴</a></li>
+                     	<li data-v-0807f0e5=""><a data-v-0807f0e5="" href="question.do">문의사항</a></li>
+                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="userWithdraw.do">회원탈퇴</a></li>
                     </ul>
                 </div>
                 
                 <div data-v-0807f0e5="" class="btn-area"><button data-v-0807f0e5="" type="button"
-                        class="logout" style = "background-color:#fbd91c"><a href="homepage.html">로그아웃</a></button></div>
+                        class="logout" style = "background-color:#fbd91c" onclick="logout()">로그아웃</button></div>
                         
             </div>
         </section>
@@ -424,5 +424,10 @@
         </div>
     </div> --%>
 </body>
-
+<script type="text/javascript">
+	function logout(){
+		sessionStorage.clear();
+		location.href="homepage.html";
+	}
+</script>
 </html>

@@ -40,7 +40,7 @@
 					</h1>
 					<nav data-v-e67dcbb6="">
 						<ul data-v-e67dcbb6="" class="gnb">
-							<li data-v-e67dcbb6="" class="on"><a data-v-e67dcbb6="" href="blogEnter.do" class="gtm-today">블로그</a>
+							<li data-v-e67dcbb6="" class="on"><a data-v-e67dcbb6="" href="blogAlllist.do" class="gtm-today">블로그</a>
 							</li>
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="bookAlllist.do?ps=10"
 									class="gtm-search">검색</a></li>
@@ -54,7 +54,7 @@
 									data-v-e67dcbb6="" class="mds-icon--alarm-2"></i> <span data-v-e67dcbb6=""
 									class="alarm-icon">N</span></a></li>
 
-						<li data-v-e67dcbb6="" class="sign sign-in"  onclick="logout()">로그아웃</li>
+						<li data-v-e67dcbb6="" class="sign sign-in"  onclick="logout()"><button>로그아웃</button></li>
 					</ul>
 				</header>
 			</div>

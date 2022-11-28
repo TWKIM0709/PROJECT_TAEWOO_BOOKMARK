@@ -22,7 +22,7 @@ public class BlogEnterService implements Action {
 		try {
 			BlogDao dao = new BlogDao();
 			String blogid = (String) request.getSession().getAttribute("id");
-			List<Blog_Board> list = dao.getBoardListById(blogid);
+			List<Blog_Board> list = dao.getBoardListById("id",blogid);
 			
 			request.setAttribute("id", blogid);
 			request.setAttribute("blogboardlist", list);

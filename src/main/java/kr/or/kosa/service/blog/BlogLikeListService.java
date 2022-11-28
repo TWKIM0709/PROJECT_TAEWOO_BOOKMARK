@@ -24,7 +24,7 @@ public class BlogLikeListService implements Action {
 		try {
 			BlogDao dao = new BlogDao();
 			
-			List<Blog_Board> list = dao.getBoardListById(request.getParameter("id"));
+			List<Blog_Board> list = dao.getBoardListById("blog_title",request.getParameter("title"));
 			
 			for(Object obj : list) {
 				Blog_Board blog = (Blog_Board)obj;
