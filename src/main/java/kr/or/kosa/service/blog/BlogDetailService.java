@@ -21,12 +21,12 @@ public class BlogDetailService implements Action {
 			blog = dao.getContent(blogno);
 			
 			if(request.getSession().getAttribute("admin") != null) {//관리자일경우
-				request.setAttribute("blog_detail", blog);
+				request.setAttribute("blog", blog);
 				forward.setPath("/WEB-INF/views/adminpage/blog/admin_blog_detail.jsp");
 			}else {
 				if(blog != null) {
 					dao.upHits(blogno);
-					request.setAttribute("blog_detail", blog);
+					request.setAttribute("blog", blog);
 					forward.setPath("/WEB-INF/views/userpage/blog/user_blog_detail.jsp");
 				} else {
 					//없는 게시글일 경우 블로그 메인으로 이동
@@ -51,6 +51,8 @@ public class BlogDetailService implements Action {
 			
 		} 
 		forward.setRedirect(false);
+		System.out.println(forward.getPath());
+		System.out.println("블로그디테일서비스");
 		return forward;
 	}
 

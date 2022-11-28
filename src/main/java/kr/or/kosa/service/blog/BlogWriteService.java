@@ -23,22 +23,26 @@ public class BlogWriteService implements Action {
 			
 			multi = new MultipartRequest(
 					request,
-					"/WEB-INF/Blog/upload",
+					"C:\\Blog",
 					1024*1024*10,
 					"UTF-8",
 					new DefaultFileRenamePolicy()
 					);
-			
+			System.out.println("ㅎㅇ");
 			id = (String)request.getSession().getAttribute("id");
 			String title = multi.getParameter("blog_title");
 			String content = multi.getParameter("blog_content");
 			String blog_filename = multi.getFilesystemName("file");
-			
+			System.out.println("ㅎㅇ");
 			Blog_Board board = new Blog_Board();
 			board.setId(id);
 			board.setBlog_title(title);
 			board.setBlog_content(content);
 			board.setBlog_filename(blog_filename);
+			
+			int result = dao.writeok(board);
+			System.out.println("ㅎㅇ");
+			System.out.println(result);
 			
 			forward.setRedirect(false);
 			//작성 후 블로그로

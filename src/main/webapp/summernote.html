@@ -22,12 +22,14 @@
 </head>
 <body>
 <h1></h1>
+<form action="blogWriteOk.do" method="post"  enctype="multipart/form-data">
 <div>
-<input id="inputTitle" placeholder="제목을 작성해주세요" />
+	<input id="inputTitle" placeholder="제목을 작성해주세요" name = "blog_title">
 </div>
-<textarea id="summernote" name="content"  maxlength="50"></textarea>
+	<textarea id="summernote" name="blog_content"  ></textarea>
 <div id="test_cnt">(0 / 100)</div>
-<button id="test">테스트</button>
+<input type="submit" id="test" value="확인">
+</form>
 <script>
 
 
@@ -83,22 +85,28 @@
 	    if(status) {
         	var msg = "등록오류 : 글자수는 최대 "+maxCnt+"까지 등록이 가능합니다. / 현재 글자수 : "+textCnt+"자";
         	console.log(msg);
+        	alert(msg);
 	    }
 	}
-	 $('#summernote').on('keyup', function() {
-	        $('#test_cnt').html("("+$(this).val().length+" / 100)");
-	 
-	        if($(this).val().length > 100) {
-	            $(this).val($(this).val().substring(0, 100));
-	            $('#test_cnt').html("(100 / 100)");
-	        }
-	 });
-});
+	});
+    
+//에디터 내용 텍스트 제거
+  function f_SkipTags_html(input, allowed) {
+  	// 허용할 태그는 다음과 같이 소문자로 넘겨받습니다. (<a><b><c>)
+      allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+      var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+      commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+      return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
+          return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+      });
+  }
+    
     
     $('#test').click(function(){
     	console.log($('.panel-body').html());
     	alert($('.panel-body').html());
     });
+   
 </script>
 </body>
 </html>

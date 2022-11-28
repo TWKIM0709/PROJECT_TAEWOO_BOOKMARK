@@ -163,7 +163,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동
     		forward = new ActionForward();
      		forward.setRedirect(false);
-     		forward.setPath("summernote.html");
+     		forward.setPath("/summernote.html");
     	} else if(url_Command.equals("/blogWriteOk.do")) { // 15. 회원 - 블로그 게시글 작성 처리
     		// 이동 + 처리
     		action = new BlogWriteService();

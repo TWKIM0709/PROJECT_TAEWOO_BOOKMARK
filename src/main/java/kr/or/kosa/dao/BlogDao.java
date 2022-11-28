@@ -236,7 +236,7 @@ public class BlogDao implements BookMarkDao{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+		String sql = "";
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			/*
@@ -256,29 +256,40 @@ public class BlogDao implements BookMarkDao{
 			 * nextval로 인덱스를 증가시켰는데 //모든 글이 파일을 가지고 있는건 아니니까 여기선 그렇게 하면 안되는데 //그럼 인덱스를 어떻게
 			 * 같게 하지 ?? pstmt.setString(2, board.getBlog_filename()); pstmt.execute(); }
 			 */
-			String sql = "insert all"
-					+ "into blog_board(blog_no, id, blog_title, blog_content)"
-					+ "values(blog_no_seq.nextval, ?, ?, ?)"
-					+ "into blogfile(blog_no, file_name) values(blog_no_seq.currentval, ?)";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, board.getId());
-			pstmt.setString(2, board.getBlog_title());
-			pstmt.setString(3, board.getBlog_content());
-			pstmt.setString(4, board.getBlog_filename());
+			System.out.println(board);
 			
-			row = pstmt.executeUpdate();
+			if(board.getBlog_filename() != null) {
+				System.out.println("file not null");
+				sql = "insert all"
+						+ "into blog_board(blog_no, id, blog_title, blog_content)"
+						+ "values(blog_no_seq.nextval, ?, ?, ?)"
+						+ "into blogfile(blog_no, file_name) values(blog_no_seq.currentval, ?)";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, board.getId());
+				pstmt.setString(2, board.getBlog_title());
+				pstmt.setString(3, board.getBlog_content());
+				pstmt.setString(4, board.getBlog_filename());
+				row = pstmt.executeUpdate();
+			} else {
+				System.out.println("file null");
+				sql = "insert into blog_board(blog_no, id, blog_title, blog_content)"
+						+ " values (blog_no_seq.nextval, ?, ?, ?)";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, board.getId());
+				pstmt.setString(2, board.getBlog_title());
+				pstmt.setString(3, board.getBlog_content());
+				row = pstmt.executeUpdate();
+			}
+			
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("writeok 예외 : " + e.getMessage());
 		}finally {
-			try {
 				ConnectionHelper.close(pstmt);
 				ConnectionHelper.close(conn);
-			} catch (Exception e2) {
-				// TODO: handle exception
-			}
 		}
-		
+		 System.out.println("DAO row : " + row);
 		return row;
 	}
 	
