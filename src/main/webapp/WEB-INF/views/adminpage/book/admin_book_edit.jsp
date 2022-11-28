@@ -22,7 +22,7 @@
     </thead>
     <tbody>
       <tr>
-        <td rowspan="5"><img alt="책표지" src="${book.book_filename }"> </td>
+        <td rowspan="4"><img alt="책표지" src="${book.book_filename }"> </td>
         <td>ISBN</td>
         <td><input type="text" class="form-control" id="" name="" value="${book.isbn }"></td>
       </tr>
@@ -39,6 +39,7 @@
         <td><input type="number" class="form-control" id="" name="" value="${book.price }"></td>
       </tr>
       <tr>
+      <td><input type="text" class="form-control" id="book_filename" name="book_filename" placeholder="책 표지 링크를 입력"  value="${book.book_filename }"></td>
         <td>ebook</td>
         <td>${book.file_name }</td>
       </tr>
@@ -47,12 +48,34 @@
       </tr>
       <tr>
         <td colspan="3">
-			<button type="button" class="btn btn-outline-dark">수정하기</button>
-			<button type="button" class="btn btn-outline-dark">취소하기</button>
+			<button type="button" class="btn btn-outline-dark" id="updatebtn">수정하기</button>
+			<button type="button" class="btn btn-outline-dark" id="canclebtn">취소하기</button>
 		</td>
       </tr>
     </tbody>
   </table>
 </div>
 </body>
+<script type="text/javascript">
+$('#updatebtn').on({
+	click:function(){
+		alert('수정');
+	}
+});
+$('#canclebtn').on({
+	click:function(){
+		history.back();
+	}
+});
+$('#canclebtn').on({
+	click:function(){
+		history.back();
+	}
+});
+$('#canclebtn').on({
+	click:function(){
+		history.back();
+	}
+});
+</script>
 </html>

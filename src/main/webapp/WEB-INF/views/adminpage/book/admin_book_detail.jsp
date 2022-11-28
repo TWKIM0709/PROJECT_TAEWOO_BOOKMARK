@@ -10,7 +10,11 @@
   	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
+	<style type="text/css">
+		#sign{
+			width:15%;
+		}
+	</style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/utils/include/admintop.jsp"></jsp:include>
@@ -23,9 +27,9 @@
     </thead>
     <tbody>
       <tr>
-        <td rowspan="5"><img alt="책표지" src="${book.book_filename }"> </td>
+        <td rowspan="4"><img alt="책표지" src="${book.book_filename }"> </td>
         <td>ISBN</td>
-        <td><input type="text" class="form-control border" id="" name="" value="${book.isbn }"></td>
+        <td><input type="text" class="form-control border" id="isbn" name="isbn" value="${book.isbn }"></td>
       </tr>
       <tr>
         <td>작가</td>
@@ -40,6 +44,7 @@
         <td><input type="number" class="form-control border" id="" name="" value="${book.price }"></td>
       </tr>
       <tr>
+        <td id="sign"><input type="text" class="form-control" id="book_filename" name="book_filename" placeholder="책 표지 링크를 입력"  value="${book.book_filename }"></td>
         <td>ebook</td>
         <td>${book.file_name }</td>
       </tr>
@@ -48,9 +53,9 @@
       </tr>
       <tr>
         <td colspan="3">
-			<button type="submit" class="btn btn-outline-dark">수정하기</button>
-			<button type="button" class="btn btn-outline-dark">취소하기</button>
-			<button type="button" class="btn btn-outline-dark">삭제하기</button>
+			<button type="button" class="btn btn-outline-dark" id="updatebtn">수정하기</button>
+			<button type="button" class="btn btn-outline-dark" id="canclebtn">취소하기</button>
+			<button type="button" class="btn btn-outline-dark" id="deletebtn">삭제하기</button>
 		</td>
       </tr>
     </tbody>
@@ -59,9 +64,20 @@
 </div>
 </body>
 <script type="text/javascript">
+	$('#updatebtn').on({
+		click:function(){
+			if()
+			alert('updatebtn');
+		}
+	});
 	$('#deletebtn').on({
 		click:()=>{
 			alert('삭제하기버튼');
+		}
+	});
+	$('#canclebtn').on({
+		click:function(){
+			history.back();
 		}
 	});
 </script>

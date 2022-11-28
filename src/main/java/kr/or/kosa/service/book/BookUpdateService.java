@@ -19,6 +19,7 @@ public class BookUpdateService implements Action {
 		String url = "";
 		
 		String isbn = request.getParameter("isbn");
+		String author = request.getParameter("author");
 		String book_name = request.getParameter("book_name");
 		String description = request.getParameter("description");
 		String p = request.getParameter("price");
@@ -28,6 +29,7 @@ public class BookUpdateService implements Action {
 		
 		book.setIsbn(isbn);
 		book.setBook_name(book_name);
+		book.setAuthor(author);
 		book.setDescription(description);
 		book.setPrice(price);
 		book.setBook_filename(book_filename);
@@ -40,18 +42,17 @@ public class BookUpdateService implements Action {
 			
 			if(result == 1) {
 				msg = "ebook없이 수정되었습니다";
-				url = "#";
+				url = "bookAlllist.do";
 			}else if(result ==2) {
 				msg = "ebook도 수정되었습니다";
-				url = "#";
+				url = "bookAlllist.do";
 			}else {
 				msg = "수정에 실패하였습니다";
-				url = "#";
+				url = "bookDetail.do?isbn=" + isbn;
 			}
 			
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
-			
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		} catch (Exception e) {
