@@ -35,7 +35,7 @@
 				<header data-v-e67dcbb6="">
 					<h1 data-v-e67dcbb6="">
 						<a data-v-e67dcbb6="" href="main.do"><img data-v-e67dcbb6=""
-								src="https://d3udu241ivsax2.cloudfront.net/v3/images/common/millie-logo.3884f0c52e69f1f7322c2fd4778f4830.png"
+								src="갈피표.png"
 								alt="갈피표"></a>
 					</h1>
 					<nav data-v-e67dcbb6="">
@@ -48,7 +48,6 @@
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="userList.do" class="gtm-today">회원</a></li>
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="paymentAlllist.do" class="gtm-today">결제내역</a></li>
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="replyAllList.do" class="gtm-today">댓글</a></li>
-							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="statistics.do" class="gtm-today">통계</a></li>
 						</ul>
 					</nav>
 				<ul data-v-e67dcbb6="" class="util">
@@ -66,5 +65,14 @@
 		sessionStorage.clear();
 		location.href="homepage.html";
 	}
+</script>
+<script type="text/javascript">
+console.log(sessionStorage.getItem("id").value);
+$(function() {
+	if(sessionStorage.getItem('id') == null){
+		alert('세션이 만료되었습니다. 다시 로그인해주세요')
+		location.href= 'login.html';
+	}
+})
 </script>
 </html>

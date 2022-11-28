@@ -29,14 +29,17 @@
 		href="https://d3udu241ivsax2.cloudfront.net/v3/style/home.aadb17a03cc4dec7eb90.css">
 	<!-- 부트스트랩? -->
 </head>
+
 <body>
+
+
 		<div data-v-e67dcbb6="" data-v-c1337ae8="" class="top-header">
 			<div data-v-e67dcbb6="" class="inner">
 				<header data-v-e67dcbb6="">
 					<h1 data-v-e67dcbb6="">
 						<a data-v-e67dcbb6="" href="main.do"><img data-v-e67dcbb6=""
-								src="https://d3udu241ivsax2.cloudfront.net/v3/images/common/millie-logo.3884f0c52e69f1f7322c2fd4778f4830.png"
-								alt="밀리의 서재"></a>
+								src="갈피표.png"
+								alt="갈피표"></a>
 					</h1>
 					<nav data-v-e67dcbb6="">
 						<ul data-v-e67dcbb6="" class="gnb">
@@ -68,5 +71,14 @@
 		sessionStorage.clear();
 		location.href="homepage.html";
 	}
+</script>
+<script type="text/javascript">
+	console.log(sessionStorage.getItem("id").value);
+	$(function() {
+		if(sessionStorage.getItem('id') == null){
+			alert('세션이 만료되었습니다. 다시 로그인해주세요')
+			location.href= 'login.html';
+		}
+	})
 </script>
 </html>
