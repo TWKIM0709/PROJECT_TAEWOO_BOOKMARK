@@ -56,7 +56,9 @@ public class BookLikeListService implements Action {
 			
 			
 			System.out.println(booklist);
-			int pagersize = 3;
+			
+			int pagersize = pagecount;
+			System.out.println("pagersize: " + pagersize);
 			ThePager pager = new ThePager(count, cpage, pagesize, pagersize, "BookLikeList.do");
 			
 			

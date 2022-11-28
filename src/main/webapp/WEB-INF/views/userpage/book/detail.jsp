@@ -28,6 +28,8 @@
         src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669186459288&amp;cv=11&amp;fst=1669186459288&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2FbookDetail%2F179544336%3Freferrer%3DsearchResult&amp;tiba=%EB%8F%84%EC%84%9C%20%EC%83%81%EC%84%B8%20%7C%20%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.35%7CChromium%3B107.0.5304.90%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- sweetAlert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -83,6 +85,7 @@
                                             class="number" id="likecount">${requestScope.likecount}</strong>
                                     </div>
                                     <script type="text/javascript">
+                                        
                                     	$('#like').click(function() {
                                     		  let userId = $('#like').val(); // input_id에 입력되는 값
                                               console.log(userId);
@@ -222,8 +225,8 @@
                 <!-- 사이드바 -->
                 <div data-v-07a4da8a="" data-v-0d0ee47c="" class="button-area">
                     <ul data-v-07a4da8a="" class="button-list">
-                        <li data-v-07a4da8a="" class="shelf"><button data-v-07a4da8a="" type="button"
-                                class="gtm-bdtl-libbtn" onclick="location.href='cartList.do'">장바구니 담기</button></li>
+                        <li data-v-07a4da8a="" class="shelf"><button id="hjCart" data-v-07a4da8a="" type="button"
+                                class="gtm-bdtl-libbtn" onclick="location.href='cartAdd.do'">장바구니 담기</button></li>
                         <li data-v-07a4da8a="" class="share1"><button data-v-07a4da8a="" type="button"
                                 class="gtm-bdtl-postbtn" onclick="b()">YouTube에서 검색하기</button></li>
                         <style>
@@ -259,6 +262,7 @@
 </body>
 
 <script>
+    
     function a() {
         const sendText = '테스트메세지';
         const pageUrl = 'https://naver.com';
@@ -278,6 +282,7 @@
                success : function(result){
                  $("#reply").empty();
                  console.log(result);
+                 
                  let text = "";
                  for(let index in result.BOOK){
                 	 console.log(result.BOOK[index]);
@@ -299,6 +304,22 @@
                }
             })
 	})
+    
+    $('#hjCart').click(function(){
+        let isbn = "<c:out value='${requestScope.isbn}' />"
+        let id = "<c:out value='${sessionScope.id}' />"
+        //let type = "false"; 왜 이렇게 했을때 파라미터로 안가지?
+        $.ajax({
+            url: 'cartAdd.do',
+            type: 'get',
+            data: {
+                isbn:isbn,
+                id:id,
+                type:'false',
+            }, //이 값을 서블릿으로 가지고 감
+        })
+        $(location).attr("href", `cartAdd.do?isbn=${isbn}&id=${id}&type=false`);
+    })
 </script>
 
 </html>
