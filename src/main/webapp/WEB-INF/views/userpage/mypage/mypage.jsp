@@ -323,6 +323,7 @@
                         <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="ebookList.do" class="">내 e-book 관리</a>
                         </li>
                         <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="blogEnter.do" class="">내 블로그 관리</a></li>
+                         <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="paymentList.do" class="">구매내역 확인</a></li>
                     </ul>
                     <p data-v-0807f0e5="" class="menu-title">서비스 안내</p>
                     <ul data-v-0807f0e5="">

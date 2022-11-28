@@ -147,13 +147,6 @@ public class UsersDao implements BookMarkDao{
 		}finally {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
-			//
-			try {
-				conn.setAutoCommit(true);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		return result;
 	}

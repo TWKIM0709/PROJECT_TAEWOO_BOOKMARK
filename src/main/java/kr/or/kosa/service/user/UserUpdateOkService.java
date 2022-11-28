@@ -19,7 +19,8 @@ public class UserUpdateOkService implements Action {
 		String url = "";
 		
 		try {
-			String id = (String) request.getSession().getAttribute("id");
+			String id = request.getParameter("id");
+			System.out.println(id);
 			String pwd = request.getParameter("password");
 			String name = request.getParameter("name");
 			String addr = request.getParameter("addr");
