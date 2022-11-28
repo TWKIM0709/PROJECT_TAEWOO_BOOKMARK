@@ -12,6 +12,9 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+	tr{text-align: center;}
+</style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/utils/include/top.jsp"></jsp:include>
@@ -27,26 +30,25 @@
                 </div>
             
 <div class="container">
-  <table class="table table-striped">
-    <thead>
+  <table class="table table-bordered">
+    <thead> 
       <tr>
-       
-        <th>주문번호</th>
+       <th>주문번호</th>
         <th>주문일</th>
-        <th>수령인</th>
         <th>주문상품</th>
-        <th>상품가격</th>
+        <th>주문권수</th>
+        <th>상품가격</th> 
       </tr>
     </thead>
     <tbody>
 		<c:forEach var="payment"  items="${requestScope.paymentlist }"> 
-      <tr>
-			<td>${blog.blog_no }<td>
-			<td>${blog.id }</td>
-			<td>${blog.blog_title }</td>
-			<td>${blog.hits }</td>
-			<td>${blog.blog_date }</td>
-      </tr>
+     	 <tr>
+			<td>${payment.payment_no}</td>
+			<td>${payment.payment_date}</td>
+			<td>${payment.isbn}</td>
+			<td>${payment.count}</td>
+			<td>${payment.sumprice}</td>
+     	</tr>
 		</c:forEach>
     </tbody>
   </table>
