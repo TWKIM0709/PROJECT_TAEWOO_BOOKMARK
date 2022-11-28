@@ -10,8 +10,6 @@
     <meta name="viewport"
         content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- / -->
-
     <meta name="format-detection" content="telephone=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -323,7 +321,7 @@
                                            <input autocomplete="off" id="input-475"
                                                     aria-labelledby="input-475-label"
                                                     aria-errormessage="input-475-message" type="text"
-                                                    placeholder="검색어를 입력하세요" class="mds-input-field"></div> <button
+                                                    placeholder="검색어를 입력하세요(검색시 전체 블로그 중 검색됩니다...)" class="mds-input-field"></div> <button
                                                 type="button" aria-label="내용 삭제"
                                                 class="mds-icon--input-delete clear-button"
                                                 style="display: none;"></button>
@@ -350,6 +348,7 @@
 	                                    href="blogDetail.do?blog_no=${board.blog_no}">
 		                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">${board.blog_title }</strong>
 		                                        <p data-v-02a040ec="">조회수 : ${board.hits }</p>
+		                                        <p data-v-02a040ec="">작성일 : ${board.blog_date }</p>
 		                                    </div>
 		                                    <div data-v-02a040ec="" class="bookcover">
 		                                        <div data-v-02a040ec="" class="inner">
@@ -362,10 +361,10 @@
                                 </c:forEach>
                         </ul>
                     </section>
+        			<button><a href="blogWrite.do">글쓰기</a></button>
                 </div>
             </section>
         </section>
-        <button><a href="blogWrite.do">글쓰기</a></button>
     </div>
 </body>
     <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/millie.b91a9f57d4b10d47052a.js"></script>
@@ -374,4 +373,60 @@
     <script src="https://millie.co.kr/common/js/tracking.js"></script>
     <script type="text/javascript" id="" src="https://wcs.naver.net/wcslog.js"></script>
     <script type="text/javascript" id="" src="https://wcs.naver.net/wcslog.js"></script>
+    <script>
+		$('#input-475').keydown(function(keyNum){
+            if(keyNum.keyCode == 13){
+                $('#searchBtn').click();
+            }
+        })
+
+		$('#searchBtn').on("click", function(){
+			let inputtxt = $('#input-475').val(); //검색어
+			// console.log(inputtxt);
+            $('#category').empty();
+            $('#category').append("검색 결과");
+            
+            $('#searchResultList').empty();
+
+            //비동기
+            $.ajax({
+			url : "blogLike.do",
+			type : "get",
+		//	data : "id=abc&pwd=123",
+			data : { title: inputtxt,
+                    pagesize : "10",
+                    cpage : "",
+                }, 
+			dataType: 'JSON',
+		// 매우중요!!	
+			    success : function(result) { // Ajax 목적 : result를 얻기 위함
+                    let resultData = result;
+                    console.log(resultData);
+                    let test = '';
+                    //[{"isbn":"K502837053","book_name":"칵테일, 러브, 좀비 (리커버)","author":"조예은 (지은이)","description":"undefined","price":10000,"book_filename":"https://image.aladin.co.kr/product/29543/72/coversum/k502837053_1.jpg"}]
+
+                    let listlen = resultData.BLOG.length;
+                    for(let i=0; i < listlen; i++){
+                        let blog_no = resultData.BLOG[i].blog_no;
+                        let hreflink = "blogDetail.do?blog_no=" + blog_no;
+                        $('#searchResultList').append('<li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""'+
+                                    'href="' + hreflink + '">'+
+                                    '<div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">' + resultData.BLOG[i].blog_title + '</strong>'+
+                                        '<p data-v-02a040ec=""> 조회수 : ' + resultData.BLOG[i].hits + '</p>'+
+                                        '<p data-v-02a040ec=""> 작성일 : ' + resultData.BLOG[i].blog_date + '</p>'+
+                                    '</div>'+
+                                    '<div data-v-02a040ec="" class="bookcover">' +
+                                        '<div data-v-02a040ec="" class="inner">' +
+                                            '<div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"' +
+                                                'data-observe="true">' +
+                                            '</div></div></div></a></li>'
+                                    )
+                    }
+                },
+			error : function() {
+				alert('error');
+			}
+		});
+		})
+	</script>
 </html>
