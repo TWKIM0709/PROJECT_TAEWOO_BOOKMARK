@@ -163,7 +163,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동
     		forward = new ActionForward();
      		forward.setRedirect(false);
-     		forward.setPath("/WEB-INF/views/userpage/blog/write.jsp");
+     		forward.setPath("summernote.html");
     	} else if(url_Command.equals("/blogWriteOk.do")) { // 15. 회원 - 블로그 게시글 작성 처리
     		// 이동 + 처리
     		action = new BlogWriteService();
@@ -438,7 +438,28 @@ public class BookMarkController extends HttpServlet {
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/adminpage/admin_reply_list.jsp");
     	}
-    	 
+    	//=================================================================//
+      	//                                                     차트보기
+      	//=================================================================// 
+    	else if(url_Command.equals("/statisticsAge.do")) { //75 관리자 - 나이통계
+    		action = new AgeService();
+    		forward = action.execute(request, response);
+    	}else if(url_Command.equals("/statisticsGender.do")) {//76 관리자 - 성별통계
+    		action = new GenderService();
+    		forward = action.execute(request, response);
+    	}else if(url_Command.equals("/statisticsDaily.do")) {//77 관리자 - 일일매출통계
+    		action = new DailySalesService();
+    		forward = action.execute(request, response);
+    	}else if(url_Command.equals("/statisticsWeek.do")) { //78 관리자 - 주간매출통계
+    		action = new WeeklySalesService();
+    		forward = action.execute(request, response);
+    	}else if(url_Command.equals("/statisticsMonth.do")) {//79 관리자 - 월간매출통계
+    		action = new MonthlySalesService();
+    		forward = action.execute(request, response);
+    	}else if(url_Command.equals("/statisticsYear.do")) {//80 관리자 - 연간매출통계
+    		action = new YearlySalesService();
+    		forward = action.execute(request, response);
+    	}
     	//=================================================================//
     	//                                                     RequestDispatcher
     	//=================================================================//

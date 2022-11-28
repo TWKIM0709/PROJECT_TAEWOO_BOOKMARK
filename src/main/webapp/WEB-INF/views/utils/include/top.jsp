@@ -27,11 +27,17 @@
 		href="https://d3udu241ivsax2.cloudfront.net/v3/style/home~payment.175c5a5c71c50522abda.css">
 	<link rel="stylesheet" type="text/css"
 		href="https://d3udu241ivsax2.cloudfront.net/v3/style/home.aadb17a03cc4dec7eb90.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<!-- 부트스트랩? -->
 </head>
 
 <body>
-
+<c:if test="${sessionScope.id == null }">
+	<script>
+		alert('세션만료');
+		location.href = 'login.html';
+	</script>
+</c:if>
 
 		<div data-v-e67dcbb6="" data-v-c1337ae8="" class="top-header">
 			<div data-v-e67dcbb6="" class="inner">
@@ -52,11 +58,6 @@
 						</ul>
 					</nav>
 					<ul data-v-e67dcbb6="" class="util">
-						<li data-v-e67dcbb6="" class="alarm"><a data-v-e67dcbb6=""
-								href="/v3/today/more/alarmCenter/push" title="알림" class="gtm-alarm"><i
-									data-v-e67dcbb6="" class="mds-icon--alarm-2"></i> <span data-v-e67dcbb6=""
-									class="alarm-icon">N</span></a></li>
-
 						<li data-v-e67dcbb6="" class="sign sign-in"  onclick="logout()"><button>로그아웃</button></li>
 					</ul>
 				</header>
@@ -72,13 +73,13 @@
 		location.href="homepage.html";
 	}
 </script>
-<script type="text/javascript">
-	console.log(sessionStorage.getItem("id").value);
+<!-- <script type="text/javascript">
+	console.log(${sessionScope.id})
 	$(function() {
-		if(sessionStorage.getItem('id') == null){
-			alert('세션이 만료되었습니다. 다시 로그인해주세요')
+		if(${sessionScope.id} == null){
+			alert('세션이 만료되었습니다. 다시 로그인해주세요');
 			location.href= 'login.html';
 		}
 	})
-</script>
+</script> -->
 </html>
