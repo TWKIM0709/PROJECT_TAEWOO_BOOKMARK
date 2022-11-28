@@ -14,6 +14,9 @@
 		#sign{
 			width:15%;
 		}
+		.ebookfile{
+			color:gray;
+		}
 	</style>
 </head>
 <body>
@@ -21,7 +24,7 @@
 어드민 책 상세
 <c:set var="book"  value="${requestScope.book }"/>
 <div class="container">
-<form action="" method="post"><!-- bookUpdate.do -->
+<form action="bookUpdate.do" method="post"  enctype="multipart/form-data"><!-- bookUpdate.do -->
   <table class="table table-bordered">
     <thead>
     </thead>
@@ -29,31 +32,34 @@
       <tr>
         <td rowspan="4"><img alt="책표지" src="${book.book_filename }"> </td>
         <td>ISBN</td>
-        <td><input type="text" class="form-control border" id="isbn" name="isbn" value="${book.isbn }"></td>
+        <td>
+        	<input type="hidden" class="form-control border" id="isbn" name="isbn" value="${book.isbn }" >
+        	<input type="text" class="form-control border" id="" name="" value="${book.isbn }" disabled>
+        </td>
       </tr>
       <tr>
         <td>작가</td>
-        <td><input type="text" class="form-control border" id="" name="" value="${book.author}"></td>
+        <td><input type="text" class="form-control border" id="author" name="author" value="${book.author}"></td>
       </tr>
       <tr>
         <td>이름</td>
-        <td><input type="text" class="form-control border" id="" name="" value="${book.book_name }"></td>
+        <td><input type="text" class="form-control border" id="book_name" name="book_name" value="${book.book_name }"></td>
       </tr>
       <tr>
         <td>가격</td>
-        <td><input type="number" class="form-control border" id="" name="" value="${book.price }"></td>
+        <td><input type="number" class="form-control border" id="price" name="price" value="${book.price }"></td>
       </tr>
       <tr>
         <td id="sign"><input type="text" class="form-control" id="book_filename" name="book_filename" placeholder="책 표지 링크를 입력"  value="${book.book_filename }"></td>
-        <td>ebook</td>
-        <td>${book.file_name }</td>
+        <td>EBOOK</td>
+        <td><span class="ebookfile">등록된 EBOOK : ${book.file_name } </span><input type="file" name="ebook" id="ebook"></td>
       </tr>
       <tr>
-        <td colspan="3"><textarea class="form-control" rows="5" id="">${book.description }</textarea></td>
+        <td colspan="3"><textarea class="form-control" rows="5" id="description" name="description">${book.description }</textarea></td>
       </tr>
       <tr>
         <td colspan="3">
-			<button type="button" class="btn btn-outline-dark" id="updatebtn">수정하기</button>
+			<button type="submit" class="btn btn-outline-dark" id="updatebtn">수정하기</button>
 			<button type="button" class="btn btn-outline-dark" id="canclebtn">취소하기</button>
 			<button type="button" class="btn btn-outline-dark" id="deletebtn">삭제하기</button>
 		</td>

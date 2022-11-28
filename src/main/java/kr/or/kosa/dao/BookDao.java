@@ -228,15 +228,40 @@ public class BookDao implements BookMarkDao{
 		return row;
 	}
 	//파일 유무 확인
-	public String getFileByIsbn(String isbn) {
-		return null;
+	public String getFilenameByIsbn(String isbn) {
+		Connection conn = null;
+		String filename = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = ConnectionHelper.getConnection("oracle");
+			sql = "select file_name from ebook where isbn = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, isbn);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				filename = rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
+		}
+		return filename;
 	}
 	//책 수정
-	public int UpdateBook(Book book) {
+	public int UpdateBook(Book book, boolean insertck) {
 		int row = 0;
 		Connection conn = null;
 		String sql = "";
 		PreparedStatement pstmt = null;
+		System.out.println("DAO Book : " + book);
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			conn.setAutoCommit(false);
@@ -250,6 +275,7 @@ public class BookDao implements BookMarkDao{
 			pstmt.setString(6, book.getIsbn());
 			
 			row = pstmt.executeUpdate();
+			System.out.println("update book row : " + row);
 			
 			if(book.getFile_name() != null) {
 				sql = "update ebook set file_name=? where isbn=?";
