@@ -22,9 +22,6 @@ public class BookAddService implements Action {
 		Book book = new Book();
 		MultipartRequest multi = null;
 		//PrintWriter start
-		PrintWriter out = null;
-		try {			out = response.getWriter();		} 
-		catch (IOException e1) {			e1.printStackTrace();		}
 		//PrintWrtier end
 		String msg = "";
 		String url = "";
@@ -47,7 +44,6 @@ public class BookAddService implements Action {
 			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 			return forward;
 		}
-		System.out.println("multi end");
 		//MultipartRequest end
 		String isbn = multi.getParameter("isbn");
 		String author = multi.getParameter("author");
