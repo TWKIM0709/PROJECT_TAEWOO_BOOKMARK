@@ -138,7 +138,9 @@
 	<jsp:include page="/WEB-INF/views/utils/include/top.jsp"></jsp:include>
 			<div data-v-3adb62c9="" data-v-c1337ae8="" class="millie-sub-inner">
 				<div style="width: 100%; height: 400px; background-color: #e2d3e4;">
-					<img data-v-73607907 src="https://d2j6uvfek9vas1.cloudfront.net/millie_logo/63802fb5af5cf.png">
+				<br>	
+				<br>
+					&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; <img data-v-73607907 src="https://d2j6uvfek9vas1.cloudfront.net/millie_logo/63802fb5af5cf.png">
 					<img data-v-73607907 src="https://d2j6uvfek9vas1.cloudfront.net/millie_logo/63802fb5af5cf.png">
 					<img data-v-73607907 src="https://d2j6uvfek9vas1.cloudfront.net/millie_logo/63802fb5af5cf.png">
 					<img data-v-73607907 src="https://d2j6uvfek9vas1.cloudfront.net/millie_logo/63802fb5af5cf.png">

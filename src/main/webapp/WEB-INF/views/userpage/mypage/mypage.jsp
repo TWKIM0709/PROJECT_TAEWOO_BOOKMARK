@@ -328,7 +328,7 @@
                     <p data-v-0807f0e5="" class="menu-title">서비스 안내</p>
                     <ul data-v-0807f0e5="">
                      	<li data-v-0807f0e5=""><a data-v-0807f0e5="" href="question.do">문의사항</a></li>
-                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="userWithdraw.do">회원탈퇴</a></li>
+                        <li data-v-0807f0e5=""><a data-v-0807f0e5="" href="userWithdraw.do?id=${sessionScope.id}">회원탈퇴</a></li>
                     </ul>
                 </div>
                 
