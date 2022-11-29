@@ -42,7 +42,7 @@
 			<option value="year">연간 매출량</option>
 		</select>
 	</h3>
-	<div id="graph" ></div>
+	<div id="graph" style="margin-left : 10%" ></div>
 </body>
 <script type="text/javascript">
 	let options = {
@@ -58,11 +58,11 @@
 		},
 		chart: {
 			type: 'treemap',
-			whith : '100%',
-			height : '800'
+			width : '90%',
+			height : '750'
 		},
 		title: {
-			text: $("#sk option:selected").text(),
+			text: $("#sk option:checked").text(),
 			align: 'center'
 		},
 		colors: [
@@ -90,7 +90,9 @@
 		//var chart = new ApexCharts(document.querySelector("#chart"), options);
 		//chart.render();
 		function chart(value){
+			$("#graph").empty();
 			if($("#sk option:selected").val() == "age"){
+				options.title.text = $("#sk option:selected").text();
 				$.ajax({
 					url : "statisticsAge.do",
 					dataType:"json",
@@ -108,29 +110,32 @@
 					} //success
 				});
 			}else if($("#sk option:selected").val() == "gender"){
+				options.title.text = $("#sk option:selected").text();
+				$("#graph").empty();
 				$.ajax({
 					url : "statisticsGender.do",
 					dataType:"json",
 					success:function(data){
-					options.series[0].data.length = 0;
-					console.log(data);
-					for(let index in data.genderlist){
-						let json = { x: data.age[index].NAME , y:data.age[index].VALUE};
-						options.series[0].data.push(json);
-					}//for
-					let chart = new ApexCharts(document.querySelector("#graph"), options);
-					chart.render();
+						options.series[0].data.length = 0;
+						console.log(data);
+						for(let index in data.STATISTICS){
+							let json = { x: data.STATISTICS[index].NAME , y:data.STATISTICS[index].VALUE};
+							options.series[0].data.push(json);
+						}//for
+						let chart = new ApexCharts(document.querySelector("#graph"), options);
+						chart.render();
 					} //success
 				});
 			}else if($("#sk option:selected").val() == "day"){
+				options.title.text = $("#sk option:selected").text();
 				$.ajax({
 					url : "statisticsDay.do",
 					dataType:"json",
 					success:function(data){
 					options.series[0].data.length = 0;
 					console.log(data);
-					for(let index in data.daily){
-						let json = { x: data.daily[index].NAME , y:data.daily[index].VALUE};
+					for(let index in data.STATISTICS){
+						let json = { x: data.STATISTICS[index].NAME , y:data.STATISTICS[index].VALUE};
 						options.series[0].data.push(json);
 					}//for
 					let chart = new ApexCharts(document.querySelector("#graph"), options);
@@ -138,14 +143,15 @@
 					} //success
 				});
 			}else if($("#sk option:selected").val() == "week"){
+				options.title.text = $("#sk option:selected").text();
 				$.ajax({
 					url : "statisticsWeek.do",
 					dataType:"json",
 					success:function(data){
 					options.series[0].data.length = 0;
 					console.log(data);
-					for(let index in data.week){
-						let json = { x: data.week[index].NAME , y:data.week[index].VALUE};
+					for(let index in data.STATISTICS){
+						let json = { x: data.STATISTICS[index].NAME , y:data.STATISTICS[index].VALUE};
 						options.series[0].data.push(json);
 					}//for
 					let chart = new ApexCharts(document.querySelector("#graph"), options);
@@ -153,14 +159,15 @@
 					} //success
 				});
 			}else if($("#sk option:selected").val() == "month"){
+				options.title.text = $("#sk option:selected").text();
 				$.ajax({
 					url : "statisticsMonth.do",
 					dataType:"json",
 					success:function(data){
 					options.series[0].data.length = 0;
 					console.log(data);
-					for(let index in data.month){
-						let json = { x: data.month[index].NAME , y:data.month[index].VALUE};
+					for(let index in data.STATISTICS){
+						let json = { x: data.STATISTICS[index].NAME , y:data.STATISTICS[index].VALUE};
 						options.series[0].data.push(json);
 					}//for
 					let chart = new ApexCharts(document.querySelector("#graph"), options);
@@ -168,14 +175,15 @@
 					} //success
 				});
 			}else if($("#sk option:selected").val() == "year"){
+				options.title.text = $("#sk option:selected").text();
 				$.ajax({
 					url : "statisticsYear.do",
 					dataType:"json",
 					success:function(data){
 					options.series[0].data.length = 0;
 					console.log(data);
-					for(let index in data.year){
-						let json = { x: data.year[index].NAME , y:data.year[index].VALUE};
+					for(let index in data.STATISTICS){
+						let json = { x: data.STATISTICS[index].NAME , y:data.STATISTICS[index].VALUE};
 						options.series[0].data.push(json);
 					}//for
 					let chart = new ApexCharts(document.querySelector("#graph"), options);
@@ -185,5 +193,23 @@
 			}
 		}
 		
+		$(function(){
+			$.ajax({
+				url : "statisticsAge.do",
+				dataType:"json",
+				success:function(data){
+				options.series[0].data.length = 0;
+				console.log(data);
+				for(let index in data.age){
+					let json = { x: data.age[index].NAME , y:data.age[index].VALUE};
+					console.log(json);
+					options.series[0].data.push(json);
+				}//for
+				console.log(options)
+				let chart = new ApexCharts(document.querySelector("#graph"), options);
+				chart.render();
+				} //success
+			});
+		})
 </script>
 </html>
