@@ -248,8 +248,8 @@
                     
                     
                     <div data-v-07a4da8a="" class="button">
-                        <div data-v-07a4da8a="" class="inner"><button data-v-07a4da8a="" type="button"
-                                class="enter gtm-bdtl-readbtn e-book" onclick="location.href='aladinpayment.html'"><span data-v-07a4da8a="">구매하기</span></button>
+                        <div data-v-07a4da8a="" class="inner"><button data-v-07a4da8a="" type="button" id="hjCartList"
+                                class="enter gtm-bdtl-readbtn e-book"><span data-v-07a4da8a="">구매하기</span></button>
                         </div>
                     </div>
                 </div>
@@ -305,6 +305,7 @@
             })
 	})
     
+    //장바구니 담기
     $('#hjCart').click(function(){
         let isbn = "<c:out value='${requestScope.isbn}' />"
         let id = "<c:out value='${sessionScope.id}' />"
@@ -335,6 +336,11 @@
             }
         })
         // $(location).attr("href", `cartAdd.do?isbn=${isbn}&id=${id}&type=false`);
+    })
+    //장바구니 이동
+    $('#hjCartList').click(function(){
+        let id =  "<c:out value='${sessionScope.id}' />";
+        $(location).attr("href", `cartList.do?id=${id}`);
     })
 </script>
 

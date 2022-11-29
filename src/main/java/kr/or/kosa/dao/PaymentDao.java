@@ -34,6 +34,7 @@ public class PaymentDao implements BookMarkDao{
 					Book book = new Book();
 					book.setIsbn(rs.getString("isbn"));
 					book.setBook_name(rs.getString("book_name"));
+					book.setAuthor(rs.getString("author"));
 					book.setDescription(rs.getString("description"));
 					book.setFile_name(rs.getString("file_name"));
 					book.setPrice(rs.getInt("price"));
