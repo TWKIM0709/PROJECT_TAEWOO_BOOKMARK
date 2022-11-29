@@ -225,6 +225,182 @@
         .vue-slider-mark-step {
             position: absolute
         }
+
+        .hj{
+            margin : 2;
+            
+        }
+
+        .custom-btn {
+            width: 130px;
+            height: 40px;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px 25px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+            7px 7px 20px 0px rgba(0,0,0,.1),
+            4px 4px 5px 0px rgba(0,0,0,.1);
+            outline: none;
+            }
+
+
+            .hj-button-area{
+                margin-top: 20px;
+            }
+
+            /* 5 */
+.btn-5 {
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  background: rgb(255, 119, 0);
+background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
+}
+.btn-5:hover {
+  color: #f0094a;
+  background: transparent;
+   box-shadow:none;
+}
+.btn-5:before,
+.btn-5:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #f0094a;
+  box-shadow:
+   -1px -1px 5px 0px #fff,
+   7px 7px 20px 0px #0003,
+   4px 4px 5px 0px #0002;
+  transition:400ms ease all;
+}
+.btn-5:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+
+.checks {position: relative;}
+
+.checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0
+}
+.checks input[type="checkbox"] + label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.checks input[type="checkbox"] + label:before {  /* 가짜 체크박스 */
+  content: ' ';
+  display: inline-block;
+  width: 21px;  /* 체크박스의 너비를 지정 */
+  height: 21px;  /* 체크박스의 높이를 지정 */
+  line-height: 21px; /* 세로정렬을 위해 높이값과 일치 */
+  margin: -2px 8px 0 0;
+  text-align: center; 
+  vertical-align: middle;
+  background: #fafafa;
+  border: 1px solid #cacece;
+  border-radius : 3px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+}
+.checks input[type="checkbox"] + label:active:before,
+.checks input[type="checkbox"]:checked + label:active:before {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.checks input[type="checkbox"]:checked + label:before {  /* 체크박스를 체크했을때 */ 
+  content: '\2714';  /* 체크표시 유니코드 사용 */
+  color: #99a1a7;
+  text-shadow: 1px 1px #fff;
+  background: #e9ecee;
+  border-color: #adb8c0;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+}
+
+.checks.small input[type="checkbox"] + label {
+  font-size: 12px;
+}
+
+.checks.small input[type="checkbox"] + label:before {
+  width: 17px;
+  height: 17px;
+  line-height: 17px;
+  font-size: 11px;
+}
+
+.checks.etrans input[type="checkbox"] + label {
+  padding-left: 30px;
+}
+.checks.etrans input[type="checkbox"] + label:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 0;
+  opacity: .6;
+  box-shadow: none;
+  border-color: #6cc0e5;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+
+.checks.etrans input[type="checkbox"]:checked + label:before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity:1; 
+  background: transparent;
+  border-color:transparent #6cc0e5 #6cc0e5 transparent;
+  border-top-color:transparent;
+  border-left-color:transparent;
+  -ms-transform:rotate(45deg);
+  -webkit-transform:rotate(45deg);
+  transform:rotate(45deg);
+}
+
+.no-csstransforms .checks.etrans input[type="checkbox"]:checked + label:before {
+  /*content:"\2713";*/
+  content: "\2714";
+  top: 0;
+  left: 0;
+  width: 21px;
+  line-height: 21px;
+  color: #6cc0e5;
+  text-align: center;
+  border: 1px solid #6cc0e5;
+}
+
     </style>
     <style type="text/css">
         .vue-slider {
@@ -304,6 +480,290 @@
     <script charset="utf-8" src="https://d3udu241ivsax2.cloudfront.net/v3/js/search.1bfec2c80b414a00a1f3.js"></script>
     <link rel="stylesheet" type="text/css"href="Search.css">
     
+
+    <!-- 정보수정손민수 -->
+    <link
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/vendor.524cdf1d4325d722f545.css"
+	rel="stylesheet">
+<link
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/millie.4a1320ab272ffa081fae.css"
+	rel="stylesheet">
+<style type="text/css">
+.vue-slider-dot {
+	position: absolute;
+	-webkit-transition: all 0s;
+	transition: all 0s;
+	z-index: 5
+}
+
+.vue-slider-dot:focus {
+	outline: none
+}
+
+.vue-slider-dot-tooltip {
+	position: absolute;
+	visibility: hidden
+}
+
+.vue-slider-dot-hover:hover .vue-slider-dot-tooltip,
+	.vue-slider-dot-tooltip-show {
+	visibility: visible
+}
+
+.vue-slider-dot-tooltip-top {
+	top: -10px;
+	left: 50%;
+	-webkit-transform: translate(-50%, -100%);
+	transform: translate(-50%, -100%)
+}
+
+.vue-slider-dot-tooltip-bottom {
+	bottom: -10px;
+	left: 50%;
+	-webkit-transform: translate(-50%, 100%);
+	transform: translate(-50%, 100%)
+}
+
+.vue-slider-dot-tooltip-left {
+	left: -10px;
+	top: 50%;
+	-webkit-transform: translate(-100%, -50%);
+	transform: translate(-100%, -50%)
+}
+
+.vue-slider-dot-tooltip-right {
+	right: -10px;
+	top: 50%;
+	-webkit-transform: translate(100%, -50%);
+	transform: translate(100%, -50%)
+}
+</style>
+<style type="text/css">
+.vue-slider-marks {
+	position: relative;
+	width: 100%;
+	height: 100%
+}
+
+.vue-slider-mark {
+	position: absolute;
+	z-index: 1
+}
+
+.vue-slider-ltr .vue-slider-mark, .vue-slider-rtl .vue-slider-mark {
+	width: 0;
+	height: 100%;
+	top: 50%
+}
+
+.vue-slider-ltr .vue-slider-mark-step, .vue-slider-rtl .vue-slider-mark-step
+	{
+	top: 0
+}
+
+.vue-slider-ltr .vue-slider-mark-label, .vue-slider-rtl .vue-slider-mark-label
+	{
+	top: 100%;
+	margin-top: 10px
+}
+
+.vue-slider-ltr .vue-slider-mark {
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%)
+}
+
+.vue-slider-ltr .vue-slider-mark-step {
+	left: 0
+}
+
+.vue-slider-ltr .vue-slider-mark-label {
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%)
+}
+
+.vue-slider-rtl .vue-slider-mark {
+	-webkit-transform: translate(50%, -50%);
+	transform: translate(50%, -50%)
+}
+
+.vue-slider-rtl .vue-slider-mark-step {
+	right: 0
+}
+
+.vue-slider-rtl .vue-slider-mark-label {
+	right: 50%;
+	-webkit-transform: translateX(50%);
+	transform: translateX(50%)
+}
+
+.vue-slider-btt .vue-slider-mark, .vue-slider-ttb .vue-slider-mark {
+	width: 100%;
+	height: 0;
+	left: 50%
+}
+
+.vue-slider-btt .vue-slider-mark-step, .vue-slider-ttb .vue-slider-mark-step
+	{
+	left: 0
+}
+
+.vue-slider-btt .vue-slider-mark-label, .vue-slider-ttb .vue-slider-mark-label
+	{
+	left: 100%;
+	margin-left: 10px
+}
+
+.vue-slider-btt .vue-slider-mark {
+	-webkit-transform: translate(-50%, 50%);
+	transform: translate(-50%, 50%)
+}
+
+.vue-slider-btt .vue-slider-mark-step {
+	top: 0
+}
+
+.vue-slider-btt .vue-slider-mark-label {
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%)
+}
+
+.vue-slider-ttb .vue-slider-mark {
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%)
+}
+
+.vue-slider-ttb .vue-slider-mark-step {
+	bottom: 0
+}
+
+.vue-slider-ttb .vue-slider-mark-label {
+	bottom: 50%;
+	-webkit-transform: translateY(50%);
+	transform: translateY(50%)
+}
+
+.vue-slider-mark-label, .vue-slider-mark-step {
+	position: absolute
+}
+</style>
+<style type="text/css">
+.vue-slider {
+	position: relative;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	display: block;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+.vue-slider-rail {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	-webkit-transition-property: width, height, left, right, top, bottom;
+	transition-property: width, height, left, right, top, bottom
+}
+
+.vue-slider-process {
+	position: absolute;
+	z-index: 1
+}
+</style>
+<script async=""
+	src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1"
+	rel="preconnect" charset="utf-8">
+    </script>
+<link rel="preload"
+	href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/mds-icon-v3.woff2"
+	as="font" type="font/woff2" crossorigin="crossorigin">
+<link rel="preload"
+	href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Regular.woff2"
+	as="font" type="font/woff2" crossorigin="crossorigin">
+<link rel="preload"
+	href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Bold.woff2"
+	as="font" type="font/woff2" crossorigin="crossorigin">
+<link rel="preload"
+	href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/NotoSerifKR-Black.woff2"
+	as="font" type="font/woff2" crossorigin="crossorigin">
+<link rel="stylesheet" type="text/css"
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/dasanAward~dasanVote~home.20e63449e7a4626c02ae.css">
+<script charset="utf-8"
+	src="https://d3udu241ivsax2.cloudfront.net/v3/js/dasanAward~dasanVote~home.a40db3baadabdf2084c7.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/bestseller~brand~home.3157435c0ebe1f9ea312.css">
+<script charset="utf-8"
+	src="https://d3udu241ivsax2.cloudfront.net/v3/js/bestseller~brand~home.2337c71dc13c42fd5762.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/home~payment.175c5a5c71c50522abda.css">
+<script charset="utf-8"
+	src="https://d3udu241ivsax2.cloudfront.net/v3/js/home~payment.7cc59588f2347d06c964.js">
+    </script>
+<link rel="stylesheet" type="text/css"
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/home.aadb17a03cc4dec7eb90.css">
+<script charset="utf-8"
+	src="https://d3udu241ivsax2.cloudfront.net/v3/js/home.ed5f655aabea45e2b6cd.js"></script>
+<meta http-equiv="origin-trial"
+	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
+<script type="text/javascript" async=""
+	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/771298710/?random=1669276055208&amp;cv=11&amp;fst=1669276055208&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.56%7CChromium%3B107.0.5304.110%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
+    </script>
+<script type="text/javascript" async=""
+	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669276055209&amp;cv=11&amp;fst=1669276055209&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.56%7CChromium%3B107.0.5304.110%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
+    </script>
+<script type="text/javascript" async=""
+	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669276055210&amp;cv=11&amp;fst=1669276055210&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.56%7CChromium%3B107.0.5304.110%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
+    </script>
+<meta http-equiv="origin-trial"
+	content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
+<meta http-equiv="origin-trial"
+	content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
+<script type="text/javascript" charset="utf8" async=""
+	src="https://www.youtube.com/iframe_api"></script>
+<meta http-equiv="origin-trial"
+	content="A0KGawWMfAygakxUO+Z3rulPwK2j0AqkLneiEt4pAI951GYaafeHNV9Ya+PAn7s0y12QSrfTjc9LdOUU+QfkdQwAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY2OTc2NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
+<link rel="stylesheet" type="text/css"
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/reading~search.9e20d3f61ee01fdc9a9c.css">
+<script charset="utf-8"
+	src="https://d3udu241ivsax2.cloudfront.net/v3/js/reading~search.30140e35c71695a23426.js">
+    </script>
+<link rel="stylesheet" type="text/css"
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/search.d5e7ba02987a9fbca3c2.css">
+<script charset="utf-8"
+	src="https://d3udu241ivsax2.cloudfront.net/v3/js/search.68343292a1c4e3613023.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/bookDetail~management~paperBook~payment.5ae25aef3d26b1738ec7.css">
+<script charset="utf-8"
+	src="https://d3udu241ivsax2.cloudfront.net/v3/js/bookDetail~management~paperBook~payment.751f5c94fe71c44bb7be.js">
+    </script>
+<link rel="stylesheet" type="text/css"
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/bookDetail.120e0472d463d372d2c8.css">
+<script charset="utf-8"
+	src="https://d3udu241ivsax2.cloudfront.net/v3/js/bookDetail.99be822072640d1e4f68.js">
+    </script>
+<link rel="stylesheet" type="text/css"
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/audioDetail.49dfc892f0cef369883f.css">
+<script charset="utf-8"
+	src="https://d3udu241ivsax2.cloudfront.net/v3/js/audioDetail.c3eab3433e02cfa3dfc1.js">
+    </script>
+<script charset="utf-8"
+	src="https://d3udu241ivsax2.cloudfront.net/v3/js/3.0f4883b62b6134b1d0e8.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/management~payment~resolution.36317de65b1e1d0e8124.css">
+<script charset="utf-8"
+	src="https://d3udu241ivsax2.cloudfront.net/v3/js/management~payment~resolution.58db09167d6c08ef3b9b.js">
+    </script>
+<link rel="stylesheet" type="text/css"
+	href="https://d3udu241ivsax2.cloudfront.net/v3/style/management.6a3cf585bcafabd76a9b.css">
+<script charset="utf-8"
+	src="https://d3udu241ivsax2.cloudfront.net/v3/js/management.290a60841f92b77fd5e6.js">
+    </script>
+<link rel="stylesheet" type="text/css" href="ddd.css">
+     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 
 <body style="height: auto; overflow: visible;">
@@ -335,12 +795,14 @@
                     <section data-v-02a040ec="" class="page category-wrap">
                         <h2 data-v-02a040ec="" class="title" id="searchTag"></h2>
                         <ul data-v-02a040ec="" id="searchResultList" class="category-list">
-                                <!--  TODO:책 클릭하면 배경색 바뀌고, 결제할 책 목록에 추가되게. --> 
-                                
+                            
                                 <c:forEach  var="book"  items="${requestScope.cartlist}" varStatus="status">
                                     <c:set var="bookcount" value="bookcount${status.count}"></c:set>
 	                                	 <li data-v-02a040ec="" id=${bookcount} name="hjitem" class="list gtm-search-category"><a data-v-02a040ec="">
-		                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">${book.book_name }</strong>
+                                            <input type="checkbox" value="d">
+		                                    <div data-v-02a040ec="" class="metadata">
+                                                
+                                                <strong data-v-02a040ec="">${book.book_name }</strong>
 		                                        <p data-v-02a040ec="">${book.author }</p><br>
                                                 <p id="bookprice" data-v-02a040ec="">${book.price}원</p>
                                                 <p id="isbn">${book.isbn}</p>
@@ -360,44 +822,147 @@
 		                                    </div>
 		                                </a></li>
                                 </c:forEach>
-                           
-                            
-                          
                         </ul>
+
+
+                        <hr>
+                        <!-- <div class="hj-button-area">
+                            <button class="custom-btn btn-5"><span>구매하기</span></button>
+                        </div> -->
                     </section>
                     <hr>
                     <!-- 결제할 책 -->
-                    <section data-v-02a040ec="" class="page category-wrap">
+                    <!-- <section data-v-02a040ec="" class="page category-wrap">
                         <h2 data-v-02a040ec="" class="title">구매할 책</h2>
+                        <hr>
+                        
+                        <h3 id="hjtotal">
+
+                        </h3>
                         <ul data-v-02a040ec="" id="hjpay" class="category-list">
-                            <li data-v-02a040ec="" id=${bookcount} name="hjitem" class="list gtm-search-category"><a data-v-02a040ec="">
-                                <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">${book.book_name }</strong>
-                                    <p data-v-02a040ec="">${book.author }</p><br>
-                                    <p data-v-02a040ec="">${book.price}원</p>
-                                </div>
-                                <div data-v-02a040ec="" class="bookcover">
-                                    <div data-v-02a040ec="" class="inner">
-                                        <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
-                                            data-observe="true">
-                                            <picture data-v-96e558f2="">
-                                                <source data-v-96e558f2=""
-                                                    srcset="${book.book_filename }, ${book.book_filename } 2x"
-                                                    type="image/webp"> <img data-v-96e558f2=""
-                                                    src="${book.book_filename }"
-                                                    alt=" 도서 썸네일" width="125"></picture>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                       
-                    </section>
-                    
+                           
+                       </ul>
+                    </section> -->
+                   
                 </div>
             </section>
         </section>
         <!---->
         <!---->
         <!---->
+    	<section data-v-c1337ae8="" class="content">
+			<div data-v-9baa251e="" data-v-c1337ae8="" class="millie-inner">
+				<div data-v-9baa251e="">
+				<form id="hjpost" action='payment.do' method = "get" >
+                    <h2 data-v-02a040ec="" class="title" id="searchTag">받는 분 정보</h2>
+					<div data-v-9baa251e="" class="inner-content">
+
+						<hr data-v-9baa251e="" class="line">
+						<div data-v-9baa251e="" class="input-item">
+							<p data-v-9baa251e="" class="tit">
+								이름<span data-v-9baa251e="">*</span>
+								<!---->
+							</p>
+							<div data-v-9baa251e="" class="input-group">
+								<div data-v-9baa251e="" class="input-box">
+									<input data-v-9baa251e="" type="text" 
+									
+										placeholder="이름 입력 (‘-’ 제외)" 
+										class="input-text" value="${user.name}" name = "name" >
+								</div>
+							
+							</div>
+							<!---->
+						</div>
+						
+						<div data-v-9baa251e="" class="input-item">
+							<p data-v-9baa251e="" class="tit">
+								휴대폰 번호<span data-v-9baa251e="">*</span>
+								<!---->
+							</p>
+							<div data-v-9baa251e="" class="input-group">
+								<div data-v-9baa251e="" class="input-box">
+									<input data-v-9baa251e="" type="number" 
+									maxlength="11" oninput="maxLengthChk(this)" placeholder="01012345678" pattern="\d*" maxlength="6"
+										placeholder="휴대폰 번호 입력 (‘-’ 제외)" 
+										class="input-text" value="${user.phone}" name = "phone">
+								</div>
+							
+							</div>
+							<!---->
+						</div>
+                    
+						<!---->
+						<div data-v-9baa251e="" class="input-item">
+							<p data-v-9baa251e="" class="tit">우편번호<span data-v-9baa251e="">*</span></p>
+							<div data-v-9baa251e="" class="input-group"> 
+								<div data-v-9baa251e="" class="input-box"></div>
+									<input data-v-9baa251e="" type="text" placeholder="우편번호 입력" id="zipcode"  readonly
+									
+										 class="input-text" value="${user.addr}" name = "addr" > <button style="position: absolute;left: 87%;" type="button" value="우편번호찾기" onclick = "kakaopost()" >우편번호찾기</button>
+										
+								</div>
+								<!---->
+								<!---->
+					
+							</div>
+							<!---->
+							<!---->
+							<!---->
+						<div class="inner">
+						    <div data-v-9baa251e="" class="input-item">
+                                    <p data-v-9baa251e="" class="tit">
+                                    주소<span data-v-9baa251e="">*</span>
+                                    </p> 
+                                <div data-v-9baa251e="" class="input-group">
+                                    <div data-v-9baa251e="" class="input-box">
+                                        <input data-v-9baa251e="" 
+                                        type="text" placeholder="상세주소 입력" 
+                                            id="address"  class="input-text" value="${user.detail_addr}"  name = "detail_addr" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div data-v-9baa251e="" class="input-group" >
+                                    <div data-v-9baa251e="" class="input-box" >
+                                        <input data-v-9baa251e="" type="hidden" 
+                                            
+                                            id = "hjpriceinput"
+                                            class="input-text" value="" name = "totalprice" >
+                                    </div>
+                                
+                            </div>
+                                <div data-v-9baa251e="" class="input-group" >
+                                    <div data-v-9baa251e="" class="input-box" >
+                                        <input data-v-9baa251e="" type="hidden" 
+                                            
+                                            id = "hjfirstbook"
+                                            class="input-text" value="" name = "firstbook" >
+                                    </div>
+                                
+                                </div>
+                                <div data-v-9baa251e="" class="input-group" >
+                                    <div data-v-9baa251e="" class="input-box" >
+                                        <input data-v-9baa251e="" type="hidden" 
+                                            
+                                            id = "hjcartsize"
+                                            class="input-text" value="" name = "cartsize" >
+                                    </div>
+                                
+                                </div>
+							</div>
+						<hr data-v-9baa251e="" class="line">
+						<!-- <button data-v-9baa251e="" id="hjbtn" type="button" class="confirm-btn">이건 버튼</button> -->
+                        <button data-v-9baa251e="" id="hjsubmit" type="submit" class="confirm-btn">결제하기</button>
+                    </form>
+						
+					</div>
+				</div>
+				<!---->
+				<!---->
+				<!---->
+			</div>
+		</section>
         <!---->
     </div>
     <!-- <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/vendor.0be117fe15cd3682b23e.js"></script> -->
@@ -503,41 +1068,67 @@
     //     console.log(clickItem);
     //     $('#hjpay').append(clickItem);
     // })
-    let totalprice = 0;
-    let isbn = [];
-    $(function(){
-        $('#searchResultList').children().click(function(){
-        // let myitem = $(this).find();
-        // console.log(myitem);
-        // $('#hjpay').append(myitem);
-        // console.log($('#hjpay').find());
-        // $('#hjpay').parent('ul:eq(1)').append($(this));
-        // $('#hjpay').parent('ul:eq(0)').append($(this));
-
-        
-        // $('#hjpay').find('li:eq(0)').append($(this));
-        // $('#hjpay').find('li:eq(1)').append($(this));
-        // $(myitem).clone().appendTo($('#hjpay'))
-        let price = $(this).find("p#bookprice").text();
-        // console.log(price.slice(0, price.length - 1));
-        totalprice+=price;
-        $(this).clone().appendTo($('#hjpay'));
-        // $(this).hide();
-        // $(this).empty();
-        $(this).remove();
-        // $('#hjpay').append(this);
-        // $('#hjpay').children().append(this.children());
-        
-
-        // $(myitem).clone().appendTo($('#hjpay'))
-        //$(this).hide();
-        })
-        $('#hjpay').children().click(function(){
-            console.log("결제목록 클릭!");
-            $('#searchResultList').append(this);
-        })
-    })
+    let totalprice = "<c:out value='${requestScope.totalprice}' />"    
+    let repbook = "<c:out value='${requestScope.firstbook}' />";
     
+    // console.log("${requestScope.cartlist[0].book_name}");
+    // console.log("${requestScope.cartlist.size()}")
+    let cartsize = "<c:out value='${requestScope.cartsize}' />"
+    let customerName = "<c:out value='${sessionScope.id}' />";
+
+    let pricetag = $('#hjtotal');
+    
+    // console.log(pricetag);
+    $(function(){
+        console.log(customerName)
+
+        $('#hjpriceinput').attr("value", totalprice);
+        $('#hjcartsize').attr("value", cartsize);
+        $('#hjfirstbook').attr("value", repbook);
+
+        /*
+        $('#searchResultList').children().click(function(){
+            //TODO: 클릭 홀수면 결제하기목록에 짝수면 다시 장바구니에 돌리는 로직 ??
+            let price = $(this).find("p#bookprice").text();
+
+            totalprice+= parseInt(price);
+            $(this).clone().appendTo($('#hjpay'));
+            $(this).remove();
+            $(pricetag).empty();
+            $(pricetag).append("총 가격 | " + totalprice + "원");
+
+            $('#hjbtn').css("visibility","visibility"); // 값을 보여줌
+            // document.getElementById("hjtotal").value = tmp;
+        })
+        */
+        // $('#hjpost').attr("action", `payment.do?amount=${totalprice}&orderItem=${repbook}&customerName=${customerName}&orderItemCount=${cartsize-1}`);
+
+        $('#hjbtn').click(function(){
+                console.log("구매버튼 클릭");
+                
+                //여기서 ajax로 장바구니 책을 전달하고
+
+
+                //form에서는 구매자의 정보를 전달한다.
+
+                
+
+                // $('#hjsubmit').click();
+                //location.href=`payment.do?amount=${totalprice}&orderItem=${isbn[0]}&ordrItemCount=${isbn.length}&customerName=${customerName}`; //결제API로 이동 orderId가 머야?
+                //orderItem 외 count 건 (예:러시아어 외 2건)
+            }
+        )
+    })
+    function kakaopost() {
+      new daum.Postcode({
+        oncomplete: function (data) {
+        	console.log(data.zonecode);
+        	console.log(data.address);
+        	$('#zipcode').val(data.zonecode);
+        	$('#address').val(data.address);
+        }
+      }).open();
+    }
 </script>
 
 </html>

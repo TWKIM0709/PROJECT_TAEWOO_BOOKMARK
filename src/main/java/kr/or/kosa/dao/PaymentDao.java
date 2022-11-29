@@ -23,7 +23,7 @@ public class PaymentDao implements BookMarkDao{
 			List<Book> cartlist = null;
 			
 			try {
-				String sql = "select book.isbn as isbn, book.book_name, book.description,book.price,book.book_filename,ebook.file_name from book left join ebook on book.isbn = ebook.isbn where book.isbn in (select isbn from cart where id =?)";
+				String sql = "select book.isbn as isbn, book.book_name, book.author, book.description,book.price,book.book_filename,ebook.file_name from book left join ebook on book.isbn = ebook.isbn where book.isbn in (select isbn from cart where id =?)";
 				//일단은 ebook파일까지 같이 담기도록 짰다.
 				pstmt = conn.prepareStatement(sql);
 				
@@ -43,7 +43,7 @@ public class PaymentDao implements BookMarkDao{
 					cartlist.add(book);
 				}
 			} catch (Exception e) {
-				e.getStackTrace();
+				e.printStackTrace();
 			}finally {
 				try {
 					ConnectionHelper.close(rs);

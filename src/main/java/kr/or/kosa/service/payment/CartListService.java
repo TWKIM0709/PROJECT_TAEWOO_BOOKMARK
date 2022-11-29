@@ -23,10 +23,21 @@ public class CartListService implements Action {
 			PaymentDao pdao = new PaymentDao();
 
 			String id = request.getParameter("id");
-			
+			System.out.println("cartList id : " + id);
 			List<Book> cartlist = pdao.cartlist(id);
+			int cartsize = cartlist.size();
+			String firstbook = cartlist.get(0).getBook_name();
+			int totalprice = 0;
+			
+			for(Book b : cartlist) {
+				totalprice += b.getPrice();
+			}
 			
 			request.setAttribute("cartlist", cartlist);
+			request.setAttribute("cartsize", cartsize);
+			request.setAttribute("firstbook", firstbook);
+			request.setAttribute("totalprice", totalprice);
+			//System.out.println(cartlist);
 
 			forward = new ActionForward();
 			forward.setRedirect(false); // forward
