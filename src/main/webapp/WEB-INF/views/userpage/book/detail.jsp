@@ -202,8 +202,7 @@
 	                                               console.log(result);
 	                                               let text = "";
 	                                               for(let index in result.BOOK){
-	                                              	 console.log(result.BOOK[index]);
-	                                              	 text += '<li data-v-da7fb214=""><div data-v-da7fb214="" class="info"><p data-v-da7fb214="" class="nickname">'+
+	                                              	 text += '<li data-v-da7fb214=""><div data-v-da7fb214="" class="info"><input type="hidden" value="' + result.BOOK[index].reply_no+'"><p data-v-da7fb214="" class="nickname">'+
 	                                              	 result.BOOK[index].id+'</p> <span data-v-da7fb214="" class="date">'+result.BOOK[index].reply_date+'</span><pre data-v-da7fb214="" class="cont">'+result.BOOK[index].reply_content+'</pre></div></li>'
 	                                               }
 	                                               $("#reply").append(text);
@@ -287,7 +286,7 @@
                  for(let index in result.BOOK){
                 	 console.log(result.BOOK[index]);
                 	 let id = result.BOOK[index].id;
-                	 text += '<li data-v-da7fb214=""><div data-v-da7fb214="" class="info"><p data-v-da7fb214="" class="nickname">'+
+                	 text += '<li data-v-da7fb214=""><div data-v-da7fb214="" class="info"><input type="hidden" value="' + result.BOOK[index].reply_no+'"><p data-v-da7fb214="" class="nickname">'+
                 	 result.BOOK[index].id+'</p> <span data-v-da7fb214="" class="date">'+result.BOOK[index].reply_date+'</span><pre data-v-da7fb214="" class="cont">'+result.BOOK[index].reply_content+'</pre></div>';
                 	if("${sessionScope.id}" == id){
                 		console.log("id 같음");

@@ -29,7 +29,7 @@
     <tbody>
 		<c:forEach var="blog"  items="${requestScope.blogboardlist }"> 
       <tr>
-			<td>${blog.blog_no }<td>
+			<td>${blog.blog_no }</ td>
 			<td>${blog.id }</td>
 			<td>${blog.blog_title }</td>
 			<td>${blog.hits }</td>
