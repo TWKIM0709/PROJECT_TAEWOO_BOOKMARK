@@ -23,7 +23,7 @@ public class UserRegisterService implements Action {
 		String name = request.getParameter("name");
 		String addr = request.getParameter("addr");
 		String detail_addr = request.getParameter("detail_addr1") + request.getParameter("detail_addr2");
-		String register_no = request.getParameter("register_no");
+		String register_no = request.getParameter("register_no") +"-" +request.getParameter("register_no1");
 		String phone = request.getParameter("phone");
 		
 		user.setId(id);
