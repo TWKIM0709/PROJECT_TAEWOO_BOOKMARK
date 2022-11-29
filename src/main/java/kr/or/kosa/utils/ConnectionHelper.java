@@ -42,7 +42,6 @@ public class ConnectionHelper {
 		if(conn != null) {
 			try {
 				conn.close();
-				System.out.println("conn 닫음");
 			}catch(Exception e) {
 				System.out.println(e.getMessage());
 			}

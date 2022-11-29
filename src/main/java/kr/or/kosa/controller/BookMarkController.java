@@ -243,7 +243,12 @@ public class BookMarkController extends HttpServlet {
     		// 이동+처리
     		action = new EBookListService();
     		forward = action.execute(request, response);
-    	}
+    	} else if(url_Command.equals("/ebookpopup.do")) { //32. 회원 - e-book 리스트 페이지 이동
+    		// 이동+처리
+    		forward = new ActionForward();
+    		forward.setPath("/WEB-INF/views/userpage/book/ebookpopup.jsp");
+    		forward.setRedirect(false);
+    	} 
      	//=================================================================//
      	//                                                     결제
      	//=================================================================//
