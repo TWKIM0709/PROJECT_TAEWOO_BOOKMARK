@@ -4,14 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import kr.or.kosa.dto.Statistics;
 import kr.or.kosa.utils.ConnectionHelper;
 
 public class StatisticsDao implements BookMarkDao {
-
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 /* 책결제 */
 //CREATE TABLE BOOK_PAYMENT (
 //	PAYMENT_NO NUMBER NOT NULL, /* 결제번호 */
@@ -402,24 +404,26 @@ public class StatisticsDao implements BookMarkDao {
 		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "select substr(payment_date, 0, 7) as monthly, sum(sumprice) as total "
-					+ "from book_payment group by substr(payment_date, 0, 7)";
+			String sql = "select to_char(substr(payment_date, 0, 5)) as monthly, sum(sumprice) as total "
+					+ "from book_payment group by substr(payment_date, 0, 5)";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				String dummymonth = rs.getString("monthly");
 				int total = rs.getInt("total");
-				//month : 2022-11
-				String year = dummymonth.substring(0,4);
-				String month = dummymonth.substring(5);
-				
+				//month : 22-11
+				String year = dummymonth.substring(0,2);
+				String month = dummymonth.substring(3);
+				System.out.println(year);
+				System.out.println(month);
 				monthlyarr.add(new Statistics(year + "년 " + month + "월", total));
 				
 			}
 			
 		} catch (Exception e) {
 			System.out.println("monthlySales 예외 : " + e.getMessage());
+			e.printStackTrace();
 		} finally {
 			try {
 				ConnectionHelper.close(rs);
@@ -442,9 +446,9 @@ public class StatisticsDao implements BookMarkDao {
 		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "SELECT"
-					+ "to_char(TRUNC(payment_date, 'iw'),'YYYY.MM.DD')|| ' - ' || to_char(sysdate, 'YYYY.MM.DD') AS weekly,"
-					+ "    sum(sumprice) AS total "
+			String sql = "SELECT "
+					+ "to_char(TRUNC(payment_date, 'iw'),'YYYY.MM.DD')|| ' - ' || to_char(sysdate, 'YYYY.MM.DD') AS weekly, "
+					+ "sum(sumprice) AS total "
 					+ "FROM book_payment "
 					+ "group by TRUNC(payment_date, 'iw') "
 					+ "having TRUNC(payment_date, 'iw') > sysdate - 7";
@@ -461,6 +465,7 @@ public class StatisticsDao implements BookMarkDao {
 			
 		} catch (Exception e) {
 			System.out.println("curWeekSales 예외 : " + e.getMessage());
+			e.printStackTrace();
 		} finally {
 			try {
 				ConnectionHelper.close(rs);
@@ -484,21 +489,23 @@ public class StatisticsDao implements BookMarkDao {
 		ResultSet rs = null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "select substr(payment_date, 0,4) as yearly, sum(sumprice) as total "
-					+ "from book_payment group by substr(payment_date, 0, 4)";
+			String sql = "select substr(payment_date, 0,2) as yearly, sum(sumprice) as total "
+					+ "from book_payment group by substr(payment_date, 0, 2)";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
-				String year = rs.getString("yearly");
+			while(rs.next()) {				
+				String year = rs.getString("yearly")+"년";
 				int total = rs.getInt("total");
-				
+				System.out.println(year);
+				System.out.println(total);
 				yearlyarr.add(new Statistics(year, total));
 				
 			}
 			
 		} catch (Exception e) {
 			System.out.println("yearlySales 예외 : " + e.getMessage());
+			e.printStackTrace();
 		} finally {
 			try {
 				ConnectionHelper.close(rs);
