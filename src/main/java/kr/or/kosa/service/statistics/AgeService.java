@@ -26,7 +26,7 @@ public class AgeService implements Action {
 			StatisticsDao dao = new StatisticsDao();
 			
 			ls = dao.getAgeQuery();
-			
+			System.out.println(ls);
 			for(Object obj : ls) {
 				Statistics s = (Statistics)obj;
 				json.put("NAME", s.getStatistics_name());
@@ -38,6 +38,8 @@ public class AgeService implements Action {
 			} else {
 				jsonobj.put("RESULT", "fail");
 			}
+			jsonobj.put("age", jsonary);
+			// {  age : []    }
 		} catch (Exception e) {
 			e.printStackTrace();
 			jsonobj.put("RESULT", "fail");
