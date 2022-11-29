@@ -30,9 +30,11 @@ public class UserUpdateService implements Action {
 			Users user = dao.getUserById(id);
 			
 			request.setAttribute("user", user);
+			System.out.println(user);
+			System.out.println(admin);
 			if(user != null) { //성공시
 				if(admin.equals("true")) { //성공 + 어드민일 경우
-					url = "/WEB-INF/views/adminpage/user/admin_user_Edit.jsp";
+					url = "/WEB-INF/views/adminpage/user/admin_user_edit.jsp";
 				} else { //성공 + 유저일 경우
 					url = "/WEB-INF/views/userpage/mypage/mypageUpdate.jsp";
 				}
