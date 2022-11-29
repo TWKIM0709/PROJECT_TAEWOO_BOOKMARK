@@ -746,7 +746,8 @@ public class BookDao implements BookMarkDao{
 		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name from book a join ebook b on a.isbn = b.isbn where isbn in (select isbn from ebook_list where id = ?)";
+			sql = "select a.isbn as isbn, book_name, description, price, book_filename, b.file_name as file_name"
+					+ " from book a join ebook b on a.isbn = b.isbn where a.isbn in (select isbn from ebook_list where id = ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();

@@ -151,9 +151,12 @@
 								<h3 data-v-3adb62c9=""><select id="bk" onchange="a(this.value)"> <option value="day">일일</option><option value="week">주간</option><option value="month">월간</option></select>인기도서</h3>
 								<br>
 								<ul>
+									<c:set var="index" value="1"/>
 									<c:forEach var="day" items="${dlikerank }">
 										<li data-v-3adb62c9="" class="" id="li" style="width: 2.0%">
 											<div data-v-3adb62c9="" class="millie-book books">
+											${index}위
+											<c:set var="index" value="${index + 1 }"/>
 												<div class="thumbnail">
 													<div class="thumbnail-inner">
 														<div data-v-96e558f2="" class="book-picture imageLoaded"

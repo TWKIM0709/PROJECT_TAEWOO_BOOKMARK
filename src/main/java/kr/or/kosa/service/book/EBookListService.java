@@ -16,16 +16,17 @@ public class EBookListService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
-		String id = request.getParameter("id");
+		String id = (String) request.getSession().getAttribute("id");
 		
 		try {
 			BookDao dao = new BookDao();
 			List<Book> ebooklist = dao.EbookList(id);
+			System.out.println(ebooklist);
 			
 			request.setAttribute("ebooklist", ebooklist);
 			
 			forward.setRedirect(false);
-			forward.setPath("ebooklist.do");
+			forward.setPath("/WEB-INF/views/userpage/book/ebooklist.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
