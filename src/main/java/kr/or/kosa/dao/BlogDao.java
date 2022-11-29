@@ -174,26 +174,25 @@ public class BlogDao implements BookMarkDao{
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				String id = rs.getString("id");
-				String blog_title = rs.getString("blog_title");
-				String blog_content = rs.getString("blog_content");
-				int hits = rs.getInt("hits");
-				String blog_date = rs.getString("blog_date");
-				String file_name = rs.getString("file_name");
+				String id = rs.getString(2);
+				String blog_title = rs.getString(3);
+				String blog_content = rs.getString(4);
+				int hits = rs.getInt(5);
+				String blog_date = rs.getString(6);
+				String file_name = rs.getString(7);
 				
 				board = new Blog_Board(blog_no, id, blog_title, blog_content, hits, blog_date, file_name);
+				System.out.println(board);
 			}	
 		} catch (Exception e) {
 			System.out.println("getContent 예외 : " + e.getMessage());
 		}finally {
-			try {
 				ConnectionHelper.close(rs);
 				ConnectionHelper.close(pstmt);
 				ConnectionHelper.close(conn);
-			} catch (Exception e2) {
-				// TODO: handle exception
-			}
 		}
+		System.out.println("bloggggggggggggggggggggggggggggggggggggggggggggggggggggg");
+		System.out.println(board);
 		return board;
 	}
 	

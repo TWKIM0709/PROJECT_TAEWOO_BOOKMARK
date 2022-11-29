@@ -2357,6 +2357,104 @@
         </section>
      
     </div>
+   
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-NTPPL2M"></script>
+    <script src="https://millie.co.kr/common/js/tracking.js"></script>
+    <script type="text/javascript" id="" src="https://wcs.naver.net/wcslog.js"></script>
+    <script type="text/javascript" id="" src="https://wcs.naver.net/wcslog.js"></script>
+    <script type="text/javascript" id="">
+        ! function (b, e, f, g, a, c, d) {
+            b.fbq || (a = b.fbq = function () {
+                    a.callMethod ? a.callMethod.apply(a, arguments) : a.queue.push(arguments)
+                }, b._fbq || (b._fbq = a), a.push = a, a.loaded = !0, a.version = "2.0", a.queue = [], c = e
+                .createElement(f), c.async = !0, c.src = g, d = e.getElementsByTagName(f)[0], d.parentNode
+                .insertBefore(c, d))
+        }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        fbq("init", "863315557137080");
+        fbq("track", "PageView");
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=863315557137080&amp;ev=PageView&amp;noscript=1"></noscript>
+    <script type="text/javascript" id="" src="//static.criteo.net/js/ld/ld.js"></script>
+    <script type="text/javascript" id="" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+    <script type="text/javascript" id="">
+        ! function (d, e, f, a, b, c) {
+            d.twq || (a = d.twq = function () {
+                    a.exe ? a.exe.apply(a, arguments) : a.queue.push(arguments)
+                }, a.version = "1.1", a.queue = [], b = e.createElement(f), b.async = !0, b.src =
+                "//static.ads-twitter.com/uwt.js", c = e.getElementsByTagName(f)[0], c.parentNode.insertBefore(b, c)
+                )
+        }(window, document, "script");
+        twq("init", "o087e");
+        twq("track", "PageView");
+    </script>
+
+    <div id="wp_tg_cts" style="display:none;">
+        <script id="wp_tag_script_1669630763767" charset="UTF-8"
+            src="https://astg.widerplanet.com/delivery/wpc.php?v=1&amp;ver=4.0&amp;r=1&amp;md=bs&amp;ga=1hjvecr-uskfro-3-1&amp;wp_uid=2-c9bf3b18eb3948657509617f2772763c-s1661407732.232608%7Cwindows_10%7Cedge-t2jfze&amp;ty=Home&amp;ti=52062&amp;hcuid=d5d4cd07616a542891b7ec2d0257b3a24b69856e&amp;device=web&amp;charset=UTF-8&amp;tc=1669630763767&amp;ref=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2FbookDetail%2F179580688%3Freferrer%3Dhome&amp;loc=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2Fpost%2F598825%3Fnav_hidden%3Dy">
+        </script>
+        <script id="wp_onsite_script" charset="UTF-8" src="https://cdn-aitg.widerplanet.com/onsite/onsite.js"></script>
+    </div>
+    <script type="text/javascript" id="">
+        var UserAgent = navigator.userAgent,
+            widerplanet_device = null != UserAgent.match(
+                /iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i
+                ) || null != UserAgent.match(/LG|SAMSUNG|Samsung/) ? "mobile" : "web",
+            wptg_tagscript_vars = wptg_tagscript_vars || [];
+        wptg_tagscript_vars.push(function () {
+            return {
+                wp_hcuid: "undefined",
+                ti: "52062",
+                ty: "Home",
+                device: widerplanet_device
+            }
+        });
+    </script>
+    <script type="text/javascript" id="" src="//cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
+    <script type="text/javascript" id="" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+    <script type="text/javascript" id="">
+        if (!wcs_add) var wcs_add = {};
+        wcs_add.wa = "s_1b6be27b0956";
+        if (!_nasa) var _nasa = {};
+        wcs.inflow();
+    </script>
+
+
+    <script type="text/javascript" id="">
+        if (!wcs_add) var wcs_add = {};
+        wcs_add.wa = "s_1b6be27b0956";
+        if (!_nasa) var _nasa = {};
+        window.wcs && (wcs_do(_nasa), console.log("wcs send!", wcs));
+    </script>
+
+
+    <script type="text/javascript" id="">
+        window.criteo_q = window.criteo_q || [];
+        window.criteo_q.push({
+            event: "setAccount",
+            account: 55644
+        }, {
+            event: "setSiteType",
+            type: ""
+        }, {
+            event: "viewHome"
+        });
+    </script>
+    <script type="text/javascript" id="">
+        kakaoPixel("4237922289572623356").pageView();
+    </script>
+
+    <script type="text/javascript" id="">
+        kakaoPixel("5057430883487430749").pageView("\ud0dc\uadf8\uac12\uc785\ub825");
+    </script>
+    <div id="criteo-tags-div" style="display: none;"><iframe
+            src="https://gum.criteo.com/syncframe?topUrl=www.millie.co.kr&amp;origin=onetag#{&quot;bundle&quot;:{&quot;origin&quot;:3,&quot;value&quot;:&quot;vwjfTV9KUHVoQ0ZibFRxck5mTEx2M3plNWx4NzElMkJGVGV1SXMxZE5PRHR0aUZrNkF5N0dPS0Z2eHljTWs4R3E4dXFEYTZ3YnVMb2JGYUdKbVY1Y0x0WHk5cDZlRzFhNmFQeDRUTW0yd3lqOE9tJTJGQXdCN2FLR01zR0pYVVNjYTV4eHVYbmQ2cklBdTdNaHljQ0tsTmRMeUZXVVFnJTNEJTNE&quot;},&quot;cw&quot;:true,&quot;optout&quot;:{&quot;origin&quot;:0,&quot;value&quot;:null},&quot;origin&quot;:&quot;onetag&quot;,&quot;pm&quot;:0,&quot;sid&quot;:{&quot;origin&quot;:0,&quot;value&quot;:null},&quot;tld&quot;:&quot;millie.co.kr&quot;,&quot;topUrl&quot;:&quot;www.millie.co.kr&quot;,&quot;version&quot;:&quot;5_12_3&quot;,&quot;ifa&quot;:{&quot;origin&quot;:0,&quot;value&quot;:null},&quot;lsw&quot;:true}"
+            id="criteo-syncframe-onetag" width="0" height="0" frameborder="0"
+            style="border-width:0px; margin:0px; display:none" title="Criteo GUM iframe"></iframe></div>
+    <div class="ct">
+        <div class="ct__content"></div>
+    </div>
 </body>
 
 </html>

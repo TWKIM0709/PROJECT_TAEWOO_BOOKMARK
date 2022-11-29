@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blog 글쓰기</title>
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+    <!-- include summernote css/js-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<style>
+
+ #inputTitle {
+        width: 90%;
+        font-size: xx-large;
+    }
+</style>
+
+</head>
+<body>
+<h1></h1>
+<div>
+<input id="inputTitle" placeholder="제목을 작성해주세요" />
+</div>
+<textarea id="summernote" name="content"  ></textarea>
+<div id="test_cnt">(0 / 100)</div>
+<button id="test">테스트</button>
+<script>
+
+
+    // 메인화면 페이지 로드 함수
+    
+  $(document).ready(function() {
+	//여기 아래 부분
+	
+	$('#summernote').summernote({
+		  height: 700,                 // 에디터 높이
+		  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+		  lang: "ko-KR",					// 한글 설정
+		  placeholder: '내용',
+          disableResizeEditor: true,	// 크기 조절 기능 삭제
+          toolbar: [
+            ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+            ['color', ['forecolor','color']],
+            ['table', ['table']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['insert',['picture','link','video']],
+            ['view', ['fullscreen', 'help']]
+          ],
+        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+        fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+      	callbacks:{
+      	    onKeyup: function(e) {
+      	    }
+
+      	}
+       
+	});
+	
+	 $('#summernote').on('summernote.keyup', function(we, e) {
+       $('#test_cnt').html("("+$(this).val().length+" / 100)");
+
+       if($(this).val().length > 100) {
+           $(this).val($(this).val().substring(0, 100));
+           $('#test_cnt').html("(100 / 100)");
+       }
+});
+
+});
+    
+
+    $('#test').click(function(){
+    	console.log($('.panel-body').html());
+    	alert($('.panel-body').html());
+    });
+</script>
+</body>
+</html>
