@@ -39,6 +39,7 @@ public class UserLikeListService implements Action {
 			//검색결과 총 건수
 			int likeusercount = dao.totalUserCountByLike(type, value);
 			
+			System.out.println(likeusercount);
 			//List페이지 처음 호출시에는
 			if(ps == null || ps.trim().equals("")) {
 				//default값 설정
@@ -64,7 +65,7 @@ public class UserLikeListService implements Action {
 			List<Users> likelist = dao.getUserListByLike(type, value, Integer.parseInt(cp), Integer.parseInt(ps));
 			
 			int pagersize = 3;
-			ThePager pager = new ThePager(likeusercount, cpage, pagesize, pagersize, "userSearch.do?search="+request.getParameter("search"));
+			ThePager pager = new ThePager(likeusercount, cpage, pagesize, pagersize, "userSearch.do?search="+request.getParameter("search") + "&type=" + request.getParameter("type"));
 			
 			//for문으로 list를 json에 넣기
 			//select rownum rn, u.id, u.password, u.name, u.state, d.addr,
@@ -89,7 +90,7 @@ public class UserLikeListService implements Action {
 			jsonobj.put("pagecount", pagecount);
 			jsonobj.put("likeusercount", likeusercount);
 			
-			json.put("pager", pager.toString());
+			jsonobj.put("pager", pager.toString());
 			
 			jsonobj.put("likeuserlist", jsonary);
 			

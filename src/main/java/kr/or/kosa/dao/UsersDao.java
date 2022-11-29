@@ -190,7 +190,6 @@ public class UsersDao implements BookMarkDao{
 			
 			int start = cpage * pagesize - (pagesize -1); //1 * 5 - (5 - 1) >> 1
 			int end = cpage * pagesize; // 1 * 5 >> 5
-			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, end);
 			pstmt.setInt(2, start);
@@ -260,7 +259,7 @@ public class UsersDao implements BookMarkDao{
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select * from "
 					+ "(select rownum rn, u.id, u.password, u.name, u.state, d.addr, d.detail_addr, d.regist_no, d.phone "
-					+ "from users u left join user_detail d on u.id = d.id where name like ?) "
+					+ "from users u left join user_detail d on u.id = d.id where u.id like ?) "
 					+ "where rn >= ? and rn <=?";
 			
 			int start = cpage*pagesize - (pagesize-1); //1*5 - (5-1) >> 1
@@ -306,6 +305,7 @@ public class UsersDao implements BookMarkDao{
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select count(*) as cnt from users where " + type + " like ?";
 			pstmt = conn.prepareStatement(sql);
+			System.out.println("value : " + value);
 			pstmt.setString(1, "%" + value + "%");
 			rs = pstmt.executeQuery();
 			

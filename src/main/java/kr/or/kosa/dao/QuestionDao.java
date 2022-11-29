@@ -52,6 +52,7 @@ public class QuestionDao implements BookMarkDao{
 		} finally {
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(rs);
+			ConnectionHelper.close(conn);
 		}
 		return list;
 	}
@@ -71,6 +72,10 @@ public class QuestionDao implements BookMarkDao{
 				}
 			} catch (Exception e) {
 				System.out.println("totalBoardCount 예외 : " + e.getMessage());
+			} finally {
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
 			}
 			return totalcount;
 		}
@@ -123,6 +128,7 @@ public class QuestionDao implements BookMarkDao{
 	}
 	//검색한 게시물 총 건수 구하기
 			public int totalBoardCountByLike(String type, String value) {
+				System.out.println("라이크 검색 총 건수 구하기 함수 IN");
 				Connection conn = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
@@ -131,7 +137,6 @@ public class QuestionDao implements BookMarkDao{
 					conn = ConnectionHelper.getConnection("oracle"); //연결객체
 					String sql = "select count(*) as cnt from question_board where "+type+" like ?";
 					pstmt = conn.prepareStatement(sql);
-//					pstmt.setString(1, type);
 					pstmt.setString(1, "%"+value+"%");
 					rs = pstmt.executeQuery();
 					if(rs.next()) {
@@ -139,6 +144,11 @@ public class QuestionDao implements BookMarkDao{
 					}
 				} catch (Exception e) {
 					System.out.println("totalBoardCount 예외 : " + e.getMessage());
+					e.printStackTrace();
+				} finally {
+					ConnectionHelper.close(rs);
+					ConnectionHelper.close(pstmt);
+					ConnectionHelper.close(conn);
 				}
 				return totalcount;
 			}
@@ -354,7 +364,6 @@ public class QuestionDao implements BookMarkDao{
 	public int hitUp(int questionNo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		int row = 0;
 		
 		try {

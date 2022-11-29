@@ -21,7 +21,7 @@ public class PopupDao {
 		try {
 			conn=ConnectionHelper.getConnection("oracle");
 			String sql = "select * from"
-					+ " (select rownum, popup_no, id, popup_title, popup_filename, to_char(popup_date) "
+					+ " (select rownum as rn, popup_no, id, popup_title, popup_filename, to_char(popup_date) "
 					+ " from"
 					+ " ( SELECT * FROM popup)"
 					+ " where rownum <= ?) where rn >= ?";
