@@ -447,7 +447,7 @@ public class BookMarkController extends HttpServlet {
     	}else if(url_Command.equals("/statisticsGender.do")) {//76 관리자 - 성별통계
     		action = new GenderService();
     		forward = action.execute(request, response);
-    	}else if(url_Command.equals("/statisticsDaily.do")) {//77 관리자 - 일일매출통계
+    	}else if(url_Command.equals("/statisticsDay.do")) {//77 관리자 - 일일매출통계
     		action = new DailySalesService();
     		forward = action.execute(request, response);
     	}else if(url_Command.equals("/statisticsWeek.do")) { //78 관리자 - 주간매출통계

@@ -13,7 +13,7 @@
 
 
 	<Resource 
-		maxWait="5" 
+		maxWait="-1" 
 		maxIdle="100" 
 		maxActive="100"
 		password="1004" 
