@@ -36,7 +36,7 @@ public class UserDeleteService implements Action {
 				if(result) {
 					msg = "회원 탈퇴가 완료되었습니다.";
 					url = "/homepage.html";
-					request.getSession().invalidate();
+					request.getSession().invalidate();	
 				}else {
 					msg = "회원 탈퇴에 실패하였습니다.";
 					url = "userDetail.do"; //TODO:회원 탈퇴 기능이 있는 페이지 (뒤로가기 ??느낌)
