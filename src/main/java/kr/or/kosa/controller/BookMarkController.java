@@ -268,6 +268,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동+처리
     		forward = new ActionForward();
      		forward.setRedirect(false);
+     		forward.setPath("/TossPaymentAPI.jsp");
     	} else if(url_Command.equals("/paymentOk.do")) { //37 회원 - 결제 처리
     		// 이동+처리
     		action = new PaymentService();

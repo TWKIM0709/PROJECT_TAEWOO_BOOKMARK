@@ -15,19 +15,38 @@
 </body>
   <script src="https://js.tosspayments.com/v1/payment"></script>
 	 <script>
+	//  let totalprice =  "<c:out value='${request.getParameter('totalprice')}' />"    
+	//  let cartsize = '<c:out value="${request.getParameter("cartsize")}" />';
+	//  let customername = "<c:out value = '${sessionScope.id}' />";
+	//  let firstbook ="<c:out value='${request.getParameter('firstbook')}' />";
+	
+	 let totalprice =  '${param.totalprice}';
+	 let cartsize = '${param.cartsize}';
+	 let customername = '${sessionScope.id}';
+	 let firstbook = '${param.firstbook}'
+	 
+	
+	 console.log(totalprice)
+
 	 function test(){
-    var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
-    var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
-    tossPayments.requestPayment('카드', { // 결제 수단 파라미터
-    	  // 결제 정보 파라미터
-    	  amount: 15000,
-    	  orderId: 'qKsrgjWenNZ0DkvkzyBtd',
-    	  orderName: '토스 티셔츠 외 2건',
-    	  customerName: '박토스',
-    	  successUrl: 'http://localhost:8090/PROJECT_TAEWOO_BOOKMARK-2/index.html',
-    	  failUrl: 'http://localhost:8080/fail',
-    	  
-    	})
-	 }
+		var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
+		var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
+		let num = parseInt(totalprice);
+		console.log(typeof(num));
+		console.log(num + " " + cartsize + " " + customername + " " + firstbook);
+
+		
+		tossPayments.requestPayment('카드', { // 결제 수단
+			// 결제 정보
+			amount: num,
+			orderId: 'QTIk82kxDPefXZC8MLFj0',
+			orderName: firstbook + " 외 " + (parseInt(cartsize)-1) + "건",
+			customerName: customername,
+			successUrl: 'http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/homepage.html',
+			failUrl: 'http://localhost:8080/fail',	
+			flowMode: 'D',
+			easyPay: '토스페이'
+			})
+		}
     </script>
 </html>
