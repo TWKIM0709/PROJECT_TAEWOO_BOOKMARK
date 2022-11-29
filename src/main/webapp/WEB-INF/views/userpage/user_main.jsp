@@ -126,7 +126,7 @@
 </style>
 </head>
 
-<script type="text/javascript">window.open(link,"_blank","width=900,height=900");</script>
+<!-- <script type="text/javascript">window.open(link,"_blank","width=900,height=900");</script> -->
 <body class="" style="height: auto; overflow: visible;">
 
 	<c:set var="recommend" value="${requestScope.recommend }" />
@@ -321,7 +321,13 @@ function showSlides() {
 						</article>
 					</div>
 				</div>
-	</div>
+				<c:forEach var="popup" items="${requestScope.popup }">
+					<script type="text/javascript">
+						let link = "popuptest.jsp?file='${popup.popup_filename}'";
+						console.log(link);
+						window.open(link,"_blank","width=820,height=550");
+					</script>
+				</c:forEach>
 </body>
 <script type="text/javascript">
 numberElements = 4;
@@ -455,5 +461,14 @@ function a(value){
 	    jQuery(window).resize(initResponsive);
 	}
 }
+
+/* $(function(){
+	console.log('a');
+	for(let index in ${requestScope.popup} ){
+		console.log("b");
+	}
+	console.log('c');
+}); */
+
 </script>
 </html>
