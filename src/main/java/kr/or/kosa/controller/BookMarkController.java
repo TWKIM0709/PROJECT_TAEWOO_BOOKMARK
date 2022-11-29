@@ -180,9 +180,11 @@ public class BookMarkController extends HttpServlet {
     		// 처리 + 이동 ( 비동기 ?)
     		action = new BlogDeleteService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/blogDatail.do")) { //19. 회원, 관리자 - 블로그 게시글 상세보기
+    	} else if(url_Command.equals("/blogDetail.do")) { //19. 회원, 관리자 - 블로그 게시글 상세보기
     		// 이동 + 처리
+    		System.out.println("ㅇㅇ?");
     		action = new BlogDetailService();
+    		System.out.println("ㅇㅇ?");
     		forward = action.execute(request, response);
     	}
     	//=================================================================//
