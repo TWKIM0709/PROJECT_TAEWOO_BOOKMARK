@@ -29,7 +29,7 @@
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- sweetAlert -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -226,7 +226,7 @@
                 <div data-v-07a4da8a="" data-v-0d0ee47c="" class="button-area">
                     <ul data-v-07a4da8a="" class="button-list">
                         <li data-v-07a4da8a="" class="shelf"><button id="hjCart" data-v-07a4da8a="" type="button"
-                                class="gtm-bdtl-libbtn" onclick="location.href='cartAdd.do'">장바구니 담기</button></li>
+                                class="gtm-bdtl-libbtn">장바구니 담기</button></li>
                         <li data-v-07a4da8a="" class="share1"><button data-v-07a4da8a="" type="button"
                                 class="gtm-bdtl-postbtn" onclick="b()">YouTube에서 검색하기</button></li>
                         <style>
@@ -317,8 +317,24 @@
                 id:id,
                 type:'false',
             }, //이 값을 서블릿으로 가지고 감
+            dataType: 'JSON',
+            
+            success: function(result){
+                Swal.fire(
+                    '장바구니에 담았습니다',
+                    '당신의 독서를 응원합니다!',
+                    'success'
+                    )
+            },
+            error : function(){
+                Swal.fire(
+                    '오류가 발생했네요',
+                    '다시 시도해보세요',
+                    'error'
+                    )
+            }
         })
-        $(location).attr("href", `cartAdd.do?isbn=${isbn}&id=${id}&type=false`);
+        // $(location).attr("href", `cartAdd.do?isbn=${isbn}&id=${id}&type=false`);
     })
 </script>
 
