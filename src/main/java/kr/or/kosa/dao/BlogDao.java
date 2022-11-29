@@ -310,13 +310,16 @@ public class BlogDao implements BookMarkDao{
 			String sql = "update blog_board set blog_title=?, blog_content=? "
 					+ "where blog_no=?";
 			pstmt = conn.prepareStatement(sql);
+			System.out.println("daooooooooooo");
+			System.out.println(blog_content);
+			
 			pstmt.setString(1, blog_title);
 			pstmt.setString(2, blog_content);
 			pstmt.setInt(3, blog_no);
 			
 			row = pstmt.executeUpdate();
 
-			sql = "select * from bolgfile where blog_no=?";
+			sql = "select * from blogfile where blog_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, blog_no);
 			rs = pstmt.executeQuery();
@@ -326,8 +329,10 @@ public class BlogDao implements BookMarkDao{
 			
 			
 			if(row>0) {//업데이트 성공하면
-				if(board.getBlog_filename().trim().equals("") || board.getBlog_filename() == null) {//수정페이지에서 파일이 없을 경우
+				if(board.getBlog_filename() == null) {//수정페이지에서 파일이 없을 경우
+					System.out.println("파일 X");
 					if(dbfile) { //db에 파일이 있으면
+						System.out.println("파일");
 						sql = "delete from blogfile where blog_no=?";
 						pstmt = conn.prepareStatement(sql);
 						pstmt.setInt(1, blog_no);
@@ -346,7 +351,10 @@ public class BlogDao implements BookMarkDao{
 					}
 				}
 			}
-			row = pstmt.executeUpdate();
+			if(pstmt.executeUpdate() >0) {
+				row++;
+			}
+			conn.commit();
 		} catch (Exception e) {
 			System.out.println("blogEdit 예외 : " + e.getMessage());
 		}finally {

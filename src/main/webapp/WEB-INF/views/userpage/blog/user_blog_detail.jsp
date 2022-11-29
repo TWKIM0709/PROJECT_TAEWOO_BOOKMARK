@@ -1909,52 +1909,12 @@
             z-index: 1
         }
     </style>
-    <script async="true" type="text/javascript"
-        src="https://sslwidget.criteo.com/event?a=55644&amp;v=5.12.3&amp;p0=e%3Dexd%26site_type%3Dd&amp;p1=e%3Dvh&amp;p2=e%3Ddis&amp;adce=1&amp;bundle=vwjfTV9KUHVoQ0ZibFRxck5mTEx2M3plNWx4NzElMkJGVGV1SXMxZE5PRHR0aUZrNkF5N0dPS0Z2eHljTWs4R3E4dXFEYTZ3YnVMb2JGYUdKbVY1Y0x0WHk5cDZlRzFhNmFQeDRUTW0yd3lqOE9tJTJGQXdCN2FLR01zR0pYVVNjYTV4eHVYbmQ2cklBdTdNaHljQ0tsTmRMeUZXVVFnJTNEJTNE&amp;tld=millie.co.kr&amp;fu=https%253A%252F%252Fwww.millie.co.kr%252Fv3%252Fpost%252F598825%253Fnav_hidden%253Dy&amp;pu=https%253A%252F%252Fwww.millie.co.kr%252Fv3%252FbookDetail%252F179580688%253Freferrer%253Dhome&amp;dtycbr=83485"
-        data-owner="criteo-tag"></script>
-    <script async="" src="//static.ads-twitter.com/uwt.js"></script>
-    <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script type="text/javascript" async=""
-        src="https://www.googletagmanager.com/gtag/js?id=G-3WR64L2XW1&amp;l=dataLayer&amp;cx=c"></script>
-    <script type="text/javascript" async=""
-        src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1&amp;l=dataLayer&amp;cx=c"></script>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1" rel="preconnect" charset="utf-8">
-    </script>
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/mds-icon-v3.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Regular.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Bold.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/NotoSerifKR-Black.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <meta http-equiv="origin-trial"
-        content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
-    <script type="text/javascript" async=""
-        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/771298710/?random=1669630763743&amp;cv=11&amp;fst=1669630763743&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2Fpost%2F598825%3Fnav_hidden%3Dy&amp;ref=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2FbookDetail%2F179580688%3Freferrer%3Dhome&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.56%7CChromium%3B107.0.5304.110%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-    <script type="text/javascript" async=""
-        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669630763744&amp;cv=11&amp;fst=1669630763744&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2Fpost%2F598825%3Fnav_hidden%3Dy&amp;ref=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2FbookDetail%2F179580688%3Freferrer%3Dhome&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.56%7CChromium%3B107.0.5304.110%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-    <script type="text/javascript" async=""
-        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669630763745&amp;cv=11&amp;fst=1669630763745&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2Fpost%2F598825%3Fnav_hidden%3Dy&amp;ref=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2FbookDetail%2F179580688%3Freferrer%3Dhome&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.56%7CChromium%3B107.0.5304.110%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-    <meta http-equiv="origin-trial"
-        content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-    <meta http-equiv="origin-trial"
-        content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-    <meta http-equiv="origin-trial"
-        content="A0KGawWMfAygakxUO+Z3rulPwK2j0AqkLneiEt4pAI951GYaafeHNV9Ya+PAn7s0y12QSrfTjc9LdOUU+QfkdQwAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY2OTc2NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-    <link rel="stylesheet" type="text/css"
+     <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/styles~b2b~post.34bf510f66b4cbe50dcb.css">
-    <script charset="utf-8" src="https://d3udu241ivsax2.cloudfront.net/v3/js/styles~b2b~post.553e14cafc16e88dc99b.js">
-    </script>
-    <script charset="utf-8" src="https://d3udu241ivsax2.cloudfront.net/v3/js/b2b~post.3c41464196d71ea4ad2a.js"></script>
+
     <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/post.777bb9ac8c585d9e2375.css">
-    <script charset="utf-8" src="https://d3udu241ivsax2.cloudfront.net/v3/js/post.15a2ea08a64ec91391a9.js"></script>
+
     <style type="text/css">
         .cdx-notify--error {
             background: #fffbfb !important
@@ -2293,13 +2253,10 @@
 </head>
 
 <body>
+<jsp:include page="/WEB-INF/views/utils/include/top.jsp"></jsp:include>
     <div data-v-c1337ae8="" id="wrap" class="web-mount">
-        <!---->
-        <!---->
-        <!---->
         <section data-v-c1337ae8="" class="content">
             <div data-v-474ad036="" data-v-c1337ae8="" class="view">
-     
                 <div data-v-474ad036="" class="view-expand">
                     <div data-v-474ad036="" class="title">
                         <div data-v-474ad036="" class="title-inner container">
@@ -2320,43 +2277,189 @@
                                                 <div class="ce-tune-alignment--left">
                                                     <div class="ce-block__content">
                                                         ${requestScope.blog.blog_content}
-                                                    </div>
+                                                    </div> 
                                                 </div>
                                             </div>
                                         </div>
-                                        
                                     </div>
                                 </div>
-                                
                             </div>
+                        </div>       
+                    </div>	
+                </div>
+                <div style="position: relative;">
+                <c:if test="${sessionScope.id eq requestScope.blog.id}">
+                <div style="position: absolute;left: 63%;">
+                	<button onclick = "location.href = 'blogUpdate.do?blog_no=${requestScope.blog.blog_no}' " ><span>수정  |</span></button>
+                	<button onclick = "location.href = 'blogDeleteOk.do?blog_no=${requestScope.blog.blog_no}' " ><span>삭제</span></button>
+                </div>
+                </c:if>
+                </div>
+              <div data-v-35475912="" data-v-474ad036="" class="comment">
+    <div data-v-35475912="" class="comment-inner container">
+        <!---->
+        <h3 data-v-35475912="" class="comment-title">댓글 <span data-v-35475912="" class="comment-title-length">2</span>
+        </h3>
+        <ul data-v-35475912="" class="comment-list">
+            <li data-v-35475912="" class="comment-item">
+                <div data-v-35475912="" class="comment-item-inner flex-container">
+                    <div data-v-35475912="" class="user-img"
+                        style="background-image: url(&quot;https://ofbxchnhqinp910256.cdn.ntruss.com/100/7802ce8756a05eefcd0242ddbf6f733a.jpg?type=w&amp;w=160&amp;quality=100&quot;);">
+                        <a data-v-35475912="" href="/shelf/shelf_main.html?library_seq=5137459"></a></div>
+                    <div data-v-35475912="" class="com-contents">
+                        <div data-v-35475912="" class="com-contents-head">
+                            <div data-v-35475912="" class="com-contents-top flex-container">
+                                <p data-v-35475912="" class="nickname"><a data-v-35475912="" href="#">건강하게 활기차게</a></p>
+                            </div> <span data-v-35475912="" class="com-contents-date">2022-09-01 13:36:08</span>
+                        </div>
+                        <div data-v-35475912="" class="com-contents-body">
+                            <p data-v-35475912="" class="comment-text show">건강하게 활기차게</p>
+                            <div data-v-35475912="" class="comment-text">
+                                <p data-v-35475912="" contenteditable="plaintext-only">건강하게 활기차게</p> <button
+                                    data-v-35475912="" type="button"
+                                    class="mds-button mds-button--secondary mds-button--flex mds-button--h56 mds-button--r4"><span>등록</span></button>
+                            </div>
+                        </div>
+                        <div data-v-35475912="" class="reply-setting"><button data-v-35475912="" type="button"
+                                class="more-btn"><img data-v-35475912=""
+                                    src="https://d3udu241ivsax2.cloudfront.net/v3/images/bookDetail/more-icon.df2e02aec2252c2847fbe9e490cd4354.png"
+                                    alt="더보기"></button>
+                            <!---->
                         </div>
                     </div>
                 </div>
-              
-                <div data-v-35475912="" data-v-474ad036="" class="comment">
-                    <div data-v-35475912="" class="comment-inner container">
-                        <h3 data-v-35475912="" class="comment-title">댓글 <span data-v-35475912=""
-                                class="comment-title-length">0</span></h3>
-                        <ul data-v-35475912="" class="comment-list"></ul>
-                        <div data-v-35475912="" class="register flex-container">
-                            <div data-v-35475912="" class="user-img"
-                                style="margin-right: 0px; background-image: url(&quot;https://ofbxchnhqinp910256.cdn.ntruss.com/160/e5e634f89bd1050c99a5b84cc95caa64.png?type=w&amp;w=160&amp;quality=100&quot;);">
-                            </div>
-                            <div data-v-35475912="" class="register-box">
-                                <div data-v-35475912="" class="register-box-inner"><span data-v-35475912="">댓글</span>
-                                    <p data-v-35475912="" contenteditable="plaintext-only" data-placeholder="내용 입력"></p>
+                <!---->
+                <div data-v-35475912="" class="reply-container">
+                    <ul data-v-35475912="" class="reply-list">
+                        <li data-v-35475912="" class="reply-item">
+                            <div data-v-35475912="" class="reply-item-inner flex-container">
+                                <div data-v-35475912="" class="user-img"
+                                    style="background-image: url(&quot;https://ofbxchnhqinp910256.cdn.ntruss.com/160/e5e634f89bd1050c99a5b84cc95caa64.png?type=w&amp;w=160&amp;quality=100&quot;);">
+                                    <a data-v-35475912="" href="/shelf/shelf_main.html?library_seq=2253534"></a></div>
+                                <div data-v-35475912="" class="com-contents">
+                                    <div data-v-35475912="" class="com-contents-head">
+                                        <div data-v-35475912="" class="com-contents-top">
+                                            <p data-v-35475912="" class="nickname"><a data-v-35475912=""
+                                                    href="#">낭비없는삶은낭만없는삶</a></p> <span data-v-35475912=""
+                                                class="com-contents-date">2022.11.29</span>
+                                        </div>
+                                        <div data-v-35475912="" class="reply-setting"><button data-v-35475912=""
+                                                type="button" class="more-btn"><img data-v-35475912=""
+                                                    src="https://d3udu241ivsax2.cloudfront.net/v3/images/bookDetail/more-icon.df2e02aec2252c2847fbe9e490cd4354.png"
+                                                    alt="더보기"></button>
+                                            <!---->
+                                        </div>
+                                    </div>
+                                    <div data-v-35475912="" class="com-contents-body">
+                                        <p data-v-35475912="" class="comment-text show">ㅇㅇ</p>
+                                        <div data-v-35475912="" class="comment-text">
+                                            <p data-v-35475912="" contenteditable="plaintext-only">ㅇㅇ</p> <button
+                                                data-v-35475912="" type="button"
+                                                class="mds-button mds-button--secondary mds-button--flex mds-button--h56 mds-button--r4" id="javascr"><span>등록</span></button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div> <button data-v-35475912="" type="button"
-                                class="post-btn flex-container mds-button mds-button--secondary mds-button--flex mds-button--h56 mds-button--r4"><span>등록</span></button>
-                        </div>
-                    </div>
-                   
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+            </li>
+            <li data-v-35475912="" class="comment-item">
+                <!---->
+                <!---->
+                <div data-v-35475912="" class="reply-container" style="display: none;">
+                    <ul data-v-35475912="" class="reply-list" id="replylist">
+                        <li data-v-35475912="" class="reply-item">
+                            <div data-v-35475912="" class="reply-item-inner flex-container">
+                                <div data-v-35475912="" class="user-img"
+                                    style="background-image: url(&quot;https://ofbxchnhqinp910256.cdn.ntruss.com/160/e5e634f89bd1050c99a5b84cc95caa64.png?type=w&amp;w=160&amp;quality=100&quot;);">
+                                    <a data-v-35475912="" href="/shelf/shelf_main.html?library_seq=2253534"></a></div>
+                                <div data-v-35475912="" class="com-contents">
+                                    <div data-v-35475912="" class="com-contents-head">
+                                        <div data-v-35475912="" class="com-contents-top">
+                                            <p data-v-35475912="" class="nickname"><a data-v-35475912=""
+                                                    href="#">낭비없는삶은낭만없는삶</a></p> <span data-v-35475912=""
+                                                class="com-contents-date">2022.11.29</span>
+                                        </div>
+                                        <div data-v-35475912="" class="reply-setting"><button data-v-35475912=""
+                                                type="button" class="more-btn"><img data-v-35475912=""
+                                                    src="https://d3udu241ivsax2.cloudfront.net/v3/images/bookDetail/more-icon.df2e02aec2252c2847fbe9e490cd4354.png"
+                                                    alt="더보기"></button>
+                                            <!---->
+                                        </div>
+                                    </div>
+                                    <div data-v-35475912="" class="com-contents-body">
+                                        <p data-v-35475912="" class="comment-text show">ㅇㅇ</p>
+                                        <div data-v-35475912="" class="comment-text">
+                                            <p data-v-35475912="" contenteditable="plaintext-only">ㅇㅇ</p> <button
+                                                data-v-35475912="" type="button"
+                                                class="mds-button mds-button--secondary mds-button--flex mds-button--h56 mds-button--r4"><span>등록</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <div data-v-35475912="" class="register flex-container">
+            <div data-v-35475912="" class="user-img"
+                style="margin-right: 0px; background-image: url(&quot;https://ofbxchnhqinp910256.cdn.ntruss.com/160/e5e634f89bd1050c99a5b84cc95caa64.png?type=w&amp;w=160&amp;quality=100&quot;);">
+            </div>
+            <div data-v-35475912="" class="register-box">
+                <div data-v-35475912="" class="register-box-inner"><span data-v-35475912="">댓글</span>
+                    <input data-v-35475912="" contenteditable="plaintext-only" data-placeholder="내용 입력"  id="replycontent">
+                </div>
+            </div> <button data-v-35475912="" type="button"
+                class="post-btn flex-container mds-button mds-button--secondary mds-button--flex mds-button--h56 mds-button--r4" id="replyok" onclick="aa()"><span>등록</span></button>
+        </div>
+    </div>
+</div>
              
             </div>
         </section>
      
     </div>
 </body>
-
+<script type="text/javascript">
+               function aa(){
+            	   alert('dd');
+               }
+               function testt(){
+               	alert('a');
+               	let text =$('#replycontent').val();
+               	console.log(text);
+               	$.ajax({
+               		url :"ReplyWrite",
+               		type : "post",
+               		data : {
+               			blog_no : '${requestScope.blog.blog_no}',
+               			id : '${sessionScope.id}',
+               			blog_content : 
+               		}
+               		dataType : 'json',
+               		success : function(result){
+               			if(result.result == "fail"){
+               				alert("댓글쓰기 실패");
+               				return;
+               			}
+               			$("#replylist").empty();
+               			console.log(result);
+               			let text = "";
+               			for(let index in result.BLOG){
+               				text += '<li data-v-da7fb214=""><div data-v-da7fb214="" class="info"><input type="hidden" value=" ' + result.BLOG[index].reply_no+' "><p data-v-da7fb214="" class="nickname">'+
+                            	 result.BLOG[index].id+'</p> <span data-v-da7fb214="" class="date">'+result.BLOG[index].reply_date+'</span><pre data-v-da7fb214="" class="cont">'+result.BLOG[index].reply_content+'</pre></div></li>'
+               			}
+               			$('#replylist').append(text);
+               			$('#replycontent').val("");
+               		},
+               		error : function(){
+               			alert("서버요청실패");
+               		}
+               	})
+               	
+               	
+               }
+               </script>
 </html>

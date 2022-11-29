@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,12 +24,13 @@
 
 </head>
 <body>
+
 <h1></h1>
 <form action="blogWriteOk.do" method="post"  enctype="multipart/form-data">
 <div>
     <input id="inputTitle" placeholder="제목을 작성해주세요" name = "blog_title">
 </div>
-    <div id="summernote" name="blog_content"  ></div>
+    <textarea id="summernote" name="blog_content"  ></textarea>
 <input type="submit" id="test" value="확인">
 </form>
 
@@ -65,10 +67,10 @@ $(document).ready(function() {
                // $('#summernote').summernote('insertImage', fileChange(files));
                 }
         }
-       
-	});
-     $('#summernote').summernote('insertImage', 'https://i.ibb.co/6428xrB/4.png');
-});
+	});//summernote end
+    // $('#summernote').summernote('insertImage', 'https://i.ibb.co/6428xrB/4.png');
+	 $('#summernote').summernote('pasteHTML', '${requestScope.content.blog_content}');
+}); //windowload end
 
 // $('#summernote').summernote({
 //   callbacks: {
