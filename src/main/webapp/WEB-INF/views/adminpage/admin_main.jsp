@@ -48,6 +48,7 @@
 	let options = {
         series: [
         {
+       	  name: "명",
           data: [
             
           ]
@@ -57,7 +58,7 @@
 			show: false
 		},
 		chart: {
-			type: 'treemap',
+			type: 'bar',
 			width : '90%',
 			height : '750'
 		},
@@ -80,7 +81,7 @@
 			'#C0ADDB'
 		],
 		plotOptions: {
-			treemap: {
+			bar: {
 			distributed: true, //색깔 따로따로?
 			enableShades: false //?
 			}
@@ -93,6 +94,7 @@
 			$("#graph").empty();
 			if($("#sk option:selected").val() == "age"){
 				options.title.text = $("#sk option:selected").text();
+				options.series[0].name = "명";
 				$.ajax({
 					url : "statisticsAge.do",
 					dataType:"json",
@@ -100,7 +102,7 @@
 					options.series[0].data.length = 0;
 					console.log(data);
 					for(let index in data.age){
-						let json = { x: data.age[index].NAME , y:data.age[index].VALUE};
+						let json = { x: data.age[index].NAME + '대' , y:data.age[index].VALUE};
 						console.log(json);
 						options.series[0].data.push(json);
 					}//for
@@ -111,6 +113,7 @@
 				});
 			}else if($("#sk option:selected").val() == "gender"){
 				options.title.text = $("#sk option:selected").text();
+				options.series[0].name = "명";
 				$("#graph").empty();
 				$.ajax({
 					url : "statisticsGender.do",
@@ -128,6 +131,7 @@
 				});
 			}else if($("#sk option:selected").val() == "day"){
 				options.title.text = $("#sk option:selected").text();
+				options.series[0].name = "원";
 				$.ajax({
 					url : "statisticsDay.do",
 					dataType:"json",
@@ -144,6 +148,7 @@
 				});
 			}else if($("#sk option:selected").val() == "week"){
 				options.title.text = $("#sk option:selected").text();
+				options.series[0].name = "원";
 				$.ajax({
 					url : "statisticsWeek.do",
 					dataType:"json",
@@ -160,6 +165,7 @@
 				});
 			}else if($("#sk option:selected").val() == "month"){
 				options.title.text = $("#sk option:selected").text();
+				options.series[0].name = "원";
 				$.ajax({
 					url : "statisticsMonth.do",
 					dataType:"json",
@@ -176,6 +182,7 @@
 				});
 			}else if($("#sk option:selected").val() == "year"){
 				options.title.text = $("#sk option:selected").text();
+				options.series[0].name = "원";
 				$.ajax({
 					url : "statisticsYear.do",
 					dataType:"json",
@@ -201,7 +208,7 @@
 				options.series[0].data.length = 0;
 				console.log(data);
 				for(let index in data.age){
-					let json = { x: data.age[index].NAME , y:data.age[index].VALUE};
+					let json = { x: data.age[index].NAME+'대' , y:data.age[index].VALUE};
 					console.log(json);
 					options.series[0].data.push(json);
 				}//for

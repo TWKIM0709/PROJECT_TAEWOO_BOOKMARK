@@ -347,8 +347,8 @@
 	                                	 <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
 	                                    href="blogDetail.do?blog_no=${board.blog_no}">
 		                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">${board.blog_title }</strong>
-		                                        <p data-v-02a040ec="">조회수 : ${board.hits }</p>
-		                                        <p data-v-02a040ec="">작성일 : ${board.blog_date }</p>
+		                                        <p data-v-02a040ec="">작성자 : ${board.id}</p>
+		                                        <p data-v-02a040ec="">조회수 : ${board.hits } / 작성일 : ${board.blog_date }</p>
 		                                    </div>
 		                                    <div data-v-02a040ec="" class="bookcover">
 		                                        <div data-v-02a040ec="" class="inner">
