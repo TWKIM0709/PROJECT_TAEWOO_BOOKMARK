@@ -35,7 +35,6 @@ public class mainService implements Action {
 				return forward;
 			}
 			
-			
 			BookDao dao = new BookDao();
 			
 			String today = null;

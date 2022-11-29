@@ -61,9 +61,6 @@
 </div>
 </body>
 <script type="text/javascript">
-function detail(isbn){
-	location.href="bookDetail.do?isbn=" + isbn;
-}
 $('#search').keydown(function(keyNum){
     if(keyNum.keyCode == 13){
         alert('bookUserLikeList.do');

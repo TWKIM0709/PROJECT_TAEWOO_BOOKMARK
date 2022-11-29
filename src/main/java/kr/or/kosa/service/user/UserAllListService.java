@@ -26,9 +26,9 @@ public class UserAllListService implements Action {
 			
 			int totalusercount = dao.getUserListCount();
 			
-			ps = request.getParameter("pagesize"); // pagesize
-			cp = request.getParameter("cpage"); // current page
-
+			ps = request.getParameter("ps"); // pagesize
+			cp = request.getParameter("cp"); // current page
+			System.out.println("ps = " + ps +"/cp : " + cp);
 			// List 페이지 처음 호출 ...
 			if (ps == null || ps.trim().equals("")) {
 				// default 값 설정
@@ -39,10 +39,11 @@ public class UserAllListService implements Action {
 				// default 값 설정
 				cp = "1"; // 1번째 페이지 보겠다
 			}
-
+			
 			int pagesize = Integer.parseInt(ps);
 			int cpage = Integer.parseInt(cp);
 			int pagecount = 0;
+			System.out.println("pagesizes = " + pagesize +"/cpage : " + cpage);
 
 			// 23건 % 5
 			if (totalusercount % pagesize == 0) {
@@ -54,10 +55,10 @@ public class UserAllListService implements Action {
 			// 102건 : pagesize=5 >> pagecount=21페이지
 
 			// 전체 목록 가져오기
-			List<Users> userlist = dao.getUserAllList(pagesize, cpage);//count하는 dao있어야함
-			
+			List<Users> userlist = dao.getUserAllList(cpage, pagesize);//count하는 dao있어야함
+
 			int pagersize = 3;
-			ThePager pager = new ThePager(totalusercount,cpage,pagesize,pagersize, "UserList.do");
+			ThePager pager = new ThePager(totalusercount,cpage,pagesize,pagersize, "userList.do");
 			
 			request.setAttribute("pagesize", pagesize);
 			request.setAttribute("cpage", cpage);
