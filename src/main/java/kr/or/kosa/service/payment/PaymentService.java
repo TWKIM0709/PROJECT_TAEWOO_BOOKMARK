@@ -49,26 +49,6 @@ public class PaymentService implements Action {
 			// 장바구니에 있는 book list 담고
 			List<Book> cartlist = dao.cartlist(id);
 			
-			
-			
-			
-			
-//			for(Book_Payment bpl : list) {
-//				Book_Payment bp = new Book_Payment();
-//				
-//				bp.setIsbn(bpl.getIsbn());
-//				bp.setCount(bpl.getCount());
-//				bp.setPayment_addr(bpl.getPayment_addr());
-//				bp.setPayment_date(bpl.getPayment_date());
-//				bp.setPayment_detailaddr(bpl.getPayment_detailaddr());
-//				bp.setSumprice(bpl.getSumprice());
-//				
-//				list.add(bp);
-//			}
-//			
-			
-		
-			
 			int result = dao.insertPayment(cartlist, id,addr,detail_addr);
 			
 			//결제 성공시
