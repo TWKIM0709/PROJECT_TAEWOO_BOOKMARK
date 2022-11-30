@@ -1,5 +1,7 @@
+<%@page import="java.net.InetAddress"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,31 +14,35 @@
 <button onclick="test()" id="testbtn">
 	테스트
 </button>
+<%
+
+	InetAddress ip = InetAddress.getLocalHost();
+	String hostIP = ip.getHostAddress();
+	//System.out.println("현재 아이피 : " + ip.getLocalHost());
+	//System.out.println("hostIP : " + hostIP);
+
+
+	request.setAttribute("ip", hostIP);
+	
+%>
 </body>
   <script src="https://js.tosspayments.com/v1/payment"></script>
 	 <script>
-	//  let totalprice =  "<c:out value='${request.getParameter('totalprice')}' />"    
-	//  let cartsize = '<c:out value="${request.getParameter("cartsize")}" />';
-	//  let customername = "<c:out value = '${sessionScope.id}' />";
-	//  let firstbook ="<c:out value='${request.getParameter('firstbook')}' />";
-	
+
 	 let totalprice =  '${param.totalprice}';
 	 let cartsize = '${param.cartsize}';
 	 let customername = '${sessionScope.id}';
 	 let firstbook = '${param.firstbook}'	 
 	 let addr = '${param.addr}'
 	 let detail_addr = '${param.detail_addr}'
+
+		 let ip = '${requestScope.ip}';
 	 
-		 console.log("addr :" + addr);
-	 	console.log("detail_addr : " + detail_addr);
-	 	console.log("==================")
-	 	console.log("addr :" + addr.replace(/ /g,""));
-	 	console.log("detail_addr : " + detail_addr.replace(/ /g,""));
-	 	
-	let url = "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
+	 	//console.log(ip);
+	//let url = "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
+	let url = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
 	
-	
-	console.log(url);
+	//console.log(url);
 	 function test(){
 		var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
 		var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
