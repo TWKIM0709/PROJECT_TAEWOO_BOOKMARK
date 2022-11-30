@@ -20,11 +20,14 @@ public class QuestionWriteOkService implements Action {
 	    	QuestionDao dao = new QuestionDao();
 	    	Question_Board board = new Question_Board();
 	    	
-	    	board.setId(request.getParameter("id"));
+	    	board.setId((String)request.getSession().getAttribute("id"));
 	    	board.setQuestion_title(request.getParameter("question_title"));
 	    	board.setQuestion_content(request.getParameter("question_content"));
-	    	board.setHits(Integer.parseInt(request.getParameter("hits")));
-	    	int notice = (request.getParameter("notice_no") != null) ? Integer.parseInt(request.getParameter("notice_no")) : 0;
+			/*
+			 * int notice2 = (request.getParameter("notice_no") != null) ?
+			 * Integer.parseInt(request.getParameter("notice_no")) : 0;
+			 */
+	    	int notice = (request.getSession().getAttribute("admin").equals("admin")) ? 1:0;
 	    	board.setNotice_no(notice);
 	    	
 	    

@@ -84,14 +84,15 @@
 		                                        		작성자 
 		                                        	</c:otherwise>
 		                                        </c:choose>
-		                                        : ${question.id} | 작성일 : ${question.question_date}</p>
+		                                        : ${question.id}</p>
+		                                        <p>조회수 : ${question.hits} | 작성일 : ${question.question_date}</p><br>
 		                                    </div>
-		                                </a><br><br></li>
+		                                </a></li>
                                 </c:forEach>
                                 
                             </ul>
                         </div>
-                        <btton onclick="location.href = 'questionWrite.do' ">글쓰기</btton>
+                        <btton onclick="location.href = 'questionWrite.do' "><strong>글쓰기</strong></btton>
                     </div>
                     <div id="hjPager" style="text-align: center; margin-top: 13px; font-size: 18px;">
                             ${requestScope.pager}
@@ -158,7 +159,7 @@
     							}else{
     								text += '작성자';
     							}
-    							text += ' : '+resultData.questionlist[i].id +' | 작성일 : '+resultData.questionlist[i].question_date+'</p></div></a><br><br></li>';
+    							text += ' : '+resultData.questionlist[i].id +'</p><p>조회수 : '+resultData.questionlist[i].hits+' | 작성일 : '+resultData.questionlist[i].question_date+'</p></div></a><br><br></li>';
                             $('#searchResultList').append(text);
                         }
 
