@@ -148,9 +148,7 @@ public class PaymentDao implements BookMarkDao{
 				String sql = "select book_payment.payment_no,isbn,count,to_char(payment_date),sumprice"
 						+ " from book_payment join payment on book_payment.payment_no = payment.payment_no"
 						+ " where payment.id = ? order by payment_no desc";
-				System.out.println(sql);
-				System.out.println(id);
-				
+
 				pstmt = conn.prepareStatement(sql);
 
 				pstmt.setString(1, id);
@@ -168,7 +166,7 @@ public class PaymentDao implements BookMarkDao{
 					bookpayment.setSumprice(rs.getInt(5));
 					paymentlist.add(bookpayment);
 				}
-				System.out.println(3);
+				
 			} catch (Exception e) {
 				e.getStackTrace();
 			}finally {
