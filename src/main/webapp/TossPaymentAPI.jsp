@@ -23,18 +23,24 @@
 	 let totalprice =  '${param.totalprice}';
 	 let cartsize = '${param.cartsize}';
 	 let customername = '${sessionScope.id}';
-	 let firstbook = '${param.firstbook}'
+	 let firstbook = '${param.firstbook}'	 
+	 let addr = '${param.addr}'
+	 let detail_addr = '${param.detail_addr}'
 	 
+		 console.log("addr :" + addr);
+	 	console.log("detail_addr : " + detail_addr);
+	 	console.log("==================")
+	 	console.log("addr :" + addr.replace(/ /g,""));
+	 	console.log("detail_addr : " + detail_addr.replace(/ /g,""));
+	 
+	let url = "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"");
 	
-	 console.log(totalprice)
-
+	
+	console.log(url);
 	 function test(){
 		var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
 		var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
 		let num = parseInt(totalprice);
-		console.log(typeof(num));
-		console.log(num + " " + cartsize + " " + customername + " " + firstbook);
-
 		
 		tossPayments.requestPayment('카드', { // 결제 수단
 			// 결제 정보
@@ -42,7 +48,7 @@
 			orderId: 'QTIk82kxDPefXZC8MLFj0',
 			orderName: firstbook + " 외 " + (parseInt(cartsize)-1) + "건",
 			customerName: customername,
-			successUrl: 'http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/homepage.html',
+			successUrl: url,
 			failUrl: 'http://localhost:8080/fail',	
 			flowMode: 'D',
 			easyPay: '토스페이'

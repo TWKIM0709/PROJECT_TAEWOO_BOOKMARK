@@ -23,7 +23,8 @@ public class PaymentDao implements BookMarkDao{
 			List<Book> cartlist = null;
 			
 			try {
-				String sql = "select book.isbn as isbn, book.book_name, book.author, book.description,book.price,book.book_filename,ebook.file_name from book left join ebook on book.isbn = ebook.isbn where book.isbn in (select isbn from cart where id =?)";
+				String sql = "select book.isbn as isbn, book.book_name, book.author, book.description,book.price,book.book_filename,ebook.file_name from book"
+						+ " left join ebook on book.isbn = ebook.isbn where book.isbn in (select isbn from cart where id =?)";
 				//일단은 ebook파일까지 같이 담기도록 짰다.
 				pstmt = conn.prepareStatement(sql);
 				
@@ -229,7 +230,8 @@ public class PaymentDao implements BookMarkDao{
 		
 		
 		//결제 추가
-		public int insertPayment(List<Book_Payment> list, String id) {
+//		public int insertPayment(List<Book_Payment> list, String id) {
+		public int insertPayment(List<Book> list, String id, String addr, String detail_addr) {
 			Connection conn = ConnectionHelper.getConnection("oracle");
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -238,32 +240,35 @@ public class PaymentDao implements BookMarkDao{
 			int row = 0;
 
 			try {
-				String sql ="insert all"
-						+ "into payment(payment_no, id, payment_addr, payment_detailaddr)"
-						+ "values (payment_no_seq.nextval, ?, ?, ?)";
-				for(Book_Payment book : list) {
-					sql += "into book_payment(payment_no, isbn, count, sumprice)"
-							+ "values(payment_no_seq.currentval, ?, ?, ?)";
+				String sql ="insert all "
+						+ "into payment(payment_no, id, payment_addr, payment_detailaddr) " //결제 테이블에 번호, 아이디, 우편번호,  주소 추가
+						+ "values(payment_no_seq.nextval, ?, ?, ?) ";
+				for(Book book : list) { //결제된 책 목록만큼
+					sql += "into book_payment(payment_no, isbn, count, sumprice) "
+							+ "values(payment_no_seq.currentval, ?, ?, ?) "
+							+ "select * from dual;";
 				}
 				pstmt = conn.prepareStatement(sql);
 				
 				pstmt.setString(index++, id);
-				pstmt.setString(index++, list.get(1).getPayment_addr());
-				pstmt.setString(index++, list.get(1).getPayment_detailaddr());
+				pstmt.setString(index++, addr);
+				pstmt.setString(index++, detail_addr);
 				
-				for(Book_Payment book : list) { //결제된 모든 책
+				for(Book book : list) { //결제된 모든 책
 					pstmt.setString(index++, book.getIsbn());
-					pstmt.setInt(index++, book.getCount());
-					pstmt.setInt(index++, book.getSumprice());
+					pstmt.setInt(index++, 1);
+					pstmt.setInt(index++, book.getPrice());
 				}
-				
+				System.out.println(sql);
 				row = pstmt.executeUpdate();
 				
 				if(row>0) {
-					sql = "delete from cart where id=? and isbn in (select isbn from book_payment where payment_no=(select max(paymnet_no) from book_paymnet where id=?))";
+					ConnectionHelper.close(pstmt);
+					//sql = "delete from cart where id=? and isbn in (select isbn from book_payment where payment_no=(select max(paymnet_no) from book_paymnet where id=?))";
+					sql = "delete from cart where id = ?";
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, id);
-					pstmt.setString(2, id);
+					//pstmt.setString(2, id);
 					
 					pstmt.executeUpdate();
 				}
