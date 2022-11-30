@@ -859,8 +859,8 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
                                 </div>
 							</div>
 						<hr data-v-9baa251e="" class="line">
-						<button data-v-9baa251e="" id="hjbtn" type="button" class="confirm-btn">이건 버튼</button>
-                        <button data-v-9baa251e="" id="hjsubmit" type="submit" class="confirm-btn">결제하기</button>
+						<button data-v-9baa251e="" id="hjbtn" type="button" class="confirm-btn">결제하기</button>
+                        <button data-v-9baa251e="" id="hjsubmit" type="submit" class="confirm-btn" style="visibility:hidden">결제하기</button>
                     </form>
 						
 					</div>
