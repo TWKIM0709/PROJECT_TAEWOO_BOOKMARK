@@ -32,8 +32,8 @@
 	 	console.log("==================")
 	 	console.log("addr :" + addr.replace(/ /g,""));
 	 	console.log("detail_addr : " + detail_addr.replace(/ /g,""));
-	 
-	let url = "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"");
+	 	
+	let url = "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
 	
 	
 	console.log(url);

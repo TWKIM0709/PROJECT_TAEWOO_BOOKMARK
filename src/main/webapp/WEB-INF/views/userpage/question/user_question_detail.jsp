@@ -2259,6 +2259,7 @@
                 <div data-v-474ad036="" class="view-expand">
                     <div data-v-474ad036="" class="title">
                         <div data-v-474ad036="" class="title-inner container">
+                        <br>
                         	<button onclick='javascript:history.back();' style='magin-top : 100px'>뒤로가기</button>
                             <h1 data-v-474ad036="" id="question_title" name="question_title">${requestScope.board.question_title}</h1> 
                                 <div data-v-474ad036="" class="writer-info">
@@ -2293,7 +2294,7 @@
                 <c:if test="${sessionScope.id eq requestScope.board.id}">
                 <div style="position: absolute;left: 63%;">
                 	<button onclick = "location.href = 'questionWriteUpdate.do?question_no=${requestScope.blog.blog_no}' " ><span>수정</span></button><span> | </span>
-                	<button onclick = "location.href = 'questionDeleteOk.do?question_no=${requestScope.blog.blog_no}' " ><span>삭제</span></button>
+                	<button onclick = "location.href = 'questionDeleteOk.do?question_no=${requestScope.blog.blog_no}' " ><span>삭제</span></button> <br><br>
                 </div>
                 </c:if>
                 </div>
