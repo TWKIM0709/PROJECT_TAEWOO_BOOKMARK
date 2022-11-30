@@ -5,6 +5,7 @@
 <html lang="ko" class="">
 
 <head>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <style id="editor-js-styles">
         .codex-editor {
             position: relative;
@@ -1909,7 +1910,7 @@
             z-index: 1
         }
     </style>
-     <link rel="stylesheet" type="text/css"
+    <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/styles~b2b~post.34bf510f66b4cbe50dcb.css">
 
     <link rel="stylesheet" type="text/css"
@@ -2253,18 +2254,20 @@
 </head>
 
 <body>
-<jsp:include page="/WEB-INF/views/utils/include/top.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/views/utils/include/top.jsp"></jsp:include>
+    <a href="javascript:history.back();">뒤로가기</a>
     <div data-v-c1337ae8="" id="wrap" class="web-mount">
         <section data-v-c1337ae8="" class="content">
             <div data-v-474ad036="" data-v-c1337ae8="" class="view">
                 <div data-v-474ad036="" class="view-expand">
                     <div data-v-474ad036="" class="title">
                         <div data-v-474ad036="" class="title-inner container">
-                            <h1 data-v-474ad036="" id="blog_title" name="blog_title">${requestScope.blog.blog_title}</h1> 
-                                <div data-v-474ad036="" class="writer-info">
-                                    <p data-v-474ad036="" class="name" id="id">${requestScope.blog.id}</p>
-                                    <p data-v-474ad036="" class="date" id="blog_date"> ･ ${requestScope.blog.blog_date}</p>
-                                </div>
+                            <h1 data-v-474ad036="" id="blog_title" name="blog_title">${requestScope.blog.blog_title}
+                            </h1>
+                            <div data-v-474ad036="" class="writer-info">
+                                <p data-v-474ad036="" class="name" id="id">${requestScope.blog.id}</p>
+                                <p data-v-474ad036="" class="date" id="blog_date"> ･ ${requestScope.blog.blog_date}</p>
+                            </div>
                         </div>
                     </div>
                     <div data-v-474ad036="" class="detail" style="--loader-top:210px;">
@@ -2277,189 +2280,217 @@
                                                 <div class="ce-tune-alignment--left">
                                                     <div class="ce-block__content">
                                                         ${requestScope.blog.blog_content}
-                                                    </div> 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>       
-                    </div>	
-                </div>
-                <div style="position: relative;">
-                <c:if test="${sessionScope.id eq requestScope.blog.id}">
-                <div style="position: absolute;left: 63%;">
-                	<button onclick = "location.href = 'blogUpdate.do?blog_no=${requestScope.blog.blog_no}' " ><span>수정  |</span></button>
-                	<button onclick = "location.href = 'blogDeleteOk.do?blog_no=${requestScope.blog.blog_no}' " ><span>삭제</span></button>
-                </div>
-                </c:if>
-                </div>
-              <div data-v-35475912="" data-v-474ad036="" class="comment">
-    <div data-v-35475912="" class="comment-inner container">
-        <!---->
-        <h3 data-v-35475912="" class="comment-title">댓글 <span data-v-35475912="" class="comment-title-length">2</span>
-        </h3>
-        <ul data-v-35475912="" class="comment-list">
-            <li data-v-35475912="" class="comment-item">
-                <div data-v-35475912="" class="comment-item-inner flex-container">
-                    <div data-v-35475912="" class="user-img"
-                        style="background-image: url(&quot;https://ofbxchnhqinp910256.cdn.ntruss.com/100/7802ce8756a05eefcd0242ddbf6f733a.jpg?type=w&amp;w=160&amp;quality=100&quot;);">
-                        <a data-v-35475912="" href="/shelf/shelf_main.html?library_seq=5137459"></a></div>
-                    <div data-v-35475912="" class="com-contents">
-                        <div data-v-35475912="" class="com-contents-head">
-                            <div data-v-35475912="" class="com-contents-top flex-container">
-                                <p data-v-35475912="" class="nickname"><a data-v-35475912="" href="#">건강하게 활기차게</a></p>
-                            </div> <span data-v-35475912="" class="com-contents-date">2022-09-01 13:36:08</span>
-                        </div>
-                        <div data-v-35475912="" class="com-contents-body">
-                            <p data-v-35475912="" class="comment-text show">건강하게 활기차게</p>
-                            <div data-v-35475912="" class="comment-text">
-                                <p data-v-35475912="" contenteditable="plaintext-only">건강하게 활기차게</p> <button
-                                    data-v-35475912="" type="button"
-                                    class="mds-button mds-button--secondary mds-button--flex mds-button--h56 mds-button--r4"><span>등록</span></button>
-                            </div>
-                        </div>
-                        <div data-v-35475912="" class="reply-setting"><button data-v-35475912="" type="button"
-                                class="more-btn"><img data-v-35475912=""
-                                    src="https://d3udu241ivsax2.cloudfront.net/v3/images/bookDetail/more-icon.df2e02aec2252c2847fbe9e490cd4354.png"
-                                    alt="더보기"></button>
-                            <!---->
                         </div>
                     </div>
                 </div>
-                <!---->
-                <div data-v-35475912="" class="reply-container">
-                    <ul data-v-35475912="" class="reply-list">
-                        <li data-v-35475912="" class="reply-item">
-                            <div data-v-35475912="" class="reply-item-inner flex-container">
-                                <div data-v-35475912="" class="user-img"
-                                    style="background-image: url(&quot;https://ofbxchnhqinp910256.cdn.ntruss.com/160/e5e634f89bd1050c99a5b84cc95caa64.png?type=w&amp;w=160&amp;quality=100&quot;);">
-                                    <a data-v-35475912="" href="/shelf/shelf_main.html?library_seq=2253534"></a></div>
-                                <div data-v-35475912="" class="com-contents">
-                                    <div data-v-35475912="" class="com-contents-head">
-                                        <div data-v-35475912="" class="com-contents-top">
-                                            <p data-v-35475912="" class="nickname"><a data-v-35475912=""
-                                                    href="#">낭비없는삶은낭만없는삶</a></p> <span data-v-35475912=""
-                                                class="com-contents-date">2022.11.29</span>
-                                        </div>
-                                        <div data-v-35475912="" class="reply-setting"><button data-v-35475912=""
-                                                type="button" class="more-btn"><img data-v-35475912=""
-                                                    src="https://d3udu241ivsax2.cloudfront.net/v3/images/bookDetail/more-icon.df2e02aec2252c2847fbe9e490cd4354.png"
-                                                    alt="더보기"></button>
-                                            <!---->
-                                        </div>
-                                    </div>
-                                    <div data-v-35475912="" class="com-contents-body">
-                                        <p data-v-35475912="" class="comment-text show">ㅇㅇ</p>
-                                        <div data-v-35475912="" class="comment-text">
-                                            <p data-v-35475912="" contenteditable="plaintext-only">ㅇㅇ</p> <button
-                                                data-v-35475912="" type="button"
-                                                class="mds-button mds-button--secondary mds-button--flex mds-button--h56 mds-button--r4" id="javascr"><span>등록</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                <div style="position: relative;">
+                    <c:if test="${sessionScope.id eq requestScope.blog.id}">
+                        <div style="position: absolute;left: 63%;">
+                            <button
+                                onclick="location.href = 'blogUpdate.do?blog_no=${requestScope.blog.blog_no}' "><span>수정
+                                    |</span></button>
+                            <button
+                                onclick="location.href = 'blogDeleteOk.do?blog_no=${requestScope.blog.blog_no}' "><span>삭제</span></button>
+                        </div>
+                    </c:if>
                 </div>
-            </li>
-            <li data-v-35475912="" class="comment-item">
-                <!---->
-                <!---->
-                <div data-v-35475912="" class="reply-container" style="display: none;">
-                    <ul data-v-35475912="" class="reply-list" id="replylist">
-                        <li data-v-35475912="" class="reply-item">
-                            <div data-v-35475912="" class="reply-item-inner flex-container">
-                                <div data-v-35475912="" class="user-img"
-                                    style="background-image: url(&quot;https://ofbxchnhqinp910256.cdn.ntruss.com/160/e5e634f89bd1050c99a5b84cc95caa64.png?type=w&amp;w=160&amp;quality=100&quot;);">
-                                    <a data-v-35475912="" href="/shelf/shelf_main.html?library_seq=2253534"></a></div>
-                                <div data-v-35475912="" class="com-contents">
-                                    <div data-v-35475912="" class="com-contents-head">
-                                        <div data-v-35475912="" class="com-contents-top">
-                                            <p data-v-35475912="" class="nickname"><a data-v-35475912=""
-                                                    href="#">낭비없는삶은낭만없는삶</a></p> <span data-v-35475912=""
-                                                class="com-contents-date">2022.11.29</span>
-                                        </div>
-                                        <div data-v-35475912="" class="reply-setting"><button data-v-35475912=""
-                                                type="button" class="more-btn"><img data-v-35475912=""
-                                                    src="https://d3udu241ivsax2.cloudfront.net/v3/images/bookDetail/more-icon.df2e02aec2252c2847fbe9e490cd4354.png"
-                                                    alt="더보기"></button>
-                                            <!---->
-                                        </div>
-                                    </div>
-                                    <div data-v-35475912="" class="com-contents-body">
-                                        <p data-v-35475912="" class="comment-text show">ㅇㅇ</p>
-                                        <div data-v-35475912="" class="comment-text">
-                                            <p data-v-35475912="" contenteditable="plaintext-only">ㅇㅇ</p> <button
-                                                data-v-35475912="" type="button"
-                                                class="mds-button mds-button--secondary mds-button--flex mds-button--h56 mds-button--r4"><span>등록</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
+             <div data-v-35475912="" data-v-474ad036="" class="comment">
+    <div data-v-35475912="" class="comment-inner container">
+    <!-- 댓글시작 -->
         <div data-v-35475912="" class="register flex-container">
-            <div data-v-35475912="" class="user-img"
-                style="margin-right: 0px; background-image: url(&quot;https://ofbxchnhqinp910256.cdn.ntruss.com/160/e5e634f89bd1050c99a5b84cc95caa64.png?type=w&amp;w=160&amp;quality=100&quot;);">
-            </div>
+             <hr>
             <div data-v-35475912="" class="register-box">
                 <div data-v-35475912="" class="register-box-inner"><span data-v-35475912="">댓글</span>
-                    <input data-v-35475912="" contenteditable="plaintext-only" data-placeholder="내용 입력"  id="replycontent">
+                    <p data-v-35475912="" contenteditable="plaintext-only" data-placeholder="내용 입력" id="replycontent"></p>
                 </div>
             </div> <button data-v-35475912="" type="button"
-                class="post-btn flex-container mds-button mds-button--secondary mds-button--flex mds-button--h56 mds-button--r4" id="replyok" onclick="aa()"><span>등록</span></button>
+                class="post-btn flex-container mds-button mds-button--secondary mds-button--flex mds-button--h56 mds-button--r4" onclick="testt()"><span>등록</span></button>
         </div>
+        <ul data-v-35475912="" class="comment-list" id="replylist">
+            <li data-v-35475912="" class="comment-item">
+                <div data-v-35475912="" class="comment-item-inner flex-container">
+                    <div data-v-35475912="" class="com-contents">
+                        <div data-v-35475912="" class="com-contents-head">
+                            <div data-v-35475912="" class="com-contents-top flex-container">
+                                <p data-v-35475912="" class="nickname">재미와 행복</p>
+                            </div> <span data-v-35475912="" class="com-contents-date">2022-11-09 18:32:06</span>
+                        </div>
+                        <div data-v-35475912="" class="com-contents-body">
+                            <p data-v-35475912="" class="comment-text show">잠시 듣겠다는 처음 생각과 달리 , 듣다보면 점점 빠져드는 매력이 있네요.
+                                슬며시 미소가 지어지는 재미와 함께 달달하고 따뜻한 느낌이 들어요. 김찬수 바보래요~</p>
+                          
+                        </div>
+                       
+                    </div>
+                </div>
+
+            </li>
+        </ul>
     </div>
 </div>
-             
+
             </div>
         </section>
-     
+
     </div>
 </body>
 <script type="text/javascript">
-               function aa(){
-            	   alert('dd');
-               }
-               function testt(){
-               	alert('a');
-               	let text =$('#replycontent').val();
-               	console.log(text);
-               	$.ajax({
-               		url :"ReplyWrite",
-               		type : "post",
-               		data : {
-               			blog_no : '${requestScope.blog.blog_no}',
-               			id : '${sessionScope.id}',
-               			blog_content : 
-               		}
-               		dataType : 'json',
-               		success : function(result){
-               			if(result.result == "fail"){
-               				alert("댓글쓰기 실패");
-               				return;
-               			}
-               			$("#replylist").empty();
-               			console.log(result);
-               			let text = "";
-               			for(let index in result.BLOG){
-               				text += '<li data-v-da7fb214=""><div data-v-da7fb214="" class="info"><input type="hidden" value=" ' + result.BLOG[index].reply_no+' "><p data-v-da7fb214="" class="nickname">'+
-                            	 result.BLOG[index].id+'</p> <span data-v-da7fb214="" class="date">'+result.BLOG[index].reply_date+'</span><pre data-v-da7fb214="" class="cont">'+result.BLOG[index].reply_content+'</pre></div></li>'
-               			}
-               			$('#replylist').append(text);
-               			$('#replycontent').val("");
-               		},
-               		error : function(){
-               			alert("서버요청실패");
-               		}
-               	})
-               	
-               	
-               }
-               </script>
+    function aa() {
+        alert($('#replycontent').text());
+    }
+
+    function testt() {
+        alert('a');
+        let text = $('#replycontent').val();
+        console.log(text);
+        $.ajax({
+            url: "ReplyWrite",
+            type: "post",
+            data: {
+            	type : 'blog',
+                blog_no: '${requestScope.blog.blog_no}',
+                id: '${sessionScope.id}',
+                blog_content: $('#replycontent').text()
+            },
+             dataType: 'json', 
+            success: function (result) {
+                if (result.result == "fail") {
+                    alert("댓글쓰기 실패");
+                    return;
+                }
+                $("#replylist").empty();
+                console.log(result);
+                let text = "";
+                for (let index in result.BLOG) {//style="margin-left: 20px;"
+                    let dep = result.BLOG[index].depth * 30;
+                    console.log(dep);
+                    text += '<br><li data-v-35475912="" stype="position:relative">';
+                    if(result.BLOG[index].step > 0){
+                    	text += '<i style="font-size:24px;transform:rotate(90deg); position:absolute; left:'+dep+'px;" class="fas">&#xf3bf;</i>';
+                    }
+                    text +=
+                    	'<div data-v-35475912="" class="com-contents"style="margin-left: '+dep+'px; ">'+
+                    	'<input type="hidden" value=" ' +
+                        result.BLOG[index].reply_no + ' "> <p data-v-35475912="" class="nickname">' +
+                        result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
+                        '</span><div style="position: absolute;left: 70%;"><button onclick="location.href = "><span>수정 |</span></button><button onclick="location.href = "><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show">' 
+                        + result.BLOG[index].reply_content + '</p>'+'</div></li>'
+                   /*  text +=
+                    	'<div data-v-35475912="" class="com-contents"style="margin-left: '+dep+'px;">'+
+                    	'<input type="hidden" value=" ' +
+                        result.BLOG[index].reply_no + ' "> <p data-v-35475912="" class="nickname">' +
+                        result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
+                        '</span> <p data-v-35475912="" class="comment-text show">' + result.BLOG[index].reply_content + '</p></div></li>' */
+	               /*  let dep = result.BLOG[index].depth * 20;
+	                console.log(dep);
+                    text +=
+                    	'<br><li data-v-35475912=""><div data-v-35475912="" class="com-contents"><input type="hidden" value=" ' +
+                        result.BLOG[index].reply_no + ' "> <p data-v-35475912="" class="nickname">' +
+                        result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
+                        '</span> <p data-v-35475912="" class="comment-text show">' + result.BLOG[index].reply_content + '</p></div></li>' */
+                }
+                console.log(text);
+                $('#replylist').append(text);
+                $('#replycontent').val("");
+            },
+            error: function () {
+                alert("서버요청실패");
+            }
+        })
+    }
+    
+    
+    //onload start
+    $(function(){
+    	$.ajax({
+            url: "RepleListBlogOrBook",
+            type: "post",
+            data: {
+            	type : 'blog',
+                blog_no: '${requestScope.blog.blog_no}'
+            },
+             dataType: 'json', 
+            success: function (result) {
+                if (result.result == "fail") {
+                    alert("댓글 불러오기 실패");
+                    return;
+                }
+                $("#replylist").empty();
+                console.log(result);
+                let text = "";
+                for (let index in result.BLOG) {//style="margin-left: 20px;"
+                    let dep = result.BLOG[index].depth * 30;
+                    console.log(dep);
+                    text += '<br><li data-v-35475912="" stype="position:relative">';
+                    if(result.BLOG[index].step > 0){
+                    	text += '<i style="font-size:24px;transform:rotate(90deg); position:absolute; left:'+dep+'px;" class="fas">&#xf3bf;</i>';
+                    }
+                    text +=
+                    	'<div data-v-35475912="" class="com-contents"style="margin-left: '+dep+'px; ">'+
+                    	'<input type="hidden" value=" ' +
+                        result.BLOG[index].reply_no + ' "> <p data-v-35475912="" class="nickname">' +
+                        result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
+                        '</span><div style="position: absolute;left: 70%;"><button onclick="location.href = "><span>수정 |</span></button><button onclick="location.href = "><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show">' 
+                        + result.BLOG[index].reply_content + '</p>'+'</div></li>'
+                }
+                console.log(text);
+                $('#replylist').append(text);
+                $('#replycontent').val("");
+            },
+            error: function () {
+                alert("서버요청실패");
+            }
+        })
+    });//onload end
+    
+    function test(){
+    	
+    }
+    
+    
+</script>
+
+function delete(){
+		let reply_no=$(this).attr("");
+		let blog_no=$(this).attr("");
+		$.ajax({
+			type:'get',
+			url:'ReplyDelete',
+			data:{ 
+				type : 'blog' ,
+				blog_reply_no : '  '
+			},
+			success:function(result)
+			{
+				$('#reply_data').html(result);
+			}
+		})
+	})
+https://angehende-ingenieur.tistory.com/160
+https://greeenhong.tistory.com/311?category=994363
+
+function answerEdit(reply_no, id, reply_content, qna_idx){
+			$('#acontent'+reply_no).html(
+				"<textarea id='edit_reply_content"+reply_no+"'>"+reply_content+"</textarea>"
+				+"<style>#edit_acontent"+answer_idx+"{width:740px; height:80px; resize:none;} </style>"
+			);
+			
+			$('#abt'+reply_no).html(
+				"<a onclick='answerEditSave("+answer_idx+","+qna_idx+")' id='btnEdit'>완료</a> "
+				+"<a onclick='location.href='qnaDetail.do?idx="+qna_idx+"' id='btnCancel'>취소</a>"
+			);
+		}
+
+		function answerEditSave(answer_idx, qna_idx){
+			var acontent = $("#edit_acontent"+answer_idx).val();
+			location.href='answerEdit.do?idx='+answer_idx+"&acontent="+acontent;
+		}
+https://ceodanbi.tistory.com/44
 </html>
