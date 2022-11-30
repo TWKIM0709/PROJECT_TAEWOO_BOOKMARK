@@ -1106,11 +1106,6 @@
     <script type="text/javascript" id="">
         kakaoPixel("4237922289572623356").pageView();
     </script>
-
-    <script type="text/javascript" id="">
-        kakaoPixel("5057430883487430749").pageView("\ud0dc\uadf8\uac12\uc785\ub825");
-    </script>
-
 </body>
 
 </html>

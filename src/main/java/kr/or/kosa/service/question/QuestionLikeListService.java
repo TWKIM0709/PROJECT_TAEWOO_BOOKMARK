@@ -11,6 +11,7 @@ import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.QuestionDao;
 import kr.or.kosa.dto.Question_Board;
 import kr.or.kosa.utils.ThePager;
+import kr.or.kosa.utils.ThePagerLike;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -58,8 +59,10 @@ public class QuestionLikeListService implements Action {
 			List<Question_Board> qlist = qdao.getQuestionLikeList("question_title",request.getParameter("search"),cpage, pagesize); // list >> 1 , 20
 
 			int pagersize=3; //[1][2][3]
-			ThePager pager = new ThePager(totalboardcount,cpage,pagesize,pagersize,"questionLike.do?search=" + request.getParameter("search"));
-
+//			ThePager pager = new ThePager(totalboardcount,cpage,pagesize,pagersize,"questionLike.do?search=" + request.getParameter("search"));
+			//ThePagerLike는 파라미터로 링크 대신 검색어를 받는다.
+			ThePagerLike pager = new ThePagerLike(totalboardcount,cpage,pagesize,pagersize,request.getParameter("search"));
+			System.out.println(pager);
 			//====ThePager 까지는 동기랑 똑같음====
 //			JSONObject json = new JSONObject();
 //			JSONArray jsonary = new JSONArray();

@@ -2,14 +2,22 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html><head>
-  <title>Bootstrap Example</title>
+  <title>관리자 댓글</title>
   <meta charset="utf-8">
+  <!-- jquery -->
 	 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+	<!-- datatable -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+	 <!-- bootstrap -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<style type="text/css">
+		table{
+			font-size:12px;
+		}
+	</style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/utils/include/admintop.jsp"></jsp:include>
@@ -17,7 +25,7 @@
 <div class="container">
   <div class="row">
     <div class="col" style="background-color:lavender;">
-    	  <table class="table table-striped">
+    	  <table class="table table-striped" id="booktable">
 		    <thead>
 		    	<tr rowspan="4">
 		    		<td>책 댓글</td>
@@ -26,7 +34,7 @@
 		        <th>댓글번호</th>
 		        <th>작성자</th>
 		        <th>댓글내용</th>
-		        <th>비고</th>
+		        <th>작성일</th>
 		      </tr>
 		    </thead>
 		    <tbody id="bookreply">
@@ -40,7 +48,7 @@
 		  </table>
     </div>
     <div class="col" style="background-color:orange;">
-    	  <table class="table table-striped">
+    	  <table class="table table-striped" id="blogtable">
 		    <thead>
 		    	<tr rowspan="4">
 		    		<td>블로그 댓글</td>
@@ -66,7 +74,11 @@
 </div>
 </body>
 <script type="text/javascript">
-
+	// = = = = onload
+	$(function(){
+		bookreload();
+		blogreload();
+	}); //onload end
 // = = = = 책 댓글 불러오는 함수
  	function bookreload(){
 		$.ajax({
@@ -87,6 +99,7 @@
 							      '</tr>';
 				}//for end
 				$('#bookreply').append(text);
+				let booktable = $('#booktable').DataTable();
 			},//success end
 			error:function(error){
 				console.log(error);
@@ -113,17 +126,12 @@
 							      '</tr>';
 				}//for end
 				$('#blogreply').append(text);
+				let blogtable = $('#blogtable').DataTable();
 			},//success end
 			error:function(error){
 				console.log(error);
 			}//error end
 		});//ajax end
 	}
-// = = = = onload
-$(function(){
-	bookreload();
-	blogreload();
-}); //onload end
-
 </script>
 </html>
