@@ -469,6 +469,15 @@ public class BookMarkController extends HttpServlet {
     		forward = action.execute(request, response);
     	}
     	//=================================================================//
+     	//                                                     RequestDispatcher
+     	//=================================================================//
+    	else if(url_Command.equals("/paymentFail.do")) { //81 결제 실패 화면 이동
+    		forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/WEB-INF/views/userpage/user_paymentFail.jsp");
+    	}
+    	 
+    	//=================================================================//
     	//                                                     RequestDispatcher
     	//=================================================================//
     	if(forward != null) {

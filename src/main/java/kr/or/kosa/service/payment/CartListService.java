@@ -45,7 +45,7 @@ public class CartListService implements Action {
 		} catch (Exception e) {
 			System.out.println("cartListService 예외 : " + e.getMessage());
 			
-			String msg = "서버에러발생";
+			String msg = "장바구니가 비어있습니다";
 			String url = "main.do";
 			request.setAttribute("msg",msg);
 			request.setAttribute("url", url);
