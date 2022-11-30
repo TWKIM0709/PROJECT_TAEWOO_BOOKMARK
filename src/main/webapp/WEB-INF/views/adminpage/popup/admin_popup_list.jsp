@@ -44,7 +44,4 @@
   </table>
 </div>
 </body>
-<script>
-	console.log('${requestScope.popup}');
-</script>
 </html>
