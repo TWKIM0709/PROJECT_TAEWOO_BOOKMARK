@@ -20,7 +20,7 @@ public class PopupAddService implements Action {
 			
 		try {
 			PopupDao popupdao = new PopupDao();
-			String Id = request.getParameter("id");
+			String Id = (String)request.getSession().getAttribute("id");
 			String Popup_title = request.getParameter("popup_title");
 			String Popup_filename = request.getParameter("popup_filename");
 			String Popup_date = request.getParameter("popup_date");
@@ -36,7 +36,7 @@ public class PopupAddService implements Action {
 			
 			String msg = "";
 			String url = "";
-			if(result !=0 ) {
+			if(result >0 ) {
 				msg = "insert success";
 				url = "popup.do";
 				

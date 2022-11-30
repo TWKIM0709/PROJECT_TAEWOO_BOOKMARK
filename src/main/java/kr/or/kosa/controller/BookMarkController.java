@@ -428,7 +428,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동+처리
     		action = new PopupUpdateService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/popupEditOk.do")) { //71 관리자 - 팝업 공지사항 수정 처리
+    	} else if(url_Command.equals("/popupEditOk.do")) { //71 폐지(수정처리)
     		// 이동+처리
     		action = null; //TODO: There is no ok service
     		forward = action.execute(request, response);

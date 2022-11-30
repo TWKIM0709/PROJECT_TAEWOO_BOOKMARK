@@ -1,10 +1,12 @@
 package kr.or.kosa.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import kr.or.kosa.dto.Popup;
@@ -129,13 +131,16 @@ public class PopupDao {
 		String sql = "";
 		
 		try {
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date d = format.parse(popup.getPopup_date());
+		
 			conn=ConnectionHelper.getConnection("oracle");
-			sql = "insert into popup(popup_no, id, popup_title, popup_filename) values(popup_no_seq.nextval, ?, ?, ?)";
+			sql = "insert into popup(popup_no, id, popup_title, popup_filename,popup_date) values(popup_no_seq.nextval, ?, ?, ?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, popup.getId());
 			pstmt.setString(2, popup.getPopup_title());
 			pstmt.setString(3, popup.getPopup_filename());
-			
+			pstmt.setDate(4, new java.sql.Date(d.getTime()));
 			row= pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -179,12 +184,15 @@ public class PopupDao {
 		int row = 0;
 		
 		try {
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date d = format.parse(popup.getPopup_date());
 			conn=ConnectionHelper.getConnection("oracle");
-			sql = "update popup set popup_title=?, popup_filename=?, popup_date=sysdate where popup_no=?";
+			sql = "update popup set popup_title=?, popup_filename=?, popup_date=? where popup_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, popup.getPopup_title());
 			pstmt.setString(2, popup.getPopup_filename());
-			pstmt.setInt(3, popup.getPopup_no());
+			pstmt.setDate(3, new java.sql.Date(d.getTime()));
+			pstmt.setInt(4, popup.getPopup_no());
 			
 			row= pstmt.executeUpdate();
 		} catch (Exception e) {

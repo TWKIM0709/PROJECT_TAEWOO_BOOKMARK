@@ -32,15 +32,19 @@
 			<td><img alt="이미지 없음" src="${popup.popup_filename }" style="width:200px; max-height:120px;"> </td>
 			<td>${popup.popup_no }</td>
 			<td>${popup.id }</td>
-			<td>${popup.popup_title }</td>
+			<td onclick=" location.href='popupDetail.do?popup_no=${popup.popup_no}'; ">${popup.popup_title }</td>
 			<td>~${popup.popup_date }</td>
       </tr>
-      <tr>
-      	<td colspan="5">${requestScope.pager }</td>
-      </tr>
 		</c:forEach>
+      <tr>
+      	<td colspan="4">${requestScope.pager }</td>
+      	<td><button type="button" class="btn btn-outline-dark" onclick="location.href='popupAdd.do' ">팝업추가</button></td>
+      </tr>
     </tbody>
   </table>
 </div>
 </body>
+<script>
+	console.log('${requestScope.popup}');
+</script>
 </html>
