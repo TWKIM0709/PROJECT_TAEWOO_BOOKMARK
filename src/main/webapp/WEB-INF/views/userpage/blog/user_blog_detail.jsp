@@ -2378,9 +2378,9 @@
                     text +=
                     	'<div data-v-35475912="" class="com-contents"style="margin-left: '+dep+'px; ">'+
                     	'<input type="hidden" value=" ' +
-                        result.BLOG[index].reply_no + ' "> <p data-v-35475912="" class="nickname">' +
+                        result.BLOG[index].blog_reply_no + ' "> <p data-v-35475912="" class="nickname">' +
                         result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
-                        '</span><div style="position: absolute;left: 70%;"><button onclick="location.href = "><span>수정 |</span></button><button onclick="location.href = "><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show">' 
+                        '</span><div style="position: absolute;left: 70%;"><button onclick="location.href = "><span>수정 |</span></button><button onclick="deletereply(blog_reply_no)"><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show">' 
                         + result.BLOG[index].reply_content + '</p>'+'</div></li>'
                    /*  text +=
                     	'<div data-v-35475912="" class="com-contents"style="margin-left: '+dep+'px;">'+
@@ -2399,6 +2399,7 @@
                 console.log(text);
                 $('#replylist').append(text);
                 $('#replycontent').val("");
+                $('#delbtn').on('click', deletereply);
             },
             error: function () {
                 alert("서버요청실패");
@@ -2406,7 +2407,7 @@
         })
     }
     
-    
+   
     //onload start
     $(function(){
     	$.ajax({
@@ -2426,6 +2427,16 @@
                 console.log(result);
                 let text = "";
                 for (let index in result.BLOG) {//style="margin-left: 20px;"
+                console.log(result.BLOG[index].del)
+                	if(result.BLOG[index].del == 1){
+                        text +=
+                        	'<div data-v-35475912="" class="com-contents">'+
+                        	' <p data-v-35475912="" class="nickname">' +
+                            '<br> ' + '</p> <span data-v-35475912="" class="com-contents-date">' + '<br> ' +
+                            '</span><div style="position: absolute;left: 70%;"></div> <p data-v-35475912="" class="comment-text show">' 
+                            + '[삭제된 댓글입니다]' + '</p>'+'</div></li>'
+                		
+                	} else {
                     let dep = result.BLOG[index].depth * 30;
                     console.log(dep);
                     text += '<br><li data-v-35475912="" stype="position:relative">';
@@ -2435,28 +2446,55 @@
                     text +=
                     	'<div data-v-35475912="" class="com-contents"style="margin-left: '+dep+'px; ">'+
                     	'<input type="hidden" value=" ' +
-                        result.BLOG[index].reply_no + ' "> <p data-v-35475912="" class="nickname">' +
+                        result.BLOG[index].blog_reply_no + ' "> <p data-v-35475912="" class="nickname">' +
                         result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
-                        '</span><div style="position: absolute;left: 70%;"><button onclick="location.href = "><span>수정 |</span></button><button onclick="location.href = "><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show">' 
+                        '</span><div style="position: absolute;left: 70%;"><button onclick="test(\'content'+result.BLOG[index].blog_reply_no+'\')"><span>수정 |</span></button><button onclick="deletereply(' +result.BLOG[index].blog_reply_no +')"><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show" id="content'+result.BLOG[index].blog_reply_no+'">' 
                         + result.BLOG[index].reply_content + '</p>'+'</div></li>'
-                }
+                	}
+                } //for end
                 console.log(text);
                 $('#replylist').append(text);
                 $('#replycontent').val("");
+                //$('#delbtn').on('click', deletereply);
             },
             error: function () {
                 alert("서버요청실패");
             }
         })
     });//onload end
-    
-    function test(){
-    	
+   function test(value){
+    	console.log(value);
     }
+	
+    function deletereply(blog_reply_no){
+   	alert(blog_reply_no);
+    	$.ajax({
+    		url:"ReplyDelete",
+    		type :"post",
+    		data:{
+    			type : "blog",
+    			blog_reply_no : blog_reply_no
+    		},
+    		dataType : 'text',
+    		success : function(result){
+    			alert("댓글 삭제 완료");
+    			console.log(result);
+    		},
+    		error : function(error){
+    			alert('error');
+    			console.log(error);
+    		}
+    		
+    	})//ajax end
+    		 
+    	
+    } // delete function end
+   
+    
     
     
 </script>
-//삭제
+<!-- //삭제
 function delete(){
 		let reply_no=$(this).attr("");
 		let blog_no=$(this).attr("");
@@ -2500,5 +2538,5 @@ https://ceodanbi.tistory.com/44
 https://huskdoll.tistory.com/126
 
 //댓글 접기 펼치기
-https://onecutwook.tistory.com/26
+https://onecutwook.tistory.com/26 -->
 </html>
