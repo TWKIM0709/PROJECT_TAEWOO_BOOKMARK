@@ -36,6 +36,7 @@
 		        <th>작성자</th>
 		        <th>댓글내용</th>
 		        <th>작성일</th>
+		        <td>선택</td>
 		      </tr>
 		    </thead>
 		    <tbody id="bookreply">
@@ -44,6 +45,7 @@
 						<td>작성자</td>
 						<td>	댓글내용</td>
 						<td>작성일</td>
+					<td>선택</td>
 			      </tr>
 		    </tbody>
 		  </table>
@@ -59,6 +61,7 @@
 		        <th>작성자</th>
 		        <th>댓글내용</th>
 		        <th>작성일</th>
+		          <th>선택</th>
 		      </tr>
 		    </thead>
 		    <tbody id="blogreply">
@@ -67,6 +70,7 @@
 						<td>작성자</td>
 						<td>	댓글내용</td>
 						<td>작성일</td>
+						<td>선택</td>
 			      </tr>
 		    </tbody>
 		  </table>
@@ -97,6 +101,8 @@
 										'<td> '+ result.BOOK[index].id+'</td>'+
 										'<td> '+ result.BOOK[index].reply_content+'</td>'+
 										'<td> '+ result.BOOK[index].reply_date+'</td>'+
+										'<td> </td>'
+									
 							      '</tr>';
 				}//for end
 				$('#bookreply').append(text);
@@ -124,6 +130,7 @@
 										'<td> '+ result.BLOG[index].id+'</td>'+
 										'<td> '+ result.BLOG[index].reply_content+'</td>'+
 										'<td> '+ result.BLOG[index].reply_date+'</td>'+
+										'<td> </td>'+
 							      '</tr>';
 				}//for end
 				$('#blogreply').append(text);
