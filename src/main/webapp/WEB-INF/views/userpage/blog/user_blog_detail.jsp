@@ -2250,6 +2250,9 @@
         .ce-block--drop-target .ce-block__content:after {
             background: none;
         }
+        .replyhide{
+        	display :none;
+        }
     </style>
 </head>
 
@@ -2344,7 +2347,7 @@
 <script type="text/javascript">
     function aa() {
         alert($('#replycontent').text());
-    }
+    }//aa end
 
     function testt() {
         alert('a');
@@ -2369,47 +2372,52 @@
                 console.log(result);
                 let text = "";
                 for (let index in result.BLOG) {//style="margin-left: 20px;"
-                    let dep = result.BLOG[index].depth * 30;
-                    console.log(dep);
-                    text += '<br><li data-v-35475912="" stype="position:relative">';
-                    if(result.BLOG[index].step > 0){
-                    	text += '<i style="font-size:24px;transform:rotate(90deg); position:absolute; left:'+dep+'px;" class="fas">&#xf3bf;</i>';
-                    }
-                    text +=
-                    	'<div data-v-35475912="" class="com-contents"style="margin-left: '+dep+'px; ">'+
-                    	'<input type="hidden" value=" ' +
-                        result.BLOG[index].blog_reply_no + ' "> <p data-v-35475912="" class="nickname">' +
-                        result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
-                        '</span><div style="position: absolute;left: 70%;"><button onclick="location.href = "><span>수정 |</span></button><button onclick="deletereply(blog_reply_no)"><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show">' 
-                        + result.BLOG[index].reply_content + '</p>'+'</div></li>'
-                   /*  text +=
-                    	'<div data-v-35475912="" class="com-contents"style="margin-left: '+dep+'px;">'+
-                    	'<input type="hidden" value=" ' +
-                        result.BLOG[index].reply_no + ' "> <p data-v-35475912="" class="nickname">' +
-                        result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
-                        '</span> <p data-v-35475912="" class="comment-text show">' + result.BLOG[index].reply_content + '</p></div></li>' */
-	               /*  let dep = result.BLOG[index].depth * 20;
-	                console.log(dep);
-                    text +=
-                    	'<br><li data-v-35475912=""><div data-v-35475912="" class="com-contents"><input type="hidden" value=" ' +
-                        result.BLOG[index].reply_no + ' "> <p data-v-35475912="" class="nickname">' +
-                        result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
-                        '</span> <p data-v-35475912="" class="comment-text show">' + result.BLOG[index].reply_content + '</p></div></li>' */
+                	 console.log(result.BLOG[index].del)
+                 	if(result.BLOG[index].del == 1){
+                         text +=
+                         	'<div data-v-35475912="" class="com-contents">'+
+                         	' <p data-v-35475912="" class="nickname">' +
+                             '<br> ' + '</p> <span data-v-35475912="" class="com-contents-date">' + '<br> ' +
+                             '</span><div style="position: absolute;left: 70%;"></div> <p data-v-35475912="" class="comment-text show">' 
+                             + '[삭제된 댓글입니다]' + '</p>'+'</div></li>'
+                 		
+                 	} else {
+                     let dep = result.BLOG[index].depth * 30;
+                     console.log(dep);
+                     text += '<br><li data-v-35475912="" stype="position:relative">';
+                     if(result.BLOG[index].step > 0){
+                     	text += '<i style="font-size:24px;transform:rotate(90deg); position:absolute; left:'+dep+'px;" class="fas">&#xf3bf;</i>';
+                     }
+                     text +=
+                     	'<div data-v-35475912="" class="com-contents"style="margin-left: '+dep+'px; ">'+
+                     	'<input type="hidden" value=" ' +
+                         result.BLOG[index].blog_reply_no + ' "> <p data-v-35475912="" class="nickname">' +
+                         result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
+                         '</span><div style="position: absolute;left: 70%;"><button onclick="rewrite('+result.BLOG[index].blog_reply_no+')"><span>대댓글 |</span></button><button onclick="test(\'content'+result.BLOG[index].blog_reply_no+'\')"><span>수정 |</span></button><button onclick="deletereply(' +result.BLOG[index].blog_reply_no +')"><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show" id="content'+result.BLOG[index].blog_reply_no+'">' 
+                         + result.BLOG[index].reply_content + '</p>'+'</div></li>'
+                 	}
                 }
                 console.log(text);
                 $('#replylist').append(text);
                 $('#replycontent').val("");
-                $('#delbtn').on('click', deletereply);
+     /*            $('#delbtn').on('click', deletereply); */
             },
             error: function () {
                 alert("서버요청실패");
             }
         })
-    }
+    }//testt end
     
    
     //onload start
     $(function(){
+    	replyload();
+    });//onload end
+   function test(value){
+    	console.log(value);
+    }
+    //댓글 로딩 함수
+    function replyload(){
     	$.ajax({
             url: "RepleListBlogOrBook",
             type: "post",
@@ -2448,8 +2456,9 @@
                     	'<input type="hidden" value=" ' +
                         result.BLOG[index].blog_reply_no + ' "> <p data-v-35475912="" class="nickname">' +
                         result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
-                        '</span><div style="position: absolute;left: 70%;"><button onclick="test(\'content'+result.BLOG[index].blog_reply_no+'\')"><span>수정 |</span></button><button onclick="deletereply(' +result.BLOG[index].blog_reply_no +')"><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show" id="content'+result.BLOG[index].blog_reply_no+'">' 
-                        + result.BLOG[index].reply_content + '</p>'+'</div></li>'
+                        '</span><div style="position: absolute;left: 70%;"><button onclick="rewrite('+result.BLOG[index].blog_reply_no+')"><span>대댓글 |</span></button><button onclick="test(\'content'+result.BLOG[index].blog_reply_no+'\')"><span>수정 |</span></button>'+
+                        '<button onclick="deletereply(' +result.BLOG[index].blog_reply_no +')"><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show" id="content'+result.BLOG[index].blog_reply_no+'"><span id="replyspan'+result.BLOG[index].blog_reply_no+ ' ">' 
+                        + result.BLOG[index].reply_content + '</span><input type="text" id="replyinput'+result.BLOG[index].blog_reply_no+ ' " class="replyhide"></p>'+'</div></li>'
                 	}
                 } //for end
                 console.log(text);
@@ -2461,11 +2470,9 @@
                 alert("서버요청실패");
             }
         })
-    });//onload end
-   function test(value){
-    	console.log(value);
-    }
-	
+    } //replyload end
+    
+	//delete btn
     function deletereply(blog_reply_no){
    	alert(blog_reply_no);
     	$.ajax({
@@ -2479,21 +2486,61 @@
     		success : function(result){
     			alert("댓글 삭제 완료");
     			console.log(result);
+    			if(result == 1){
+    				alert("댓글 삭제 완료");
+    				replyload();
+    			} else {
+    				alert("댓글 삭제 실패");
+    			}
     		},
     		error : function(error){
     			alert('error');
-    			console.log(error);
     		}
     		
     	})//ajax end
     		 
     	
     } // delete function end
-   
+/* 
+    function updatetest(){
+    	$.ajax({
+    		url : 'ReplyUpdate',
+    		type : 'post',
+    		data : {
+    			type: 'blog',
+    			blog_reply_no : blog_reply_no  ,
+    			reply_content : 
+    		},
+    		dataType : 'json',
+    		success : function(result){
+    			
+    		}
+    	})
+    } //update end
+    */
     
+    function rewirte(blog_reply_no){
+    	/* $.ajax({
+    		url : 'ReplyRewrite',
+    		type : 'post',
+    		data : {
+    			type : 'blog',
+    			blog_reply_no : blog_reply_no  ,
+    			id : '${sessionScope.id}' ,
+    			blog_no :  '${requestScope.blog.blog_no}',
+    			blog_content : $().text()
+    		},
+    		dataType : 'json',
+    		success : function(result){
+    			if(result){
+    				alert('대댓글 작성 성공');
+    				replyload();
+    			}
+    			}
+    		}//ajax end */
+    	}//rewrite end 
     
-    
-</script>
+    </script>
 <!-- //삭제
 function delete(){
 		let reply_no=$(this).attr("");
