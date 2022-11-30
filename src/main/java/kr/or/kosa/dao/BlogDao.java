@@ -500,7 +500,7 @@ public class BlogDao implements BookMarkDao{
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select blog_reply_no, id, refer, depth, step, to_char(reply_date), reply_content, del "
-					+ "from blog_reply where blog_no = ? order by refer desc";
+					+ "from blog_reply where blog_no = ? order by refer desc, step asc";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, blog_no);
