@@ -6,6 +6,8 @@
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+	<!-- sweetalert -->
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -30,8 +32,8 @@
     </thead>
     <tbody>
 		<c:forEach var="blog"  items="${requestScope.blogboardlist }"> 
-		      <tr onclick=" location.href='blogDetail.do?blog_no=${blog.blog_no}' ">
-					<td>${blog.blog_no }</td>
+		      <tr>
+					<td onclick=" location.href='blogDetail.do?blog_no=${blog.blog_no}' ">${blog.blog_no }</td>
 					<td>${blog.id }</td>
 					<td>${blog.blog_title }</td>
 					<td>${blog.hits }</td>
@@ -58,8 +60,20 @@
 	/* $(function(){
 		$('#blogtable').DataTable();
 	}) */
-	blogdelete(blog_no){
-		alert(blog_no);
+	function blogdelete(blog_no){ 
+		Swal.fire({
+			  title: 'Are you sure?',
+			  text: blog_no +"번 글이 삭제됩니다.",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+					location.href = "blogDeleteOk.do?blog_no="+blog_no;
+			  }
+			})
 	}
 </script>
 </html>

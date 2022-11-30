@@ -6,9 +6,6 @@
   <meta charset="utf-8">
   <!-- jquery -->
 	 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<!-- datatable -->
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 	 <!-- bootstrap -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -16,6 +13,10 @@
 	<style type="text/css">
 		table{
 			font-size:12px;
+			margin-top:15px;
+		}
+		.col{
+			padding-top:10px;
 		}
 	</style>
 </head>
@@ -27,8 +28,8 @@
     <div class="col" style="background-color:lavender;">
     	  <table class="table table-striped" id="booktable">
 		    <thead>
-		    	<tr rowspan="4">
-		    		<td>책 댓글</td>
+		    	<tr>
+		    		<td colspan="4">책 댓글</td>
 		    	</tr>
 		      <tr>
 		        <th>댓글번호</th>
@@ -50,8 +51,8 @@
     <div class="col" style="background-color:orange;">
     	  <table class="table table-striped" id="blogtable">
 		    <thead>
-		    	<tr rowspan="4">
-		    		<td>블로그 댓글</td>
+		    	<tr>
+		    		<td colspan="4">블로그 댓글</td>
 		    	</tr>
 		      <tr>
 		        <th>댓글번호</th>
