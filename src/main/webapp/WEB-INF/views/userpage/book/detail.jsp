@@ -339,7 +339,32 @@
     //장바구니 이동
     $('#hjCartList').click(function(){
         let id =  "<c:out value='${sessionScope.id}' />";
-        $(location).attr("href", `cartList.do?id=${id}`);
+        let isbn = "<c:out value='${requestScope.isbn}' />"
+        //let type = "false"; 왜 이렇게 했을때 파라미터로 안가지?
+        $.ajax({
+            url: 'cartAdd.do',
+            type: 'get',
+            data: {
+                isbn:isbn,
+                id:id,
+                type:'false',
+            }, //이 값을 서블릿으로 가지고 감
+            dataType: 'JSON',
+            
+            success: function(result){
+                $(location).attr("href", `cartList.do?id=${id}`);
+            },
+            error : function(){
+                Swal.fire(
+                    '오류가 발생했네요',
+                    '다시 시도해보세요',
+                    'error'
+                    )
+            }
+        })
+
+
+        //$(location).attr("href", `cartList.do?id=${id}`);
     })
 </script>
 

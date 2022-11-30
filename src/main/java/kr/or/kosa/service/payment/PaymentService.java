@@ -27,6 +27,8 @@ public class PaymentService implements Action {
 		
 		String msg = "";
 		String url = "";
+		String path = "";
+		
 		try {
 			//장바구니 >> 체크박스 선택 >> 결제 클릭 >> 토스 api 보여주고 >> 이 서비스로 이동
 			//결제 책 목록(isbn목록) checkbox 선택된것들 >>  [] >> parameter이름 [selectedlist]
@@ -71,22 +73,24 @@ public class PaymentService implements Action {
 			
 			//결제 성공시
 			if(result > 0) {
-				msg = "결제가 완료되었습니다";
-				url = "cartList.do?id=" + request.getParameter("id");
+				//msg = "결제가 완료되었습니다";
+				//url = "cartList.do?id=" + request.getParameter("id");
+				path = "/WEB-INF/views/userpage/user_paymentSuccess.jsp";
 			}else {//결제 실패시
 				msg = "결제에 실패하였습니다";
 				url = "cartList.do?id=" + request.getParameter("id");
+				path = "/WEB-INF/views/utils/redirect.jsp";
 			}
 			request.setAttribute("msg", msg);
 			request.setAttribute("url", url);
 			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
+			forward.setPath(path);
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "서버오류");
 			request.setAttribute("url", "/WEB-INF/views/utils/redirect.jsp");
 			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
+			forward.setPath(path);
 		} 
 		return forward;
 	}
