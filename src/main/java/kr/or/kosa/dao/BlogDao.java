@@ -500,7 +500,7 @@ public class BlogDao implements BookMarkDao{
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select blog_reply_no, id, refer, depth, step, to_char(reply_date), reply_content, del "
-					+ "from blog_reply where blog_no = ?";
+					+ "from blog_reply where blog_no = ? order by refer desc";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, blog_no);
@@ -511,14 +511,14 @@ public class BlogDao implements BookMarkDao{
 			replylist = new ArrayList<>();
 			
 			while(rs.next()) {
-				int blog_reply_no = rs.getInt("blog_reply_no");
-				String id = rs.getString("id");
-				int refer = rs.getInt("refer");
-				int depth = rs.getInt("depth");
-				int step = rs.getInt("step");
-				String reply_date = rs.getString("reply_date");
-				String reply_content = rs.getString("reply_content");
-				int del = rs.getInt("del");
+				int blog_reply_no = rs.getInt(1);
+				String id = rs.getString(2);
+				int refer = rs.getInt(3);
+				int depth = rs.getInt(4);
+				int step = rs.getInt(5);
+				String reply_date = rs.getString(6);
+				String reply_content = rs.getString(7);
+				int del = rs.getInt(8);
 				
 				Blog_Reply reply = new Blog_Reply(blog_reply_no, blog_no, id, reply_date, reply_content, refer, depth, step, del);
 				replylist.add(reply);
@@ -527,13 +527,9 @@ public class BlogDao implements BookMarkDao{
 		} catch (Exception e) {
 			System.out.println("getReply 예외 : " + e.getMessage());
 		}finally {
-			try {
 				ConnectionHelper.close(rs);
 				ConnectionHelper.close(pstmt);
 				ConnectionHelper.close(conn);
-			} catch (Exception e2) {
-				
-			}
 		}
 		
 		return replylist;
@@ -658,7 +654,6 @@ public class BlogDao implements BookMarkDao{
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {

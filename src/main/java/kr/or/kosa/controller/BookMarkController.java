@@ -163,7 +163,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동
     		forward = new ActionForward();
      		forward.setRedirect(false);
-     		forward.setPath("/summernote.html");
+     		forward.setPath("/WEB-INF/views/userpage/blog/user_blog_write.jsp");
     	} else if(url_Command.equals("/blogWriteOk.do")) { // 15. 회원 - 블로그 게시글 작성 처리
     		// 이동 + 처리
     		action = new BlogWriteService();
@@ -293,7 +293,7 @@ public class BookMarkController extends HttpServlet {
      		// 이동
     			forward = new ActionForward();
     			forward.setRedirect(false);
-    			forward.setPath("/login.html");
+    			forward.setPath("/WEB-INF/views/userpage/user_login.jsp");
      	} else if(url_Command.equals("/userLoginOk.do")) { //42  회원 - 로그인 처리 
     		// 이동+처리
     		action =  new UserLoginService();
@@ -302,7 +302,7 @@ public class BookMarkController extends HttpServlet {
     		// 이동
     		forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("/register.html"); //TODO: 아직 뷰 없음
+			forward.setPath("/WEB-INF/views/userpage/user_register.jsp"); //TODO: 아직 뷰 없음
     		
 			//TODO : 회원과 관리자의 서비스 우선 같게 해둠
     		//forward = action.execute(request, response);
