@@ -23,7 +23,7 @@ public class CartListService implements Action {
 			PaymentDao pdao = new PaymentDao();
 
 			String id = request.getParameter("id");
-			System.out.println("cartList id : " + id);
+//			System.out.println("cartList id : " + id);
 			List<Book> cartlist = pdao.cartlist(id);
 			int cartsize = cartlist.size();
 			String firstbook = cartlist.get(0).getBook_name();
@@ -43,12 +43,13 @@ public class CartListService implements Action {
 			forward.setRedirect(false); // forward
 			forward.setPath("/WEB-INF/views/userpage/user_cart.jsp");
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("cartListService 예외 : " + e.getMessage());
+			
 			String msg = "서버에러발생";
 			String url = "main.do";
 			request.setAttribute("msg",msg);
 			request.setAttribute("url", url);
-			
+			e.printStackTrace();
 			forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 			forward.setRedirect(false);
 		}

@@ -245,9 +245,9 @@ public class PaymentDao implements BookMarkDao{
 						+ "values(payment_no_seq.nextval, ?, ?, ?) ";
 				for(Book book : list) { //결제된 책 목록만큼
 					sql += "into book_payment(payment_no, isbn, count, sumprice) "
-							+ "values(payment_no_seq.currentval, ?, ?, ?) "
-							+ "select * from dual;";
+							+ "values(payment_no_seq.currval, ?, ?, ?) ";
 				}
+					sql += "select * from dual";
 				pstmt = conn.prepareStatement(sql);
 				
 				pstmt.setString(index++, id);
