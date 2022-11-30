@@ -145,7 +145,9 @@ public class PaymentDao implements BookMarkDao{
 			
 			try {
 				conn = ConnectionHelper.getConnection("oracle");
-				String sql = "select book_payment.payment_no,isbn,count,to_char(payment_date),sumprice from book_payment join payment on book_payment.payment_no = payment.payment_no where payment.id = ?";
+				String sql = "select book_payment.payment_no,isbn,count,to_char(payment_date),sumprice"
+						+ " from book_payment join payment on book_payment.payment_no = payment.payment_no"
+						+ " where payment.id = ? order by payment_no desc";
 				System.out.println(sql);
 				System.out.println(id);
 				
