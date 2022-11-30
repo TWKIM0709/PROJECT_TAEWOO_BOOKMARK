@@ -106,22 +106,23 @@ public class PaymentDao implements BookMarkDao{
 			return row;
 		}
 
-		public int deleteOk(String id, String isbn) { //장바구니 목록에서 지우기
+		//public int deleteOk(String id, String isbn) { //장바구니 목록에서 지우기
+		public int deleteOk(String id) { //전부 비우기
 			Connection conn = ConnectionHelper.getConnection("oracle");
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			int row = 0;
 				
 			try {
-				String sql = "delete from cart where id=? and isbn=?";
+				String sql = "delete from cart where id=?";
 				pstmt=conn.prepareStatement(sql);
 				
 				pstmt.setString(1, id);
-				pstmt.setString(2,isbn);
+				//pstmt.setString(2,isbn);
 				row = pstmt.executeUpdate();
 				
 			} catch (Exception e) {
-				e.getStackTrace();
+				e.printStackTrace();
 			}finally {
 				try {
 					ConnectionHelper.close(rs);

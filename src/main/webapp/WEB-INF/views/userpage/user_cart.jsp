@@ -297,110 +297,6 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
   transition:800ms ease all;
 }
 
-
-.checks {position: relative;}
-
-.checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip:rect(0,0,0,0);
-  border: 0
-}
-.checks input[type="checkbox"] + label {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-.checks input[type="checkbox"] + label:before {  /* 가짜 체크박스 */
-  content: ' ';
-  display: inline-block;
-  width: 21px;  /* 체크박스의 너비를 지정 */
-  height: 21px;  /* 체크박스의 높이를 지정 */
-  line-height: 21px; /* 세로정렬을 위해 높이값과 일치 */
-  margin: -2px 8px 0 0;
-  text-align: center; 
-  vertical-align: middle;
-  background: #fafafa;
-  border: 1px solid #cacece;
-  border-radius : 3px;
-  box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-}
-.checks input[type="checkbox"] + label:active:before,
-.checks input[type="checkbox"]:checked + label:active:before {
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
-}
-
-.checks input[type="checkbox"]:checked + label:before {  /* 체크박스를 체크했을때 */ 
-  content: '\2714';  /* 체크표시 유니코드 사용 */
-  color: #99a1a7;
-  text-shadow: 1px 1px #fff;
-  background: #e9ecee;
-  border-color: #adb8c0;
-  box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
-}
-
-.checks.small input[type="checkbox"] + label {
-  font-size: 12px;
-}
-
-.checks.small input[type="checkbox"] + label:before {
-  width: 17px;
-  height: 17px;
-  line-height: 17px;
-  font-size: 11px;
-}
-
-.checks.etrans input[type="checkbox"] + label {
-  padding-left: 30px;
-}
-.checks.etrans input[type="checkbox"] + label:before {
-  position: absolute;
-  left: 0;
-  top: 0;
-  margin-top: 0;
-  opacity: .6;
-  box-shadow: none;
-  border-color: #6cc0e5;
-  -webkit-transition: all .12s, border-color .08s;
-  transition: all .12s, border-color .08s;
-}
-
-.checks.etrans input[type="checkbox"]:checked + label:before {
-  position: absolute;
-  content: "";
-  width: 10px;
-  top: -5px;
-  left: 5px;
-  border-radius: 0;
-  opacity:1; 
-  background: transparent;
-  border-color:transparent #6cc0e5 #6cc0e5 transparent;
-  border-top-color:transparent;
-  border-left-color:transparent;
-  -ms-transform:rotate(45deg);
-  -webkit-transform:rotate(45deg);
-  transform:rotate(45deg);
-}
-
-.no-csstransforms .checks.etrans input[type="checkbox"]:checked + label:before {
-  /*content:"\2713";*/
-  content: "\2714";
-  top: 0;
-  left: 0;
-  width: 21px;
-  line-height: 21px;
-  color: #6cc0e5;
-  text-align: center;
-  border: 1px solid #6cc0e5;
-}
-
     </style>
     <style type="text/css">
         .vue-slider {
@@ -790,8 +686,9 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
                        
                     </section>
                     <h2 data-v-02a040ec="" class="title" id="searchTag">장바구니</h2>
+                    
                     <hr data-v-02a040ec="">
-
+                    <h2 data-v-02a040ec="" class="title" id="hjtotalprice"></h2>
                     <section data-v-02a040ec="" class="page category-wrap">
                         <h2 data-v-02a040ec="" class="title" id="searchTag"></h2>
                         <ul data-v-02a040ec="" id="searchResultList" class="category-list">
@@ -799,13 +696,11 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
                                 <c:forEach  var="book"  items="${requestScope.cartlist}" varStatus="status">
                                     <c:set var="bookcount" value="bookcount${status.count}"></c:set>
 	                                	 <li data-v-02a040ec="" id=${bookcount} name="hjitem" class="list gtm-search-category"><a data-v-02a040ec="">
-                                            <input type="checkbox" value="d">
 		                                    <div data-v-02a040ec="" class="metadata">
                                                 
                                                 <strong data-v-02a040ec="">${book.book_name }</strong>
 		                                        <p data-v-02a040ec="">${book.author }</p><br>
                                                 <p id="bookprice" data-v-02a040ec="">${book.price}원</p>
-                                                <p id="isbn">${book.isbn}</p>
 		                                    </div>
 		                                    <div data-v-02a040ec="" class="bookcover">
 		                                        <div data-v-02a040ec="" class="inner">
@@ -824,11 +719,10 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
                                 </c:forEach>
                         </ul>
 
-
                         <hr>
-                        <!-- <div class="hj-button-area">
-                            <button class="custom-btn btn-5"><span>구매하기</span></button>
-                        </div> -->
+                        <div class="hj-button-area">
+                            <button id="hjtrash" class="custom-btn btn-5"><span>장바구니 비우기</span></button>
+                        </div>
                     </section>
                     <hr>
                     <!-- 결제할 책 -->
@@ -1085,7 +979,7 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
         $('#hjpriceinput').attr("value", totalprice);
         $('#hjcartsize').attr("value", cartsize);
         $('#hjfirstbook').attr("value", repbook);
-
+        $('#hjtotalprice').append(totalprice + "원")
         /*
         $('#searchResultList').children().click(function(){
             //TODO: 클릭 홀수면 결제하기목록에 짝수면 다시 장바구니에 돌리는 로직 ??
@@ -1118,6 +1012,9 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
                 //orderItem 외 count 건 (예:러시아어 외 2건)
             }
         )
+        $('#hjtrash').click(function(){
+            $(location).attr("href", "cartDeleteOk.do?id=" + customerName);
+        })
     })
     function kakaopost() {
       new daum.Postcode({
