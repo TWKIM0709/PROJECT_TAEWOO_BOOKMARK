@@ -853,7 +853,7 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
     	<section data-v-c1337ae8="" class="content">
 			<div data-v-9baa251e="" data-v-c1337ae8="" class="millie-inner">
 				<div data-v-9baa251e="">
-				<form id="hjpost" action='payment.do' method = "get" >
+				<form id="hjpost" action='payment.do' method = "post" >
                     <h2 data-v-02a040ec="" class="title" id="searchTag">받는 분 정보</h2>
 					<div data-v-9baa251e="" class="inner-content">
 
