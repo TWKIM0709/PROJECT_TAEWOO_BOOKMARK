@@ -91,6 +91,7 @@
                                 
                             </ul>
                         </div>
+                        <btton onclick="location.href = 'questionWrite.do' ">글쓰기</btton>
                     </div>
                     <div id="hjPager" style="text-align: center; margin-top: 13px; font-size: 18px;">
                             ${requestScope.pager}
