@@ -15,8 +15,8 @@
 
 <script type="text/javascript">
 Swal.fire(
-        '결제가 완료되었습니다!',
-        '빠른 시일 내에 만나요',
+        '결제가 완료되었습니다',
+        '빠른 시일 내에 만나요!',
         'success'
         ).then(function(){
             location.href="main.do";        	
