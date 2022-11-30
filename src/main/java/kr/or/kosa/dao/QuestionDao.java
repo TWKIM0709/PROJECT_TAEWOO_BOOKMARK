@@ -94,7 +94,7 @@ public class QuestionDao implements BookMarkDao{
 			String sql = "select * from"
 					+ "    (select rownum rn,question_no, id, question_title,question_content,hits,to_char(question_date) as question_date,"
 					+ "    refer, depth, step, notice_no from"
-					+ "        ( SELECT * FROM question_board where "+type+" like ? ORDER BY notice_no asc, refer DESC , step ASC )"
+					+ "        ( SELECT * FROM question_board where "+type+" like ? ORDER BY notice_no desc, refer DESC , step ASC )"
 					+ "    where rownum <= ?) where rn >= ?";
 			pstmt = conn.prepareStatement(sql);
 			int start = cpage * pagesize - (pagesize -1); //1 * 5 - (5 - 1) >> 1
