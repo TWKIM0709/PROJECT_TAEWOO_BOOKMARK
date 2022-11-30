@@ -26,7 +26,7 @@ public class QuestionLikeListService implements Action {
 			QuestionDao qdao = new QuestionDao();
 
 			// 게시물 총 건수
-			int totalboardcount = qdao.totalBoardCountByLike("id",request.getParameter("search"));
+			int totalboardcount = qdao.totalBoardCountByLike("question_title",request.getParameter("search"));
 			// 상세보기 >> 다시 LIST 넘어올때 >> 현재 페이지 설정
 			String ps = request.getParameter("ps"); // pagesize
 			String cp = request.getParameter("cp"); // current page
@@ -55,7 +55,7 @@ public class QuestionLikeListService implements Action {
 
 			// 102건 : pagesize=5 >> pagecount=21페이지
 			// 전체 목록 가져오기
-			List<Question_Board> qlist = qdao.getQuestionLikeList("id",request.getParameter("search"),cpage, pagesize); // list >> 1 , 20
+			List<Question_Board> qlist = qdao.getQuestionLikeList("question_title",request.getParameter("search"),cpage, pagesize); // list >> 1 , 20
 
 			int pagersize=3; //[1][2][3]
 			ThePager pager = new ThePager(totalboardcount,cpage,pagesize,pagersize,"questionLike.do?search=" + request.getParameter("search"));

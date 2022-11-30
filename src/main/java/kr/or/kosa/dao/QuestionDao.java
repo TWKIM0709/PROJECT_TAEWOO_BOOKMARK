@@ -10,21 +10,21 @@ import kr.or.kosa.dto.Question_Board;
 import kr.or.kosa.utils.ConnectionHelper;
 
 public class QuestionDao implements BookMarkDao{
-	//글 전체조회
-	//select * from question_board;
-	public List<Question_Board> getQuestionAllList(int cpage , int pagesize){
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<Question_Board> list = new ArrayList<Question_Board>();
-		try {
-			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "select * from"
-					+ "    (select rownum rn,question_no, id, question_title,question_content,hits,to_char(question_date),"
-					+ "    refer, depth, step, notice_no from"
-					+ "        ( SELECT * FROM question_board ORDER BY notice_no asc, refer DESC , step ASC )"
-					+ "    where rownum <= ?) where rn >= ?";
-			pstmt = conn.prepareStatement(sql);
+   //글 전체조회
+   //select * from question_board;
+   public List<Question_Board> getQuestionAllList(int cpage , int pagesize){
+      Connection conn = null;
+      PreparedStatement pstmt = null;
+      ResultSet rs = null;
+      List<Question_Board> list = new ArrayList<Question_Board>();
+      try {
+         conn = ConnectionHelper.getConnection("oracle");
+         String sql = "select * from"
+               + "    (select rownum rn,question_no, id, question_title,question_content,hits,to_char(question_date),"
+               + "    refer, depth, step, notice_no from"
+               + "        ( SELECT * FROM question_board ORDER BY notice_no desc, refer DESC , step ASC )"
+               + "    where rownum <= ?) where rn >= ?";
+         pstmt = conn.prepareStatement(sql);
 
 			int start = cpage * pagesize - (pagesize -1); //1 * 5 - (5 - 1) >> 1
 			int end = cpage * pagesize; // 1 * 5 >> 5
@@ -87,6 +87,8 @@ public class QuestionDao implements BookMarkDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Question_Board> list = new ArrayList<Question_Board>();
+		System.out.println(type);
+		System.out.println(value);
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select * from"
@@ -331,14 +333,16 @@ public class QuestionDao implements BookMarkDao{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		Question_Board question = null;
+		Question_Board question = new Question_Board();
+		System.out.println(questionNo);
+		int q = Integer.parseInt(questionNo);
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "select question_no, id, question_title,question_content,hits,to_char(question_date),refer, depth, step, notice_no where question_no=?";
+			String sql = "select question_no, id, question_title, question_content, hits, to_char(question_date), refer, depth, step, notice_no from question_board where question_no=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, questionNo);
+			pstmt.setInt(1, q);
+			System.out.println(sql);
 			rs = pstmt.executeQuery();
-			
 			if(rs.next()) {
 				question.setQuestion_no(rs.getInt(1));
 				question.setId(rs.getString(2));
@@ -351,6 +355,7 @@ public class QuestionDao implements BookMarkDao{
 				question.setStep(rs.getInt(9));
 				question.setNotice_no(rs.getInt(10));
 			}
+			System.out.println(question);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -367,7 +372,8 @@ public class QuestionDao implements BookMarkDao{
 		int row = 0;
 		
 		try {
-			String sql = "update question_board set hit=hit+1 where question_no = ?";
+			conn = ConnectionHelper.getConnection("oracle");
+			String sql = "update question_board set hits = hits+1 where question_no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, questionNo);
 			row = pstmt.executeUpdate();

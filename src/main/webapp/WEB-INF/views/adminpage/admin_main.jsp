@@ -49,9 +49,7 @@
         series: [
         {
        	  name: "명",
-          data: [
-            
-          ]
+          data: []
         }
 		],
 			legend: {
