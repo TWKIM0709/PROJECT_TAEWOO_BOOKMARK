@@ -2447,18 +2447,27 @@
                 	} else {
                     let dep = result.BLOG[index].depth * 30;
                     console.log(dep);
-                    text += '<br><li data-v-35475912="" stype="position:relative">';
+                    text += '<br><li data-v-35475912="" stype="position:relative" id="replyli' +result.BLOG[index].blog_reply_no+'">';
                     if(result.BLOG[index].step > 0){
                     	text += '<i style="font-size:24px;transform:rotate(90deg); position:absolute; left:'+dep+'px;" class="fas">&#xf3bf;</i>';
                     }
+                    
+                    //rewritebtn숫자 >> 답글 버튼
+                    //updatebtn숫자 >> 수정 버튼
+                    //deletebtn숫자 >> 삭제버튼
+                    //<button id="updateokbtn' +result.BLOG[index].blog_reply_no+' " onclick="rewirte('+result.BLOG[index].blog_reply_no+')" class="replyhidden"><span>수정완료 |</span></button>
+                    //<button id="updatecancelbtn' +result.BLOG[index].blog_reply_no+' " onclick="rewirte('+result.BLOG[index].blog_reply_no+')" class="replyhidden"><span>취소 |</span></button>
                     text +=
                     	'<div data-v-35475912="" class="com-contents"style="margin-left: '+dep+'px; ">'+
-                    	'<input type="hidden" value=" ' +
-                        result.BLOG[index].blog_reply_no + ' "> <p data-v-35475912="" class="nickname">' +
+                    	'<input id="replyno' +result.BLOG[index].blog_reply_no+'"type="hidden" value="' +  result.BLOG[index].blog_reply_no + '"> <p data-v-35475912="" class="nickname">' + //input 히든 + 댓글작성날짜
                         result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
-                        '</span><div style="position: absolute;left: 70%;"><button onclick="rewrite('+result.BLOG[index].blog_reply_no+')"><span>대댓글 |</span></button><button onclick="test(\'content'+result.BLOG[index].blog_reply_no+'\')"><span>수정 |</span></button>'+
-                        '<button onclick="deletereply(' +result.BLOG[index].blog_reply_no +')"><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show" id="content'+result.BLOG[index].blog_reply_no+'"><span id="replyspan'+result.BLOG[index].blog_reply_no+ ' ">' 
-                        + result.BLOG[index].reply_content + '</span><input type="text" id="replyinput'+result.BLOG[index].blog_reply_no+ ' " class="replyhide"></p>'+'</div></li>'
+                        '</span><div style="position: absolute;left: 70%;">'+
+                        '<button id="updateokbtn' +result.BLOG[index].blog_reply_no+'" onclick="updatetest(' +result.BLOG[index].blog_reply_no+')" class="replyhide"><span>수정완료|</span></button>'+
+                        '<button id="updatecancelbtn' +result.BLOG[index].blog_reply_no+'" onclick="updateset('+result.BLOG[index].blog_reply_no+')" class="replyhide"><span>취소</span></button>'+
+                        '<button id="rewritebtn' +result.BLOG[index].blog_reply_no+'" onclick="addrewritearea(' +result.BLOG[index].blog_reply_no+')"><span>대댓글 |</span></button><button id="updatebtn'+result.BLOG[index].blog_reply_no+'" onclick="updateset('+result.BLOG[index].blog_reply_no+')"><span>수정 |</span></button>'+
+                        '<button id="deletebtn'+result.BLOG[index].blog_reply_no+'" onclick="deletereply(' +result.BLOG[index].blog_reply_no +')"><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show" id="content'+result.BLOG[index].blog_reply_no+'"><span id="replyspan'+result.BLOG[index].blog_reply_no+ '">' 
+                        + result.BLOG[index].reply_content +
+                        '</span><input type="text" value="'+ result.BLOG[index].reply_content +'" id="replyinput'+result.BLOG[index].blog_reply_no+ '" class="replyhide" style="background-color:#e8e8e8; width:70%;"></p>'+'</div></li>'
                 	}
                 } //for end
                 console.log(text);
@@ -2501,89 +2510,97 @@
     		 
     	
     } // delete function end
-/* 
-    function updatetest(){
+
+    function updatetest(blog_reply_no){
+    	let contentvalue = "\#replyinput"+blog_reply_no;
     	$.ajax({
     		url : 'ReplyUpdate',
     		type : 'post',
     		data : {
     			type: 'blog',
-    			blog_reply_no : blog_reply_no  ,
-    			reply_content : 
+    			"blog_reply_no" : blog_reply_no  ,
+    			reply_content : $(contentvalue).val()
     		},
-    		dataType : 'json',
+    		dataType : 'text',
     		success : function(result){
-    			
+    			if(result == 1){
+    				alert('수정성공');
+    				replyload();
+    			} else {
+    				alert('수정실패...');
+    			}
+    		},
+    		error:function(){
+    			alert("에러발생");
     		}
     	})
     } //update end
-    */
+    
+    //수정기능 스위치 함수
+    function updateset(blog_reply_no){
+		let spanid = "\#replyspan" +blog_reply_no; //내용
+		let rewrite = "\#rewritebtn"  +blog_reply_no; //답글 버튼
+		let deletebtn = "\#deletebtn" + +blog_reply_no; //삭제버튼
+		let updatebtn = "\#updatebtn" + +blog_reply_no; //수정버튼
+		let inputid = "\#replyinput"+blog_reply_no; //수정input
+		let updateok = "\#updateokbtn" +blog_reply_no; //수정완료버튼
+		let updatecancel = "\#updatecancelbtn"+blog_reply_no; //수정취소 버튼\
+
+		$(updatebtn).toggleClass('replyhide');
+		$(spanid).toggleClass('replyhide');
+		$(rewrite).toggleClass('replyhide');
+		$(deletebtn).toggleClass('replyhide');
+		$(inputid).toggleClass('replyhide');
+		$(updateok).toggleClass('replyhide');
+		$(updatecancel).toggleClass('replyhide');
+    }//updateset end
+    
+    
     
     function rewirte(blog_reply_no){
-    	/* $.ajax({
+    	let inputtag ="\#rewriteinput" + blog_reply_no;
+		 $.ajax({
     		url : 'ReplyRewrite',
     		type : 'post',
     		data : {
     			type : 'blog',
-    			blog_reply_no : blog_reply_no  ,
+    			"blog_reply_no" : blog_reply_no ,
     			id : '${sessionScope.id}' ,
     			blog_no :  '${requestScope.blog.blog_no}',
-    			blog_content : $().text()
+    			blog_content : $(inputtag).text()
     		},
     		dataType : 'json',
     		success : function(result){
-    			if(result){
-    				alert('대댓글 작성 성공');
-    				replyload();
+    				if(result.result == "success"){
+    					alert('답글작성성공');
+    					replyload();
+    				} else {
+    					alert('답글 작성 실패');
+    				}
+    			},
+    			error : function(){
+    				alert('에러');
     			}
-    			}
-    		}//ajax end */
+    		})//ajax end 
     	}//rewrite end 
     
+    	function addrewritearea(blog_reply_no){
+    		let rl = "\#replyli"+blog_reply_no; // li 아이디
+    		console.log(rl);
+    		console.log($(rl).text());
+    		let text = "";
+    		text +='<br>'+
+			    		'<div data-v-35475912="" class="register flex-container">'+
+			    		//'<input type="hidden" id="rewriteno'+blog_reply_no+'" value="'+blog_reply_no+'">'+
+				            '<hr>'+
+				           '<div data-v-35475912="" class="register-box">'+
+				               '<div data-v-35475912="" class="register-box-inner"><span data-v-35475912="">대댓글</span>'+
+				                   '<p data-v-35475912="" contenteditable="plaintext-only" data-placeholder="답글 내용 입력" id="rewriteinput'+blog_reply_no+'"></p>'+
+				               '</div>'+
+				           '</div> <button data-v-35475912="" type="button" class="post-btn flex-container mds-button mds-button--secondary mds-button--flex mds-button--h56 mds-button--r4" onclick="rewirte('+blog_reply_no+')"><span>답글등록</span></button>'+
+				       '</div>';
+			$(rl).after(text);
+    	}
+    	
     </script>
-<!-- //삭제
-function delete(){
-		let reply_no=$(this).attr("");
-		let blog_no=$(this).attr("");
-		$.ajax({
-			type:'get',
-			url:'ReplyDelete',
-			data:{ 
-				type : 'blog' ,
-				blog_reply_no : '  '
-			},
-			success:function(result)
-			{
-				$('#reply_data').html(result);
-			}
-		})
-	})
-https://angehende-ingenieur.tistory.com/160
-https://greeenhong.tistory.com/311?category=994363
-
-
-//수정
-function answerEdit(reply_no, id, reply_content, qna_idx){
-			$('#acontent'+reply_no).html(
-				"<textarea id='edit_reply_content"+reply_no+"'>"+reply_content+"</textarea>"
-				+"<style>#edit_acontent"+answer_idx+"{width:740px; height:80px; resize:none;} </style>"
-			);
-			
-			$('#abt'+reply_no).html(
-				"<a onclick='answerEditSave("+answer_idx+","+qna_idx+")' id='btnEdit'>완료</a> "
-				+"<a onclick='location.href='qnaDetail.do?idx="+qna_idx+"' id='btnCancel'>취소</a>"
-			);
-		}
-
-		function answerEditSave(answer_idx, qna_idx){
-			var acontent = $("#edit_acontent"+answer_idx).val();
-			location.href='answerEdit.do?idx='+answer_idx+"&acontent="+acontent;
-		}
-https://ceodanbi.tistory.com/44
-
-//대댓글
-https://huskdoll.tistory.com/126
-
-//댓글 접기 펼치기
-https://onecutwook.tistory.com/26 -->
 </html>
