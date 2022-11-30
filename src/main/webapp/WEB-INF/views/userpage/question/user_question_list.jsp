@@ -130,7 +130,6 @@
                     $('#hjPager').empty();
 
                     let resultData = result;
-                    console.log(resultData);
                     let test = '';
                     //[{"isbn":"K502837053","book_name":"칵테일, 러브, 좀비 (리커버)","author":"조예은 (지은이)","description":"undefined","price":10000,"book_filename":"https://image.aladin.co.kr/product/29543/72/coversum/k502837053_1.jpg"}]
 

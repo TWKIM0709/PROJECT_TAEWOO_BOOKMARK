@@ -36,7 +36,7 @@ public class ThePager {
 	    "[<a href='%s?cp=%d'>이전</a>]", linkUrl, currentPage - 1));
 	   linkString.append("&nbsp;");
 	  }
-	  
+	  System.out.println(currentPage);
 	  //2. 페이지 번호 Link 만들기
 	  int pagerBlock = (currentPage - 1) / pagerSize;
 	  int start = (pagerBlock * pagerSize) + 1;
