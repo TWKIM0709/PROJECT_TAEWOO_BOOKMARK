@@ -261,12 +261,6 @@
 </body>
 
 <script>
-    
-    function a() {
-        const sendText = '테스트메세지';
-        const pageUrl = 'https://naver.com';
-        window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${pageUrl}`);
-    }
 
     function b() {
     	window.open('https://www.youtube.com/results?search_query=' + '${book.book_name}'+' 리뷰');
@@ -290,7 +284,7 @@
                 	 result.BOOK[index].id+'</p> <span data-v-da7fb214="" class="date">'+result.BOOK[index].reply_date+'</span><pre data-v-da7fb214="" class="cont">'+result.BOOK[index].reply_content+'</pre></div>';
                 	if("${sessionScope.id}" == id){
                 		console.log("id 같음");
-                		text += '<button>삭제</button><button disabled>|</button><button>수정</button>';
+                		text += '<button onclick=>수정</button><button disabled>|</button><button onclick=>삭제</button>';
                 	}
                 	 text +='</li>'                	 
                  }

@@ -27,9 +27,8 @@ public class QuestionUpdateOkService implements Action {
 			board.setId(request.getParameter("id"));
 			board.setQuestion_title(request.getParameter("question_title"));
 			board.setQuestion_content(request.getParameter("question_content"));
-			board.setNotice_no(Integer.parseInt(request.getParameter("notice_no")));
-			
-			
+			int notice = (request.getSession().getAttribute("admin").equals("admin")) ? 1:0;
+			board.setNotice_no(notice);
 			
 			if(question_no == null || question_no.trim().equals("")) {
 				msg = "글번호 입력 오류";

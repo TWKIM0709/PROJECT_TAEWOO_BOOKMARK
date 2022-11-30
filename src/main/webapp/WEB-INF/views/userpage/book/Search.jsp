@@ -535,135 +535,75 @@
 
 		$('#searchBtn').on("click", function(){
 			let inputtxt = $('#input-475').val(); //검색어
-			// console.log(inputtxt);
-            $('#category').empty();
-            $('#category').append("검색 결과");
-            
-            $('#searchResultList').empty(); //검색목록 지우기
-            //태그들 생성
-            // let li = document.createElement("li");
-            // let a = document.createElement("a");
-
-
-            //비동기
-            $.ajax({
-			url : "bookUserLikeList.do",
-			type : "get",
-		//	data : "id=abc&pwd=123",
-			data : { book_name: inputtxt,
-                    pagesize : "10",
-                    cpage : "",
-                }, // 이 값을 가지고 servlet으로 간다.
-			dataType: 'JSON',
-		// 매우중요!!	
-			    success : function(result) { // Ajax 목적 : result를 얻기 위함
-
-                    $('#hjPager').empty();
-
-                    let resultData = result;
-                    console.log(resultData);
-                    let test = '';
-                    //[{"isbn":"K502837053","book_name":"칵테일, 러브, 좀비 (리커버)","author":"조예은 (지은이)","description":"undefined","price":10000,"book_filename":"https://image.aladin.co.kr/product/29543/72/coversum/k502837053_1.jpg"}]
-
-                    let listlen = resultData.booklist.length;
-                    for(let i=0; i < listlen; i++){
-                        let isbn = resultData.booklist[i].isbn;
-                        let hreflink = "bookDetail.do?isbn=" + isbn;
-                        let imgsrc = resultData.booklist[i].book_filename + ', ' + resultData.booklist[i].book_filename + ' 2x'
-                        $('#searchResultList').append('<li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""'+
-                                    'href="' + hreflink + '">'+
-                                    '<div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">' + resultData.booklist[i].book_name + '</strong>'+
-                                        '<p data-v-02a040ec="">' + resultData.booklist[i].author + '</p>'+
-                                    '</div>'+
-                                    '<div data-v-02a040ec="" class="bookcover">' +
-                                        '<div data-v-02a040ec="" class="inner">' +
-                                            '<div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"' +
-                                                'data-observe="true">' +
-                                                '<picture data-v-96e558f2="">' +
-                                                    '<source data-v-96e558f2=""' + 
-                                                    ' srcset="'+resultData.booklist[i].book_filename +'"' +
-                                                    ' type="image/webp"><img data-v-96e558f2=""'+
-                                                    ' src = "' +resultData.booklist[i].book_filename + '" '+
-                                                        // srcset="https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg, https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg 2x"
-                                                        // type="image/webp"> <img data-v-96e558f2=""
-                                                        // src="https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg"
-                                                        '"alt=" 도서 썸네일" width="125"></picture>" '+
-                                            '</div></div></div></a></li>'
-                                    )
-                           
-                            // $('#hjtitle').append(booklist.book_name); //여기에 서비스에서 받아온 리스트의 제목, 작가, 사진 넣기
-                            // $('#hjp').append(booklist.author);   //for문으로 list길이만큼 태그 추가
-                            // $('#hjcover').attr("src",booklist.book_filename);
-                            // $('#hjpicture').attr("srcset",booklist.book_filename, booklist.book_filename + " 2x");
-                    }
-
-                    $('#hjPager').append(resultData.pager);
-            
-                },
-			error : function() {
-				alert('error');
-			}
-		});
-
-
-
-
-
-            /*
-            //생성돼서 append된 태그들에 클래스, 속성 추가해주기
-			//$('#searchResultList').children().remove();
-            $('#searchResultList').empty();
-            $('#searchResultList').append(`<li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
-                                    href="bookDetail.do">
-                                    <div data-v-02a040ec=""  class="metadata"><strong id="hjtitle" data-v-02a040ec=""></strong>
-                                        <p data-v-02a040ec="" id="hjp"></p>
-                                    </div>
-                                    <div data-v-02a040ec="" class="bookcover">
-                                        <div data-v-02a040ec="" class="inner">
-                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
-                                                data-observe="true">
-                                                <picture data-v-96e558f2="">
-                                                    <source data-v-96e558f2="" id="hjpicture"
-                                                      
-                                                        type="image/webp"> <img data-v-96e558f2=""
-                                                        id="hjcover"
-                                                        alt=" 도서 썸네일" width="125"></picture>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a></li>`)
-            $('#hjtitle').append(inputtxt); //여기에 서비스에서 받아온 리스트의 제목, 작가, 사진 넣기
-            $('#hjp').append("저자 이름")   //for문으로 list길이만큼 태그 추가
-            $('#hjcover').attr("src","https:\/\/image.aladin.co.kr\/product\/24394\/98\/cover\/k612630314_1.jpg")
-            $('#hjpicture').attr("srcset","https:\/\/image.aladin.co.kr\/product\/24394\/98\/cover\/k612630314_1.jpg, https:\/\/image.aladin.co.kr\/product\/24394\/98\/cover\/k612630314_1.jpg 2x")
-
-            */
-
-            // src="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80"
-            //  srcset="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80 2x"
-            /*
-            <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
-                                    href="bookDetail.do">
-                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">어서 오세요 휴남동 서점입니다</strong>
-                                        <p data-v-02a040ec="">황보름</p>
-                                    </div>
-                                    <div data-v-02a040ec="" class="bookcover">
-                                        <div data-v-02a040ec="" class="inner">
-                                            <div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"
-                                                data-observe="true">
-                                                <picture data-v-96e558f2="">
-                                                    <source data-v-96e558f2=""
-                                                        srcset="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80, https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80 2x"
-                                                        type="image/webp"> <img data-v-96e558f2=""
-                                                        src="https://cover.millie.co.kr/service/cover/179544336/993c760a07314817872211e74221c01c.jpg?w=220&amp;f=webp&amp;q=80"
-                                                        alt=" 도서 썸네일" width="125"></picture>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a></li>
-            */
-
+ 
+            likeSearch(inputtxt, "1");
 		})
+		function likeSearch(book_name, cpage){
+        	$.ajax({
+    			url : "bookUserLikeList.do",
+    			type : "get",
+    		//	data : "id=abc&pwd=123",
+    			data : { "book_name": book_name,
+                        pagesize : "10",
+                        "cpage" : cpage,
+                    }, // 이 값을 가지고 servlet으로 간다.
+    			dataType: 'JSON',
+    		// 매우중요!!	
+    			    success : function(result) { // Ajax 목적 : result를 얻기 위함
+
+    					// console.log(inputtxt);
+    		            $('#category').empty();
+    		            $('#category').append("검색 결과");
+    		            
+    		            $('#searchResultList').empty(); //검색목록 지우기
+
+                        $('#hjPager').empty();
+
+                        let resultData = result;
+                        console.log(resultData);
+                        let test = '';
+                        //[{"isbn":"K502837053","book_name":"칵테일, 러브, 좀비 (리커버)","author":"조예은 (지은이)","description":"undefined","price":10000,"book_filename":"https://image.aladin.co.kr/product/29543/72/coversum/k502837053_1.jpg"}]
+
+                        let listlen = resultData.booklist.length;
+                        for(let i=0; i < listlen; i++){
+                            let isbn = resultData.booklist[i].isbn;
+                            let hreflink = "bookDetail.do?isbn=" + isbn;
+                            let imgsrc = resultData.booklist[i].book_filename + ', ' + resultData.booklist[i].book_filename + ' 2x'
+                            $('#searchResultList').append('<li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""'+
+                                        'href="' + hreflink + '">'+
+                                        '<div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">' + resultData.booklist[i].book_name + '</strong>'+
+                                            '<p data-v-02a040ec="">' + resultData.booklist[i].author + '</p>'+
+                                        '</div>'+
+                                        '<div data-v-02a040ec="" class="bookcover">' +
+                                            '<div data-v-02a040ec="" class="inner">' +
+                                                '<div data-v-96e558f2="" data-v-02a040ec="" class="book-picture imageLoaded"' +
+                                                    'data-observe="true">' +
+                                                    '<picture data-v-96e558f2="">' +
+                                                        '<source data-v-96e558f2=""' + 
+                                                        ' srcset="'+resultData.booklist[i].book_filename +'"' +
+                                                        ' type="image/webp"><img data-v-96e558f2=""'+
+                                                        ' src = "' +resultData.booklist[i].book_filename + '" '+
+                                                            // srcset="https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg, https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg 2x"
+                                                            // type="image/webp"> <img data-v-96e558f2=""
+                                                            // src="https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg"
+                                                            '"alt=" 도서 썸네일" width="125"></picture>" '+
+                                                '</div></div></div></a></li>'
+                                        )
+                               
+                                // $('#hjtitle').append(booklist.book_name); //여기에 서비스에서 받아온 리스트의 제목, 작가, 사진 넣기
+                                // $('#hjp').append(booklist.author);   //for문으로 list길이만큼 태그 추가
+                                // $('#hjcover').attr("src",booklist.book_filename);
+                                // $('#hjpicture').attr("srcset",booklist.book_filename, booklist.book_filename + " 2x");
+                        }
+
+                        $('#hjPager').append(resultData.pager);
+                
+                    },
+    			error : function() {
+    				alert('error');
+    			}
+    		});
+        }
 	</script>
 
 </html>
