@@ -2456,7 +2456,7 @@
     
     
 </script>
-
+//삭제
 function delete(){
 		let reply_no=$(this).attr("");
 		let blog_no=$(this).attr("");
@@ -2476,6 +2476,8 @@ function delete(){
 https://angehende-ingenieur.tistory.com/160
 https://greeenhong.tistory.com/311?category=994363
 
+
+//수정
 function answerEdit(reply_no, id, reply_content, qna_idx){
 			$('#acontent'+reply_no).html(
 				"<textarea id='edit_reply_content"+reply_no+"'>"+reply_content+"</textarea>"
@@ -2493,4 +2495,10 @@ function answerEdit(reply_no, id, reply_content, qna_idx){
 			location.href='answerEdit.do?idx='+answer_idx+"&acontent="+acontent;
 		}
 https://ceodanbi.tistory.com/44
+
+//대댓글
+https://huskdoll.tistory.com/126
+
+//댓글 접기 펼치기
+https://onecutwook.tistory.com/26
 </html>
