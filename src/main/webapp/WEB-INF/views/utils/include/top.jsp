@@ -53,6 +53,8 @@
 							</li>
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="bookAlllist.do?ps=10"
 									class="gtm-search">검색</a></li>
+							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="cartList.do?id=${sessionScope.id }" 
+									class="gtm-setting">장바구니</a></li>
 							<li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="userMypage.do"
 									class="gtm-setting">관리</a></li>
 						</ul>

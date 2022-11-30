@@ -4,7 +4,6 @@
 <!-- 팝업페이지 -->
 <c:set var="msg" value="${requestScope.msg}"/>
 <c:set var="url" value="${requestScope.url}"/>
-
 <c:if test="${msg != null && url != null}">
    <script>
       alert('${msg}');
