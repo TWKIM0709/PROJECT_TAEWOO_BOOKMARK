@@ -16,9 +16,11 @@ import kr.or.kosa.action.Action;
 import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.BlogDao;
 import kr.or.kosa.dao.BookDao;
+import kr.or.kosa.dao.PopupDao;
 import kr.or.kosa.dto.Blog_Board;
 import kr.or.kosa.dto.Book;
 import kr.or.kosa.dto.Book_Recommend;
+import kr.or.kosa.dto.Popup;
 
 public class mainService implements Action {
 //회원 - 블로그 게시글 작성 처리
@@ -93,7 +95,10 @@ public class mainService implements Action {
 			//System.out.println(ypayrank);
 			
 			List<Book_Recommend> recommend =dao.Book_RecommendList();
-			
+			PopupDao pdao = new PopupDao();
+			List<Popup> popup = pdao.FilterPopup();
+			System.out.println(popup);
+			request.setAttribute("popup", popup);
 			request.setAttribute("recommend", recommend);
 			//request.setAttribute("ylikerank", ylikerank);
 			//request.setAttribute("ypayrank", ypayrank);

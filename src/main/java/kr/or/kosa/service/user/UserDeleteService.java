@@ -35,7 +35,7 @@ public class UserDeleteService implements Action {
 				//일반회원일 경우
 				if(result) {
 					msg = "회원 탈퇴가 완료되었습니다.";
-					url = "/homepage.html";
+					url = "homepage.html";
 					request.getSession().invalidate();	
 				}else {
 					msg = "회원 탈퇴에 실패하였습니다.";
