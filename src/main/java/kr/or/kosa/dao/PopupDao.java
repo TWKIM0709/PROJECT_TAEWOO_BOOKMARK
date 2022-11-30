@@ -51,13 +51,7 @@ public class PopupDao {
 			ConnectionHelper.close(conn);
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(rs);
-			try {
-				
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
 		}
-		
 		return pl;
 	}
 	//
@@ -76,6 +70,10 @@ public class PopupDao {
 			}
 		} catch (Exception e) {
 			System.out.println("totalBoardCount 예외 : " + e.getMessage());
+		} finally {
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 		return totalcount;
 	}
@@ -142,12 +140,8 @@ public class PopupDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			try {
 				ConnectionHelper.close(pstmt);
 				ConnectionHelper.close(conn);
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
 		}
 		
 		return row;
@@ -170,12 +164,8 @@ public class PopupDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			try {
-				ConnectionHelper.close(pstmt);
-				ConnectionHelper.close(conn);
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 		
 		return row;
@@ -200,12 +190,8 @@ public class PopupDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			try {
-				ConnectionHelper.close(pstmt);
-				ConnectionHelper.close(conn);
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 		
 		return row;
@@ -238,11 +224,6 @@ public class PopupDao {
 			ConnectionHelper.close(conn);
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(rs);
-			try {
-				
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
 		}
 		
 		return pu;
@@ -278,23 +259,8 @@ public class PopupDao {
 			ConnectionHelper.close(conn);
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(rs);
-			try {
-				
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
 		}
 		
 		return pl;
 	}
-	/*
-	 * 1 ~22.11.30 10:10:01
-	 * 2 ~10.1
-	 * 
-	 * 
-	 * 
-	 * */
-	
-	
-	
 }

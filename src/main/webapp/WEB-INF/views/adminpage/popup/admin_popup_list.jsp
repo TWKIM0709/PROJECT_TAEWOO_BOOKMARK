@@ -29,7 +29,7 @@
     <tbody>
 		<c:forEach var="popup"  items="${requestScope.list }"> 
       <tr>
-			<td><img alt="이미지없음" src="/images/${popup.filename }" style="width:auto; max-height:120px;"> </td>
+			<td><img alt="이미지 없음" src="${popup.popup_filename }" style="width:200px; max-height:120px;"> </td>
 			<td>${popup.popup_no }</td>
 			<td>${popup.id }</td>
 			<td>${popup.popup_title }</td>

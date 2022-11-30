@@ -1,112 +1,150 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
- <!--  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-	 -->
-	 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	 <meta charset="UTF-8">
-	<title>Insert title here</title>
-  	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-	<style type="text/css">
-		#sign{
-			width:15%;
-		}
-		.ebookfile{
-			color:gray;
-		}
-	</style>
-	<!-- include summernote css/js-->
+    <meta charset="UTF-8">
+    <title>blog 글 수정하기</title>
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+    <!-- include summernote css/js-->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<style>
+
+ #inputTitle {
+        width: 90%;
+        font-size: xx-large;
+    }
+</style>
+
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/utils/include/admintop.jsp"></jsp:include>
-어드민 책 상세
-<c:set var="book"  value="${requestScope.book }"/>
-<div class="container">
-<form action="bookUpdate.do" method="post"  enctype="multipart/form-data"><!-- bookUpdate.do -->
-  <table class="table table-bordered">
-    <thead>
-    </thead>
-    <tbody>
-      <tr>
-        <td>글번호</td>
-        <td>
-        	<input type="hidden" class="form-control border" id="isbn" name="isbn" value="${blog.blog_no}" >
-        	<input type="text" class="form-control border" id="" name="" value="${blog.blog_no}" disabled>
-        </td>
-      </tr>
-      <tr>
-        <td>작성자</td>
-        <td><input type="text" class="form-control border" id="author" name="author" value="${blog.id}"></td>
-      </tr>
-      <tr>
-        <td>제목</td>
-        <td><input type="text" class="form-control border" id="book_name" name="book_name" value="${blog.blog_content }"></td>
-      </tr>
-      <tr>
-        <td>조회수</td>
-        <td><input type="number" class="form-control border" id="price" name="price" value="${blog.hits }"></td>
-      </tr>
-      <tr>
-        <td>작성일</td>
-        <td>
-        <input type="hidden" class="form-control border" id="book_name" name="book_name" value="${blog.blog_date }">
-        <input type="text" class="form-control border" id="book_name" name="book_name" value="${blog.blog_date }">
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2"><textarea class="form-control" rows="5" id="description" name="description"></textarea></td>
-      </tr>
-      <tr>
-        <td colspan="2">
-			<button type="submit" class="btn btn-outline-dark" id="updatebtn">수정하기</button>
-			<button type="button" class="btn btn-outline-dark" id="canclebtn">취소하기</button>
-			<button type="button" class="btn btn-outline-dark" id="deletebtn">삭제하기</button>
-		</td>
-      </tr>
-    </tbody>
-  </table>
-  </form>
-</div>
-</body>
-<script type="text/javascript">
-	$('#deletebtn').on({
-		click:()=>{
-			$.ajax({
-				url:"bookDeleteOk.do",
-				type : "post",
-				data : {
-					isbn : $('#isbn').val()
-				},
-				dataType : "text",
-				success : function(result){
-					console.log(result);
-					if(result == 0){
-						alert('삭제됨');
-						location.href = "bookAlllist.do";
-					} else if (result == 1){
-						alert('삭제 실패');
-					} else if (result == 2){
-						alert('삭제 에러');
-					}
-				},
-				error : function(){
-					alert('삭제 에러');
-				}
-			});
-		}
-	});
-	$('#canclebtn').on({
-		click:function(){
-			history.back();
-		}
-	});
+
+<form action="blogUpdateOk.do" method="post">
+	<input type="hidden" value="${requestScope.blog.blog_no }" name="blog_no" id="blog_no">
+	<input type="hidden" value="${requestScope.blog.id }" name="id" id="id">
+	<input type="hidden" value="${requestScope.blog.hits }" name="hits" id="hits">
+	<input type="hidden" value="${requestScope.blog.blog_date }" name="blog_date" id="blog_date">
+	<div>
+		<input id="inputTitle" placeholder="제목을 작성해주세요" name = "blog_title" value="${requestScope.blog.blog_title}">
+	</div>
+		<textarea id="summernote" name="blog_content"  ></textarea>
+	<input type="submit" id="test" value="수정하기" >
+</form>
+<script>
+
+
+    // 메인화면 페이지 로드 함수
+    
+  $(document).ready(function() {
+	//여기 아래 부분
+	$('#summernote').summernote({
+		  height: 700,                 // 에디터 높이
+		  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+		  lang: "ko-KR",					// 한글 설정
+		  placeholder: '내용',
+          disableResizeEditor: true,	// 크기 조절 기능 삭제
+          toolbar: [
+            ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+            ['color', ['forecolor','color']],
+            ['table', ['table']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['insert',['picture','link','video']],
+            ['view', ['fullscreen', 'help']]
+          ],
+        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+        fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+        callbacks :{
+        	
+        	onImageUpload: function(files) {
+				 fileChange(files);
+			   },
+        	onChange:function(contents, $editable){ //텍스트 글자수 및 이미지등록개수
+        		console.log(contents);
+                setContentsLength(contents, 0);
+            }
+			
+        }
+	});//summernote end
+		 $('#summernote').summernote('pasteHTML', '${requestScope.blog.blog_content}');
+	});//window.onload end 
+	
+	function setContentsLength(str, index) {
+	    var status = false;
+	    var textCnt = 0; //총 글자수
+	    var maxCnt = 100; //최대 글자수
+	    var editorText = f_SkipTags_html(str); //에디터에서 태그를 삭제하고 내용만 가져오기
+	    editorText = editorText.replace(/\s/gi,""); //줄바꿈 제거
+	    editorText = editorText.replace(/&nbsp;/gi, ""); //공백제거
+
+        textCnt = editorText.length;
+	    if(maxCnt > 0) {
+        	if(textCnt > maxCnt) {
+                status = true;
+        	}
+	    }
+
+	    if(status) {
+        	var msg = "등록오류 : 글자수는 최대 "+maxCnt+"까지 등록이 가능합니다. / 현재 글자수 : "+textCnt+"자";
+        	console.log(msg);
+        	alert(msg);
+	    }
+	} //setContentsLength
+    
+//에디터 내용 텍스트 제거
+  function f_SkipTags_html(input, allowed) {
+  	// 허용할 태그는 다음과 같이 소문자로 넘겨받습니다. (<a><b><c>)
+      allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+      var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+      commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+      return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
+          return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+      });
+  }
+    
+    
+    $('#test').click(function(){
+    	console.log($('.panel-body').html());
+    	alert($('.panel-body').html());
+    });
+   
+    
+    function fileChange(file){
+    	console.log(typeof file);
+    	console.log(file);
+        let fileurl = "";
+        var form = new FormData();
+        form.append("image", file[0]);
+
+        var settings = {
+        "url": "https://api.imgbb.com/1/upload?key=bb2840aa7662570a5576bbd59c7c849a",
+        "method": "POST",
+        "timeout": 0,
+        "processData": false,
+        "mimeType": "multipart/form-data",
+        "contentType": false,
+        "data": form
+        };
+
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            var jx = JSON.parse(response);
+            console.log(jx.data.url);
+            fileurl = jx.data.url;
+            console.log(fileurl);
+            console.log(1);
+        	$('#summernote').summernote('insertImage', fileurl);
+        	console.log(2);
+        });
+    }
 </script>
+</body>
 </html>

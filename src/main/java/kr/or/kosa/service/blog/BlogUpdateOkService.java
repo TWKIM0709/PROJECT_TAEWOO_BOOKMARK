@@ -24,10 +24,8 @@ public class BlogUpdateOkService implements Action {
 			
 			 Blog_Board blog = new Blog_Board(); 
 			 blog.setBlog_content(request.getParameter("blog_content")); 
-			 System.out.println(blog.getBlog_content());
 			 blog.setBlog_date(request.getParameter("blog_date")); 
 			 String t = request.getParameter("blog_no");
-			 System.out.println(t);
 			 blog.setBlog_no(Integer.parseInt(t)); 
 			 blog.setBlog_title(request.getParameter("blog_title")); 
 			 blog.setHits(Integer.parseInt(request.getParameter("hits"))); 

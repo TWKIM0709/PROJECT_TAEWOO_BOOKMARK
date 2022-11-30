@@ -25,6 +25,7 @@
         <th>제목</th>
         <th>조회수</th>
         <th>작성일</th>
+        <th>삭제하기</th>
       </tr>
     </thead>
     <tbody>
@@ -35,6 +36,7 @@
 					<td>${blog.blog_title }</td>
 					<td>${blog.hits }</td>
 					<td>${blog.blog_date }</td>
+					<td><button class="btn btn-dark" onclick="blogdelete(${blog.blog_no})">삭제하기</button></td>
 		      </tr>
 		</c:forEach>
     </tbody>
@@ -53,8 +55,11 @@
 			{data:"blog_date"}
 		]
 	}); */
-	$(function(){
+	/* $(function(){
 		$('#blogtable').DataTable();
-	})
+	}) */
+	blogdelete(blog_no){
+		alert(blog_no);
+	}
 </script>
 </html>
