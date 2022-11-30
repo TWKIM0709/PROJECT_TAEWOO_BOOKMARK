@@ -106,61 +106,72 @@
             if(keyNum.keyCode == 13){
                 $('#searchBtn').click();
             }
-        })
+        });
 
 		$('#searchBtn').on("click", function(){
 			let inputtxt = $('#input-475').val(); //검색어
-			console.log(inputtxt);
-            
             $('#searchResultList').empty(); 
             
-            //비동기
-            $.ajax({
-			url : "questionLike.do",
-			type : "get",
-		//	data : "id=abc&pwd=123",
-			data : { search: inputtxt,
-                    pagesize : "5",
-                    cpage : "",
-                }, // 이 값을 가지고 servlet으로 간다.
-			dataType: 'JSON',
-		// 매우중요!!	
-			    success : function(result) { // Ajax 목적 : result를 얻기 위함
+            likeSearch(inputtxt,"1");
+		})//searchBtn onclick end
+	//비동기 검색 함수
+	function likeSearch(searchval,cpageval){
+			console.log('aa');
+			console.log(searchval);
+			console.log(cpageval);
+			console.log('a');
+            $.ajax({//비동기
+    			url : "questionLike.do",
+    			type : "get",
+    		//	data : "id=abc&pwd=123",
+    			data : { search: searchval,
+                        ps : "5",
+                        cp : cpageval,
+                    }, // 이 값을 가지고 servlet으로 간다.
+    			dataType: 'JSON',
+    		// 매우중요!!	
+    			    success : function(result) { // Ajax 목적 : result를 얻기 위함
 
-                    $('#hjPager').empty();
+    		            $('#searchResultList').empty(); 
+                        $('#hjPager').empty();
 
-                    let resultData = result;
-                    console.log(resultData);
-                    let test = '';
-                    //[{"isbn":"K502837053","book_name":"칵테일, 러브, 좀비 (리커버)","author":"조예은 (지은이)","description":"undefined","price":10000,"book_filename":"https://image.aladin.co.kr/product/29543/72/coversum/k502837053_1.jpg"}]
+                        let resultData = result;
+                        console.log(resultData);
+                        let test = '';
+                        //[{"isbn":"K502837053","book_name":"칵테일, 러브, 좀비 (리커버)","author":"조예은 (지은이)","description":"undefined","price":10000,"book_filename":"https://image.aladin.co.kr/product/29543/72/coversum/k502837053_1.jpg"}]
 
-                    let listlen = resultData.questionlist.length;
-                    for(let i=0; i < listlen; i++){
-                        let hreflink = "questionDetail.do?question_no=" + resultData.questionlist[i].question_no;
-                        
-                        let text = '<li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""'+
-							'href="' + hreflink + '">' +
-							'<div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">';
-							if(resultData.questionlist[i].notice_no == 1){
-								text += '[공지]';
-							}
-							text += resultData.questionlist[i].question_title+'</strong><p>';
-							if(resultData.questionlist[i].notice_no == '1'){
-								text += '<strong>운영자</strong>';
-							}else{
-								text += '작성자';
-							}
-							text += ' : '+resultData.questionlist[i].id +' | 작성일 : '+resultData.questionlist[i].question_date+'</p></div></a><br><br></li>';
-                        $('#searchResultList').append(text);
-                    }
+                        let listlen = resultData.questionlist.length;
+                        for(let i=0; i < listlen; i++){
+                            let hreflink = "questionDetail.do?question_no=" + resultData.questionlist[i].question_no;
+                            
+                            let text = '<li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""'+
+    							'href="' + hreflink + '">' +
+    							'<div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">';
+    							if(resultData.questionlist[i].notice_no == 1){
+    								text += '[공지]';
+    							}
+    							text += resultData.questionlist[i].question_title+'</strong><p>';
+    							if(resultData.questionlist[i].notice_no == '1'){
+    								text += '<strong>운영자</strong>';
+    							}else{
+    								text += '작성자';
+    							}
+    							text += ' : '+resultData.questionlist[i].id +' | 작성일 : '+resultData.questionlist[i].question_date+'</p></div></a><br><br></li>';
+                            $('#searchResultList').append(text);
+                        }
 
-                    $('#hjPager').append(resultData.pager);
-            
-                },
-			error : function() {
-				alert('error');
-			}
-		});
-		})
+                        $('#hjPager').append(resultData.pager);
+                
+                    },
+    			error : function() {
+    				alert('error');
+    			}
+    		});//비동기 end
+        }
+		function testfunction(search,cpage){
+			console.log(search);
+			console.log(cpage);
+			alert('1');
+		}
 	</script>
 </html>
