@@ -1110,15 +1110,7 @@
     <script type="text/javascript" id="">
         kakaoPixel("5057430883487430749").pageView("\ud0dc\uadf8\uac12\uc785\ub825");
     </script>
-    <div id="criteo-tags-div" style="display: none;"><iframe
-            src="https://gum.criteo.com/syncframe?topUrl=www.millie.co.kr&amp;origin=onetag#{&quot;bundle&quot;:{&quot;origin&quot;:3,&quot;value&quot;:&quot;-hkPd19JT28lMkIxR3VneGlCTnoySzlwMENZY2I1NERoU1RBUlFBOHEzc3d3TW1vQ0pIaTAzcWcxVTVLRm5lZTQ2dSUyRks5azFhTFhNTG9CRnRPdnUxNjZTQWN5T0N5RTNtOGY4ZjBGUkxFekVDJTJCUzVJUUQwWXNTMSUyQjZDJTJGSHBoV0d2Z05RdVB3QVpxMm15SjZHJTJCeHFGeTBPTk9JV1ElM0QlM0Q&quot;},&quot;cw&quot;:true,&quot;optout&quot;:{&quot;origin&quot;:0,&quot;value&quot;:null},&quot;origin&quot;:&quot;onetag&quot;,&quot;pm&quot;:0,&quot;sid&quot;:{&quot;origin&quot;:0,&quot;value&quot;:null},&quot;tld&quot;:&quot;millie.co.kr&quot;,&quot;topUrl&quot;:&quot;www.millie.co.kr&quot;,&quot;version&quot;:&quot;5_12_3&quot;,&quot;ifa&quot;:{&quot;origin&quot;:0,&quot;value&quot;:null},&quot;lsw&quot;:true}"
-            id="criteo-syncframe-onetag" width="0" height="0" frameborder="0"
-            style="border-width:0px; margin:0px; display:none" title="Criteo GUM iframe"></iframe></div>
-    <div id="fb-root" class=" fb_reset">
-        <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
-            <div></div>
-        </div>
-    </div><iframe height="0" width="0" title="Criteo DIS iframe" style="display: none;"></iframe>
+
 </body>
 
 </html>

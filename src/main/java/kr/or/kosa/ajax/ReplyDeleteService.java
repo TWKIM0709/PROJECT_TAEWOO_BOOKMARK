@@ -29,7 +29,9 @@ public class ReplyDeleteService extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			if(request.getParameter("type").equals("blog")) {
+				System.out.println("블로그 삭제");
 				BlogDao dao = new BlogDao();
+				System.out.println("번호:" + request.getParameter("blog_reply_no"));
 				response.getWriter().print(dao.replyDelete(Integer.parseInt(request.getParameter("blog_reply_no"))));
 			} else if(request.getParameter("type").equals("book")){
 				BookDao dao = new BookDao();
