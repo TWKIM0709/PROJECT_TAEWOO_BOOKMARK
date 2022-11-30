@@ -29,11 +29,11 @@ public class ThePagerLike {
 	  //1. 처음, 이전 항목 만들기
 	  if (currentPage > 1) {
 	   linkString.append(
-	    String.format("[<a href='%s?cp=1'>처음</a>]",linkUrl));
+	    String.format("[<a href='javascript:likeSearch(\"%s\",\"1\")'>처음</a>]",linkUrl));
 	   linkString.append("&nbsp;");
 	   linkString.append("&nbsp;");
 	   linkString.append(String.format(
-	    "[<a href='%s?cp=%d'>이전</a>]", linkUrl, currentPage - 1));
+	    "[<a href='javascript:likeSearch(\"%s\",\"%d\")'>이전</a>]", linkUrl, currentPage - 1));
 	   linkString.append("&nbsp;");
 	  }
 	  
@@ -58,11 +58,11 @@ public class ThePagerLike {
 	  if (currentPage < pageCount) {
 	   linkString.append("&nbsp;");
 	   linkString.append(String.format(
-	    "[<a href='%s?cp=%d'>다음</a>]",linkUrl, currentPage + 1));
+	    "[<a href='javascript:likeSearch(\"%s\",\"%d\")'>다음</a>]",linkUrl, currentPage + 1));
 	   linkString.append("&nbsp;");
 	   linkString.append("&nbsp;");
 	   linkString.append(String.format(
-	    "[<a href='%s?cp=%d'>마지막</a>]", linkUrl, pageCount));
+	    "[<a href='javascript:likeSearch(\"%s\",\"%d\")'>마지막</a>]", linkUrl, pageCount));
 	  }
 	  return linkString.toString();
 	 }

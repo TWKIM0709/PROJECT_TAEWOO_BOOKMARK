@@ -71,7 +71,7 @@
   </ul>
   <ul class="navbar-nav logoutbtn">
     <li class="nav-item active">
-     <button class="btn btn-outline-secondary btn-sm">로그아웃</button>
+     <button class="btn btn-outline-secondary btn-sm"  onclick="logout()">로그아웃</button>
     </li>
   </ul>
 </nav>
