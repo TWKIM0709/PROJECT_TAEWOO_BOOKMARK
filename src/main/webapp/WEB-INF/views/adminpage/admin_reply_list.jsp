@@ -13,17 +13,20 @@
 	<style type="text/css">
 		table{
 			font-size:12px;
-			margin-top:15px;
+			margin-top:20px;
 		}
 		.col{
 			padding-top:10px;
 		}
+	
+		
 	</style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/utils/include/admintop.jsp"></jsp:include>
-어드민 댓글 리스트
-<div class="container">
+<br>
+<br>
+<div >
   <div class="row">
     <div class="col" style="background-color:lavender;">
     	  <table class="table table-striped" id="booktable">
@@ -33,10 +36,10 @@
 		    	</tr>
 		      <tr>
 		        <th>댓글번호</th>
-		        <th>작성자</th>
+		        <th>작성자</th>	
 		        <th>댓글내용</th>
 		        <th>작성일</th>
-		        <td>선택</td>
+		          <th>선택</th>
 		      </tr>
 		    </thead>
 		    <tbody id="bookreply">
@@ -45,7 +48,7 @@
 						<td>작성자</td>
 						<td>	댓글내용</td>
 						<td>작성일</td>
-					<td>선택</td>
+		          <th>선택</th>
 			      </tr>
 		    </tbody>
 		  </table>
@@ -61,6 +64,7 @@
 		        <th>작성자</th>
 		        <th>댓글내용</th>
 		        <th>작성일</th>
+		        <th>삭제</th>
 		          <th>선택</th>
 		      </tr>
 		    </thead>
@@ -68,9 +72,10 @@
 			      <tr onclick="location.href= '#' " class="trelement">
 						<td>댓글번호</td>
 						<td>작성자</td>
-						<td>	댓글내용</td>
+						<td>댓글내용</td>
 						<td>작성일</td>
-						<td>선택</td>
+					  <th>삭제</th>
+		          <th>선택</th>
 			      </tr>
 		    </tbody>
 		  </table>
@@ -97,14 +102,18 @@
 				let text = '';
 				for(let index in result.BOOK){
 					text += '<tr onclick="location.href= &#39;#&#39; " class="trelement">'+
-										'<td> '+ result.BOOK[index].reply_no+'</td>'+    
+			
+					'<td> '+ result.BOOK[index].reply_no+'</td>'+    
 										'<td> '+ result.BOOK[index].id+'</td>'+
 										'<td> '+ result.BOOK[index].reply_content+'</td>'+
 										'<td> '+ result.BOOK[index].reply_date+'</td>'+
-										'<td> </td>'
-									
+										'<td><button class="btn btn-dark btn-sm"  onclick="deletereplybook('+ result.BOOK[index].reply_no+')">삭제  </td>'
+									+
 							      '</tr>';
 				}//for end
+				
+				
+				
 				$('#bookreply').append(text);
 				let booktable = $('#booktable').DataTable();
 			},//success end
@@ -130,7 +139,8 @@
 										'<td> '+ result.BLOG[index].id+'</td>'+
 										'<td> '+ result.BLOG[index].reply_content+'</td>'+
 										'<td> '+ result.BLOG[index].reply_date+'</td>'+
-										'<td> </td>'+
+										'<td> '+ result.BLOG[index].del+'</td>'+
+										'<td><button class="btn btn-dark btn-sm " onclick="deletereplyblog('+ result.BLOG[index].blog_reply_no+')" >삭제  </td>'+
 							      '</tr>';
 				}//for end
 				$('#blogreply').append(text);
@@ -141,5 +151,58 @@
 			}//error end
 		});//ajax end
 	}
+ 	function deletereplyblog(blog_reply_no){
+ 	   	alert(blog_reply_no);
+ 	    	$.ajax({
+ 	    		url:"ReplyDelete",
+ 	    		type :"post",
+ 	    		data:{
+ 	    			type : "blog",
+ 	    			"blog_reply_no" : blog_reply_no
+ 	    		},
+ 	    		dataType : 'text',
+ 	    		success : function(result){
+ 	    			alert("댓글 삭제 완료");
+ 	    			console.log(result);
+ 	    			if(result == 1){
+ 	    				alert("댓글 삭제 완료");
+ 	    				blogreload();
+ 	    			} else {
+ 	    				alert("댓글 삭제 실패");
+ 	    			}
+ 	    		},
+ 	    		error : function(error){
+ 	    			alert('error');
+ 	    		}
+ 	    		
+ 	    	})//ajax end
+ 	}
+ 	   	function deletereplybook(book_reply_no){
+ 	 	   	alert(book_reply_no);
+ 	 	    	$.ajax({
+ 	 	    		url:"ReplyDelete",
+ 	 	    		type :"post",
+ 	 	    		data:{
+ 	 	    			type : "book",
+ 	 	    			"book_reply_no" : book_reply_no
+ 	 	    		},
+ 	 	    		dataType : 'text',
+ 	 	    		success : function(result){
+ 	 	    			console.log(result);
+ 	 	    			if(result == 1){
+ 	 	    				alert("댓글 삭제 완료");
+ 	 	    				bookreload();
+ 	 	    			} else {
+ 	 	    				alert("댓글 삭제 실패");
+ 	 	    			}
+ 	 	    		},
+ 	 	    		error : function(error){
+ 	 	    			alert('error');
+ 	 	    		}
+ 	 	    		
+ 	 	    	})//ajax end
+ 	    		 
+ 	    	
+ 	    } // delete function end
 </script>
 </html>
