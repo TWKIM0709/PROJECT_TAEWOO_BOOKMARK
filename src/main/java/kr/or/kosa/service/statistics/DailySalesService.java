@@ -1,6 +1,9 @@
 package kr.or.kosa.service.statistics;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,10 +27,33 @@ public class DailySalesService implements Action {
 		JSONObject jsonobj = new JSONObject();
 		JSONArray jsonary = new JSONArray();
 		JSONObject json = new JSONObject();
+		
+		String today = null;
+		String week = null;
+		 
+		Date date = new Date();
+		 
+		// 포맷변경 ( 년월일 시분초)
+		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd"); 
+		 
+		// Java 시간 더하기
+		Calendar cal = Calendar.getInstance();
+		 
+		//지금
+		cal.setTime(date);
+		cal.add(Calendar.DATE, 1);
+		today = sdformat.format(cal.getTime());  
+		 
+		// 일주일 전
+		cal.setTime(date);
+		cal.add(Calendar.DATE, -7);
+		week = sdformat.format(cal.getTime());
+		
+		
 		try {
 			StatisticsDao dao = new StatisticsDao();
 			
-			daily = dao.dailySales();
+			daily = dao.dailySales(today, week);
 
 			for(Object obj : daily) {
 				Statistics s = (Statistics)obj;

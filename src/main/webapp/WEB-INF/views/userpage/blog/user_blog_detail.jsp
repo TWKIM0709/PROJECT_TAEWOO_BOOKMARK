@@ -2319,19 +2319,6 @@
         <ul data-v-35475912="" class="comment-list" id="replylist">
             <li data-v-35475912="" class="comment-item">
                 <div data-v-35475912="" class="comment-item-inner flex-container">
-                  <!--   <div data-v-35475912="" class="com-contents">
-                        <div data-v-35475912="" class="com-contents-head">
-                            <div data-v-35475912="" class="com-contents-top flex-container">
-                                <p data-v-35475912="" class="nickname">재미와 행복</p>
-                            </div> <span data-v-35475912="" class="com-contents-date">2022-11-09 18:32:06</span>
-                        </div>
-                        <div data-v-35475912="" class="com-contents-body">
-                            <p data-v-35475912="" class="comment-text show">잠시 듣겠다는 처음 생각과 달리 , 듣다보면 점점 빠져드는 매력이 있네요.
-                                슬며시 미소가 지어지는 재미와 함께 달달하고 따뜻한 느낌이 들어요. 김찬수 바보래요~</p>
-                          
-                        </div>
-                       
-                    </div> -->
                 </div>
 
             </li>
@@ -2430,7 +2417,7 @@
                        		text += '<div style="position: absolute;left: 70%;"><button id="rewritebtn' +result.BLOG[index].blog_reply_no+'" onclick="addrewritearea(' +result.BLOG[index].blog_reply_no+')"><span>대댓글</span></button></div>';
                         }
                         
-                        text +=' <p data-v-35475912="" class="comment-text show" id="content'+result.BLOG[index].blog_reply_no+'"><span id="replyspan'+result.BLOG[index].blog_reply_no+ '">' 
+                        text +=' <p data-v-35475912="" class="comment-text show" id="content'+result.BLOG[index].blog_reply_no+'"  style="width:70%;"><span id="replyspan'+result.BLOG[index].blog_reply_no+ '">' 
                         + result.BLOG[index].reply_content +
                         '</span><input type="text" value="'+ result.BLOG[index].reply_content +'" id="replyinput'+result.BLOG[index].blog_reply_no+ '" class="replyhide" style="background-color:#e8e8e8; width:70%;"></p>'+'</div></li>'
                 	}
@@ -2556,7 +2543,7 @@
 				            '<hr>'+
 				           '<div data-v-35475912="" class="register-box">'+
 				               '<div data-v-35475912="" class="register-box-inner"><span data-v-35475912="">대댓글</span>'+
-				                   '<p data-v-35475912="" contenteditable="plaintext-only" data-placeholder="답글 내용 입력" id="rewriteinput'+blog_reply_no+'"></p>'+
+				                   '<p data-v-35475912="" contenteditable="plaintext-only" data-placeholder="답글 내용 입력" id="rewriteinput'+blog_reply_no+'" style="width:70%;"></p>'+
 				               '</div>'+
 				           '</div> <button data-v-35475912="" type="button" class="post-btn flex-container mds-button mds-button--secondary mds-button--flex mds-button--h56 mds-button--r4" onclick="rewirte('+blog_reply_no+')"><span>답글등록</span></button>'+
 				       '</div>';

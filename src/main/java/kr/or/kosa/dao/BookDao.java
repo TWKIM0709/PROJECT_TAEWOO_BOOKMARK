@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -795,7 +796,10 @@ public class BookDao implements BookMarkDao{
 					row++;
 				}
 			}
-		} catch (Exception e) {
+		}catch(SQLIntegrityConstraintViolationException e2) {
+			row =3;
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {

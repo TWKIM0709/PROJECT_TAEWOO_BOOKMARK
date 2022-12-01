@@ -7,54 +7,14 @@
 <meta charset="UTF-8">
 <title>블로그</title>
    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:site_name" content="밀리의 서재">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.millie.co.kr/">
-    <meta property="og:title" content="밀리의 서재">
-    <meta property="og:image" content="https://www.millie.co.kr/favicon/millie_og_v2_2.png">
-    <meta property="og:description" content="독서와 무제한 친해지리, 밀리의 서재에서 당신의 일상을 1밀리+ 더 멋지게 만들어 보세요">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="600">
-    <meta property="fb:app_id" content="1621792108120563">
-    <meta name="description" content="독서와 무제한 친해지리, 밀리의 서재에서 당신의 일상을 1밀리+ 더 멋지게 만들어 보세요">
-    <meta name="naver-site-verification" content="09f2fbb79dfd0f4fbb3159d7ebf0722ab613cc74">
-    <meta name="google-site-verification" content="F_BvE8JmAqqhoTgJBKpQNQACdhJkXU-c7n9zdgjjRDc">
-    <meta name="google-site-verification" content="fxHd7i7aN34YObihzhJqIMXq-ct60hZgtvBMFFJ6ckw">
-    <script type="text/javascript" id="www-widgetapi-script"
-        src="https://www.youtube.com/s/player/4eb6b35d/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script type="text/javascript" async=""
-        src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1&amp;l=dataLayer&amp;cx=c"></script>
-    <script type="text/javascript" async=""
-        src="https://www.googletagmanager.com/gtag/js?id=G-3WR64L2XW1&amp;l=dataLayer&amp;cx=c"></script>
-    <script async="" src="//static.ads-twitter.com/uwt.js"></script>
-    <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+  
+    <meta name="description" content="독서와 무제한 친해지리, 밀리의 서재에서 당신의 일상을 1밀리+ 더 멋지게 만들어 보세요">    
+   
     <!-- 제이쿼리 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--  -->
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script>
-        var preload = {
-            "IMAGE_FILE": "https:\/\/d2j6uvfek9vas1.cloudfront.net\/millie_logo\/637c1df82435a.png",
-            "IMAGE_HEIGHT": "496",
-            "IMAGE_WIDTH": "496",
-            "LINK_URL": "https:\/\/www.millie.co.kr\/v3\/bookDetail\/179581177",
-            "TITLE": {
-                "0": "\ucc9c\ub9cc \ubd80 \ud310\ub9e4\uc758 \uc804\uc124\r",
-                "1": "\uc6f9\uc18c\uc124\uc758 \uc870\uc0c1\ub2d8"
-            },
-            "SUB_TITLE": "11\uc6d4 24\uc77c <\ud1f4\ub9c8\ub85d>\uc774 \uacf5\uac1c\ub429\ub2c8\ub2e4",
-            "REG_DT": "2022-11-22 09:55:20",
-            "FIX_ID": "home_banner_2510"
-        }
-    </script>
+
 
     <link rel="apple-touch-icon" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="apple-touch-icon-precomposed" href="https://www.millie.co.kr/favicon/ios-icon.png">
@@ -251,31 +211,11 @@
             z-index: 1
         }
     </style>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1" rel="preconnect" charset="utf-8">
-    </script>
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/mds-icon-v3.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Regular.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Bold.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/NotoSerifKR-Black.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <meta http-equiv="origin-trial"
-        content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
-    <script type="text/javascript" async=""
-        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/771298710/?random=1669186014216&amp;cv=11&amp;fst=1669186014216&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.35%7CChromium%3B107.0.5304.90%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-    <script type="text/javascript" async=""
-        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669186014219&amp;cv=11&amp;fst=1669186014219&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.35%7CChromium%3B107.0.5304.90%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-    <script type="text/javascript" async=""
-        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669186014220&amp;cv=11&amp;fst=1669186014220&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.35%7CChromium%3B107.0.5304.90%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
+    
+
     <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/dasanAward~dasanVote~home.20e63449e7a4626c02ae.css">
-    <script charset="utf-8"
-        src="https://d3udu241ivsax2.cloudfront.net/v3/js/dasanAward~dasanVote~home.f0a48c2e10e16f9edf78.js"></script>
+
     <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/bestseller~brand~home.3157435c0ebe1f9ea312.css">
     <script charset="utf-8"
@@ -287,13 +227,6 @@
     <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/home.aadb17a03cc4dec7eb90.css">
     <script charset="utf-8" src="https://d3udu241ivsax2.cloudfront.net/v3/js/home.e14f1548a2255229b188.js"></script>
-    <script type="text/javascript" charset="utf8" async="" src="https://www.youtube.com/iframe_api"></script>
-    <meta http-equiv="origin-trial"
-        content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-    <meta http-equiv="origin-trial"
-        content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-    <meta http-equiv="origin-trial"
-        content="A0KGawWMfAygakxUO+Z3rulPwK2j0AqkLneiEt4pAI951GYaafeHNV9Ya+PAn7s0y12QSrfTjc9LdOUU+QfkdQwAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY2OTc2NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
     <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/reading~search.9e20d3f61ee01fdc9a9c.css">
     <script charset="utf-8" src="https://d3udu241ivsax2.cloudfront.net/v3/js/reading~search.f53374eb3db7bf3bd13d.js">
@@ -342,7 +275,8 @@
                     <section data-v-02a040ec="" class="page category-wrap">
                         <h2 data-v-02a040ec="" class="title" id="searchTag"></h2>
                         <ul data-v-02a040ec="" id="searchResultList" class="category-list">
-                                <!--  TODO:페이징 처리 -->
+                    
+                                </script>
                                 <c:forEach  var="board"  items="${requestScope.blogboardlist}" varStatus="status">
 	                                	 <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
 	                                    href="blogDetail.do?blog_no=${board.blog_no}">
@@ -382,7 +316,6 @@
 
 		$('#searchBtn').on("click", function(){
 			let inputtxt = $('#input-475').val(); //검색어
-			// console.log(inputtxt);
             $('#category').empty();
             $('#category').append("검색 결과");
             
@@ -401,7 +334,6 @@
 		// 매우중요!!	
 			    success : function(result) { // Ajax 목적 : result를 얻기 위함
                     let resultData = result;
-                    console.log(resultData);
                     let test = '';
                     //[{"isbn":"K502837053","book_name":"칵테일, 러브, 좀비 (리커버)","author":"조예은 (지은이)","description":"undefined","price":10000,"book_filename":"https://image.aladin.co.kr/product/29543/72/coversum/k502837053_1.jpg"}]
 
