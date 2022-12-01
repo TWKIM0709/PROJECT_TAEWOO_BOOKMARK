@@ -57,22 +57,22 @@ public class PaymentDao implements BookMarkDao{
 			return cartlist;
 		}
 		
-		//게시물 총 건수 구하기
-				public int totalBoardCount() {
+		//전체 주문 카운트
+				public int totalPayment() {
 					Connection conn = null;
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					int totalcount = 0;
 					try {
 						conn = ConnectionHelper.getConnection("oracle"); //연결객체
-						String sql = "select count(*) as cnt from question_board";
+						String sql = "select count(*) as cnt from payment";
 						pstmt = conn.prepareStatement(sql);
 						rs = pstmt.executeQuery();
 						if(rs.next()) {
 							totalcount = rs.getInt("cnt");
 						}
 					} catch (Exception e) {
-						System.out.println("totalBoardCount 예외 : " + e.getMessage());
+						System.out.println("totalPayment 예외 : " + e.getMessage());
 					}
 					return totalcount;
 				}
@@ -145,7 +145,7 @@ public class PaymentDao implements BookMarkDao{
 			
 			try {
 				conn = ConnectionHelper.getConnection("oracle");
-				String sql = "select book_payment.payment_no,isbn,count,to_char(payment_date),sumprice"
+				String sql = "select book_payment.payment_no,isbn,count,to_char(payment_date),sumprice, payment_addr, payment_detailaddr "
 						+ " from book_payment join payment on book_payment.payment_no = payment.payment_no"
 						+ " where payment.id = ? order by payment_no desc";
 
