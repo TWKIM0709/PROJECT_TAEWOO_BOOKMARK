@@ -323,9 +323,12 @@ function showSlides() {
 				</div>
 				<c:forEach var="popup" items="${requestScope.popup }">
 					<script type="text/javascript">
-						let link = "popup/popup.jsp?file='${popup.popup_filename}'";
-						console.log(link);
-						window.open(link,"_blank","width=820,height=550");
+						let local = JSON.parse(window.localStorage.getItem('${popup.popup_filename}'));
+						console.log(local);
+						if(local == null){
+							window.open("popup/popup.jsp?file='${popup.popup_filename}'","_blank","width=820,height=550");
+						}
+						
 					</script>
 				</c:forEach>
 </body>
@@ -383,7 +386,6 @@ function initClones() {
         }
         c = countLi();
         for (i = c - numberViewed + 1; i <= c; i++) {
-            console.log(i);
             jQuery("#galleries-list ul li:nth-last-child(" + i + ")").clone().insertBefore("#galleries-list ul li:first-child");
         }
     }
