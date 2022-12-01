@@ -10,6 +10,7 @@ import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.UsersDao;
 import kr.or.kosa.dto.Users;
 import kr.or.kosa.utils.ThePager;
+import kr.or.kosa.utils.ThePagerLike;
 
 public class UserAllListService implements Action {
 
@@ -31,7 +32,7 @@ public class UserAllListService implements Action {
 			// List 페이지 처음 호출 ...
 			if (ps == null || ps.trim().equals("")) {
 				// default 값 설정
-				ps = "5"; // 5개씩
+				ps = "10"; // 5개씩
 			}
 
 			if (cp == null || cp.trim().equals("")) {

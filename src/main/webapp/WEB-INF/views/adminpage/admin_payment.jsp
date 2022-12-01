@@ -11,6 +11,11 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style type="text/css">
+  		.pager{
+  		 	text-align:center; 
+  		}
+  	</style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/utils/include/admintop.jsp"></jsp:include>
@@ -20,21 +25,21 @@
 
     <mx-auto>
 
-        <input id="hjsearch" name="query" type="text" class="form-control" placeholder="검색어 입력" aria-label="search" aria-describedby="button-addon2">
+        <input id="hjsearch" name="query" type="text" class="form-control" placeholder="ID입력" aria-label="search" aria-describedby="button-addon2">
 
     </mx-auto>
   
-    <button class="btn btn-success" type="submit" id="searchBtn">검색</button>
+    <button class="btn btn-secondary" type="submit" id="searchBtn">검색</button>
   </div>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>책결제번호</th>
+          <th>No.</th>
+          <th>ID</th>
           <th>책 제목</th>
-          <th>책 구매 권수</th>
           <th>결제일</th>
-          <th>총 결제금액</th>
-          <th>우편번호</th>
+          <th>금액</th>
+          <th>우편</th>
           <th>주소</th>
         </tr>
       </thead>
@@ -42,8 +47,8 @@
       <c:forEach var="payment"  items="${requestScope.paymentalllist }"> 
         <tr>
         <td>${payment.payment_no}</td>
+        <td>${payment.id}</td>
         <td>${payment.book_name}</td>
-        <td>${payment.count}</td>
         <td>${payment.payment_date}</td>
         <td>${payment.sumprice}</td>
         <td>${payment.payment_addr}</td>
@@ -52,7 +57,17 @@
       </c:forEach>
       </tbody>
     </table>
-    <div id="hjpager">${requestScope.pager}</div>
+    <table class="table">
+    <thead>
+    </thead>
+    <tbody>
+		<tr>
+			<td class="pager" id ="hjpager" >
+			${requestScope.pager }
+			</td>
+		</tr>
+    </tbody>
+  </table>
 </div>
 
 </body>
@@ -64,7 +79,6 @@
       })
 
     $('#searchBtn').on("click", function(){
-      console.log("클릭됐삼!!!!")
 			let inputtxt = $('#hjsearch').val(); //검색어
             
             //태그들 생성
@@ -83,7 +97,8 @@ function likeSearch(inputtxt, cp){
                 //	data : "id=abc&pwd=123",
                   data : { 
                             id : inputtxt,
-                            "cp" : cp
+                            "cp" : cp,
+                            ps : "10"
                           }, // 이 값을 가지고 servlet으로 간다.
                   dataType: 'JSON',
                 // 매우중요!!	
@@ -101,8 +116,8 @@ function likeSearch(inputtxt, cp){
                                 for(let i=0; i < listlen; i++){
                                 
                                     let payment_no = resultData.paymentlist[i].payment_no;
+                                    let id = resultData.paymentlist[i].id;
                                     let book_name = resultData.paymentlist[i].book_name;
-                                    let count = resultData.paymentlist[i].count;
                                     let payment_date =  resultData.paymentlist[i].payment_date;
                                     let sumprice = resultData.paymentlist[i].sumprice;
                                     let payment_addr = resultData.paymentlist[i].payment_addr;
@@ -113,8 +128,8 @@ function likeSearch(inputtxt, cp){
                                     $('#hjtbody').append(
                                       '<tr>'+
                                         '<td>' + payment_no + '</td>'+
+                                        '<td>' + id + '</td>'+
                                         '<td>' + book_name + '</td>'+
-                                        '<td>' + count + '</td>'+
                                         '<td>' + payment_date + '</td>'+
                                         '<td>' + sumprice + '</td>'+
                                         '<td>' + payment_addr + '</td>'+

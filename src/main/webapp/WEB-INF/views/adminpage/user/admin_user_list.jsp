@@ -18,7 +18,7 @@
   			width:100%;
   		}
   		.pager{
-  			text-align:center;
+  		 	text-align:center; 
   		}
   		#bookaddbtn{
   			min-width:41px;
@@ -41,22 +41,34 @@
     </thead>
     <tbody id="content-area">
 		<c:forEach var="user"  items="${requestScope.userlist}">
-		
 		      <tr class="trelement">
 					<td onclick="location.href= 'userEdit.do?id=${user.id }' ">${user.id }</td>
 					<td>${user.password }</td>
 					<td>	${user.name}</td>
 					<td>${user.state }</td>
 					<td>${user.regist_no }</td>
-					<td><button class="btn btn-dark"  onclick="location.href= 'userWithdraw.do?id=${user.id }' ">삭제</td>
+					<td><button class="btn btn-dark"  onclick="location.href= 'userWithdraw.do?id=${user.id }' ">삭제</button></td>
 		      </tr>
 		</c:forEach>
-		<tr>
+		<%-- <tr>
 			<td><input class="form-control"type="text" name="search" id="search" placeholder="회원ID검색"></td>
-			<td colspan="3" class="pager" id ="pager-area">
+			<td colspan="4" class="pager" id ="pager-area">
 			${requestScope.pager }
 			</td>
 			<td></td>
+		</tr> --%>
+    </tbody>
+  </table>
+  <table class="table">
+    <thead>
+    </thead>
+    <tbody>
+		<tr>
+			<td style="width:20%"><input class="form-control"type="text" name="search" id="search" placeholder="회원ID검색"></td>
+			<td class="pager" id ="pager-area" >
+			${requestScope.pager }
+			</td>
+			<td style="width:20%"></td>
 		</tr>
     </tbody>
   </table>
@@ -64,25 +76,31 @@
 <script type="text/javascript">
  $('#search').keydown(function(keyNum){
 	if(keyNum.keyCode == 13){
-	    $.ajax({
+		let sc = $('#search').val()
+		likeSearch(sc, "1")
+	}
+ })
+ function likeSearch(searchval, cpageval){
+	 $.ajax({
 	    	url : "userSearch.do",
 	    	data : {
-				"type":"id",
-				"value":$('#search').val()
+				type:"id",
+				value:searchval,
+				ps : "10",
+				cp : cpageval
 	    	},
-	    	type:"post",
+	    	type:"get",
 	    	dataType:"json",
 	    	success : function(result){
-	    		console.log(result);
 	    		let text = "";
 	    		for(let index in result.likeuserlist){// &#39;
-	    			text += '<tr onclick="location.href= &#39;#&#39; " class="trelement">'+
-										'<td>'+result.likeuserlist[index].id + '</td>'+
+	    			text += '<tr class="trelement">'+
+										'<td onclick="location.href= \'userEdit.do?id='+result.likeuserlist[index].id+'\' ">'+result.likeuserlist[index].id + '</td>'+
 										'<td>'+result.likeuserlist[index].password + '</td>'+
 										'<td>'+result.likeuserlist[index].name+'</td>'+
 										'<td>'+result.likeuserlist[index].state+'</td>'+
 										'<td>'+result.likeuserlist[index].regist_no+'</td>'+
-								
+										'<td><button class="btn btn-dark"  onclick="location.href= \'userWithdraw.do?id='+result.likeuserlist[index].id+'\' ">삭제</button></td>'+
 							      '</tr>';
 	    		}
 	    		console.log(text);
@@ -96,8 +114,7 @@
 	    		alert('error');
 	    		console.log(error);
 	    	}
-	    });
-	}
-}); 
+	 })
+ }
 </script>
 </html>

@@ -118,10 +118,6 @@
 		})//searchBtn onclick end
 	//비동기 검색 함수
 	function likeSearch(searchval,cpageval){
-			console.log('aa');
-			console.log(searchval);
-			console.log(cpageval);
-			console.log('a');
             $.ajax({//비동기
     			url : "questionLike.do",
     			type : "get",
