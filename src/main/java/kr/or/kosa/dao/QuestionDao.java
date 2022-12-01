@@ -286,7 +286,7 @@ public class QuestionDao implements BookMarkDao{
 		int row = 0;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			String sql = "update question_board"
+			String sql = "update question_board "
 					+ "set question_title = ?,question_content=?,question_date=sysdate, notice_no=? where question_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getQuestion_title());
@@ -334,14 +334,12 @@ public class QuestionDao implements BookMarkDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Question_Board question = new Question_Board();
-		System.out.println(questionNo);
 		int q = Integer.parseInt(questionNo);
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select question_no, id, question_title, question_content, hits, to_char(question_date), refer, depth, step, notice_no from question_board where question_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, q);
-			System.out.println(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				question.setQuestion_no(rs.getInt(1));
@@ -355,7 +353,6 @@ public class QuestionDao implements BookMarkDao{
 				question.setStep(rs.getInt(9));
 				question.setNotice_no(rs.getInt(10));
 			}
-			System.out.println(question);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

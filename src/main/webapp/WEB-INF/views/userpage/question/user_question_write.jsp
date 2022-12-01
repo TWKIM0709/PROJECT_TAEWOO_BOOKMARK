@@ -25,7 +25,7 @@
 <body>
 <a href="javascript:history.back();">뒤로가기</a>
 <h1></h1>
-<form action="questionWriteok.do" method="post"  enctype="multipart/form-data">
+<form action="questionWriteok.do" method="get" >
 <div>
 	<input id="inputTitle" placeholder="제목을 작성해주세요" name = "question_title">
 </div>

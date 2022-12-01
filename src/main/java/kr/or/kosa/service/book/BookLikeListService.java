@@ -10,6 +10,7 @@ import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.BookDao;
 import kr.or.kosa.dto.Book;
 import kr.or.kosa.utils.ThePager;
+import kr.or.kosa.utils.ThePagerLike;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -59,7 +60,7 @@ public class BookLikeListService implements Action {
 			
 			int pagersize = pagecount;
 			System.out.println("pagersize: " + pagersize);
-			ThePager pager = new ThePager(count, cpage, pagesize, pagersize, "BookLikeList.do");
+			ThePagerLike pager = new ThePagerLike(count, cpage, pagesize, pagersize, request.getParameter("book_name"));
 			
 			
 			//for문으로 list를 json에 넣기

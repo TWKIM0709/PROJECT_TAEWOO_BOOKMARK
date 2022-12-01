@@ -46,7 +46,7 @@ public class QuestionUpdateService implements Action {
 				request.setAttribute("qboard", qboard);
 				forward = new ActionForward();
 				forward.setRedirect(false);
-				forward.setPath("/WEB-INF/views/board/board_edit.jsp");
+				forward.setPath("/WEB-INF/views/userpage/question/user_question_edit.jsp");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

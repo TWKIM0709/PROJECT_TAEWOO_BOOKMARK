@@ -43,7 +43,7 @@ public class QuestionWriteOkService implements Action {
 	    request.setAttribute("msg",msg);
 	    request.setAttribute("url", url);
 	    forward.setRedirect(false);
-	    forward.setPath("redirect.jsp");
+	    forward.setPath("/WEB-INF/views/utils/redirect.jsp");
 		} catch (Exception e) {
 			request.setAttribute("msg","error");
 			request.setAttribute("url","question.do" );

@@ -62,7 +62,6 @@ public class QuestionLikeListService implements Action {
 //			ThePager pager = new ThePager(totalboardcount,cpage,pagesize,pagersize,"questionLike.do?search=" + request.getParameter("search"));
 			//ThePagerLike는 파라미터로 링크 대신 검색어를 받는다.
 			ThePagerLike pager = new ThePagerLike(totalboardcount,cpage,pagesize,pagersize,request.getParameter("search"));
-			System.out.println(pager);
 			//====ThePager 까지는 동기랑 똑같음====
 //			JSONObject json = new JSONObject();
 //			JSONArray jsonary = new JSONArray();
