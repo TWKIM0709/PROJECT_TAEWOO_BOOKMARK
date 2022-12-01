@@ -93,7 +93,7 @@
 	    if(status) {
         	var msg = "등록오류 : 글자수는 최대 "+maxCnt+"까지 등록이 가능합니다. / 현재 글자수 : "+textCnt+"자";
         	console.log(msg);
-        	alert(msg);
+        	Swal.fire(msg);
 	    }
 	}
 	});
