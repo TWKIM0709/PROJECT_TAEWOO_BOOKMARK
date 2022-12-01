@@ -623,6 +623,8 @@ public class BlogDao implements BookMarkDao{
 			int blog_reply_no = reply.getBlog_reply_no(); //현재 댓글의 번호
 			//대댓글 작성하려는 원댓글
 			String originsql = "select refer, depth, step from blog_reply where blog_reply_no = ?";
+			//대댓글 작성시 기존 테이블 step 증가 쿼리
+			String updatesql = "update blog_reply set step=step+1 where step > ? and refer = ?";
 			//대댓글 insert 쿼리
 			String insertsql = "insert into blog_reply(blog_reply_no, id, refer, depth, step, reply_content, del,blog_no) "
 					+ "values(blog_reply_no_seq.nextval, ?, ?, ?, ?, ?, 0,?)";
@@ -638,6 +640,12 @@ public class BlogDao implements BookMarkDao{
 				int step = rs.getInt("step");
 				int depth = rs.getInt("depth");
 				
+				pstmt = conn.prepareStatement(updatesql);
+				pstmt.setInt(1, step);
+				pstmt.setInt(2, refer);
+				pstmt.execute();
+				
+				//insert 
 				pstmt = conn.prepareStatement(insertsql);
 				pstmt.setString(1, reply.getId());
 				pstmt.setInt(2, refer);
