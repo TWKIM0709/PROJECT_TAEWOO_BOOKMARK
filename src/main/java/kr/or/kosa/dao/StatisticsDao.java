@@ -367,7 +367,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select substr(payment_date, 0, 10) as daily, sum(sumprice) as total "
-					+ "from book_payment where payment_date between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD') group by substr(payment_date, 0, 10)";
+					+ "from book_payment where payment_date between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD') group by substr(payment_date, 0, 10) order by daily";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, startdate);
 			pstmt.setString(2, enddate);
@@ -406,7 +406,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select to_char(substr(payment_date, 0, 5)) as monthly, sum(sumprice) as total "
-					+ "from book_payment where payment_date between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD') group by substr(payment_date, 0, 5)";
+					+ "from book_payment where payment_date between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD') group by substr(payment_date, 0, 5) order by monthly";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, startdate);
 			pstmt.setString(2, enddate);
@@ -448,12 +448,12 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "SELECT "
-					+ "to_char(TRUNC(payment_date, 'iw'),'YYYY.MM.DD')|| ' - ' || to_char(sysdate, 'YYYY.MM.DD') AS weekly, "
+					+ "to_char(TRUNC(payment_date, 'iw'),'YYYY.MM.DD') AS weekly, "
 					+ "sum(sumprice) AS total "
 					+ "FROM book_payment where payment_date "
 					+ "between to_date(?, 'yyyy-MM-DD') and to_date(?, 'YYYY-MM-DD') "
 					+ "group by TRUNC(payment_date, 'iw') "
-					+ "having TRUNC(payment_date, 'iw') > sysdate - 7";
+					+ " order by weekly";
 			
 			pstmt = conn.prepareCall(sql);
 			pstmt.setString(1, startdate);
@@ -494,7 +494,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select substr(payment_date, 0,2) as yearly, sum(sumprice) as total "
-					+ "from book_payment group by substr(payment_date, 0, 2)";
+					+ "from book_payment group by substr(payment_date, 0, 2) order by yearly";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
