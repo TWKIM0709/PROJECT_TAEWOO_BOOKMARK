@@ -33,9 +33,9 @@
     <tbody>
 		<c:forEach var="blog"  items="${requestScope.blogboardlist }"> 
 		      <tr>
-					<td onclick=" location.href='blogDetail.do?blog_no=${blog.blog_no}' ">${blog.blog_no }</td>
+					<td>${blog.blog_no }</td>
 					<td>${blog.id }</td>
-					<td>${blog.blog_title }</td>
+					<td onclick=" location.href='blogDetail.do?blog_no=${blog.blog_no}' " style="cursor:pointer">${blog.blog_title }</td>
 					<td>${blog.hits }</td>
 					<td>${blog.blog_date }</td>
 					<td><button class="btn btn-dark" onclick="blogdelete(${blog.blog_no})">삭제하기</button></td>
@@ -57,9 +57,9 @@
 			{data:"blog_date"}
 		]
 	}); */
-	/* $(function(){
+	 $(function(){
 		$('#blogtable').DataTable();
-	}) */
+	}) 
 	function blogdelete(blog_no){ 
 		Swal.fire({
 			  title: 'Are you sure?',
