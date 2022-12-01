@@ -69,13 +69,17 @@
 	                                	 <li data-v-02a040ec="" class="list gtm-search-category"><a data-v-02a040ec=""
 	                                    href="questionDetail.do?question_no=${question.question_no}">
 		                                    <div data-v-02a040ec="" class="metadata"><strong data-v-02a040ec="">
-		                                    
+                                            <c:if test="${question.depth == 1}">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;└
+                                                </c:if>
 		                                    <c:if test="${question.notice_no == 1}">
 		                                    	[공지]
 		                                    </c:if>
 		                                    ${question.question_title}</strong>
 		                                    
-		                                        <p>
+		                                        <p> <c:if test="${question.depth == 1}">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </c:if>
 		                                        <c:choose>
 		                                        	<c:when test="${question.notice_no == 1}">
 		                                        		<strong>운영자</strong>
@@ -85,7 +89,9 @@
 		                                        	</c:otherwise>
 		                                        </c:choose>
 		                                        : ${question.id}</p>
-		                                        <p>조회수 : ${question.hits} | 작성일 : ${question.question_date}</p><br>
+		                                        <p> <c:if test="${question.depth == 1}">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </c:if>조회수   : ${question.hits} | 작성일 : ${question.question_date}</p><br>
 		                                    </div>
 		                                </a></li>
                                 </c:forEach>
