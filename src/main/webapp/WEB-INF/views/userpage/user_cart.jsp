@@ -524,10 +524,7 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
 	z-index: 1
 }
 </style>
-<script async=""
-	src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1"
-	rel="preconnect" charset="utf-8">
-    </script>
+
 <link rel="stylesheet" type="text/css"
 	href="https://d3udu241ivsax2.cloudfront.net/v3/style/dasanAward~dasanVote~home.20e63449e7a4626c02ae.css">
 <script charset="utf-8"
@@ -796,8 +793,8 @@ String contextPath = request.getContextPath();
     </div>
     <!-- <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/vendor.0be117fe15cd3682b23e.js"></script> -->
     <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/millie.b91a9f57d4b10d47052a.js"></script>
-    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
-    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-NTPPL2M"></script>
+    <!-- <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-NTPPL2M"></script> -->
     <script src="https://millie.co.kr/common/js/tracking.js"></script>
     <script type="text/javascript" id="" src="https://wcs.naver.net/wcslog.js"></script>
     <script type="text/javascript" id="" src="https://wcs.naver.net/wcslog.js"></script>
