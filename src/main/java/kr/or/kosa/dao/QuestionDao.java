@@ -230,7 +230,7 @@ public class QuestionDao implements BookMarkDao{
 			String step_update_sql = "update question_board set step= step+1 where step  > ? and refer =? ";
 			//3. 답글 insert
 			String rewrite_sql = "insert into question_board(question_no, id, question_title,question_content,hits,question_date,refer, depth, step, notice_no)"
-					+ "values (question_no_seq.nextval,?,?,?0,sysdate,?,?,?,?)";
+					+ "values (question_no_seq.nextval,?,?,?0,sysdate,?,?,?,0)";
 			
 			//[1] 실행
 			pstmt = conn.prepareStatement(refer_depth_step_sal);
@@ -259,7 +259,6 @@ public class QuestionDao implements BookMarkDao{
 				pstmt.setInt(4, refer);
 				pstmt.setInt(5, depth+1);
 				pstmt.setInt(6, step+1);
-				pstmt.setInt(7, board.getNotice_no());
 				
 				int row = pstmt.executeUpdate();
 				if(row > 0) {

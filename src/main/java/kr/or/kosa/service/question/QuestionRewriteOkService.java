@@ -15,9 +15,8 @@ public class QuestionRewriteOkService implements Action {
 
 		String strquestion_no = request.getParameter("question_no").trim();		
 		String question_title = request.getParameter("question_title");
-		String id = request.getParameter("id");
+		String id = (String)request.getSession().getAttribute("id");
 		String question_content = request.getParameter("question_content");
-		String notice_no = request.getParameter("notice_no");
 		String msg="";
 	    String url="";
 		ActionForward forward = new ActionForward();
@@ -31,7 +30,6 @@ public class QuestionRewriteOkService implements Action {
 			board.setQuestion_title(question_title);
 			board.setId(id);
 			board.setQuestion_content(question_content);
-			board.setNotice_no(Integer.parseInt(notice_no));
 			
 
 			QuestionDao dao = new QuestionDao();

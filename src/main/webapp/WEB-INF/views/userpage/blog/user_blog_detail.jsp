@@ -1718,7 +1718,7 @@
     <link rel="apple-touch-icon" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="apple-touch-icon-precomposed" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="shortcut icon" type="image/png" href="https://www.millie.co.kr/favicon/android-icon.png">
-    <title>트렌드코리아 2023 | 밀리의 서재</title>
+    <title>${requestScope.blog.blog_title}ㅡ${requestScope.blog.id}</title>
     <link href="https://d3udu241ivsax2.cloudfront.net/v3/style/vendor.524cdf1d4325d722f545.css" rel="stylesheet">
     <link href="https://d3udu241ivsax2.cloudfront.net/v3/style/millie.4a1320ab272ffa081fae.css" rel="stylesheet">
     <style type="text/css">
@@ -2319,7 +2319,7 @@
         <ul data-v-35475912="" class="comment-list" id="replylist">
             <li data-v-35475912="" class="comment-item">
                 <div data-v-35475912="" class="comment-item-inner flex-container">
-                    <div data-v-35475912="" class="com-contents">
+                  <!--   <div data-v-35475912="" class="com-contents">
                         <div data-v-35475912="" class="com-contents-head">
                             <div data-v-35475912="" class="com-contents-top flex-container">
                                 <p data-v-35475912="" class="nickname">재미와 행복</p>
@@ -2331,7 +2331,7 @@
                           
                         </div>
                        
-                    </div>
+                    </div> -->
                 </div>
 
             </li>
@@ -2345,14 +2345,9 @@
     </div>
 </body>
 <script type="text/javascript">
-    function aa() {
-        alert($('#replycontent').text());
-    }//aa end
-
     function testt() {
         alert('a');
         let text = $('#replycontent').val();
-        console.log(text);
         $.ajax({
             url: "ReplyWrite",
             type: "post",
@@ -2368,54 +2363,19 @@
                     alert("댓글쓰기 실패");
                     return;
                 }
-                $("#replylist").empty();
-                console.log(result);
-                let text = "";
-                for (let index in result.BLOG) {//style="margin-left: 20px;"
-                	 console.log(result.BLOG[index].del)
-                 	if(result.BLOG[index].del == 1){
-                         text +=
-                         	'<div data-v-35475912="" class="com-contents">'+
-                         	' <p data-v-35475912="" class="nickname">' +
-                             '<br> ' + '</p> <span data-v-35475912="" class="com-contents-date">' + '<br> ' +
-                             '</span><div style="position: absolute;left: 70%;"></div> <p data-v-35475912="" class="comment-text show">' 
-                             + '[삭제된 댓글입니다]' + '</p>'+'</div></li>'
-                 		
-                 	} else {
-                     let dep = result.BLOG[index].depth * 30;
-                     console.log(dep);
-                     text += '<br><li data-v-35475912="" stype="position:relative">';
-                     if(result.BLOG[index].step > 0){
-                     	text += '<i style="font-size:24px;transform:rotate(90deg); position:absolute; left:'+dep+'px;" class="fas">&#xf3bf;</i>';
-                     }
-                     text +=
-                     	'<div data-v-35475912="" class="com-contents"style="margin-left: '+dep+'px; ">'+
-                     	'<input type="hidden" value=" ' +
-                         result.BLOG[index].blog_reply_no + ' "> <p data-v-35475912="" class="nickname">' +
-                         result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
-                         '</span><div style="position: absolute;left: 70%;"><button onclick="rewrite('+result.BLOG[index].blog_reply_no+')"><span>대댓글 |</span></button><button onclick="test(\'content'+result.BLOG[index].blog_reply_no+'\')"><span>수정 |</span></button><button onclick="deletereply(' +result.BLOG[index].blog_reply_no +')"><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show" id="content'+result.BLOG[index].blog_reply_no+'">' 
-                         + result.BLOG[index].reply_content + '</p>'+'</div></li>'
-                 	}
-                }
-                console.log(text);
-                $('#replylist').append(text);
-                $('#replycontent').val("");
-     /*            $('#delbtn').on('click', deletereply); */
+            	replyload();
             },
             error: function () {
                 alert("서버요청실패");
             }
         })
     }//testt end
-    
-   
+
     //onload start
     $(function(){
     	replyload();
     });//onload end
-   function test(value){
-    	console.log(value);
-    }
+    
     //댓글 로딩 함수
     function replyload(){
     	$.ajax({
@@ -2432,10 +2392,8 @@
                     return;
                 }
                 $("#replylist").empty();
-                console.log(result);
                 let text = "";
                 for (let index in result.BLOG) {//style="margin-left: 20px;"
-                console.log(result.BLOG[index].del)
                 	if(result.BLOG[index].del == 1){
                         text +=
                         	'<div data-v-35475912="" class="com-contents">'+
@@ -2446,7 +2404,6 @@
                 		
                 	} else {
                     let dep = result.BLOG[index].depth * 30;
-                    console.log(dep);
                     text += '<br><li data-v-35475912="" stype="position:relative" id="replyli' +result.BLOG[index].blog_reply_no+'">';
                     if(result.BLOG[index].step > 0){
                     	text += '<i style="font-size:24px;transform:rotate(90deg); position:absolute; left:'+dep+'px;" class="fas">&#xf3bf;</i>';
@@ -2461,16 +2418,24 @@
                     	'<div data-v-35475912="" class="com-contents"style="margin-left: '+dep+'px; ">'+
                     	'<input id="replyno' +result.BLOG[index].blog_reply_no+'"type="hidden" value="' +  result.BLOG[index].blog_reply_no + '"> <p data-v-35475912="" class="nickname">' + //input 히든 + 댓글작성날짜
                         result.BLOG[index].id + '</p> <span data-v-35475912="" class="com-contents-date">' + result.BLOG[index].reply_date +
-                        '</span><div style="position: absolute;left: 70%;">'+
-                        '<button id="updateokbtn' +result.BLOG[index].blog_reply_no+'" onclick="updatetest(' +result.BLOG[index].blog_reply_no+')" class="replyhide"><span>수정완료|</span></button>'+
-                        '<button id="updatecancelbtn' +result.BLOG[index].blog_reply_no+'" onclick="updateset('+result.BLOG[index].blog_reply_no+')" class="replyhide"><span>취소</span></button>'+
-                        '<button id="rewritebtn' +result.BLOG[index].blog_reply_no+'" onclick="addrewritearea(' +result.BLOG[index].blog_reply_no+')"><span>대댓글 |</span></button><button id="updatebtn'+result.BLOG[index].blog_reply_no+'" onclick="updateset('+result.BLOG[index].blog_reply_no+')"><span>수정 |</span></button>'+
-                        '<button id="deletebtn'+result.BLOG[index].blog_reply_no+'" onclick="deletereply(' +result.BLOG[index].blog_reply_no +')"><span>삭제</span></button></div> <p data-v-35475912="" class="comment-text show" id="content'+result.BLOG[index].blog_reply_no+'"><span id="replyspan'+result.BLOG[index].blog_reply_no+ '">' 
+                        '</span>'
+           
+                        if('${sessionScope.id}' == result.BLOG[index].id){
+                        	text += '<div style="position: absolute;left: 70%;">'+
+	                        '<button id="updateokbtn' +result.BLOG[index].blog_reply_no+'" onclick="updatetest(' +result.BLOG[index].blog_reply_no+')" class="replyhide"><span>수정완료|</span></button>'+
+	                        '<button id="updatecancelbtn' +result.BLOG[index].blog_reply_no+'" onclick="updateset('+result.BLOG[index].blog_reply_no+')" class="replyhide"><span>취소</span></button>'+
+	                        '<button id="rewritebtn' +result.BLOG[index].blog_reply_no+'" onclick="addrewritearea(' +result.BLOG[index].blog_reply_no+')"><span>대댓글 |</span></button><button id="updatebtn'+result.BLOG[index].blog_reply_no+'" onclick="updateset('+result.BLOG[index].blog_reply_no+')"><span>수정 |</span></button>'+
+	                        '<button id="deletebtn'+result.BLOG[index].blog_reply_no+'" onclick="deletereply(' +result.BLOG[index].blog_reply_no +')"><span>삭제</span></button></div>'
+                        }
+                        else {
+                       		text += '<div style="position: absolute;left: 70%;"><button id="rewritebtn' +result.BLOG[index].blog_reply_no+'" onclick="addrewritearea(' +result.BLOG[index].blog_reply_no+')"><span>대댓글</span></button></div>';
+                        }
+                        
+                        text +=' <p data-v-35475912="" class="comment-text show" id="content'+result.BLOG[index].blog_reply_no+'"><span id="replyspan'+result.BLOG[index].blog_reply_no+ '">' 
                         + result.BLOG[index].reply_content +
                         '</span><input type="text" value="'+ result.BLOG[index].reply_content +'" id="replyinput'+result.BLOG[index].blog_reply_no+ '" class="replyhide" style="background-color:#e8e8e8; width:70%;"></p>'+'</div></li>'
                 	}
                 } //for end
-                console.log(text);
                 $('#replylist').append(text);
                 $('#replycontent').val("");
                 //$('#delbtn').on('click', deletereply);
@@ -2585,13 +2550,12 @@
     	}//rewrite end 
     
     	function addrewritearea(blog_reply_no){
+    		$('#rewritearea').parent().remove();
     		let rl = "\#replyli"+blog_reply_no; // li 아이디
-    		console.log(rl);
-    		console.log($(rl).text());
     		let text = "";
-    		text +='<br>'+
-			    		'<div data-v-35475912="" class="register flex-container">'+
-			    		//'<input type="hidden" id="rewriteno'+blog_reply_no+'" value="'+blog_reply_no+'">'+
+    		text +=''+
+			    		'<div data-v-35475912="" class="register flex-container" style="margin-top:10px;"><br>'+
+			    		'<input type="hidden" id="rewritearea" value="'+blog_reply_no+'">'+
 				            '<hr>'+
 				           '<div data-v-35475912="" class="register-box">'+
 				               '<div data-v-35475912="" class="register-box-inner"><span data-v-35475912="">대댓글</span>'+

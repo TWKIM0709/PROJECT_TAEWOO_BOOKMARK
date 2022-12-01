@@ -41,7 +41,7 @@
     <tbody id="content-area">
 		<c:forEach var="question"  items="${requestScope.questionlist}">
 		
-		      <tr onclick="location.href= '#' " class="trelement">
+		      <tr onclick="location.href= 'questionDetail.do?question_no=${question.question_no}' " class="trelement">
 					<td>${question.question_no }</td>
 					<td>${question.id }</td>
 					<td>
@@ -54,7 +54,7 @@
 		      </tr>
 		</c:forEach>
 		<tr>
-			<td><input class="form-control"type="text" name="search" id="search" placeholder="아이디검색"></td>
+			<td><input class="form-control"type="text" name="search" id="search" placeholder="글 제목"></td>
 			<td colspan="3" class="pager" id ="pager-area">
 			${requestScope.pager }
 			</td>
@@ -62,7 +62,6 @@
 		</tr>
     </tbody>
   </table>
-  
 </div>
 </body>
 <script type="text/javascript">

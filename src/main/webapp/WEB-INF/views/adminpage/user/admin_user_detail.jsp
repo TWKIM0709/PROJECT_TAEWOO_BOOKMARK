@@ -8,6 +8,6 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/utils/include/admintop.jsp"></jsp:include>
-어드민 유저 디테일
+
 </body>
 </html>
