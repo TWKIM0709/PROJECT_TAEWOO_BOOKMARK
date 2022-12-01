@@ -309,9 +309,9 @@ function test(){
     
  	console.log(ip);
     //let url = "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
-    let successurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK-2/ebookpayment.do?isbn=" + '${book.isbn}'
+    let successurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/ebookpayment.do?isbn=" + '${book.isbn}'
     //let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/WEB-INF/views/userpage/user_paymentFail.jsp";
-    let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK-2/paymentFail.do";
+    let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/paymentFail.do";
 
     console.log(successurl);
     
