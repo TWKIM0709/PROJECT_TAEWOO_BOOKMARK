@@ -12,51 +12,14 @@
     <!-- / -->
     <script src="https://js.tosspayments.com/v1/payment"></script>
 
-    <meta name="format-detection" content="telephone=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:site_name" content="밀리의 서재">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.millie.co.kr/">
-    <meta property="og:title" content="밀리의 서재">
-    <meta property="og:image" content="https://www.millie.co.kr/favicon/millie_og_v2_2.png">
-    <meta property="og:description" content="독서와 무제한 친해지리, 밀리의 서재에서 당신의 일상을 1밀리+ 더 멋지게 만들어 보세요">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="600">
-    <meta property="fb:app_id" content="1621792108120563">
+    
+   
     <meta name="description" content="독서와 무제한 친해지리, 밀리의 서재에서 당신의 일상을 1밀리+ 더 멋지게 만들어 보세요">
-    <meta name="naver-site-verification" content="09f2fbb79dfd0f4fbb3159d7ebf0722ab613cc74">
-    <meta name="google-site-verification" content="F_BvE8JmAqqhoTgJBKpQNQACdhJkXU-c7n9zdgjjRDc">
-    <meta name="google-site-verification" content="fxHd7i7aN34YObihzhJqIMXq-ct60hZgtvBMFFJ6ckw">
-    <script type="text/javascript" id="www-widgetapi-script"
-        src="https://www.youtube.com/s/player/4eb6b35d/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script type="text/javascript" async=""
-        src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1&amp;l=dataLayer&amp;cx=c"></script>
-    <script type="text/javascript" async=""
-        src="https://www.googletagmanager.com/gtag/js?id=G-3WR64L2XW1&amp;l=dataLayer&amp;cx=c"></script>
-    <script async="" src="//static.ads-twitter.com/uwt.js"></script>
-    <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+
     <!-- 제이쿼리 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--  -->
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script>
-        var preload = {
-            "IMAGE_FILE": "https:\/\/d2j6uvfek9vas1.cloudfront.net\/millie_logo\/637c1df82435a.png",
-            "IMAGE_HEIGHT": "496",
-            "IMAGE_WIDTH": "496",
-            "LINK_URL": "https:\/\/www.millie.co.kr\/v3\/bookDetail\/179581177",
-            "TITLE": {
-                "0": "\ucc9c\ub9cc \ubd80 \ud310\ub9e4\uc758 \uc804\uc124\r",
-                "1": "\uc6f9\uc18c\uc124\uc758 \uc870\uc0c1\ub2d8"
-            },
-            "SUB_TITLE": "11\uc6d4 24\uc77c <\ud1f4\ub9c8\ub85d>\uc774 \uacf5\uac1c\ub429\ub2c8\ub2e4",
-            "REG_DT": "2022-11-22 09:55:20",
-            "FIX_ID": "home_banner_2510"
-        }
-    </script>
 
     <link rel="apple-touch-icon" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="apple-touch-icon-precomposed" href="https://www.millie.co.kr/favicon/ios-icon.png">
@@ -326,18 +289,7 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
             z-index: 1
         }
     </style>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1" rel="preconnect" charset="utf-8">
-    </script>
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/mds-icon-v3.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Regular.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Bold.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/NotoSerifKR-Black.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <meta http-equiv="origin-trial"
-        content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
+
     <script type="text/javascript" async=""
         src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/771298710/?random=1669186014216&amp;cv=11&amp;fst=1669186014216&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.35%7CChromium%3B107.0.5304.90%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
     </script>
@@ -576,18 +528,6 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
 	src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1"
 	rel="preconnect" charset="utf-8">
     </script>
-<link rel="preload"
-	href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/mds-icon-v3.woff2"
-	as="font" type="font/woff2" crossorigin="crossorigin">
-<link rel="preload"
-	href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Regular.woff2"
-	as="font" type="font/woff2" crossorigin="crossorigin">
-<link rel="preload"
-	href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Bold.woff2"
-	as="font" type="font/woff2" crossorigin="crossorigin">
-<link rel="preload"
-	href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/NotoSerifKR-Black.woff2"
-	as="font" type="font/woff2" crossorigin="crossorigin">
 <link rel="stylesheet" type="text/css"
 	href="https://d3udu241ivsax2.cloudfront.net/v3/style/dasanAward~dasanVote~home.20e63449e7a4626c02ae.css">
 <script charset="utf-8"
@@ -607,23 +547,7 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
 	src="https://d3udu241ivsax2.cloudfront.net/v3/js/home.ed5f655aabea45e2b6cd.js"></script>
 <meta http-equiv="origin-trial"
 	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
-<script type="text/javascript" async=""
-	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/771298710/?random=1669276055208&amp;cv=11&amp;fst=1669276055208&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.56%7CChromium%3B107.0.5304.110%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-<script type="text/javascript" async=""
-	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669276055209&amp;cv=11&amp;fst=1669276055209&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.56%7CChromium%3B107.0.5304.110%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-<script type="text/javascript" async=""
-	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669276055210&amp;cv=11&amp;fst=1669276055210&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.56%7CChromium%3B107.0.5304.110%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-<meta http-equiv="origin-trial"
-	content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-<meta http-equiv="origin-trial"
-	content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-<script type="text/javascript" charset="utf8" async=""
-	src="https://www.youtube.com/iframe_api"></script>
-<meta http-equiv="origin-trial"
-	content="A0KGawWMfAygakxUO+Z3rulPwK2j0AqkLneiEt4pAI951GYaafeHNV9Ya+PAn7s0y12QSrfTjc9LdOUU+QfkdQwAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY2OTc2NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
+
 <link rel="stylesheet" type="text/css"
 	href="https://d3udu241ivsax2.cloudfront.net/v3/style/reading~search.9e20d3f61ee01fdc9a9c.css">
 <script charset="utf-8"
@@ -669,8 +593,6 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
 
 	InetAddress ip = InetAddress.getLocalHost();
 	String hostIP = ip.getHostAddress();
-	//System.out.println("현재 아이피 : " + ip.getLocalHost());
-	//System.out.println("hostIP : " + hostIP);
 String contextPath = request.getContextPath();
 	
 	request.setAttribute("ip", hostIP);
@@ -969,17 +891,10 @@ String contextPath = request.getContextPath();
         data-gtm-yt-inspected-18="true"></iframe>
 </body>
 <script>
-    // $('div[name="hjitem"]').click(function(){
-    //     console.log("리스트 아이템 클릭 !! " + $(this).children().attr('id'));
-    //     let clickItem = $(this);
-    //     console.log(clickItem);
-    //     $('#hjpay').append(clickItem);
-    // })
+  
     let totalprice = "<c:out value='${requestScope.totalprice}' />"    
     let repbook = "<c:out value='${requestScope.firstbook}' />";
     
-    // console.log("${requestScope.cartlist[0].book_name}");
-    // console.log("${requestScope.cartlist.size()}")
     let cartsize = "<c:out value='${requestScope.cartsize}' />"
     let customerName = "<c:out value='${sessionScope.id}' />";
 
@@ -988,7 +903,6 @@ String contextPath = request.getContextPath();
     let addr = "";
     let detail_addr = "";
 
-    // console.log(pricetag);
     $(function(){
         $('#hjpriceinput').attr("value", totalprice);
         $('#hjcartsize').attr("value", cartsize);
@@ -1012,18 +926,11 @@ String contextPath = request.getContextPath();
         // $('#hjpost').attr("action", `payment.do?amount=${totalprice}&orderItem=${repbook}&customerName=${customerName}&orderItemCount=${cartsize-1}`);
 
         $('#hjbtn').click(function(){
-                console.log("구매버튼 클릭");
                 test();
                 //여기서 ajax로 장바구니 책을 전달하고
 
-
                 //form에서는 구매자의 정보를 전달한다.
 
-                
-
-                // $('#hjsubmit').click();
-                //location.href=`payment.do?amount=${totalprice}&orderItem=${isbn[0]}&ordrItemCount=${isbn.length}&customerName=${customerName}`; //결제API로 이동 orderId가 머야?
-                //orderItem 외 count 건 (예:러시아어 외 2건)
             }
         )
         $('#hjtrash').click(function(){
@@ -1033,8 +940,6 @@ String contextPath = request.getContextPath();
     function kakaopost() {
       new daum.Postcode({
         oncomplete: function (data) {
-        	console.log(data.zonecode);
-        	console.log(data.address);
         	$('#zipcode').val(data.zonecode);
         	$('#address').val(data.address);
         }
@@ -1046,24 +951,13 @@ String contextPath = request.getContextPath();
    
 	function test(){
 
-        // let totalprice =  '${param.totalprice}';
-	    // let cartsize = '${param.cartsize}';
-	    // let customername = '${sessionScope.id}';
-	    // let firstbook = '${param.firstbook}'	 
-	    // let addr = '${param.addr}'
-	    // let detail_addr = '${param.detail_addr}'
-        console.log("test함수 실행됐습니다~")
-
         let addr = $('#zipcode').val();
         let detail_addr = $('#address').val();
 
 		let ip = '${requestScope.ip}';
 		let contextpath = '${requestScope.contextpath}'
         let customername = customerName;
-	 	//console.log(ip);
-        //let url = "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
         let successurl =  "http://" + ip + ":8090" + contextpath +"/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
-        //let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/WEB-INF/views/userpage/user_paymentFail.jsp";
         let failurl ="http://" + ip + ":8090"+contextpath+"/paymentFail.do";
 
         

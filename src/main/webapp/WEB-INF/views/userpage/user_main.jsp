@@ -126,7 +126,6 @@
 </style>
 </head>
 
-<!-- <script type="text/javascript">window.open(link,"_blank","width=900,height=900");</script> -->
 <body class="" style="height: auto; overflow: visible;">
 
 	<c:set var="recommend" value="${requestScope.recommend }" />
@@ -463,13 +462,6 @@ function a(value){
 	}
 }
 
-/* $(function(){
-	console.log('a');
-	for(let index in ${requestScope.popup} ){
-		console.log("b");
-	}
-	console.log('c');
-}); */
 
 </script>
 </html>

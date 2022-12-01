@@ -64,58 +64,12 @@
         	onImageUpload: function(files) {
 				 fileChange(files);
 			   },
-        	onChange:function(contents, $editable){ //텍스트 글자수 및 이미지등록개수
-        		console.log(contents);
-                setContentsLength(contents, 0);
-            }
-        	
-			
-			
+		
         }
        
 	});
 	
-	function setContentsLength(str, index) {
-	    var status = false;
-	    var textCnt = 0; //총 글자수
-	    var maxCnt = 100; //최대 글자수
-	    var editorText = f_SkipTags_html(str); //에디터에서 태그를 삭제하고 내용만 가져오기
-	    editorText = editorText.replace(/\s/gi,""); //줄바꿈 제거
-	    editorText = editorText.replace(/&nbsp;/gi, ""); //공백제거
 
-        textCnt = editorText.length;
-	    if(maxCnt > 0) {
-        	if(textCnt > maxCnt) {
-                status = true;
-        	}
-	    }
-
-	    if(status) {
-        	var msg = "등록오류 : 글자수는 최대 "+maxCnt+"까지 등록이 가능합니다. / 현재 글자수 : "+textCnt+"자";
-        	console.log(msg);
-        	alert(msg);
-	    }
-	}
-	});
-    
-//에디터 내용 텍스트 제거
-  function f_SkipTags_html(input, allowed) {
-  	// 허용할 태그는 다음과 같이 소문자로 넘겨받습니다. (<a><b><c>)
-      allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
-      var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
-      commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
-      return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
-          return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
-      });
-  }
-    
-    
-    $('#test').click(function(){
-    	console.log($('.panel-body').html());
-    	alert($('.panel-body').html());
-    });
-   
-    
     function fileChange(file){
     	console.log(typeof file);
     	console.log(file);
@@ -135,14 +89,9 @@
 
 
         $.ajax(settings).done(function (response) {
-            console.log(response);
             var jx = JSON.parse(response);
-            console.log(jx.data.url);
             fileurl = jx.data.url;
-            console.log(fileurl);
-            console.log(1);
         	$('#summernote').summernote('insertImage', fileurl);
-        	console.log(2);
         });
     }
 </script>

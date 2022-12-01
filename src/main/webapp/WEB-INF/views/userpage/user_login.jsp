@@ -206,29 +206,12 @@
             z-index: 1
         }
     </style>
-    <script src="https://connect.facebook.net/ko_KR/sdk.js?hash=646452377d71d531a108b0c5ff57585e" async=""
-        crossorigin="anonymous"></script>
-    <script async="true" type="text/javascript"
-        src="https://sslwidget.criteo.com/event?a=55644&amp;v=5.12.3&amp;p0=e%3Dexd%26site_type%3Dd&amp;p1=e%3Dvh&amp;p2=e%3Ddis&amp;adce=1&amp;bundle=-hkPd19JT28lMkIxR3VneGlCTnoySzlwMENZY2I1NERoU1RBUlFBOHEzc3d3TW1vQ0pIaTAzcWcxVTVLRm5lZTQ2dSUyRks5azFhTFhNTG9CRnRPdnUxNjZTQWN5T0N5RTNtOGY4ZjBGUkxFekVDJTJCUzVJUUQwWXNTMSUyQjZDJTJGSHBoV0d2Z05RdVB3QVpxMm15SjZHJTJCeHFGeTBPTk9JV1ElM0QlM0Q&amp;tld=millie.co.kr&amp;fu=https%253A%252F%252Fwww.millie.co.kr%252Fv3%252Flogin&amp;pu=https%253A%252F%252Fwww.millie.co.kr%252Fv3%252Fbrand%252Fupdate&amp;dtycbr=77162"
-        data-owner="criteo-tag"></script>
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script type="text/javascript" async=""
-        src="https://www.googletagmanager.com/gtag/js?id=G-3WR64L2XW1&amp;l=dataLayer&amp;cx=c"></script>
-    <script async="" src="//static.ads-twitter.com/uwt.js"></script>
-    <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+  
+  
     <script type="text/javascript" async=""
         src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1&amp;l=dataLayer&amp;cx=c"></script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1" rel="preconnect" charset="utf-8">
     </script>
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/mds-icon-v3.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Regular.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Bold.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/NotoSerifKR-Black.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
     <script charset="utf-8" src="https://d3udu241ivsax2.cloudfront.net/v3/js/3.5df2a7676bf066038084.js"></script>
     <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/login~resolution.f7b7a1694c2b0591f7a5.css">
@@ -913,16 +896,11 @@
 
 <body>
     <div data-v-c1337ae8="" id="wrap" class="web-mount">
-        <!---->
-        <!---->
-        <!---->
         <section data-v-c1337ae8="" class="content">
             <div data-v-4174ad9d="" data-v-c1337ae8="" class="login-container">
                 <div data-v-54204cd4="" data-v-4174ad9d="" class="back-component">
                     <div data-v-54204cd4="" class="back"><button data-v-54204cd4="" type="button"
                             class="close-button"><i data-v-54204cd4="" class="mds-icon--arrow-left"></i></button>
-                        <!---->
-                        <!---->
                     </div>
                 </div>
                 <div data-v-4174ad9d="" class="login-content">
@@ -932,7 +910,6 @@
                     <div data-v-4174ad9d="" class="input-item">
                         <div data-v-4174ad9d="" class="mds-input input mds-input--default mds-input--left"><label>
                                 <div class="inner">
-                                    <!---->
                                     <div class="input"><span id="input-14-label" class="label">ID
                                             <!----></span> <input autocomplete="off" id="input-14"
                                             aria-labelledby="input-14-label" aria-errormessage="input-14-message"
@@ -941,27 +918,21 @@
                                         class="mds-icon--input-delete clear-button" style="display: none;"></button>
                                 </div>
                             </label>
-                            <!---->
                         </div>
                     </div>
                     <div data-v-4174ad9d="" class="input-item">
                         <div data-v-4174ad9d=""
                             class="mds-input input input-password mds-input--default mds-input--left"><label>
                                 <div class="inner">
-                                    <!---->
                                     <div class="input"><span id="input-15-label" class="label">비밀번호
                                             <!----></span> <input autocomplete="off" id="input-15"
                                             aria-labelledby="input-15-label" aria-errormessage="input-15-message"
                                             type="password" placeholder="비밀번호 입력" class="mds-input-field"></div> <button
                                         type="button" aria-label="내용 삭제" class="mds-icon--input-delete clear-button"
                                         style="display: none;"></button>
-                                    <!---->
-                                    <!---->
                                 </div>
                             </label>
-                            <!---->
                         </div>
-                        <!---->
                      </div>
                     <div data-v-4174ad9d="" class="button-area mt16"><button data-v-4174ad9d="" type="button"
                             
@@ -969,19 +940,10 @@
                     </div>
                     <ul data-v-4174ad9d="" class="login-sub-menu">
                         <li data-v-4174ad9d=""><a data-v-4174ad9d="" href="userJoin.do">회원가입</a></li>
-                      
-                        
                     </ul>
                    </form>
-                 
-                <!---->
-                <!---->
             </div>
         </section>
-        <!---->
-        <!---->
-        <!---->
-        <!---->
     </div>
     <script type="text/javascript">
 
@@ -1018,39 +980,18 @@
     		});
     	}
     </script>
-    <!-- <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/vendor.0be117fe15cd3682b23e.js"></script> -->
     <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/millie.b91a9f57d4b10d47052a.js"></script>
     <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
     <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-NTPPL2M"></script>
     <script src="https://millie.co.kr/common/js/tracking.js"></script>
     <script type="text/javascript" id="" src="https://wcs.naver.net/wcslog.js"></script>
     <script type="text/javascript" id="" src="https://wcs.naver.net/wcslog.js"></script>
-    <script type="text/javascript" id="">
-        ! function (b, e, f, g, a, c, d) {
-            b.fbq || (a = b.fbq = function () {
-                    a.callMethod ? a.callMethod.apply(a, arguments) : a.queue.push(arguments)
-                }, b._fbq || (b._fbq = a), a.push = a, a.loaded = !0, a.version = "2.0", a.queue = [], c = e
-                .createElement(f), c.async = !0, c.src = g, d = e.getElementsByTagName(f)[0], d.parentNode
-                .insertBefore(c, d))
-        }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-        fbq("init", "863315557137080");
-        fbq("track", "PageView");
-    </script>
+  
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=863315557137080&amp;ev=PageView&amp;noscript=1"></noscript>
     <script type="text/javascript" id="" src="//static.criteo.net/js/ld/ld.js"></script>
     <script type="text/javascript" id="" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-    <script type="text/javascript" id="">
-        ! function (d, e, f, a, b, c) {
-            d.twq || (a = d.twq = function () {
-                    a.exe ? a.exe.apply(a, arguments) : a.queue.push(arguments)
-                }, a.version = "1.1", a.queue = [], b = e.createElement(f), b.async = !0, b.src =
-                "//static.ads-twitter.com/uwt.js", c = e.getElementsByTagName(f)[0], c.parentNode.insertBefore(b, c)
-                )
-        }(window, document, "script");
-        twq("init", "o087e");
-        twq("track", "PageView");
-    </script>
+
 
     <div id="wp_tg_cts" style="display:none;">
         <script id="wp_tag_script_1669184616559" charset="UTF-8"
@@ -1058,54 +999,7 @@
         </script>
         <script id="wp_onsite_script" charset="UTF-8" src="https://cdn-aitg.widerplanet.com/onsite/onsite.js"></script>
     </div>
-    <script type="text/javascript" id="">
-        var UserAgent = navigator.userAgent,
-            widerplanet_device = null != UserAgent.match(
-                /iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i
-                ) || null != UserAgent.match(/LG|SAMSUNG|Samsung/) ? "mobile" : "web",
-            wptg_tagscript_vars = wptg_tagscript_vars || [];
-        wptg_tagscript_vars.push(function () {
-            return {
-                wp_hcuid: "undefined",
-                ti: "52062",
-                ty: "Home",
-                device: widerplanet_device
-            }
-        });
-    </script>
-    <script type="text/javascript" id="" src="//cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
-    <script type="text/javascript" id="" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-    <script type="text/javascript" id="">
-        if (!wcs_add) var wcs_add = {};
-        wcs_add.wa = "s_1b6be27b0956";
-        if (!_nasa) var _nasa = {};
-        wcs.inflow();
-    </script>
 
-
-    <script type="text/javascript" id="">
-        if (!wcs_add) var wcs_add = {};
-        wcs_add.wa = "s_1b6be27b0956";
-        if (!_nasa) var _nasa = {};
-        window.wcs && (wcs_do(_nasa), console.log("wcs send!", wcs));
-    </script>
-
-
-    <script type="text/javascript" id="">
-        window.criteo_q = window.criteo_q || [];
-        window.criteo_q.push({
-            event: "setAccount",
-            account: 55644
-        }, {
-            event: "setSiteType",
-            type: ""
-        }, {
-            event: "viewHome"
-        });
-    </script>
-    <script type="text/javascript" id="">
-        kakaoPixel("4237922289572623356").pageView();
-    </script>
 </body>
 
 </html>

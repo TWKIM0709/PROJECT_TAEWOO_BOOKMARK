@@ -43,9 +43,6 @@
 
 	InetAddress ip = InetAddress.getLocalHost();
 	String hostIP = ip.getHostAddress();
-	//System.out.println("현재 아이피 : " + ip.getLocalHost());
-	//System.out.println("hostIP : " + hostIP);
-
 	String contextPath = request.getContextPath();
 	
 	request.setAttribute("ip", hostIP);
@@ -106,7 +103,6 @@
                                         
                                     	$('#like').click(function() {
                                     		  let userId = $('#like').val(); // input_id에 입력되는 값
-                                              console.log(userId);
                                               $.ajax({
                                                  url : "bookLike.do",
                                                  type : "post",
@@ -114,12 +110,7 @@
                                                 	 "isbn":"${book.isbn}"},
                                                  dataType : 'json',
                                                  success : function(result){
-                                                    console.log(result);
-                                                    /* if(result == "false"){
-                                                       alert("이미 있는 아이디입니다.")
-                                                    } else {
-                                                       alert("사용 가능한 아이디입니다.");
-                                                    }  */
+                                        
                                                     if(result.like >0){
                                                     	$('#likeimg').attr("src","https://cdn-icons-png.flaticon.com/128/6516/6516177.png");
                                                     }else{
@@ -205,7 +196,6 @@
                                     <script>
 	                                    $('#reply_insert').click(function() {
 											let text = $('#textarea-39').val();
-	                                        console.log(text);
 	                                        $.ajax({
 	                                           url : "ReplyWrite",
 	                                           type : "post",
@@ -296,13 +286,6 @@ $('#ebookPayment').click(function(){
  
 function test(){
 
-    // let totalprice =  '${param.totalprice}';
-    // let cartsize = '${param.cartsize}';
-    // let customername = '${sessionScope.id}';
-    // let firstbook = '${param.firstbook}'	 
-    // let addr = '${param.addr}'
-    // let detail_addr = '${param.detail_addr}'
-  
 	let ip = '${requestScope.ip}';
 	let contextpath = '${requestScope.contextpath}'
     let customername = customerName;
@@ -325,9 +308,6 @@ function test(){
 		easyPay: '토스페이'
 		})
 }
-
-
-
 
     function b() {
     	window.open('https://www.youtube.com/results?search_query=' + '${book.book_name}'+' 리뷰');
@@ -371,10 +351,10 @@ function test(){
     		dataType : 'text',
     		success : function(result){
     			if(result == 1){
-    				alert('수정성공');
+    				alert('수정완료');
     				replyload();
     			} else {
-    				alert('수정실패...');
+    				alert('수정실패');
     			}
     		},
     		error:function(){

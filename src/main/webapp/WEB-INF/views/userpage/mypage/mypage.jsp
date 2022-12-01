@@ -207,41 +207,12 @@
     </style>
     <script src="https://connect.facebook.net/en_US/sdk.js?hash=ea7289b65c614dc46f2615777abf3881" async=""
         crossorigin="anonymous"></script>
-    <script async="true" type="text/javascript"
-        src="https://sslwidget.criteo.com/event?a=55644&amp;v=5.12.3&amp;p0=e%3Dexd%26site_type%3Dd&amp;p1=e%3Dvh&amp;p2=e%3Ddis&amp;adce=1&amp;bundle=cTcWTF9waUVlZE9aOVZJVEMwekdrdTNOVGUwUjdKd21EbnZXZXklMkZPazRqcFhNWnNmaXZxdWZEeEViY01mbTMlMkZQcVdXV2xUeGNNVzI1bksyZSUyQjIwVTBlWTBoVjhSWDBiVXY5YzRmQVElMkY2TyUyRmEzVXNvd2VNZ2MxJTJCUFdkdnF6amNQJTJCcmR5Snp3RkVGMndjUmJnZDI0ZWNqSUtyQSUzRCUzRA&amp;tld=millie.co.kr&amp;fu=https%253A%252F%252Fwww.millie.co.kr%252Fv3%252Fmanagement&amp;dtycbr=23755"
-        data-owner="criteo-tag"></script>
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script type="text/javascript" async=""
-        src="https://www.googletagmanager.com/gtag/js?id=G-3WR64L2XW1&amp;l=dataLayer&amp;cx=c"></script>
-    <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+     <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script type="text/javascript" async=""
         src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1&amp;l=dataLayer&amp;cx=c"></script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1" rel="preconnect" charset="utf-8">
     </script>
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/mds-icon-v3.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Regular.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Bold.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/NotoSerifKR-Black.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <meta http-equiv="origin-trial"
-        content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
-    <script type="text/javascript" async=""
-        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/771298710/?random=1669186569765&amp;cv=11&amp;fst=1669186569765&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2Fmanagement&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.35%7CChromium%3B107.0.5304.90%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-    <script type="text/javascript" async=""
-        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669186569769&amp;cv=11&amp;fst=1669186569769&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2Fmanagement&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.35%7CChromium%3B107.0.5304.90%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-    <script type="text/javascript" async=""
-        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669186569770&amp;cv=11&amp;fst=1669186569770&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2Fmanagement&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.35%7CChromium%3B107.0.5304.90%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-    <meta http-equiv="origin-trial"
-        content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-    <meta http-equiv="origin-trial"
-        content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
     <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/bookDetail~management~paperBook~payment.5ae25aef3d26b1738ec7.css">
     <script charset="utf-8"
@@ -269,39 +240,9 @@
 
 <body class="">
     <div data-v-c1337ae8="" id="wrap" class="show-top-header show-header web-mount">
-        <!---->
-        <!---->
+
 <jsp:include page="/WEB-INF/views/utils/include/top.jsp"></jsp:include>
-       <!--  <div data-v-e67dcbb6="" data-v-c1337ae8="" class="top-header background topHeaderArea">
-            <div data-v-e67dcbb6="" class="inner">
-                <header data-v-e67dcbb6="">
-                    <h1 data-v-e67dcbb6=""><a data-v-e67dcbb6="" href="/"><img data-v-e67dcbb6=""
-                                src="https://d3udu241ivsax2.cloudfront.net/v3/images/common/millie-logo.3884f0c52e69f1f7322c2fd4778f4830.png"
-                                alt="밀리의 서재"></a></h1>
-                    <nav data-v-e67dcbb6="">
-                        <ul data-v-e67dcbb6="" class="gnb">
-                            <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="/" class="gtm-today">투데이</a>
-                            </li>
-                            <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="/v3/search"
-                                    class="gtm-search">검색</a></li>
-                            <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6=""
-                                    href="https://www.millie.co.kr/shelf/shelf_main.html" class="gtm-my">내서재</a></li>
-                            <li data-v-e67dcbb6="" class="on"><a data-v-e67dcbb6="" href="/v3/management"
-                                    class="gtm-setting">관리</a></li>
-                        </ul>
-                    </nav>
-                    <ul data-v-e67dcbb6="" class="util">
-                        <li data-v-e67dcbb6="" class="alarm"><a data-v-e67dcbb6=""
-                                href="/v3/today/more/alarmCenter/push" title="알림" class="gtm-alarm"><i
-                                    data-v-e67dcbb6="" class="mds-icon--alarm-2"></i> <span data-v-e67dcbb6=""
-                                    class="alarm-icon">1</span></a></li>
-                       
-                        <li data-v-e67dcbb6="" class="sign sign-in"><a data-v-e67dcbb6="" href="/v3/logout"
-                                class="">로그아웃</a></li>
-                    </ul>
-                </header>
-            </div>
-        </div> -->
+    
         <section data-v-c1337ae8="" class="content">
             <div data-v-0807f0e5="" data-v-c1337ae8="" class="inner-content">
                 <div data-v-0807f0e5="" class="product">

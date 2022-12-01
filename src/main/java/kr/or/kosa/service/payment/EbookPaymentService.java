@@ -29,9 +29,13 @@ public class EbookPaymentService implements Action {
 		System.out.println(price);
 		int result = dao.InsertEbookList(id, isbn,price);
 		//결제 성공시
-		if(result > 0) {
+		if(result > 0 && result<3) {
 			msg = "결제가 완료되었습니다";
 			url = "ebookList.do";
+			path = "/WEB-INF/views/utils/redirect.jsp";
+		}else if(result >=3) {
+			msg = "이미 구매한 책입니다.";
+			url = "bookDetail.do?isbn=" + request.getParameter("isbn");
 			path = "/WEB-INF/views/utils/redirect.jsp";
 		}else {//결제 실패시
 			msg = "결제에 실패하였습니다";
