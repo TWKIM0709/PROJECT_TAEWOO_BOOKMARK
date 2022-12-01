@@ -33,9 +33,9 @@
 	<br>
 	<br>
 	<h3 data-v-3adb62c9="" style="margin-left: 15%">
-		매출 및 회원통계 정보 : <select id="sk" onchange="chart(this.value)">
+		매출 및 회원통계 정보 : <select id="sk" onchange="chartLive(this.value)">
 			<option value="age">연령별 통계</option>
-			<option value="gender">성별 통계</option>
+			<option value="gender" >성별 통계</option>
 			<option value="day">일일 매출량</option>
 			<option value="week">주간 매출량</option>
 			<option value="month">월간 매출량</option>
@@ -43,8 +43,10 @@
 		</select>
 	</h3>
 	<div id="graph" style="margin-left : 10%" ></div>
+	<div id="graph2" style="margin-left : 10%" ></div>
 </body>
 <script type="text/javascript">
+let chart;
 	let options = {
         series: [
         {
@@ -85,49 +87,69 @@
 			}
 		}
 		};
+	
+	let options2 = {
+			series : [{
+				
+			}],
+			chart : {
+				type: 'pie',
+				width : '90%',
+				height : '750'
+			},
+			labels : [],
+			responsive : [{
+				breakpoint : 480,
+				options : {
+					chart : {
+						width : 200
+					},
+					legend : {
+						position : 'bottom'
+					}
+				}
+			}]
+	}
 
 		//var chart = new ApexCharts(document.querySelector("#chart"), options);
 		//chart.render();
-		function chart(value){
+		function chartLive(value){
 			$("#graph").empty();
+			chart.destroy();
 			if($("#sk option:selected").val() == "age"){
-				options.title.text = $("#sk option:selected").text();
-				options.series[0].name = "명";
+				chart.destroy();
 				$.ajax({
 					url : "statisticsAge.do",
 					dataType:"json",
 					success:function(data){
-					options.series[0].data.length = 0;
-					console.log(data);
+					options2.series.length = 0;
+					options2.labels.length = 0;
 					for(let index in data.age){
-						let json = { x: data.age[index].NAME + '대' , y:data.age[index].VALUE};
-						console.log(json);
-						options.series[0].data.push(json);
-					}//for
-					console.log(options)
-					let chart = new ApexCharts(document.querySelector("#graph"), options);
+						options2.series.push(data.age[index].VALUE);
+						options2.labels.push(data.age[index].NAME);
+					}
+					chart = new ApexCharts(document.querySelector("#graph"), options2);
 					chart.render();
 					} //success
 				});
 			}else if($("#sk option:selected").val() == "gender"){
-				options.title.text = $("#sk option:selected").text();
-				options.series[0].name = "명";
-				$("#graph").empty();
+				chart.destroy();
 				$.ajax({
 					url : "statisticsGender.do",
 					dataType:"json",
 					success:function(data){
-						options.series[0].data.length = 0;
-						console.log(data);
+						options2.series.length = 0;
+						options2.labels.length = 0;
 						for(let index in data.STATISTICS){
-							let json = { x: data.STATISTICS[index].NAME , y:data.STATISTICS[index].VALUE};
-							options.series[0].data.push(json);
+							options2.series.push(data.STATISTICS[index].VALUE);
+							options2.labels.push(data.STATISTICS[index].NAME);
 						}//for
-						let chart = new ApexCharts(document.querySelector("#graph"), options);
+						chart = new ApexCharts(document.querySelector("#graph"), options2);
 						chart.render();
 					} //success
 				});
 			}else if($("#sk option:selected").val() == "day"){
+				chart.destroy();
 				options.title.text = $("#sk option:selected").text();
 				options.series[0].name = "원";
 				$.ajax({
@@ -135,16 +157,16 @@
 					dataType:"json",
 					success:function(data){
 					options.series[0].data.length = 0;
-					console.log(data);
 					for(let index in data.STATISTICS){
 						let json = { x: data.STATISTICS[index].NAME , y:data.STATISTICS[index].VALUE};
 						options.series[0].data.push(json);
 					}//for
-					let chart = new ApexCharts(document.querySelector("#graph"), options);
+					chart = new ApexCharts(document.querySelector("#graph"), options);
 					chart.render();
 					} //success
 				});
 			}else if($("#sk option:selected").val() == "week"){
+				chart.destroy();
 				options.title.text = $("#sk option:selected").text();
 				options.series[0].name = "원";
 				$.ajax({
@@ -152,16 +174,16 @@
 					dataType:"json",
 					success:function(data){
 					options.series[0].data.length = 0;
-					console.log(data);
 					for(let index in data.STATISTICS){
 						let json = { x: data.STATISTICS[index].NAME , y:data.STATISTICS[index].VALUE};
 						options.series[0].data.push(json);
 					}//for
-					let chart = new ApexCharts(document.querySelector("#graph"), options);
+					chart = new ApexCharts(document.querySelector("#graph"), options);
 					chart.render();
 					} //success
 				});
 			}else if($("#sk option:selected").val() == "month"){
+				chart.destroy();
 				options.title.text = $("#sk option:selected").text();
 				options.series[0].name = "원";
 				$.ajax({
@@ -169,16 +191,16 @@
 					dataType:"json",
 					success:function(data){
 					options.series[0].data.length = 0;
-					console.log(data);
 					for(let index in data.STATISTICS){
 						let json = { x: data.STATISTICS[index].NAME , y:data.STATISTICS[index].VALUE};
 						options.series[0].data.push(json);
 					}//for
-					let chart = new ApexCharts(document.querySelector("#graph"), options);
+					chart = new ApexCharts(document.querySelector("#graph"), options);
 					chart.render();
 					} //success
 				});
 			}else if($("#sk option:selected").val() == "year"){
+				chart.destroy();
 				options.title.text = $("#sk option:selected").text();
 				options.series[0].name = "원";
 				$.ajax({
@@ -186,35 +208,35 @@
 					dataType:"json",
 					success:function(data){
 					options.series[0].data.length = 0;
-					console.log(data);
 					for(let index in data.STATISTICS){
 						let json = { x: data.STATISTICS[index].NAME , y:data.STATISTICS[index].VALUE};
 						options.series[0].data.push(json);
 					}//for
-					let chart = new ApexCharts(document.querySelector("#graph"), options);
+					chart = new ApexCharts(document.querySelector("#graph"), options);
 					chart.render();
 					} //success
 				});
 			}
 		}
 		
-		$(function(){
-			$.ajax({
-				url : "statisticsAge.do",
-				dataType:"json",
-				success:function(data){
-				options.series[0].data.length = 0;
-				console.log(data);
-				for(let index in data.age){
-					let json = { x: data.age[index].NAME+'대' , y:data.age[index].VALUE};
-					console.log(json);
-					options.series[0].data.push(json);
-				}//for
-				console.log(options)
-				let chart = new ApexCharts(document.querySelector("#graph"), options);
-				chart.render();
-				} //success
-			});
+		 $(function(){
+			 $.ajax({
+					url : "statisticsAge.do",
+					dataType:"json",
+					success:function(data){
+					options2.series.length = 0;
+					options2.labels.length = 0;
+					for(let index in data.age){
+						/* let json = { x: data.age[index].NAME + '대' , y:data.age[index].VALUE};
+						options.series[0].data.push(json); */
+						options2.series.push(data.age[index].VALUE);
+						options2.labels.push(data.age[index].NAME);
+					}//for
+					/* let chart = new ApexCharts(document.querySelector("#graph"), options); */
+					chart = new ApexCharts(document.querySelector("#graph"), options2);
+					chart.render();
+					} //success
+				});
 		})
 </script>
 </html>

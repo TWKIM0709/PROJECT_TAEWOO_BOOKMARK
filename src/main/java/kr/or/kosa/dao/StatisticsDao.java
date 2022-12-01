@@ -358,7 +358,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	}
 	
 	//일별 매출 통계
-	public List<Statistics> dailySales(){
+	public List<Statistics> dailySales(String startdate, String enddate){
 		
 		List<Statistics> dailyarr = new ArrayList<>();
 		Connection conn = null;
@@ -368,8 +368,10 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select substr(payment_date, 0, 10) as daily, sum(sumprice) as total "
-					+ "from book_payment group by substr(payment_date, 0, 10)";
+					+ "from book_payment where payment_date between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD') +1 group by substr(payment_date, 0, 10)";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, startdate);
+			pstmt.setString(2, enddate);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
