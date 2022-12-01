@@ -119,7 +119,7 @@
                                                     $("#likecount").text(result.count);
                                                  },
                                                  error : function(){
-                                                    alert("서버요청실패");
+                                                	 Swal.fire("서버요청실패");
                                                  }
                                               })
 										})
@@ -203,14 +203,14 @@
 	                                           dataType : 'json',
 	                                           success : function(result){
 	                                        	   if(result.result == "fail"){
-	                                        		   alert("댓글쓰기 실패");
+	                                        		   Swal.fire("댓글쓰기 실패");
 	                                        		   return;
 	                                        	   } 
 	                                        	   replyload();
 	                                        	   $('#textarea-39').val("");
 	                                           },
 	                                           error : function(){
-	                                              alert("서버요청실패");
+	                                        	   Swal.fire("서버요청실패");
 	                                           }
 	                                        })
 	                                       
@@ -323,14 +323,14 @@ function test(){
         		dataType : 'text',
         		success : function(result){
         			if(result == 1){
-        				alert("댓글 삭제 완료");
+        				Swal.fire("댓글 삭제 완료");
         				replyload();
         			} else {
-        				alert("댓글 삭제 실패");
+        				Swal.fire("댓글 삭제 실패");
         			}
         		},
         		error : function(error){
-        			alert('error');
+        			Swal.fire('댓글 삭제 실패...');
         		}
         		
         	})//ajax end
@@ -351,14 +351,14 @@ function test(){
     		dataType : 'text',
     		success : function(result){
     			if(result == 1){
-    				alert('수정완료');
+    				Swal.fire('수정성공');
     				replyload();
     			} else {
-    				alert('수정실패');
+    				Swal.fire('수정실패...');
     			}
     		},
     		error:function(){
-    			alert("에러발생");
+    			Swal.fire("수정실패.....");
     		}
     	})
     } //update end
@@ -419,7 +419,7 @@ function test(){
                  $("#reply").append(text);
                },
                error : function(){
-                  alert("서버요청실패");
+            	   Swal.fire("서버요청오류");
                }
             })
     }

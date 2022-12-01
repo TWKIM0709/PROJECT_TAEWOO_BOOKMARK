@@ -2346,13 +2346,13 @@
              dataType: 'json', 
             success: function (result) {
                 if (result.result == "fail") {
-                    alert("댓글쓰기 실패");
+                	Swal.fire("댓글쓰기 실패");
                     return;
                 }
             	replyload();
             },
             error: function () {
-                alert("서버요청실패");
+            	Swal.fire("서버요청실패");
             }
         })
     }//testt end
@@ -2374,7 +2374,7 @@
              dataType: 'json', 
             success: function (result) {
                 if (result.result == "fail") {
-                    alert("댓글 불러오기 실패");
+                	Swal.fire("댓글 불러오기 실패");
                     return;
                 }
                 $("#replylist").empty();
@@ -2427,7 +2427,7 @@
                 //$('#delbtn').on('click', deletereply);
             },
             error: function () {
-                alert("서버요청실패");
+            	Swal.fire("서버요청실패");
             }
         })
     } //replyload end
@@ -2443,16 +2443,16 @@
     		},
     		dataType : 'text',
     		success : function(result){
-    			alert("댓글 삭제 완료");
+    			Swal.fire("댓글 삭제 완료");
     			if(result == 1){
-    				alert("댓글 삭제 완료");
+    				Swal.fire("댓글 삭제 완료");
     				replyload();
     			} else {
-    				alert("댓글 삭제 실패");
+    				Swal.fire("댓글 삭제 실패");
     			}
     		},
     		error : function(error){
-    			alert('error');
+    			Swal.fire('댓글 삭제 실패..');
     		}
     		
     	})//ajax end
@@ -2473,14 +2473,14 @@
     		dataType : 'text',
     		success : function(result){
     			if(result == 1){
-    				alert('수정성공');
+    				Swal.fire('수정성공');
     				replyload();
     			} else {
-    				alert('수정실패...');
+    				Swal.fire('수정실패...');
     			}
     		},
     		error:function(){
-    			alert("에러발생");
+    			Swal.fire("수정실패.....");
     		}
     	})
     } //update end
@@ -2521,14 +2521,14 @@
     		dataType : 'json',
     		success : function(result){
     				if(result.result == "success"){
-    					alert('답글작성성공');
+    					Swal.fire('답글작성성공');
     					replyload();
     				} else {
-    					alert('답글 작성 실패');
+    					Swal.fire('답글 작성 실패');
     				}
     			},
     			error : function(){
-    				alert('에러');
+    				Swal.fire('답글작성실패....');
     			}
     		})//ajax end 
     	}//rewrite end 

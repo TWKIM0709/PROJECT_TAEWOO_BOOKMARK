@@ -24,8 +24,8 @@
 		}
 		.calendarPopup{
 			position: relative;
-			width:180px;
-			height:150px;
+			width:210px;
+			height:170px;
 			background-color:#d5caff;
 			position: absolute;
 			z-index: 1;
@@ -37,9 +37,10 @@
 			height:100%;
 		}
 		.calendarPopup .closebtn{
+			border-radius:5px;
 			position: absolute;
-			top: 5px;
-			left:87%;
+			top: -12px;
+			left:93%;
 		}
 		.calendarPopup button{
 			margin-left:3px;
@@ -50,6 +51,9 @@
 		.calendarPopup p{
 			margin-top: 5px;
 			margin-bottom: 5px;
+		}
+		#updatetitle,#updatestartdate,#updateenddate{
+			width:80%;
 		}
 	</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -64,9 +68,9 @@
 	<div class='hide calendarPopup' id="test">
 		<div style="padding:5px">
 			<button class="closebtn" id="addclosebtn"><i class="fa fa-close"></i></button>
-			<p>Content:<input type="text" id="title"></p>
-			<p>start:<input type="date" id="startdate" value=""></p>
-			<p>end:<input type="date" id="enddate"></p>
+			<p><b>Content </b><input type="text" id="title" style="width:65%"></p>
+			<p><b>Start </b><input type="date" id="startdate" value=""style="width:77%"></p>
+			<p><b>End </b><input type="date" id="enddate"style="width:81%"></p>
 			<p><button id="popupbutton" class="btn btn-light">추가하기</button></p>
 		</div>
 	</div>
@@ -74,9 +78,9 @@
 		<div style="padding:5px">
 			<button class="closebtn" id="updateclosebtn"><i class="fa fa-close"></i></button>
 			<input type="hidden" id="updateid">
-			<p><span>title:</span><input type="text" id="updatetitle"></p>
-			<p>start:<input type="date" id="updatestartdate"></p>
-			<p>end:<input type="date" id="updateenddate"></p>
+			<p><span><b>Title </b></span><input type="text" id="updatetitle"></p>
+			<p><b>Start</b><input type="date" id="updatestartdate"></p>
+			<p><b>End </b><input type="date" id="updateenddate"></p>
 			<p><button id="updatepopupbutton" class="btn btn-light">수정하기</button>
 			<button id="deletepopupbutton"class="btn btn-light">삭제하기</button></p>
 		</div>

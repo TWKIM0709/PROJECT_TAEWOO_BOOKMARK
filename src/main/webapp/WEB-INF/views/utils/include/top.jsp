@@ -4,6 +4,7 @@
 	<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	<html>
 <head>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport"
 		content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
@@ -70,9 +71,20 @@
 </body>
 <script type="text/javascript">
 	function logout(){
-		alert('로그아웃');
-		sessionStorage.clear();
-		location.href="homepage.html";
+		Swal.fire({
+			  text: "로그아웃하시겠습니까?",
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: '네',
+			  cancelButtonText:"아니요"
+			}).then((result) => {
+			  if (result.isConfirmed) {
+			 	//로그아웃
+				sessionStorage.clear();
+				location.href="homepage.html";
+			  }
+			})
 	}
 </script>
 <!-- <script type="text/javascript">

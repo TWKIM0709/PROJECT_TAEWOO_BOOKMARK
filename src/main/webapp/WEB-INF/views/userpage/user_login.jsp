@@ -4,6 +4,7 @@
 <html lang="ko" class="">
 
 <head>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
@@ -964,18 +965,21 @@
     			datatype : "text",
     			success : function(result){
     				if(result == 0){
-    					alert('아이디없음');
+    					Swal.fire('아이디가 없습니다.');
     				}else if(result == 1){
-    					alert('비밀번호가 올바르지 않습니다.')
+    					Swal.fire('비밀번호가 올바르지 않습니다.')
     				}else if(result ==2 ||result ==3){
-    					alert('로그인 성공');
-    					location.href="main.do";
+    					Swal.fire('로그인 성공!').then((result) => {
+    				    	  if (result.isConfirmed) {
+    									location.href="main.do";
+    				    		  }
+    				    		});
     				}else{
-    					alert("로그인 오류");
+    					Swal.fire("서버오류..재시도해주세요");
     				}
     			},
 				error : function (result){
-					alert("로그인 오류");
+					Swal.fire("서버오류..재시도해주세요");
 				}
     		});
     	}
