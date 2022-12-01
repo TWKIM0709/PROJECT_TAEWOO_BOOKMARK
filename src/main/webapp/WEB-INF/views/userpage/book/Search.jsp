@@ -8,54 +8,18 @@
     <meta name="viewport"
         content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- / -->
 
     <meta name="format-detection" content="telephone=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:site_name" content="밀리의 서재">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.millie.co.kr/">
-    <meta property="og:title" content="밀리의 서재">
-    <meta property="og:image" content="https://www.millie.co.kr/favicon/millie_og_v2_2.png">
-    <meta property="og:description" content="독서와 무제한 친해지리, 밀리의 서재에서 당신의 일상을 1밀리+ 더 멋지게 만들어 보세요">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="600">
-    <meta property="fb:app_id" content="1621792108120563">
+  
     <meta name="description" content="독서와 무제한 친해지리, 밀리의 서재에서 당신의 일상을 1밀리+ 더 멋지게 만들어 보세요">
-    <meta name="naver-site-verification" content="09f2fbb79dfd0f4fbb3159d7ebf0722ab613cc74">
-    <meta name="google-site-verification" content="F_BvE8JmAqqhoTgJBKpQNQACdhJkXU-c7n9zdgjjRDc">
-    <meta name="google-site-verification" content="fxHd7i7aN34YObihzhJqIMXq-ct60hZgtvBMFFJ6ckw">
-    <script type="text/javascript" id="www-widgetapi-script"
-        src="https://www.youtube.com/s/player/4eb6b35d/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script type="text/javascript" async=""
-        src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1&amp;l=dataLayer&amp;cx=c"></script>
-    <script type="text/javascript" async=""
-        src="https://www.googletagmanager.com/gtag/js?id=G-3WR64L2XW1&amp;l=dataLayer&amp;cx=c"></script>
-    <script async="" src="//static.ads-twitter.com/uwt.js"></script>
-    <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
     <!-- 제이쿼리 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--  -->
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script>
-        var preload = {
-            "IMAGE_FILE": "https:\/\/d2j6uvfek9vas1.cloudfront.net\/millie_logo\/637c1df82435a.png",
-            "IMAGE_HEIGHT": "496",
-            "IMAGE_WIDTH": "496",
-            "LINK_URL": "https:\/\/www.millie.co.kr\/v3\/bookDetail\/179581177",
-            "TITLE": {
-                "0": "\ucc9c\ub9cc \ubd80 \ud310\ub9e4\uc758 \uc804\uc124\r",
-                "1": "\uc6f9\uc18c\uc124\uc758 \uc870\uc0c1\ub2d8"
-            },
-            "SUB_TITLE": "11\uc6d4 24\uc77c <\ud1f4\ub9c8\ub85d>\uc774 \uacf5\uac1c\ub429\ub2c8\ub2e4",
-            "REG_DT": "2022-11-22 09:55:20",
-            "FIX_ID": "home_banner_2510"
-        }
-    </script>
-
+  
     <link rel="apple-touch-icon" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="apple-touch-icon-precomposed" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="shortcut icon" type="image/png" href="https://www.millie.co.kr/favicon/android-icon.png">
@@ -252,27 +216,7 @@
             z-index: 1
         }
     </style>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1" rel="preconnect" charset="utf-8">
-    </script>
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/mds-icon-v3.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Regular.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/SpoqaHanSansNeo-Bold.woff2"
-        as="font" type="font/woff2" crossorigin="crossorigin">
-    <link rel="preload" href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/NotoSerifKR-Black.woff2" as="font"
-        type="font/woff2" crossorigin="crossorigin">
-    <meta http-equiv="origin-trial"
-        content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
-    <script type="text/javascript" async=""
-        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/771298710/?random=1669186014216&amp;cv=11&amp;fst=1669186014216&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.35%7CChromium%3B107.0.5304.90%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-    <script type="text/javascript" async=""
-        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669186014219&amp;cv=11&amp;fst=1669186014219&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.35%7CChromium%3B107.0.5304.90%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
-    <script type="text/javascript" async=""
-        src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669186014220&amp;cv=11&amp;fst=1669186014220&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.35%7CChromium%3B107.0.5304.90%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
+
     <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/dasanAward~dasanVote~home.20e63449e7a4626c02ae.css">
     <script charset="utf-8"
@@ -289,12 +233,7 @@
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/home.aadb17a03cc4dec7eb90.css">
     <script charset="utf-8" src="https://d3udu241ivsax2.cloudfront.net/v3/js/home.e14f1548a2255229b188.js"></script>
     <script type="text/javascript" charset="utf8" async="" src="https://www.youtube.com/iframe_api"></script>
-    <meta http-equiv="origin-trial"
-        content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-    <meta http-equiv="origin-trial"
-        content="AzLNuh8GFzfIOcwvhEg7Ymr7YCzlYVTKeD7i2iETABbRf+sL2FAx+r+HlTtxSi1zgUFxBlJVoxgLjuhqiwTjAw4AAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-    <meta http-equiv="origin-trial"
-        content="A0KGawWMfAygakxUO+Z3rulPwK2j0AqkLneiEt4pAI951GYaafeHNV9Ya+PAn7s0y12QSrfTjc9LdOUU+QfkdQwAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5jb206NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY2OTc2NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
+
     <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/reading~search.9e20d3f61ee01fdc9a9c.css">
     <script charset="utf-8" src="https://d3udu241ivsax2.cloudfront.net/v3/js/reading~search.f53374eb3db7bf3bd13d.js">
@@ -310,37 +249,7 @@
         <!---->
         <!---->
 <jsp:include page="/WEB-INF/views/utils/include/top.jsp"></jsp:include>
-        <!-- <div data-v-e67dcbb6="" data-v-c1337ae8="" class="top-header background">
-            <div data-v-e67dcbb6="" class="inner">
-                <header data-v-e67dcbb6="">
-                    <h1 data-v-e67dcbb6=""><a data-v-e67dcbb6="" href="/"><img data-v-e67dcbb6=""
-                                src="https://d3udu241ivsax2.cloudfront.net/v3/images/common/millie-logo.3884f0c52e69f1f7322c2fd4778f4830.png"
-                                alt="밀리의 서재"></a></h1>
-                    <nav data-v-e67dcbb6="">
-                        <ul data-v-e67dcbb6="" class="gnb">
-                            <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="/" class="gtm-today"></a>
-                            </li>
-                            <li data-v-e67dcbb6="" class="on"><a data-v-e67dcbb6=""
-                                    href="https://www.millie.co.kr/v3/search?_ga=2.159273465.279460975.1669011906-1036664696.1665120667"
-                                    class="gtm-search">검색</a></li>
-                            <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6=""
-                                    href="https://www.millie.co.kr/shelf/shelf_main.html" class="gtm-my">내서재</a></li>
-                            <li data-v-e67dcbb6="" class=""><a data-v-e67dcbb6="" href="/v3/management"
-                                    class="gtm-setting">관리</a></li>
-                        </ul>
-                    </nav>
-                    <ul data-v-e67dcbb6="" class="util">
-                        <li data-v-e67dcbb6="" class="alarm"><a data-v-e67dcbb6=""
-                                href="/v3/today/more/alarmCenter/push" title="알림" class="gtm-alarm"><i
-                                    data-v-e67dcbb6="" class="mds-icon--alarm-2"></i> <span data-v-e67dcbb6=""
-                                    class="alarm-icon">200</span></a></li>
-                       
-                        <li data-v-e67dcbb6="" class="sign sign-in"><a data-v-e67dcbb6="" href="/v3/logout"
-                                class="">로그아웃</a></li>
-                    </ul>
-                </header>
-            </div>
-        </div> -->
+    
         <section data-v-c1337ae8="" class="content">
             <section data-v-02a040ec="" data-v-c1337ae8="" class="search-container">
                 <div data-v-02a040ec="" class="search-input-wrap">
@@ -363,17 +272,11 @@
                                                 type="button" aria-label="내용 삭제"
                                                 class="mds-icon--input-delete clear-button"
                                                 style="display: none;"></button>
-                                            <!---->
-                                            <!---->
                                         </div>
                                     </label>
-                                    <!---->
                                 </div>
                             </div>
                         </article>
-                        <!---->
-                        <!---->
-                        <!---->
                     </div>
                 </div>
                 <div data-v-02a040ec="" class="search-body">
@@ -424,44 +327,17 @@
             </section>
         </section>
         ${searchBoolean}<br>
-        <!---->
-        <!---->
-        <!---->
-        <!---->
+
     </div>
-    <!-- <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/vendor.0be117fe15cd3682b23e.js"></script> -->
     <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/millie.b91a9f57d4b10d47052a.js"></script>
     <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
     <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-NTPPL2M"></script>
     <script src="https://millie.co.kr/common/js/tracking.js"></script>
     <script type="text/javascript" id="" src="https://wcs.naver.net/wcslog.js"></script>
     <script type="text/javascript" id="" src="https://wcs.naver.net/wcslog.js"></script>
-    <script type="text/javascript" id="">
-        ! function (b, e, f, g, a, c, d) {
-            b.fbq || (a = b.fbq = function () {
-                    a.callMethod ? a.callMethod.apply(a, arguments) : a.queue.push(arguments)
-                }, b._fbq || (b._fbq = a), a.push = a, a.loaded = !0, a.version = "2.0", a.queue = [], c = e
-                .createElement(f), c.async = !0, c.src = g, d = e.getElementsByTagName(f)[0], d.parentNode
-                .insertBefore(c, d))
-        }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-        fbq("init", "863315557137080");
-        fbq("track", "PageView");
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=863315557137080&amp;ev=PageView&amp;noscript=1"></noscript>
+
     <script type="text/javascript" id="" src="//static.criteo.net/js/ld/ld.js"></script>
     <script type="text/javascript" id="" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-    <script type="text/javascript" id="">
-        ! function (d, e, f, a, b, c) {
-            d.twq || (a = d.twq = function () {
-                    a.exe ? a.exe.apply(a, arguments) : a.queue.push(arguments)
-                }, a.version = "1.1", a.queue = [], b = e.createElement(f), b.async = !0, b.src =
-                "//static.ads-twitter.com/uwt.js", c = e.getElementsByTagName(f)[0], c.parentNode.insertBefore(b, c)
-                )
-        }(window, document, "script");
-        twq("init", "o087e");
-        twq("track", "PageView");
-    </script>
 
     <div id="wp_tg_cts" style="display:none;">
         <script id="wp_tag_script_1669186014928" charset="UTF-8"
@@ -469,61 +345,7 @@
         </script>
         <script id="wp_onsite_script" charset="UTF-8" src="https://cdn-aitg.widerplanet.com/onsite/onsite.js"></script>
     </div>
-    <script type="text/javascript" id="">
-        var UserAgent = navigator.userAgent,
-            widerplanet_device = null != UserAgent.match(
-                /iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i
-                ) || null != UserAgent.match(/LG|SAMSUNG|Samsung/) ? "mobile" : "web",
-            wptg_tagscript_vars = wptg_tagscript_vars || [];
-        wptg_tagscript_vars.push(function () {
-            return {
-                wp_hcuid: "undefined",
-                ti: "52062",
-                ty: "Home",
-                device: widerplanet_device
-            }
-        });
-    </script>
-    <script type="text/javascript" id="" src="//cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
-    <script type="text/javascript" id="" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-    <script type="text/javascript" id="">
-        if (!wcs_add) var wcs_add = {};
-        wcs_add.wa = "s_1b6be27b0956";
-        if (!_nasa) var _nasa = {};
-        wcs.inflow();
-    </script>
 
-
-    <script type="text/javascript" id="">
-        if (!wcs_add) var wcs_add = {};
-        wcs_add.wa = "s_1b6be27b0956";
-        if (!_nasa) var _nasa = {};
-        window.wcs && (wcs_do(_nasa), console.log("wcs send!", wcs));
-    </script>
-
-
-    <script type="text/javascript" id="">
-        window.criteo_q = window.criteo_q || [];
-        window.criteo_q.push({
-            event: "setAccount",
-            account: 55644
-        }, {
-            event: "setSiteType",
-            type: ""
-        }, {
-            event: "viewHome"
-        });
-    </script>
-    <script type="text/javascript" id="">
-        kakaoPixel("4237922289572623356").pageView();
-    </script>
-
-    <script type="text/javascript" id="">
-        kakaoPixel("5057430883487430749").pageView("\ud0dc\uadf8\uac12\uc785\ub825");
-    </script>
-    <div id="criteo-tags-div" style="display: none;"></div><iframe height="0" width="0" title="Criteo DIS iframe"
-        style="display: none;" data-gtm-yt-inspected-9643057_1512="true" data-gtm-yt-inspected-9643057_2182="true"
-        data-gtm-yt-inspected-18="true"></iframe>
 </body>
 	<script type="text/javascript">
 
@@ -542,7 +364,6 @@
         	$.ajax({
     			url : "bookUserLikeList.do",
     			type : "get",
-    		//	data : "id=abc&pwd=123",
     			data : { "book_name": book_name,
                         pagesize : "10",
                         "cpage" : cpage,
@@ -551,7 +372,6 @@
     		// 매우중요!!	
     			    success : function(result) { // Ajax 목적 : result를 얻기 위함
 
-    					// console.log(inputtxt);
     		            $('#category').empty();
     		            $('#category').append("검색 결과");
     		            
@@ -562,8 +382,7 @@
                         let resultData = result;
                         console.log(resultData);
                         let test = '';
-                        //[{"isbn":"K502837053","book_name":"칵테일, 러브, 좀비 (리커버)","author":"조예은 (지은이)","description":"undefined","price":10000,"book_filename":"https://image.aladin.co.kr/product/29543/72/coversum/k502837053_1.jpg"}]
-
+                       
                         let listlen = resultData.booklist.length;
                         for(let i=0; i < listlen; i++){
                             let isbn = resultData.booklist[i].isbn;
@@ -583,17 +402,11 @@
                                                         ' srcset="'+resultData.booklist[i].book_filename +'"' +
                                                         ' type="image/webp"><img data-v-96e558f2=""'+
                                                         ' src = "' +resultData.booklist[i].book_filename + '" '+
-                                                            // srcset="https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg, https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg 2x"
-                                                            // type="image/webp"> <img data-v-96e558f2=""
-                                                            // src="https://image.aladin.co.kr/product/30255/31/coversum/k022839504_1.jpg"
+                                                          
                                                             '"alt=" 도서 썸네일" width="125"></picture>" '+
                                                 '</div></div></div></a></li>'
                                         )
-                               
-                                // $('#hjtitle').append(booklist.book_name); //여기에 서비스에서 받아온 리스트의 제목, 작가, 사진 넣기
-                                // $('#hjp').append(booklist.author);   //for문으로 list길이만큼 태그 추가
-                                // $('#hjcover').attr("src",booklist.book_filename);
-                                // $('#hjpicture').attr("srcset",booklist.book_filename, booklist.book_filename + " 2x");
+
                         }
 
                         $('#hjPager').append(resultData.pager);

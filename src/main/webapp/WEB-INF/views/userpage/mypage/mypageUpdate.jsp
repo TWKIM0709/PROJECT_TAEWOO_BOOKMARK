@@ -19,16 +19,6 @@
 <meta property="og:description"
 	content="">
 
-<meta name="naver-site-verification"
-	content="09f2fbb79dfd0f4fbb3159d7ebf0722ab613cc74">
-<meta name="google-site-verification"
-	content="F_BvE8JmAqqhoTgJBKpQNQACdhJkXU-c7n9zdgjjRDc">
-<meta name="google-site-verification"
-	content="fxHd7i7aN34YObihzhJqIMXq-ct60hZgtvBMFFJ6ckw">
-<script
-	src="https://connect.facebook.net/en_US/sdk.js?hash=1df673f445afaffeb5a7a5e13fea8398"
-	async="" crossorigin="anonymous"></script>
-
 <link rel="apple-touch-icon"
 	href="https://www.millie.co.kr/favicon/ios-icon.png">
 <link rel="apple-touch-icon-precomposed"
@@ -436,8 +426,6 @@
 	</div>
   <script>
     	 function registck(){
-    		 console.log('실행됨');
-			console.log( $("#regist_no").val().length);
     		if($("#id").val()=='' || !pwck || $("#name").val()=='' || $("#zipcode").val()==''
     				|| $("#address").val()=='' || $("#detailaddress").val()==''|| $("#regist_no").val().length != 6  || $("#phone").val().length != 10 ){
     			$("#register").attr("disabled",true);
@@ -458,7 +446,6 @@
   }
 //비밀번호 정규식
   function PwdCheck(obj){
-	console.log('a');
    var idReg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
    if( !idReg.test(obj.value) ){
@@ -476,8 +463,6 @@
     function kakaopost() {
       new daum.Postcode({
         oncomplete: function (data) {
-        	console.log(data.zonecode);
-        	console.log(data.address);
         	$('#zipcode').val(data.zonecode);
         	$('#address').val(data.address);
         }

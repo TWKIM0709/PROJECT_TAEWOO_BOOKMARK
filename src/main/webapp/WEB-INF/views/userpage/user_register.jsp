@@ -927,14 +927,12 @@
                                     	<script>
 						$('#idck').click(function(){
 							let userId = $('#id').val(); 
-							console.log(userId);
 							$.ajax({
 								url : "userIdCheck.do",
 								type : "post",
 								data : {"id": userId},
 								dataType : 'text',
 								success : function(result){
-									console.log(result);
 									if(result == "false"){
 										alert("이미 있는 아이디입니다.")
 									}else if($('#id').val().length < 6 ){
@@ -1120,8 +1118,6 @@
     </div>
 <script>
     	 function registck(){
-    		 console.log('실행됨');
-			console.log( $("#regist_no").val().length);
     		if($("#id").val()=='' || !pwck || $("#name").val()=='' || $("#zipcode").val()==''
     				|| $("#address").val()=='' || $("#detailaddress").val()==''|| $("#regist_no").val().length != 6  || $("#phone").val().length != 10 ){
     			$("#register").attr("disabled",true);
@@ -1320,8 +1316,6 @@ function checkPw() {
     function kakaopost() {
       new daum.Postcode({
         oncomplete: function (data) {
-        	console.log(data.zonecode);
-        	console.log(data.address);
         	$('#zipcode').val(data.zonecode);
         	$('#address').val(data.address);
         }
