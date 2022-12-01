@@ -572,10 +572,10 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
 	z-index: 1
 }
 </style>
-<script async=""
+<!-- <script async=""
 	src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1"
 	rel="preconnect" charset="utf-8">
-    </script>
+    </script> -->
 <link rel="preload"
 	href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/mds-icon-v3.woff2"
 	as="font" type="font/woff2" crossorigin="crossorigin">
@@ -607,7 +607,7 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
 	src="https://d3udu241ivsax2.cloudfront.net/v3/js/home.ed5f655aabea45e2b6cd.js"></script>
 <meta http-equiv="origin-trial"
 	content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
-<script type="text/javascript" async=""
+<!-- <script type="text/javascript" async=""
 	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/771298710/?random=1669276055208&amp;cv=11&amp;fst=1669276055208&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.56%7CChromium%3B107.0.5304.110%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
     </script>
 <script type="text/javascript" async=""
@@ -615,7 +615,7 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
     </script>
 <script type="text/javascript" async=""
 	src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/715358239/?random=1669276055210&amp;cv=11&amp;fst=1669276055210&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2wgb90&amp;u_w=1707&amp;u_h=1067&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.millie.co.kr%2F&amp;tiba=%EB%B0%80%EB%A6%AC%EC%9D%98%20%EC%84%9C%EC%9E%AC&amp;auid=492487846.1665120667&amp;uaa=x86&amp;uab=64&amp;uafvl=Microsoft%2520Edge%3B107.0.1418.56%7CChromium%3B107.0.5304.110%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;rfmt=3&amp;fmt=4">
-    </script>
+    </script> -->
 <meta http-equiv="origin-trial"
 	content="A9+ldib+sKhGj2FcIjq5GnvBZFuIiXID0+NkE6k7cEk71MhaHFGqo3wUlUFmZ6d9w0KPwx9UxGiCTYWtRnTGDQkAAACAeyJvcmlnaW4iOiJodHRwczovL2NyaXRlby5uZXQ6NDQzIiwiZmVhdHVyZSI6IlByaXZhY3lTYW5kYm94QWRzQVBJcyIsImV4cGlyeSI6MTY4MDY1Mjc5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
 <meta http-equiv="origin-trial"
@@ -874,8 +874,8 @@ String contextPath = request.getContextPath();
     </div>
     <!-- <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/vendor.0be117fe15cd3682b23e.js"></script> -->
     <script src="https://d3udu241ivsax2.cloudfront.net/v3/js/millie.b91a9f57d4b10d47052a.js"></script>
-    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
-    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-NTPPL2M"></script>
+    <!-- <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-NTPPL2M"></script> -->
     <script src="https://millie.co.kr/common/js/tracking.js"></script>
     <script type="text/javascript" id="" src="https://wcs.naver.net/wcslog.js"></script>
     <script type="text/javascript" id="" src="https://wcs.naver.net/wcslog.js"></script>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html><head>
-  <title>관리자 댓글</title>
+  <title>댓글 | 갈피표</title>
   <meta charset="utf-8">
   <!-- jquery -->
 	 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
