@@ -2346,7 +2346,6 @@
 </body>
 <script type="text/javascript">
     function testt() {
-        alert('a');
         let text = $('#replycontent').val();
         $.ajax({
             url: "ReplyWrite",
@@ -2448,7 +2447,6 @@
     
 	//delete btn
     function deletereply(blog_reply_no){
-   	alert(blog_reply_no);
     	$.ajax({
     		url:"ReplyDelete",
     		type :"post",
@@ -2459,7 +2457,6 @@
     		dataType : 'text',
     		success : function(result){
     			alert("댓글 삭제 완료");
-    			console.log(result);
     			if(result == 1){
     				alert("댓글 삭제 완료");
     				replyload();

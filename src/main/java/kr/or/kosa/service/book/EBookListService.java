@@ -21,7 +21,6 @@ public class EBookListService implements Action {
 		try {
 			BookDao dao = new BookDao();
 			List<Book> ebooklist = dao.EbookList(id);
-			System.out.println(ebooklist);
 			
 			request.setAttribute("ebooklist", ebooklist);
 			

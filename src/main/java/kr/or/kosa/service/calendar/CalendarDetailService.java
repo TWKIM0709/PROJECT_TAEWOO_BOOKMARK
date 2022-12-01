@@ -13,9 +13,7 @@ public class CalendarDetailService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
-		
-		System.out.println("캘린더 디테일 서비스 진입");
-		
+				
 		String calendar_no = request.getParameter("calendar_no");
 //		String calendar_start = request.getParameter("calendar_start");
 //		String calendar_end = request.getParameter("calendar_end");
@@ -26,7 +24,7 @@ public class CalendarDetailService implements Action {
 		
 		try {
 			if(calendar_no == null || calendar_no.trim().equals("")) {
-				response.sendRedirect(""); //TODO: 캘린더 리스트로
+				response.sendRedirect(""); //캘린더 리스트로
 				return null;
 			}
 			
@@ -34,9 +32,6 @@ public class CalendarDetailService implements Action {
 			Calendar calendar = dao.CalendarDetail(Integer.parseInt(calendar_no));
 			
 			request.setAttribute("calendar", calendar);
-			
-			//TODO:이렇게만 해줘도 되는지 ? ? getter로 다 지정 해줘야되나 ??
-			
 			
 //			calendar.setCalendar_content(calendar_content);
 //			calendar.setCalendar_start(formatter.parse(calendar_start));

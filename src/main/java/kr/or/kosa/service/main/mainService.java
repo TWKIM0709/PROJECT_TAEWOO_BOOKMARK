@@ -31,7 +31,6 @@ public class mainService implements Action {
 		
 		try {
 			if(admin.equals("admin")) {
-				System.out.println("adminpage in");
 				forward.setRedirect(false);
 				forward.setPath("/WEB-INF/views/adminpage/admin_main.jsp");
 				return forward;
@@ -97,7 +96,6 @@ public class mainService implements Action {
 			List<Book_Recommend> recommend =dao.Book_RecommendList();
 			PopupDao pdao = new PopupDao();
 			List<Popup> popup = pdao.FilterPopup();
-			System.out.println(popup);
 			request.setAttribute("popup", popup);
 			request.setAttribute("recommend", recommend);
 			//request.setAttribute("ylikerank", ylikerank);
@@ -109,7 +107,6 @@ public class mainService implements Action {
 			request.setAttribute("dpayrank", dpayrank);
 			request.setAttribute("dlikerank", dlikerank);
 			
-			System.out.println("userpage in");
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/userpage/user_main.jsp");	
 		} catch (Exception e) {

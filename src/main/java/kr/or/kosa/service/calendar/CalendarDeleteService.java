@@ -15,9 +15,7 @@ public class CalendarDeleteService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
-		
-		System.out.println("캘린더 삭제 서비스 진입");
-		
+				
 		String calendar_no = request.getParameter("calendar_no");
 		System.out.println("calendarno : " + calendar_no);
 		String msg = "";

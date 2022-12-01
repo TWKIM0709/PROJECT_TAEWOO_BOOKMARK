@@ -20,7 +20,6 @@ public class BlogAllListService implements Action {
 		try {
 			BlogDao dao = new BlogDao();
 			List<Blog_Board> list = dao.AllBoard();
-			System.out.println(list);
 			request.setAttribute("blogboardlist", list);
 			
 			if(request.getSession().getAttribute("admin").equals("admin")) {//관리자일경우

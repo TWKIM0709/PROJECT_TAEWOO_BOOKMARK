@@ -17,8 +17,7 @@ public class CalendarSearchListService implements Action {
 		ActionForward forward = new ActionForward();
 		
 		List<Calendar> searchCalendarList = null;
-		
-		System.out.println("캘린더 서치 리스트 서비스 진입");
+
 		try {
 			
 			String content = request.getParameter("content"); //검색어

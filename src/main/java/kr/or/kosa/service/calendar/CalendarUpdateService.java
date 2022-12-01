@@ -16,8 +16,6 @@ public class CalendarUpdateService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
-		System.out.println("캘린더 수정 서비스 진입");
-		
 		String calendar_no = request.getParameter("calendar_no");
 		String calendar_start = request.getParameter("calendar_start");
 		String calendar_end = request.getParameter("calendar_end");
