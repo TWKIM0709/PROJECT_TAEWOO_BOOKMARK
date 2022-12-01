@@ -75,6 +75,7 @@ public class PaymentLogLikeIdListService implements Action {
 				json.put("sumprice", p.getSumprice());
 				json.put("payment_addr", p.getPayment_addr());
 				json.put("payment_detailaddr", p.getPayment_detailaddr());
+				json.put("id", p.getId());
 				jsonary.add(json);
 			}
 		jsonobj.put("RESULT", "success");

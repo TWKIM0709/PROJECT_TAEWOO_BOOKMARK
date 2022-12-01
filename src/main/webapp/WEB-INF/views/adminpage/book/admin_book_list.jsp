@@ -49,7 +49,7 @@
 		      </tr>
 		</c:forEach>
 		<tr>
-			<td><input class="form-control"type="text" name="search" id="search" placeholder="ISBN검색"></td>
+			<td><input class="form-control"type="text" name="search" id="search" placeholder="책이름 검색"></td>
 			<td colspan="3" class="pager" id ="pager-area">
 			${requestScope.pager }
 			</td>
@@ -63,38 +63,46 @@
 <script type="text/javascript">
 $('#search').keydown(function(keyNum){
     if(keyNum.keyCode == 13){
-        alert('bookUserLikeList.do');
-        $.ajax({
-        	url : "bookUserLikeList.do",
-        	data : {book_name : $('#search').val()},
-        	type:"post",
-        	dataType:"json",
-        	success : function(result){
-        		console.log(result);
-        		let text = "";
-        		for(let index in result.booklist){
-        			text += '<tr onclick="location.href= &#39; bookDetail.do?isbn='+result.booklist[index].isbn+' &#39;" class="trelement">'+
-						'<td style="max-width: 160px;"><img alt="책표지" src="'+result.booklist[index].book_filename+'"></td>'+
-						'<td>'+result.booklist[index].isbn+'</td>'+
-						'<td>'+result.booklist[index].book_name+'</td>'+
-						'<td>'+result.booklist[index].author+'</td>'+
-						'<td>'+result.booklist[index].price+'</td>'+
-			      '</tr>';
-        		}
-        		console.log(text);
-				$('.trelement').remove();
-				$('#pager-area').empty();
-				
-				$('#content-area').prepend(text);
-				$('#pager-area').append(result.pager);
-        	},
-        	error : function(error){
-        		alert('error');
-        		console.log(error);
-        	}
-        });
+    	let sc = $("#search").val()
+        likeSearch(sc,'1');
     }
 });
+
+function likeSearch(searchval, cpageval){
+	$.ajax({
+    	url : "bookUserLikeList.do",
+    	data : {book_name : searchval,
+    				pagesize : "5",	
+    				cpage : cpageval
+    			},
+    	type:"post",
+    	dataType:"json",
+    	success : function(result){
+    		console.log(result);
+    		let text = "";
+    		for(let index in result.booklist){
+    			text += '<tr onclick="location.href= &#39; bookDetail.do?isbn='+result.booklist[index].isbn+' &#39;" class="trelement">'+
+					'<td style="max-width: 160px;"><img alt="책표지" src="'+result.booklist[index].book_filename+'"></td>'+
+					'<td>'+result.booklist[index].isbn+'</td>'+
+					'<td>'+result.booklist[index].book_name+'</td>'+
+					'<td>'+result.booklist[index].author+'</td>'+
+					'<td>'+result.booklist[index].price+'</td>'+
+		      '</tr>';
+    		}
+    		console.log(text);
+			$('.trelement').remove();
+			$('#pager-area').empty();
+			
+			$('#content-area').prepend(text);
+			$('#pager-area').append(result.pager);
+    	},
+    	error : function(error){
+    		alert('error');
+    		console.log(error);
+    	}
+    });
+}
+
 $('#bookaddbtn').on({
 	click:function(){
 		location.href="bookAdd.do"

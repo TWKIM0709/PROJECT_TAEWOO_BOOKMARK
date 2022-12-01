@@ -73,6 +73,14 @@ public class PaymentDao implements BookMarkDao{
 						}
 					} catch (Exception e) {
 						System.out.println("totalPayment 예외 : " + e.getMessage());
+					}finally {
+						try {
+							ConnectionHelper.close(rs);
+							ConnectionHelper.close(pstmt);
+							ConnectionHelper.close(conn);
+						} catch (Exception e2) {
+							e2.printStackTrace();
+						}
 					}
 					return totalcount;
 				}
@@ -129,7 +137,7 @@ public class PaymentDao implements BookMarkDao{
 					ConnectionHelper.close(pstmt);
 					ConnectionHelper.close(conn);
 				} catch (Exception e2) {
-				
+					e2.printStackTrace();
 				}
 			}
 			
@@ -190,9 +198,9 @@ public class PaymentDao implements BookMarkDao{
 			try {
 				conn = ConnectionHelper.getConnection("oracle");
 				String sql = "select * from "
-						+ "(select rownum rn,payment_no, payment_isbn,(select book_name from book where isbn = payment_isbn)as book_name, count,to_char(payment_date) as payment_date,sumprice, payment_addr, payment_detailaddr "
+						+ "(select rownum rn,payment_no, payment_isbn,(select book_name from book where isbn = payment_isbn)as book_name, count,to_char(payment_date) as payment_date,sumprice, payment_addr, payment_detailaddr, id "
 						+ "from "
-						+ "( SELECT payment.payment_no as payment_no, isbn as payment_isbn, count, payment_date, sumprice, payment_addr, payment_detailaddr FROM book_payment left join payment on book_payment.payment_no = payment.payment_no  where payment.id like ? ORDER BY 1 desc ) "
+						+ "( SELECT payment.payment_no as payment_no, isbn as payment_isbn, count, payment_date, sumprice, payment_addr, payment_detailaddr, payment.id as id FROM book_payment left join payment on book_payment.payment_no = payment.payment_no  where payment.id like ? ORDER BY 1 desc ) "
 						+ "where rownum <= ?) where rn >= ?";
 
 				pstmt = conn.prepareStatement(sql);
@@ -211,6 +219,7 @@ public class PaymentDao implements BookMarkDao{
 					
 					Book_Payment bookpayment = new Book_Payment();
 					
+					
 					bookpayment.setPayment_no(rs.getString("payment_no"));					
 					bookpayment.setIsbn(rs.getString("payment_isbn"));				
 					bookpayment.setBook_name(rs.getString("book_name"));
@@ -219,6 +228,7 @@ public class PaymentDao implements BookMarkDao{
 					bookpayment.setSumprice(rs.getInt("sumprice"));
 					bookpayment.setPayment_addr(rs.getString("payment_addr"));
 					bookpayment.setPayment_detailaddr((rs.getString("payment_detailaddr").replace("-", " ")));
+					bookpayment.setId(rs.getString("id"));
 					paymentlist.add(bookpayment);
 				}
 				System.out.println("paymentList : " + paymentlist);
@@ -290,9 +300,9 @@ public class PaymentDao implements BookMarkDao{
 //				String sql = "select book_payment.payment_no,(select book_name from book where book.isbn = book_payment.isbn),count,to_char(payment_date),sumprice, payment_addr, payment_detailaddr "
 //						+ "from book_payment join payment on book_payment.payment_no = payment.payment_no order by payment_no desc";
 				String sql ="select * from"
-						+ " (select rownum rn,payment_no, payment_isbn,(select book_name from book where isbn = payment_isbn)as book_name, count,to_char(payment_date) as payment_date,sumprice, payment_addr, payment_detailaddr"
+						+ " (select rownum rn,payment_no, payment_isbn,(select book_name from book where isbn = payment_isbn)as book_name, count,to_char(payment_date) as payment_date,sumprice, payment_addr, payment_detailaddr, id"
 						+ " from"
-						+ " ( SELECT payment.payment_no as payment_no, isbn as payment_isbn, count, payment_date, sumprice, payment_addr, payment_detailaddr FROM book_payment left join payment on book_payment.payment_no = payment.payment_no ORDER BY 1 desc )"
+						+ " ( SELECT payment.payment_no as payment_no, isbn as payment_isbn, count, payment_date, sumprice, payment_addr, payment_detailaddr, payment.id as id FROM book_payment left join payment on book_payment.payment_no = payment.payment_no ORDER BY 1 desc )"
 						+ " where rownum <= ?) where rn >= ?";
 				pstmt = conn.prepareStatement(sql);
 				
@@ -314,6 +324,7 @@ public class PaymentDao implements BookMarkDao{
 					bookpayment.setSumprice(rs.getInt("sumprice"));
 					bookpayment.setPayment_addr(rs.getString("payment_addr"));
 					bookpayment.setPayment_detailaddr((rs.getString("payment_detailaddr")).replace("-", " "));
+					bookpayment.setId(rs.getString("id"));
 					
 					allpaymentlist.add(bookpayment);
 					

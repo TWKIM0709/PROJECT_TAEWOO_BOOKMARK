@@ -53,12 +53,18 @@
 					<td>${question.question_date }</td>
 		      </tr>
 		</c:forEach>
+    </tbody>
+  </table>
+  <table class="table">
+    <thead>
+    </thead>
+    <tbody>
 		<tr>
-			<td><input class="form-control"type="text" name="search" id="search" placeholder="글 제목"></td>
-			<td colspan="3" class="pager" id ="pager-area">
+			<td style="width:20%"><input class="form-control"type="text" name="search" id="search" placeholder="글 제목"></td>
+			<td class="pager" id ="pager-area" >
 			${requestScope.pager }
 			</td>
-			<td></td>
+			<td style="width:20%"></td>
 		</tr>
     </tbody>
   </table>
@@ -67,13 +73,21 @@
 <script type="text/javascript">
  $('#search').keydown(function(keyNum){
 	if(keyNum.keyCode == 13){
-	    $.ajax({
+		let inputtext = $('#search').val();
+	    likeSearch(inputtext, "1")
+	}
+}); 
+ function likeSearch(searchval, cpageval){
+	 $.ajax({
 	    	url : "questionLike.do",
-	    	data : {"search": $('#search').val()},
+	    	data : {
+	    		search: searchval,
+	    		ps : "5",
+	    		cp : cpageval
+	    	},
 	    	type:"post",
 	    	dataType:"json",
 	    	success : function(result){
-	    		console.log(result);
 	    		let text = "";
 	    		for(let index in result.questionlist){// &#39;
 	    			console.log(result.questionlist[index].depth);
@@ -88,7 +102,6 @@
 										'<td>'+result.questionlist[index].question_date+'</td>'+
 							      '</tr>'; 
 	    		}
-	    		console.log(text);
 				$('.trelement').remove();
 				$('#pager-area').empty();
 				
@@ -97,10 +110,8 @@
 	    	},
 	    	error : function(error){
 	    		alert('error');
-	    		console.log(error);
 	    	}
 	    });
-	}
-}); 
+ }
 </script>
 </html>

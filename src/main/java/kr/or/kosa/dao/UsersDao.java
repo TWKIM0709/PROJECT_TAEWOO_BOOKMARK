@@ -186,7 +186,7 @@ public class UsersDao implements BookMarkDao{
 					+ " (select rownum rn, u.id, u.password, u.name, u.state, d.addr, d.detail_addr, d.regist_no, d.phone"
 						+ " from users u left join user_detail d on u.id = d.id"
 						+ " where rownum <= ?)"
-					+ " where rn > ?";
+					+ " where rn >= ?";
 			
 			int start = cpage * pagesize - (pagesize -1); //1 * 5 - (5 - 1) >> 1
 			int end = cpage * pagesize; // 1 * 5 >> 5
@@ -290,8 +290,6 @@ public class UsersDao implements BookMarkDao{
 			ConnectionHelper.close(rs);
 			ConnectionHelper.close(pstmt);
 			ConnectionHelper.close(conn);
-			System.out.println("userList 출력 : " + userlist);
-			System.out.println("userList 길이 : " + userlist.size());
 		}
 		return userlist;
 	}
@@ -315,6 +313,15 @@ public class UsersDao implements BookMarkDao{
 			
 		} catch (Exception e) {
 			System.out.println("totalUserCountByLike 예외 : " + e.getMessage());
+			e.printStackTrace();
+		}finally {
+			try {
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		return totalcount;
 	}

@@ -11,6 +11,7 @@ import kr.or.kosa.action.ActionForward;
 import kr.or.kosa.dao.UsersDao;
 import kr.or.kosa.dto.Users;
 import kr.or.kosa.utils.ThePager;
+import kr.or.kosa.utils.ThePagerLike;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -65,7 +66,7 @@ public class UserLikeListService implements Action {
 			List<Users> likelist = dao.getUserListByLike(type, value, Integer.parseInt(cp), Integer.parseInt(ps));
 			
 			int pagersize = 3;
-			ThePager pager = new ThePager(likeusercount, cpage, pagesize, pagersize, "userSearch.do?search="+request.getParameter("search") + "&type=" + request.getParameter("type"));
+			ThePagerLike pager = new ThePagerLike(likeusercount, cpage, pagesize, pagersize, request.getParameter("value"));
 			
 			//for문으로 list를 json에 넣기
 			//select rownum rn, u.id, u.password, u.name, u.state, d.addr,
