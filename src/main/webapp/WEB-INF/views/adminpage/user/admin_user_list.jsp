@@ -41,7 +41,7 @@
     <tbody id="content-area">
 		<c:forEach var="user"  items="${requestScope.userlist}">
 		
-		      <tr onclick="location.href= '#' " class="trelement">
+		      <tr onclick="location.href= 'userEdit.do?id=${user.id }' " class="trelement">
 					<td>${user.id }</td>
 					<td>${user.password }</td>
 					<td>	${user.name}</td>

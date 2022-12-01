@@ -27,7 +27,7 @@ public class QuestionRewriteService implements Action {
 			}
 
 		
-		request.setAttribute("quetion_no", quetion_no);
+		request.setAttribute("question_no", quetion_no);
 		request.setAttribute("cp", cpage);
 		request.setAttribute("ps", pagesize);
 		request.setAttribute("question_title", question_title);

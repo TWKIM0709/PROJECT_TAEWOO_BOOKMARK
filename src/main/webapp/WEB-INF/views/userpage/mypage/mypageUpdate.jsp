@@ -13,20 +13,12 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="twitter:card" content="summary_large_image">
-<meta property="og:site_name" content="ë°ë¦¬ì ìì¬">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.millie.co.kr/">
-<meta property="og:title" content="ë°ë¦¬ì ìì¬">
+
 <meta property="og:image"
 	content="https://www.millie.co.kr/favicon/millie_og_v2_2.png">
 <meta property="og:description"
 	content="">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="600">
-<meta property="fb:app_id" content="1621792108120563">
-<meta name="description"
-	content="ëìì ë¬´ì í ì¹í´ì§ë¦¬, ë°ë¦¬ì ìì¬ìì ë¹ì ì ì¼ìì 1ë°ë¦¬+ ë ë©ì§ê² ë§ë¤ì´ ë³´ì¸ì">
+
 <meta name="naver-site-verification"
 	content="09f2fbb79dfd0f4fbb3159d7ebf0722ab613cc74">
 <meta name="google-site-verification"
@@ -36,34 +28,6 @@
 <script
 	src="https://connect.facebook.net/en_US/sdk.js?hash=1df673f445afaffeb5a7a5e13fea8398"
 	async="" crossorigin="anonymous"></script>
-<script type="text/javascript" id="www-widgetapi-script"
-	src="https://www.youtube.com/s/player/4eb6b35d/www-widgetapi.vflset/www-widgetapi.js"
-	async=""></script>
-<script type="text/javascript" async=""
-	src="https://www.google-analytics.com/analytics.js"></script>
-<script type="text/javascript" async=""
-	src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1&amp;l=dataLayer&amp;cx=c"></script>
-<script type="text/javascript" async=""
-	src="https://www.googletagmanager.com/gtag/js?id=G-3WR64L2XW1&amp;l=dataLayer&amp;cx=c"></script>
-<script async="" src="//static.ads-twitter.com/uwt.js"></script>
-<script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
-<script type="text/javascript" async=""
-	src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-        var preload = {
-            "IMAGE_FILE": "https:\/\/d2j6uvfek9vas1.cloudfront.net\/millie_logo\/637eff4014586.png",
-            "IMAGE_HEIGHT": "496",
-            "IMAGE_WIDTH": "496",
-            "LINK_URL": "https:\/\/www.millie.co.kr\/v3\/post\/600117?nav_hidden=y",
-            "TITLE": {
-                "0": "\ub300\ud55c\ubbfc\uad6d \ub300\ud45c \uc791\uac00\r",
-                "1": "\uae40\uc5f0\uc218\uc758 \ubca0\uc2a4\ud2b8\uc140\ub7ec"
-            },
-            "SUB_TITLE": "\ubc00\ub9ac\uac00 \uc5c4\uc120\ud55c \uba85\uc791 5\uad8c",
-            "REG_DT": "2022-11-24 14:21:04",
-            "FIX_ID": "home_banner_2518"
-        }
-    </script>
 
 <link rel="apple-touch-icon"
 	href="https://www.millie.co.kr/favicon/ios-icon.png">
@@ -71,7 +35,7 @@
 	href="https://www.millie.co.kr/favicon/ios-icon.png">
 <link rel="shortcut icon" type="image/png"
 	href="https://www.millie.co.kr/favicon/android-icon.png">
-<title>개인정보수정 | 밀리의 서재</title>
+<title>개인정보수정 | 갈피표</title>
 <link
 	href="https://d3udu241ivsax2.cloudfront.net/v3/style/vendor.524cdf1d4325d722f545.css"
 	rel="stylesheet">
@@ -264,10 +228,7 @@
 	z-index: 1
 }
 </style>
-<script async=""
-	src="https://www.googletagmanager.com/gtag/js?id=UA-92156018-1"
-	rel="preconnect" charset="utf-8">
-    </script>
+
 <link rel="preload"
 	href="https://d3udu241ivsax2.cloudfront.net/common/mds/fonts/mds-icon-v3.woff2"
 	as="font" type="font/woff2" crossorigin="crossorigin">
@@ -352,21 +313,10 @@
 <script charset="utf-8"
 	src="https://d3udu241ivsax2.cloudfront.net/v3/js/management.290a60841f92b77fd5e6.js">
     </script>
-<link rel="stylesheet" type="text/css" href="ddd.css">
-     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
-
 <body class="" style="height: auto; overflow: visible;">
 <c:set var="user" value="${requestScope.user}"/>
-<script type="text/javascript">
-	
-</script>
 	<div data-v-c1337ae8="" id="wrap" class="show-top-header web-mount">
-		<!---->
-		<!---->
-		
-
-
 <jsp:include page="/WEB-INF/views/utils/include/top.jsp"></jsp:include>
 		<section data-v-c1337ae8="" class="content">
 			<div data-v-9baa251e="" data-v-c1337ae8="" class="millie-inner">
@@ -385,17 +335,6 @@
 						</div>
 					</div>
 					<div data-v-9baa251e="" class="inner-content">
-				<!-- 
-						<div data-v-9baa251e="" class="picture-box">
-							<div data-v-9baa251e="" class="inner">
-								<div data-v-9baa251e="" class="image-box"
-									style="background-image: url(&quot;https://ofbxchnhqinp910256.cdn.ntruss.com/160/e5e634f89bd1050c99a5b84cc95caa64.png?type=w&amp;w=160&amp;quality=100&quot;);"></div>
-								<label data-v-9baa251e="" class="picture-change-button"><input
-									data-v-9baa251e="" type="file" id="file-input" accept="image/*"></label>
-								<button data-v-9baa251e="" type="button"
-									class="picture-remove-button">사진 삭제</button>
-							</div>
-						</div> -->
 						<br>
 						<br>
 						<div data-v-9baa251e="" class="input-item">
@@ -407,7 +346,6 @@
 									<input data-v-9baa251e="" type="text" placeholder="아이디 입력"disabled="disabled"
 										class="input-text" value="${user.id}" name ="idx" id="id">
 								</div>
-							
 							</div>
 							<span data-v-9baa251e="" class="exp">욕설, 비속어 사용 시 서비스 이용이
 								제한될 수 있습니다.</span>
@@ -416,23 +354,18 @@
 						<div data-v-9baa251e="" class="input-item">
 							<p data-v-9baa251e="" class="tit">
 								이름<span data-v-9baa251e="">*</span>
-								<!---->
 							</p>
 							<div data-v-9baa251e="" class="input-group">
 								<div data-v-9baa251e="" class="input-box">
 									<input data-v-9baa251e="" type="text" 
-									
 										placeholder="이름 입력 (‘-’ 제외)" 
 										class="input-text" value="${user.name}" name = "name" >
 								</div>
-							
 							</div>
-							<!---->
 						</div>
 						<div data-v-9baa251e="" class="input-item">
 							<p data-v-9baa251e="" class="tit">
 								생년월일<span data-v-9baa251e="">*</span>
-								<!---->
 							</p>
 							<div data-v-9baa251e="" class="input-group">
 								<div data-v-9baa251e="" class="input-box">
@@ -441,14 +374,11 @@
 										placeholder="생년월일입력 (‘-’ 제외)" 
 										class="input-text" value="${user.regist_no}" name = "regist_no" readonly>
 								</div>
-							
 							</div>
-							<!---->
 						</div>
 						<div data-v-9baa251e="" class="input-item">
 							<p data-v-9baa251e="" class="tit">
 								휴대폰 번호<span data-v-9baa251e="">*</span>
-								<!---->
 							</p>
 							<div data-v-9baa251e="" class="input-group">
 								<div data-v-9baa251e="" class="input-box">
@@ -457,9 +387,7 @@
 										placeholder="휴대폰 번호 입력 (‘-’ 제외)" 
 										class="input-text" value="${user.phone}" name = "phone">
 								</div>
-							
 							</div>
-							<!---->
 						</div>
 						<div data-v-9baa251e="" class="input-item">
 							<p data-v-9baa251e="" class="tit">
@@ -476,25 +404,14 @@
 							</div>
 							<span id="passwordcktext"></span>
 						</div>
-                    
-                    
-						<!---->
 						<div data-v-9baa251e="" class="input-item">
 							<p data-v-9baa251e="" class="tit">우편번호<span data-v-9baa251e="">*</span></p>
 							<div data-v-9baa251e="" class="input-group"> 
 								<div data-v-9baa251e="" class="input-box"></div>
-									<input data-v-9baa251e="" type="text" placeholder="우편번호 입력" id="zipcode"  readonly
-									
+									<input data-v-9baa251e="" type="text" placeholder="우편번호 입력" id="zipcode"  readonly			
 										 class="input-text" value="${user.addr}" name = "addr" > <button style="position: absolute;left: 87%;" type="button" value="우편번호찾기" onclick = "kakaopost()" >우편번호찾기</button>
-										
 								</div>
-								<!---->
-								<!---->
-					
 							</div>
-							<!---->
-							<!---->
-							<!---->
 							 <div class="inner">
 							<div data-v-9baa251e="" class="input-item">
 							<p data-v-9baa251e="" class="tit">
@@ -509,32 +426,14 @@
 								</div>
 								</div>
 									</div>
-							
-								<!---->
-							<!---->
-							<!---->
-							  
-								
 						<hr data-v-9baa251e="" class="line">
-					
-					
-						
 						<button data-v-9baa251e="" type="submit" class="confirm-btn">확인</button>
 						</form>
-						
 					</div>
 				</div>
-				<!---->
-				<!---->
-				<!---->
 			</div>
 		</section>
-		<!---->
-		<!---->
-		<!---->
-		<!---->
 	</div>
-	
   <script>
     	 function registck(){
     		 console.log('실행됨');
@@ -548,59 +447,7 @@
     		
     	}
     </script>
-	<script async=""
-		src="https://www.googletagmanager.com/gtm.js?id=GTM-MPM86K5"></script>
-	<script async=""
-		src="https://www.googletagmanager.com/gtm.js?id=GTM-NTPPL2M"></script>
-	<script src="https://millie.co.kr/common/js/tracking.js"></script>
-	<script type="text/javascript" id=""
-		src="https://wcs.naver.net/wcslog.js"></script>
-	<script type="text/javascript" id=""
-		src="https://wcs.naver.net/wcslog.js"></script>
-	<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","863315557137080");fbq("track","PageView");</script>
-	<noscript>
-		<img height="1" width="1" style="display: none"
-			src="https://www.facebook.com/tr?id=863315557137080&amp;ev=PageView&amp;noscript=1">
-	</noscript>
-	<script type="text/javascript" id=""
-		src="//static.criteo.net/js/ld/ld.js"></script>
-	<script type="text/javascript" id="" charset="UTF-8"
-		src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-	<script type="text/javascript" id="">!function(d,e,f,a,b,c){d.twq||(a=d.twq=function(){a.exe?a.exe.apply(a,arguments):a.queue.push(arguments)},a.version="1.1",a.queue=[],b=e.createElement(f),b.async=!0,b.src="//static.ads-twitter.com/uwt.js",c=e.getElementsByTagName(f)[0],c.parentNode.insertBefore(b,c))}(window,document,"script");twq("init","o087e");twq("track","PageView");</script>
 
-	<div id="wp_tg_cts" style="display: none;">
-		<script id="wp_tag_script_1669355908438" charset="UTF-8"
-			src="https://astg.widerplanet.com/delivery/wpc.php?v=1&amp;ver=4.0&amp;r=1&amp;md=bs&amp;ga=1hjvecr-uskfro-3-1&amp;wp_uid=2-c9bf3b18eb3948657509617f2772763c-s1661407732.232608%7Cwindows_10%7Cedge-t2jfze&amp;ty=Home&amp;ti=52062&amp;hcuid=d5d4cd07616a542891b7ec2d0257b3a24b69856e&amp;device=web&amp;charset=UTF-8&amp;tc=1669355908438&amp;ref=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2Fpost%2F598825%3Fnav_hidden%3Dy&amp;loc=https%3A%2F%2Fwww.millie.co.kr%2Fv3%2Fmyshelf%3Flibrary_seq%3D2679755"></script>
-		<script id="wp_onsite_script" charset="UTF-8"
-			src="https://cdn-aitg.widerplanet.com/onsite/onsite.js"></script>
-	</div>
-	<script type="text/javascript" id="">var UserAgent=navigator.userAgent,widerplanet_device=null!=UserAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i)||null!=UserAgent.match(/LG|SAMSUNG|Samsung/)?"mobile":"web",wptg_tagscript_vars=wptg_tagscript_vars||[];wptg_tagscript_vars.push(function(){return{wp_hcuid:"undefined",ti:"52062",ty:"Home",device:widerplanet_device}});</script>
-	<script type="text/javascript" id=""
-		src="//cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
-	<script type="text/javascript" id="" charset="UTF-8"
-		src="//t1.daumcdn.net/adfit/static/kp.js"></script>
-	<script type="text/javascript" id="">if(!wcs_add)var wcs_add={};wcs_add.wa="s_1b6be27b0956";if(!_nasa)var _nasa={};wcs.inflow();</script>
-
-
-	<script type="text/javascript" id="">if(!wcs_add)var wcs_add={};wcs_add.wa="s_1b6be27b0956";if(!_nasa)var _nasa={};window.wcs&&(wcs_do(_nasa),console.log("wcs send!",wcs));</script>
-
-
-	<script type="text/javascript" id="">window.criteo_q=window.criteo_q||[];window.criteo_q.push({event:"setAccount",account:55644},{event:"setSiteType",type:""},{event:"viewHome"});</script>
-	<script type="text/javascript" id="">kakaoPixel("4237922289572623356").pageView();</script>
-
-	<script type="text/javascript" id="">kakaoPixel("5057430883487430749").pageView("\ud0dc\uadf8\uac12\uc785\ub825");</script>
-	<div id="criteo-tags-div" style="display: none;"></div>
-	<iframe class="pc-app-ifr ghost-ifr"
-		src="millie://shelf/2679755/MTY2OTM1NTkxMTI2NC4yMjcwMDY5LjIyNTM1MzQ="
-		data-gtm-yt-inspected-9643057_1512="true"
-		data-gtm-yt-inspected-9643057_2182="true"
-		data-gtm-yt-inspected-21="true"></iframe>
-	<div id="fb-root" class=" fb_reset">
-		<div
-			style="position: absolute; top: -10000px; width: 0px; height: 0px;">
-			<div></div>
-		</div>
-	</div>
 </body>
 <script type="text/javascript">
 	//숫자 글자수 제한
