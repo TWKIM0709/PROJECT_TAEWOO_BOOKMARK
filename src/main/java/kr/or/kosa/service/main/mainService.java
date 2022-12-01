@@ -77,7 +77,6 @@ public class mainService implements Action {
 			year = sdformat.format(cal.getTime());
 			
 			//일간
-			System.out.println(1);
 			List<Book> dlikerank = dao.RankBook_Like(day, today);
 			List<Book> dpayrank = dao.SellBookList(day, today);
 			//주간
@@ -96,6 +95,7 @@ public class mainService implements Action {
 			List<Book_Recommend> recommend =dao.Book_RecommendList();
 			PopupDao pdao = new PopupDao();
 			List<Popup> popup = pdao.FilterPopup();
+			
 			request.setAttribute("popup", popup);
 			request.setAttribute("recommend", recommend);
 			//request.setAttribute("ylikerank", ylikerank);

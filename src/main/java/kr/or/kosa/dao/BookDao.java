@@ -63,7 +63,6 @@ public class BookDao implements BookMarkDao{
 				e2.printStackTrace();
 			}
 		}
-		System.out.println(booklist);
 		return booklist;
 	}
 	//책 전체 count
@@ -261,7 +260,6 @@ public class BookDao implements BookMarkDao{
 		Connection conn = null;
 		String sql = "";
 		PreparedStatement pstmt = null;
-		System.out.println("DAO Book : " + book);
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			conn.setAutoCommit(false);
@@ -275,13 +273,11 @@ public class BookDao implements BookMarkDao{
 			pstmt.setString(6, book.getIsbn());
 			
 			row = pstmt.executeUpdate();
-			System.out.println("update book row : " + row);
 			
 			//기존 파일이 없을때
 			if(insertck) {
 				// 업로드한 파일이 있으면
 				if(book.getFile_name() != null) { //파일 DB에 업로드
-					System.out.println("insert 실행");
 					sql = "insert into ebook(isbn,file_name) values(?,?)";
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, book.getIsbn());
@@ -293,9 +289,7 @@ public class BookDao implements BookMarkDao{
 				}
 			}
 			else {//DB에 파일이 있을떄
-				System.out.println("insert 안함");
 				if(book.getFile_name() != null) { //업로드한 파일이 있으면
-					System.out.println("update 실행");
 					sql = "update ebook set file_name=? where isbn=?";
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, book.getFile_name());
@@ -406,7 +400,6 @@ public class BookDao implements BookMarkDao{
 			pstmt.setString(1, isbn);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				System.out.println(1);
 				Book_Reply br = new Book_Reply();
 				
 				br.setBook_reply_no(rs.getInt(1));
@@ -416,7 +409,6 @@ public class BookDao implements BookMarkDao{
 				
 				brl.add(br);
 			}
-			System.out.println(brl);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -710,7 +702,6 @@ public class BookDao implements BookMarkDao{
 	//좋아요 순 순위 조회
 	public List<Book> RankBook_Like(String startdate, String enddate){
 		List<Book> hmr = new ArrayList<Book>();
-		System.out.println(startdate + "/" +enddate);
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs1 = null;
@@ -724,20 +715,16 @@ public class BookDao implements BookMarkDao{
 			while(rs1.next()) {
 				Book book = getBookListByIsbn(rs1.getString(2));
 				//book.setIsbn(rs.getString(2));
-				System.out.println(book);
 				hmr.add(book);
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			//System.out.println("like조회 터짐" + e.getMessage());
 		}finally {
-			System.out.println("finally ㅇ");
 			ConnectionHelper.close(ps);
 			ConnectionHelper.close(rs1);
 			ConnectionHelper.close(con);
 		}
-		System.out.println("함수끝 ");
 		return hmr;
 	}
 	//e-book리스트 조회
