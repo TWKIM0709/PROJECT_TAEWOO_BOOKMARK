@@ -401,7 +401,7 @@ public class BookDao implements BookMarkDao{
 		ResultSet rs =null;
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
-			sql = "select book_reply_no, to_char(reply_date) as re_date, reply_content, id from book_reply where isbn= ?";
+			sql = "select book_reply_no, to_char(reply_date) as re_date, reply_content, id from book_reply where isbn= ? order by book_reply_no desc";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, isbn);
 			rs = pstmt.executeQuery();
@@ -441,7 +441,7 @@ public class BookDao implements BookMarkDao{
 			ResultSet rs =null;
 			try {
 				conn = ConnectionHelper.getConnection("oracle");
-				sql = "select book_reply_no, reply_date, reply_content, id, isbn from book_reply";
+				sql = "select book_reply_no, reply_date, reply_content, id, isbn from book_reply order by book_reply_no desc";
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				
