@@ -36,17 +36,19 @@
         <th>이름</th>
         <th>관리자유무</th>
         <th>생년월일/성별</th>
+         <th>선택</th>
       </tr>
     </thead>
     <tbody id="content-area">
 		<c:forEach var="user"  items="${requestScope.userlist}">
 		
-		      <tr onclick="location.href= 'userEdit.do?id=${user.id }' " class="trelement">
-					<td>${user.id }</td>
+		      <tr class="trelement">
+					<td onclick="location.href= 'userEdit.do?id=${user.id }' ">${user.id }</td>
 					<td>${user.password }</td>
 					<td>	${user.name}</td>
 					<td>${user.state }</td>
 					<td>${user.regist_no }</td>
+					<td><button class="btn btn-dark"  onclick="location.href= 'userWithdraw.do?id=${user.id }' ">삭제</td>
 		      </tr>
 		</c:forEach>
 		<tr>
@@ -80,6 +82,7 @@
 										'<td>'+result.likeuserlist[index].name+'</td>'+
 										'<td>'+result.likeuserlist[index].state+'</td>'+
 										'<td>'+result.likeuserlist[index].regist_no+'</td>'+
+								
 							      '</tr>';
 	    		}
 	    		console.log(text);

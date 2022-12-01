@@ -28,7 +28,7 @@
 <br>
 <div >
   <div class="row">
-    <div class="col" style="background-color:lavender;">
+    <div class="col" style="background-color:white;">
     	  <table class="table table-striped" id="booktable">
 		    <thead>
 		    	<tr>
@@ -53,7 +53,7 @@
 		    </tbody>
 		  </table>
     </div>
-    <div class="col" style="background-color:orange;">
+    <div class="col" style="background-color:white;">
     	  <table class="table table-striped" id="blogtable">
 		    <thead>
 		    	<tr>
