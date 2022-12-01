@@ -164,9 +164,11 @@ public class PaymentDao implements BookMarkDao{
 					bookpayment.setCount(rs.getInt(3));					
 					bookpayment.setPayment_date(rs.getString(4));
 					bookpayment.setSumprice(rs.getInt(5));
+					bookpayment.setPayment_addr(rs.getString(6));
+					bookpayment.setPayment_detailaddr((rs.getString(7).replace("-", " ")));
 					paymentlist.add(bookpayment);
 				}
-				
+				System.out.println("paymentList : " + paymentlist);
 			} catch (Exception e) {
 				e.getStackTrace();
 			}finally {
@@ -176,6 +178,96 @@ public class PaymentDao implements BookMarkDao{
 			}
 			return paymentlist;
 		} 
+		
+		//관리자 유저 결제목록 페이지 (LIKE검색)
+		public List<Book_Payment> adminpaymentlist(String id, int cpage, int pagesize){
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			List<Book_Payment> paymentlist = null;
+			
+			try {
+				conn = ConnectionHelper.getConnection("oracle");
+				String sql = "select * from "
+						+ "(select rownum rn,payment_no, payment_isbn,(select book_name from book where isbn = payment_isbn)as book_name, count,to_char(payment_date) as payment_date,sumprice, payment_addr, payment_detailaddr "
+						+ "from "
+						+ "( SELECT payment.payment_no as payment_no, isbn as payment_isbn, count, payment_date, sumprice, payment_addr, payment_detailaddr FROM book_payment left join payment on book_payment.payment_no = payment.payment_no  where payment.id like ? ORDER BY 1 desc ) "
+						+ "where rownum <= ?) where rn >= ?";
+
+				pstmt = conn.prepareStatement(sql);
+
+				int start = cpage * pagesize - (pagesize -1); //1 * 5 - (5 - 1) >> 1
+				int end = cpage * pagesize; // 1 * 5 >> 5
+				
+				
+				pstmt.setString(1, "%" + id + "%");
+				pstmt.setInt(2, end);
+				pstmt.setInt(3, start);
+				rs = pstmt.executeQuery();
+				
+				paymentlist = new ArrayList<Book_Payment>();
+				while(rs.next()) {
+					
+					Book_Payment bookpayment = new Book_Payment();
+					
+					bookpayment.setPayment_no(rs.getString("payment_no"));					
+					bookpayment.setIsbn(rs.getString("payment_isbn"));				
+					bookpayment.setBook_name(rs.getString("book_name"));
+					bookpayment.setCount(rs.getInt("count"));					
+					bookpayment.setPayment_date(rs.getString("payment_date"));
+					bookpayment.setSumprice(rs.getInt("sumprice"));
+					bookpayment.setPayment_addr(rs.getString("payment_addr"));
+					bookpayment.setPayment_detailaddr((rs.getString("payment_detailaddr").replace("-", " ")));
+					paymentlist.add(bookpayment);
+				}
+				System.out.println("paymentList : " + paymentlist);
+			} catch (Exception e) {
+				e.getStackTrace();
+			}finally {
+					ConnectionHelper.close(rs);
+					ConnectionHelper.close(pstmt);
+					ConnectionHelper.close(conn);
+			}
+			return paymentlist;
+		} 
+		
+		//LIKE검색결과 개수
+		public int adminpaymentlistcount(String id){
+			int cnt = 0;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = ConnectionHelper.getConnection("oracle");
+				String sql  = "select count(*) as cnt from ("
+						+ "select book_payment.payment_no,isbn,count,to_char(payment_date),sumprice, payment_addr, payment_detailaddr "
+						+ "from book_payment join payment on book_payment.payment_no = payment.payment_no "
+						+ "where payment.id like ? order by payment_no desc)";
+				
+				pstmt = conn.prepareStatement(sql);
+
+				
+				pstmt.setString(1, "%" + id + "%");
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					cnt = rs.getInt("cnt");
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				ConnectionHelper.close(rs);
+				ConnectionHelper.close(pstmt);
+				ConnectionHelper.close(conn);
+			}
+			System.out.println(cnt);
+			return cnt;
+		}
+		
+		
 		//전체 결제 목록
 		public List<Book_Payment> allpaymentlist(int cpage , int pagesize){
 			Connection conn = ConnectionHelper.getConnection("oracle");
@@ -185,11 +277,23 @@ public class PaymentDao implements BookMarkDao{
 			List<Book_Payment> allpaymentlist = new ArrayList<Book_Payment>();
 			
 			try {
-				String sql = "select * from"
-						+ "    (select rownum rn,payment_no, isbn, count,to_char(payment_date) as payment_date,sumprice"
-						+ "    from"
-						+ "        ( SELECT * FROM book_payment ORDER BY payment_no asc )"
-						+ "    where rownum <= ?) where rn >= ?";
+//				String sql = "select * from"
+//						+ "    (select rownum rn,payment_no, isbn, count,to_char(payment_date) as payment_date,sumprice"
+//						+ "    from"
+//						+ "        ( SELECT * FROM book_payment ORDER BY payment_no asc )"
+//						+ "    where rownum <= ?) where rn >= ?";
+				//주소 있는거 (페이징처리 x)
+//				String sql = "select book_payment.payment_no,isbn,count,to_char(payment_date),sumprice, payment_addr, payment_detailaddr "
+//						+ "from book_payment join payment on book_payment.payment_no = payment.payment_no order by payment_no desc";
+				
+				//isbn 대신 책 이름 가져오는거
+//				String sql = "select book_payment.payment_no,(select book_name from book where book.isbn = book_payment.isbn),count,to_char(payment_date),sumprice, payment_addr, payment_detailaddr "
+//						+ "from book_payment join payment on book_payment.payment_no = payment.payment_no order by payment_no desc";
+				String sql ="select * from"
+						+ " (select rownum rn,payment_no, payment_isbn,(select book_name from book where isbn = payment_isbn)as book_name, count,to_char(payment_date) as payment_date,sumprice, payment_addr, payment_detailaddr"
+						+ " from"
+						+ " ( SELECT payment.payment_no as payment_no, isbn as payment_isbn, count, payment_date, sumprice, payment_addr, payment_detailaddr FROM book_payment left join payment on book_payment.payment_no = payment.payment_no ORDER BY 1 desc )"
+						+ " where rownum <= ?) where rn >= ?";
 				pstmt = conn.prepareStatement(sql);
 				
 				int start = cpage * pagesize - (pagesize -1); //1 * 5 - (5 - 1) >> 1
@@ -203,10 +307,13 @@ public class PaymentDao implements BookMarkDao{
 				while(rs.next()) {
 					Book_Payment bookpayment = new Book_Payment();
 					bookpayment.setPayment_no(rs.getString("payment_no"));
-					bookpayment.setIsbn(rs.getString("isbn"));
+					bookpayment.setIsbn(rs.getString("payment_isbn"));
+					bookpayment.setBook_name(rs.getString("book_name"));
 					bookpayment.setCount(rs.getInt("count"));
 					bookpayment.setPayment_date(rs.getString("payment_date"));
 					bookpayment.setSumprice(rs.getInt("sumprice"));
+					bookpayment.setPayment_addr(rs.getString("payment_addr"));
+					bookpayment.setPayment_detailaddr((rs.getString("payment_detailaddr")).replace("-", " "));
 					
 					allpaymentlist.add(bookpayment);
 					
