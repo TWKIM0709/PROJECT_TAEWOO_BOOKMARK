@@ -323,9 +323,8 @@ function showSlides() {
 				</div>
 				<c:forEach var="popup" items="${requestScope.popup }">
 					<script type="text/javascript">
-						let local = JSON.parse(window.localStorage.getItem('${popup.popup_filename}'));
-						console.log(local);
-						if(local == null){
+						let local1 = JSON.parse(window.localStorage.getItem('${popup.popup_filename}'));
+						if(local1 == null){
 							window.open("popup/popup.jsp?file='${popup.popup_filename}'","_blank","width=820,height=550");
 						}
 						

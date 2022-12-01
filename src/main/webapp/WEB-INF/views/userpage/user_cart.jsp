@@ -671,10 +671,10 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
 	String hostIP = ip.getHostAddress();
 	//System.out.println("현재 아이피 : " + ip.getLocalHost());
 	//System.out.println("hostIP : " + hostIP);
-
-
-	request.setAttribute("ip", hostIP);
+String contextPath = request.getContextPath();
 	
+	request.setAttribute("ip", hostIP);
+	request.setAttribute("contextpath",contextPath);
 %>
     <div data-v-c1337ae8="" id="wrap" class="show-top-header show-header web-mount">
         <!---->
@@ -1058,13 +1058,15 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
         let detail_addr = $('#address').val();
 
 		let ip = '${requestScope.ip}';
+		let contextpath = '${requestScope.contextpath}'
         let customername = customerName;
 	 	//console.log(ip);
         //let url = "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
-        let successurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
+        let successurl =  "http://" + ip + ":8090" + contextpath +"/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
         //let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/WEB-INF/views/userpage/user_paymentFail.jsp";
-        let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/paymentFail.do";
+        let failurl ="http://" + ip + ":8090"+contextpath+"/paymentFail.do";
 
+        
             var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
             var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
             let num = parseInt(totalprice);

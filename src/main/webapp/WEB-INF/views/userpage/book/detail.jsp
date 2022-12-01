@@ -46,9 +46,10 @@
 	//System.out.println("현재 아이피 : " + ip.getLocalHost());
 	//System.out.println("hostIP : " + hostIP);
 
-
-	request.setAttribute("ip", hostIP);
+	String contextPath = request.getContextPath();
 	
+	request.setAttribute("ip", hostIP);
+	request.setAttribute("contextpath",contextPath);
 %>
     <div data-v-c1337ae8="" id="wrap" class="show-top-header show-header web-mount">
 	<div data-v-7fc2b3a6="" data-v-c1337ae8="" class="home-banner-component book-detail-banner">
@@ -305,13 +306,14 @@ function test(){
  console.log("test함수 실행됐습니다~")
     
 	let ip = '${requestScope.ip}';
+	let contextpath = '${requestScope.contextpath}'
     let customername = customerName;
     
  	console.log(ip);
     //let url = "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
-    let successurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK-2/ebookpayment.do?isbn=" + '${book.isbn}'
+    let successurl = "http://" + ip + ":8090" + contextpath +"/ebookpayment.do?isbn=" + '${book.isbn}'
     //let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/WEB-INF/views/userpage/user_paymentFail.jsp";
-    let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK-2/paymentFail.do";
+    let failurl = "http://" + ip + ":8090"+contextpath+"/paymentFail.do";
 
     console.log(successurl);
     
