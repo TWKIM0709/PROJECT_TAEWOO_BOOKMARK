@@ -38,9 +38,9 @@
 	 
 	 	//console.log(ip);
 	//let url = "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
-	let successurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
+	let successurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK-2/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
 	//let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/WEB-INF/views/userpage/user_paymentFail.jsp";
-	let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/paymentFail.do";
+	let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK-2/paymentFail.do";
 	function test(){
 		var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
 		var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
@@ -57,7 +57,14 @@
 			easyPay: '토스페이'
 			})
 	}
-	test();
+	
+	if(){
+		
+	}else{
+		test();	
+	}
+	
+	
 	// test().catch((err) => { location.href = "https://www.musinsa.com/app/" })
     </script>
 </html>

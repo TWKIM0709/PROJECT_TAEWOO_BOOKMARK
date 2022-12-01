@@ -781,7 +781,7 @@ public class BookDao implements BookMarkDao{
 		return ebl;
 	}
 	//e-book리스트 추가
-	public int InsertEbookList(String isbn, String id) {
+	public int InsertEbookList(String id, String isbn,int price) {
 		int row = 0;
 		Connection conn = null;
 		String sql = "";
@@ -790,10 +790,24 @@ public class BookDao implements BookMarkDao{
 			conn = ConnectionHelper.getConnection("oracle");
 			sql = "insert into ebook_list(id, isbn) values(?,?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, isbn);
-			pstmt.setString(2, id);
+			pstmt.setString(1, id);
+			pstmt.setString(2, isbn);
 			
-			row = pstmt.executeUpdate();
+			
+			row = pstmt.executeUpdate(); //
+			
+			if(row > 0) {
+				Book book = new Book();
+				book.setIsbn(isbn);
+				book.setPrice(price);
+				List<Book> l = new ArrayList<Book>();
+				l.add(book);
+				
+				int row1 = new PaymentDao().insertPayment(l, id, "ebook", "ebook");
+				if(row1 > 0) {
+					row++;
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
