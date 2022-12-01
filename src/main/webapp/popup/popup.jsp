@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>팝업</title>
+  	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
 <style type="text/css">
 	button{
 		font-size:12px;
@@ -15,7 +16,7 @@
 </style>
 </head>
 <body>
-<img alt="팝업" src=${param.file}>
+<img alt="팝업" src=${param.file} id="popupimg">
 <button onclick="setItemWithExpireTime(${param.file},1,86400000)">하루동안 보지 않기</button>
 </body>
 <script type="text/javascript">
@@ -34,5 +35,8 @@
 		  window.localStorage.setItem(keyName, objString);
 		  self.close();
 		}
+	$(function(){
+		window.resizeTo($('#popupimg').width(),$('#popupimg').height());
+	})
 </script>
 </html>
