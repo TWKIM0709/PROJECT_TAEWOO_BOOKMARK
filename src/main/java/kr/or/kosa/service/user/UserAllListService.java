@@ -28,7 +28,6 @@ public class UserAllListService implements Action {
 			
 			ps = request.getParameter("ps"); // pagesize
 			cp = request.getParameter("cp"); // current page
-			System.out.println("ps = " + ps +"/cp : " + cp);
 			// List 페이지 처음 호출 ...
 			if (ps == null || ps.trim().equals("")) {
 				// default 값 설정
@@ -43,7 +42,6 @@ public class UserAllListService implements Action {
 			int pagesize = Integer.parseInt(ps);
 			int cpage = Integer.parseInt(cp);
 			int pagecount = 0;
-			System.out.println("pagesizes = " + pagesize +"/cpage : " + cpage);
 
 			// 23건 % 5
 			if (totalusercount % pagesize == 0) {

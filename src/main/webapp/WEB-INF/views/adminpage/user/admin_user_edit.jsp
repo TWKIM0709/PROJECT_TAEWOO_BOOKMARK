@@ -245,6 +245,7 @@
 </head>
 
 <body class="" style="height: auto; overflow: visible;">
+<button onclick='javascript:history.back();' style='magin-top : 100px'>뒤로가기</button>
 <c:set var="user" value="${requestScope.user}"/>
 	<div data-v-c1337ae8="" id="wrap" class="show-top-header web-mount">
 		<section data-v-c1337ae8="" class="content">

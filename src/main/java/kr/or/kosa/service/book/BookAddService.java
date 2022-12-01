@@ -36,7 +36,6 @@ public class BookAddService implements Action {
 					new DefaultFileRenamePolicy() // 파일 이름 중복되면 (upload > 1.jpg > 1.jpg업로드 > 1_1.jpg)
 				);
 		} catch (Exception e) {
-			System.out.println("multi 오류");
 			e.printStackTrace();
 			request.setAttribute("msg", "책 추가 실패(파일업로드오류)");
 			request.setAttribute("url", "bookAdd.do");

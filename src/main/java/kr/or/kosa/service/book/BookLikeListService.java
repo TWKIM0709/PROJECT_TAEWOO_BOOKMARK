@@ -33,7 +33,6 @@ public class BookLikeListService implements Action {
 			
 			ps = request.getParameter("pagesize");
 			cp = request.getParameter("cpage");
-			System.out.println(ps);
 			if(ps ==null || ps.trim().equals("")) {
 				ps = "10";
 			}
@@ -56,10 +55,8 @@ public class BookLikeListService implements Action {
 		
 			
 			
-			System.out.println(booklist);
 			
 			int pagersize = pagecount;
-			System.out.println("pagersize: " + pagersize);
 			ThePagerLike pager = new ThePagerLike(count, cpage, pagesize, pagersize, request.getParameter("book_name"));
 			
 			
@@ -87,8 +84,6 @@ public class BookLikeListService implements Action {
 			jsonobj.put("pager", pager.toString());
 			
 			jsonobj.put("booklist", jsonary);
-			
-			System.out.println(jsonary);
 			
 //			request.setAttribute("pagesize", pagesize);
 //			request.setAttribute("cpage", cpage);

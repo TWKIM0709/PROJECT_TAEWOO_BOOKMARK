@@ -87,7 +87,6 @@ public class BookMarkController extends HttpServlet {
     	String requestURI = request.getRequestURI();
     	String contextPath = request.getContextPath();
     	String url_Command = requestURI.substring(contextPath.length());
-	System.out.println(url_Command);
     	Action action=null;
     	ActionForward forward=null;
     	//페이지 - 기능
@@ -182,9 +181,7 @@ public class BookMarkController extends HttpServlet {
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/blogDetail.do")) { //19. 회원, 관리자 - 블로그 게시글 상세보기
     		// 이동 + 처리
-    		System.out.println("ㅇㅇ?");
     		action = new BlogDetailService();
-    		System.out.println("ㅇㅇ?");
     		forward = action.execute(request, response);
     	}
     	//=================================================================//
@@ -376,7 +373,6 @@ public class BookMarkController extends HttpServlet {
      	//=================================================================//
     	else if(url_Command.equals("/calendarall.do")) { //59 일정관리 전체 페이지 이동 (관리자페이지)
     		// 이동+처리
-    		//System.out.println("calendarall.do 분기 진입");
     		action = new CalendarAllListService();
     		forward = action.execute(request, response);
     	} else if(url_Command.equals("/calendarSearch.do")) { //60 일정관리 검색

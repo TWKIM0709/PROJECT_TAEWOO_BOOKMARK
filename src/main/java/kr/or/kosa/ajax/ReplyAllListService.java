@@ -59,7 +59,6 @@ public class ReplyAllListService extends HttpServlet {
 			} else if(request.getParameter("type").equals("book")){
 				BookDao dao = new BookDao();
 				list = dao.Book_ReplyAllList();
-				System.out.println(list);
 				for(Object obj : list) {
 					Book_Reply reply = (Book_Reply)obj;
 					json.put("reply_no", reply.getBook_reply_no());

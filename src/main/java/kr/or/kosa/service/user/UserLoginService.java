@@ -29,15 +29,11 @@ public class UserLoginService implements Action {
 			
 			ok = dao.userLogin(id, pwd);
 			
-			
-			//TODO: 로그인 실패시 redirect에서 로그인 실패 메시지 띄우고 다시 로그인 창 띄울 것 ? ? 이거 뷰가 나와봐야 알듯
-			
 			if(ok == 2) { //일반 회원
 				request.getSession().setAttribute("id", id);
 				request.getSession().setAttribute("admin", "user");
 			}
 			if(ok == 3) { //관리자면
-				System.out.println("관리자");
 				request.getSession().setAttribute("id", id);
 				request.getSession().setAttribute("admin", "admin");
 			}

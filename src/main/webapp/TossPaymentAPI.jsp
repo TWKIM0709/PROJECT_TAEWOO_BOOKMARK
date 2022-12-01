@@ -57,14 +57,7 @@
 			easyPay: '토스페이'
 			})
 	}
-	
-	
-
 	test();
 	// test().catch((err) => { location.href = "https://www.musinsa.com/app/" })
-	
-
-	
-		
     </script>
 </html>

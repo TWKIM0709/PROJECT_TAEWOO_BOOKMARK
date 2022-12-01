@@ -26,7 +26,6 @@ public class AgeService implements Action {
 			StatisticsDao dao = new StatisticsDao();
 			
 			ls = dao.getAgeQuery();
-			System.out.println(ls);
 			for(Object obj : ls) {
 				Statistics s = (Statistics)obj;
 				json.put("NAME", s.getStatistics_name());

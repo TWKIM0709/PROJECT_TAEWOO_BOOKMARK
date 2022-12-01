@@ -39,8 +39,6 @@ public class ReplyWriteService extends HttpServlet {
 				//작성 성공시
 				if(row>0) {
 					List<Blog_Reply> list = dao.getReply(blog_no);
-					System.out.println("비동기 댓글,,,ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-					System.out.println(list);
 					for(Object obj : list) {
 						Blog_Reply reply = (Blog_Reply)obj;
 						json.put("blog_no", reply.getBlog_no());

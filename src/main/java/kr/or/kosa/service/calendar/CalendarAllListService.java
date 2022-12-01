@@ -18,8 +18,7 @@ public class CalendarAllListService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
-		
-		System.out.println("캘린더 ALLList서비스 진입. . ");
+
  		//List<Calendar> calendarList = new ArrayList<>();
 		List<Calendar> calendarList = null;
 		JSONObject json = new JSONObject();

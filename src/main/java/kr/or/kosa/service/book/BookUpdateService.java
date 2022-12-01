@@ -70,7 +70,6 @@ public class BookUpdateService implements Action {
 					book.setFile_name(update_file_system_name); //DB의 데이터를 업로드한 파일의 시스템 이름으로 변경한다.
 				}
 			}
-			System.out.println("ebook 설정 후 값 : " + book.getFile_name());
 			book.setIsbn(isbn);
 			book.setBook_name(book_name);
 			book.setAuthor(author);
@@ -79,7 +78,6 @@ public class BookUpdateService implements Action {
 			book.setBook_filename(book_filename);
 			
 			int result = dao.UpdateBook(book,insert);
-			System.out.println("result : "+result);
 			if(result == 1) {
 				msg = "book만 수정됨";
 				url = "bookAlllist.do";

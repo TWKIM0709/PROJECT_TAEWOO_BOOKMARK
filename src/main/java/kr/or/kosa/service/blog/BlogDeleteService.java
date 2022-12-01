@@ -14,7 +14,6 @@ public class BlogDeleteService implements Action {
 		ActionForward forward = new ActionForward();
 		String msg = "";
 		String path = "";
-		System.out.println("ㅎㅇ");
 		try {
 			BlogDao dao = new BlogDao();
 			int blogno = Integer.parseInt(request.getParameter("blog_no"));
@@ -43,7 +42,6 @@ public class BlogDeleteService implements Action {
 				msg  = "서버 오류 발생";
 				path = "blogAlllist.do";
 			}else {
-				System.out.println("ㅎㅇ");
 				msg  = "서버 오류 발생";
 				path = "blogEnter.do?id=" + request.getParameter("id");
 			}

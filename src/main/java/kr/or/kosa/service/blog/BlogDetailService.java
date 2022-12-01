@@ -20,13 +20,11 @@ public class BlogDetailService implements Action {
 			
 			blog = dao.getContent(blogno);
 			
-			System.out.println("여기로");
 			if(request.getSession().getAttribute("admin").equals("admin")) {//관리자일경우
 				request.setAttribute("blog", blog);
-				System.out.println("여기로");
 				forward.setPath("/WEB-INF/views/adminpage/blog/admin_blog_board_detail.jsp");
 			}else {
-				if(blog != null) {			System.out.println("여기로");
+				if(blog != null) {
 
 					dao.upHits(blogno);
 					request.setAttribute("blog", blog);

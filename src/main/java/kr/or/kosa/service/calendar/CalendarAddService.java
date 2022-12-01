@@ -14,8 +14,6 @@ public class CalendarAddService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
-		System.out.println("캘린더추가 서비스 진입");
-		
 //calendar_no, id, calendar_start, calendar_end, calendar_content, calendar_status
 		
 		Calendar calendar = new Calendar();
@@ -28,7 +26,6 @@ public class CalendarAddService implements Action {
 		String id = (request.getSession().getAttribute("id") == null) ? "domaya" : (String)request.getSession().getAttribute("id");
 		//String calendar_status = request.getParameter("calendar_status");
 		
-		//TODO : calendar에는 date가 어떤 포맷으로 들어가지...
 		//String으로 받은 date값 simple date format으로 date로...
 		
 		//SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
@@ -40,7 +37,6 @@ public class CalendarAddService implements Action {
 			calendar.setCalendar_content(calendar_content);
 			calendar.setCalendar_start(calendar_start);
 			calendar.setCalendar_end(calendar_end);
-			//TODO:근데 status는 기본적으로 0으로 만들어지지 않나? default없나??
 			calendar.setCalendar_status(0);
 			
 			int result = dao.CalendarAdd(calendar);

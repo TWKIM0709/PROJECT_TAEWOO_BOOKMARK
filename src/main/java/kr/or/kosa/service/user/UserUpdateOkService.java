@@ -20,7 +20,6 @@ public class UserUpdateOkService implements Action {
 		
 		try {
 			String id = request.getParameter("id");
-			System.out.println(id);
 			String pwd = request.getParameter("password");
 			String name = request.getParameter("name");
 			String addr = request.getParameter("addr");
@@ -37,7 +36,6 @@ public class UserUpdateOkService implements Action {
 			user.setPhone(phone);
 		
 			UsersDao dao = new UsersDao();
-			System.out.println(user);
 			boolean result = dao.updateUser(user);
 			
 			if(result) {

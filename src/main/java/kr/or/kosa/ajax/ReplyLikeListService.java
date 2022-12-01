@@ -33,7 +33,6 @@ public class ReplyLikeListService extends HttpServlet {
 			if(request.getParameter("type").equals("blog")) {
 				BlogDao dao = new BlogDao();
 				list = dao.getAllReplyByLike(request.getParameter("id"));
-				System.out.println(list);
 				for(Object obj : list) {
 					Blog_Reply reply = (Blog_Reply)obj;
 					json.put("blog_no", reply.getBlog_no());
