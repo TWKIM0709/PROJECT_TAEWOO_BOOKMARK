@@ -323,7 +323,7 @@ function showSlides() {
 				</div>
 				<c:forEach var="popup" items="${requestScope.popup }">
 					<script type="text/javascript">
-						let link = "popuptest.jsp?file='${popup.popup_filename}'";
+						let link = "popup/popup.jsp?file='${popup.popup_filename}'";
 						console.log(link);
 						window.open(link,"_blank","width=820,height=550");
 					</script>
