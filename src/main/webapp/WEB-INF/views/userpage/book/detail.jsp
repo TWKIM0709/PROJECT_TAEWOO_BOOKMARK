@@ -30,6 +30,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- sweetAlert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+    .replyhide{
+        	display :none;
+        }
+    </style>
 </head>
 
 <body>
@@ -198,15 +203,8 @@
 	                                        		   alert("댓글쓰기 실패");
 	                                        		   return;
 	                                        	   } 
-	                                               $("#reply").empty();
-	                                               console.log(result);
-	                                               let text = "";
-	                                               for(let index in result.BOOK){
-	                                              	 text += '<li data-v-da7fb214=""><div data-v-da7fb214="" class="info"><input type="hidden" value="' + result.BOOK[index].reply_no+'"><p data-v-da7fb214="" class="nickname">'+
-	                                              	 result.BOOK[index].id+'</p> <span data-v-da7fb214="" class="date">'+result.BOOK[index].reply_date+'</span><pre data-v-da7fb214="" class="cont">'+result.BOOK[index].reply_content+'</pre></div></li>'
-	                                               }
-	                                               $("#reply").append(text);
-	                                               $('#textarea-39').val("");
+	                                        	   replyload();
+	                                        	   $('#textarea-39').val("");
 	                                           },
 	                                           error : function(){
 	                                              alert("서버요청실패");
@@ -265,8 +263,80 @@
     function b() {
     	window.open('https://www.youtube.com/results?search_query=' + '${book.book_name}'+' 리뷰');
     }
+    function deletereply(book_reply_no){
+        	$.ajax({
+        		url:"ReplyDelete",
+        		type :"post",
+        		data:{
+        			type : "book",
+        			book_reply_no : book_reply_no
+        		},
+        		dataType : 'text',
+        		success : function(result){
+        			if(result == 1){
+        				alert("댓글 삭제 완료");
+        				replyload();
+        			} else {
+        				alert("댓글 삭제 실패");
+        			}
+        		},
+        		error : function(error){
+        			alert('error');
+        		}
+        		
+        	})//ajax end
+        		 
+        	
+        }
+    
+    function updatetest(book_reply_no){
+    	let contentvalue = "\#replyinput"+book_reply_no;
+    	$.ajax({
+    		url : 'ReplyUpdate',
+    		type : 'post',
+    		data : {
+    			type: 'book',
+    			"book_reply_no" : book_reply_no  ,
+    			reply_content : $(contentvalue).val()
+    		},
+    		dataType : 'text',
+    		success : function(result){
+    			if(result == 1){
+    				alert('수정성공');
+    				replyload();
+    			} else {
+    				alert('수정실패...');
+    			}
+    		},
+    		error:function(){
+    			alert("에러발생");
+    		}
+    	})
+    } //update end
+    
+    //수정기능 스위치 함수
+    function updateset(book_reply_no){
+		let spanid = "\#replyspan" +book_reply_no; //내용
+		let rewrite = "\#rewritebtn"  +book_reply_no; //답글 버튼
+		let deletebtn = "\#deletebtn" + +book_reply_no; //삭제버튼
+		let updatebtn = "\#updatebtn" + +book_reply_no; //수정버튼
+		let inputid = "\#replyinput"+book_reply_no; //수정input
+		let updateok = "\#updateokbtn" +book_reply_no; //수정완료버튼
+		let updatecancel = "\#updatecancelbtn"+book_reply_no; //수정취소 버튼\
+
+		$(updatebtn).toggleClass('replyhide');
+		$(spanid).toggleClass('replyhide');
+		$(rewrite).toggleClass('replyhide');
+		$(deletebtn).toggleClass('replyhide');
+		$(inputid).toggleClass('replyhide');
+		$(updateok).toggleClass('replyhide');
+		$(updatecancel).toggleClass('replyhide');
+    }//updateset end
     $(function() {
-            $.ajax({
+    	replyload()
+	})//onload
+	function replyload(){
+    	 $.ajax({
                url : "RepleListBlogOrBook",
                type : "post",
                data : {"type": "book",
@@ -274,29 +344,36 @@
                dataType : 'json',
                success : function(result){
                  $("#reply").empty();
-                 console.log(result);
                  
                  let text = "";
                  for(let index in result.BOOK){
-                	 console.log(result.BOOK[index]);
                 	 let id = result.BOOK[index].id;
-                	 text += '<li data-v-da7fb214=""><div data-v-da7fb214="" class="info"><input type="hidden" value="' + result.BOOK[index].reply_no+'"><p data-v-da7fb214="" class="nickname">'+
-                	 result.BOOK[index].id+'</p> <span data-v-da7fb214="" class="date">'+result.BOOK[index].reply_date+'</span><pre data-v-da7fb214="" class="cont">'+result.BOOK[index].reply_content+'</pre></div>';
+                	 text += '<li data-v-da7fb214="">' +
+                	 '<div data-v-da7fb214="" class="info">'+
+                	 '<input type="hidden" value="' + result.BOOK[index].reply_no+'">'+
+                	 '<p data-v-da7fb214="" class="nickname">'+result.BOOK[index].id+'</p>'+
+                	 '<span data-v-da7fb214="" class="date">'+result.BOOK[index].reply_date+'</span>'+
+                	 '<pre data-v-da7fb214="" class="cont" id=content'+result.BOOK[index].reply_no+'>'+
+                	 '<span id="replyspan'+result.BOOK[index].reply_no+ '">'+ result.BOOK[index].reply_content +'</span>'+
+                	 '<input type="text" value="'+ result.BOOK[index].reply_content +'" id="replyinput'+result.BOOK[index].reply_no+ '" class="replyhide" style="background-color:#e8e8e8; width:70%;"></pre></div>';
                 	if("${sessionScope.id}" == id){
-                		console.log("id 같음");
-                		text += '<button onclick=>수정</button><button disabled>|</button><button onclick=>삭제</button>';
+                		/* text += '<button onclick=>수정</button><button disabled>|</button><button onclick=deletereply(' +result.BOOK[index].reply_no +')>삭제</button>'; */
+              		    text += 
+                        '<button id="updateokbtn' +result.BOOK[index].reply_no+'" onclick="updatetest(' +result.BOOK[index].reply_no+')" class="replyhide"><span><br>수정완료|</span></button>'+
+                        '<button id="updatecancelbtn' +result.BOOK[index].reply_no+'" onclick="updateset('+result.BOOK[index].reply_no+')" class="replyhide"><span><br>취소</span></button>'+
+                        '<button id="updatebtn'+result.BOOK[index].reply_no+'" onclick="updateset('+result.BOOK[index].reply_no+')"><br>수정 |</button>'+
+                        '<button id="deletebtn'+result.BOOK[index].reply_no+'" onclick="deletereply(' +result.BOOK[index].reply_no+')"><br>삭제</button>'
                 	}
+                	
                 	 text +='</li>'                	 
                  }
-                 console.log(text);
-                 console.log('${sessionScope.id}');
                  $("#reply").append(text);
                },
                error : function(){
                   alert("서버요청실패");
                }
             })
-	})
+    }
     
     //장바구니 담기
     $('#hjCart').click(function(){
