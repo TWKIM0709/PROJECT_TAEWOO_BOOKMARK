@@ -41,7 +41,7 @@ public class PaymentLogLikeIdListService implements Action {
 				jsonary.add(json);
 			}
 		jsonobj.put("RESULT", "success");
-		jsonobj.put("BOOKPAYMENT", jsonary);
+		jsonobj.put("paymentlist", jsonary);
 		
 		
 		} catch (Exception e) {

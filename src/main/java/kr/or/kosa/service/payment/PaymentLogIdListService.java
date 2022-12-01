@@ -21,10 +21,10 @@ public class PaymentLogIdListService implements Action {
 			PaymentDao pdao = new PaymentDao();
 
 			String id = (String)request.getSession().getAttribute("id");
-			System.out.println(id);
+
 			List<Book_Payment> paymentlist = pdao.paymentlist(id);
 			
-			System.out.println(paymentlist);
+//			System.out.println(paymentlist);
 			
 			request.setAttribute("paymentlist", paymentlist);
 			

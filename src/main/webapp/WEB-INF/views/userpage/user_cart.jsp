@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.net.InetAddress"%>
 <html lang="ko" class="" style="height: auto; overflow: visible;">
 
 <head>
@@ -9,6 +10,7 @@
         content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- / -->
+    <script src="https://js.tosspayments.com/v1/payment"></script>
 
     <meta name="format-detection" content="telephone=no">
     <meta name="mobile-web-app-capable" content="yes">
@@ -663,6 +665,17 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
 </head>
 
 <body style="height: auto; overflow: visible;">
+    <%
+
+	InetAddress ip = InetAddress.getLocalHost();
+	String hostIP = ip.getHostAddress();
+	//System.out.println("현재 아이피 : " + ip.getLocalHost());
+	//System.out.println("hostIP : " + hostIP);
+
+
+	request.setAttribute("ip", hostIP);
+	
+%>
     <div data-v-c1337ae8="" id="wrap" class="show-top-header show-header web-mount">
         <!---->
         <!---->
@@ -747,7 +760,7 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
     	<section data-v-c1337ae8="" class="content">
 			<div data-v-9baa251e="" data-v-c1337ae8="" class="millie-inner">
 				<div data-v-9baa251e="">
-				<form id="hjpost" action='payment.do' method = "post" >
+				<form id="hjpost" method = "post" >
                     <h2 data-v-02a040ec="" class="title" id="searchTag">받는 분 정보</h2>
 					<div data-v-9baa251e="" class="inner-content">
 
@@ -846,8 +859,8 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
                                 </div>
 							</div>
 						<hr data-v-9baa251e="" class="line">
-						<!-- <button data-v-9baa251e="" id="hjbtn" type="button" class="confirm-btn">이건 버튼</button> -->
-                        <button data-v-9baa251e="" id="hjsubmit" type="submit" class="confirm-btn">결제하기</button>
+						<button data-v-9baa251e="" id="hjbtn" type="button" class="confirm-btn">결제하기</button>
+                        <button data-v-9baa251e="" id="hjsubmit" type="submit" class="confirm-btn" style="visibility:hidden">결제하기</button>
                     </form>
 						
 					</div>
@@ -972,10 +985,11 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
 
     let pricetag = $('#hjtotal');
     
+    let addr = "";
+    let detail_addr = "";
+
     // console.log(pricetag);
     $(function(){
-        console.log(customerName)
-
         $('#hjpriceinput').attr("value", totalprice);
         $('#hjcartsize').attr("value", cartsize);
         $('#hjfirstbook').attr("value", repbook);
@@ -999,7 +1013,7 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
 
         $('#hjbtn').click(function(){
                 console.log("구매버튼 클릭");
-                
+                test();
                 //여기서 ajax로 장바구니 책을 전달하고
 
 
@@ -1026,6 +1040,47 @@ background: linear-gradient(0deg, rgb(255, 119, 0,1) 0%, rgba(251,75,2,1) 100%);
         }
       }).open();
     }
+
+
+    //결제 API
+   
+	function test(){
+
+        // let totalprice =  '${param.totalprice}';
+	    // let cartsize = '${param.cartsize}';
+	    // let customername = '${sessionScope.id}';
+	    // let firstbook = '${param.firstbook}'	 
+	    // let addr = '${param.addr}'
+	    // let detail_addr = '${param.detail_addr}'
+        console.log("test함수 실행됐습니다~")
+
+        let addr = $('#zipcode').val();
+        let detail_addr = $('#address').val();
+
+		let ip = '${requestScope.ip}';
+        let customername = customerName;
+	 	//console.log(ip);
+        //let url = "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
+        let successurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
+        //let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/WEB-INF/views/userpage/user_paymentFail.jsp";
+        let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/paymentFail.do";
+
+            var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
+            var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
+            let num = parseInt(totalprice);
+            tossPayments.requestPayment('카드', { // 결제 수단
+			// 결제 정보
+			amount: num,
+			orderId: 'QTIk82kxDPefXZC8MLFj0',
+			orderName: repbook + " 외 " + (parseInt(cartsize)-1) + "건",
+			customerName: customername,
+			successUrl: successurl,
+			failUrl: "https://www.musinsa.com/app/",	
+			flowMode: 'D',
+			easyPay: '토스페이'
+			})
+	}
+
 </script>
 
 </html>

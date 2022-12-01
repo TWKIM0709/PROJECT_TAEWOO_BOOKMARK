@@ -19,7 +19,7 @@ Swal.fire(
         '빠른 시일 내에 만나요!',
         'success'
         ).then(function(){
-            location.href="main.do";        	
+            location.href="paymentList.do";        	
         })
 
 </script>

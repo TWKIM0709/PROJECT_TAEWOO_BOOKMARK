@@ -20,8 +20,10 @@ public class PaymentLogAllListService implements Action {
 		try {
 			PaymentDao pdao = new PaymentDao();
 
-			// 게시물 총 건수
-			int totalboardcount = pdao.totalBoardCount();
+			// 결제 총 건수
+			int totalboardcount = pdao.totalPayment();
+			
+			
 
 			// 상세보기 >> 다시 LIST 넘어올때 >> 현재 페이지 설정
 			String ps = request.getParameter("ps"); // pagesize
@@ -30,7 +32,7 @@ public class PaymentLogAllListService implements Action {
 			// List 페이지 처음 호출 ...
 			if (ps == null || ps.trim().equals("")) {
 				// default 값 설정
-				ps = "5"; // 5개씩
+				ps = "10"; // 5개씩
 			}
 
 			if (cp == null || cp.trim().equals("")) {
@@ -55,7 +57,7 @@ public class PaymentLogAllListService implements Action {
 			List<Book_Payment> qlist = pdao.allpaymentlist(cpage, pagesize); // list >> 1 , 20
 			
 			int pagersize=3; //[1][2][3]
-			ThePager pager = new ThePager(totalboardcount,cpage,pagesize,pagersize,".do");
+			ThePager pager = new ThePager(totalboardcount,cpage,pagesize,pagersize,"paymentAlllist.do");
 			
 			
 			request.setAttribute("pagesize", pagesize);
