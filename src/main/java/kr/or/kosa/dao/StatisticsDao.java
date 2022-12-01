@@ -358,17 +358,16 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	}
 	
 	//일별 매출 통계
-	public List<Statistics> dailySales(String startdate, String enddate){
+	public List<Statistics> dailySales(String enddate, String startdate){
 		
 		List<Statistics> dailyarr = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select substr(payment_date, 0, 10) as daily, sum(sumprice) as total "
-					+ "from book_payment where payment_date between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD') +1 group by substr(payment_date, 0, 10)";
+					+ "from book_payment where payment_date between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD') group by substr(payment_date, 0, 10)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, startdate);
 			pstmt.setString(2, enddate);
@@ -398,7 +397,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
 	//date_format='YYYY-MM-DD HH24:MI:SS';
 	//월별 매출 통계
-	public List<Statistics> monthlySales(){
+	public List<Statistics> monthlySales(String enddate, String startdate){
 		List<Statistics> monthlyarr = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -407,8 +406,10 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			conn = ConnectionHelper.getConnection("oracle");
 			String sql = "select to_char(substr(payment_date, 0, 5)) as monthly, sum(sumprice) as total "
-					+ "from book_payment group by substr(payment_date, 0, 5)";
+					+ "from book_payment where payment_date between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD') group by substr(payment_date, 0, 5)";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, startdate);
+			pstmt.setString(2, enddate);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -417,8 +418,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				//month : 22-11
 				String year = dummymonth.substring(0,2);
 				String month = dummymonth.substring(3);
-				System.out.println(year);
-				System.out.println(month);
 				monthlyarr.add(new Statistics(year + "년 " + month + "월", total));
 				
 			}
@@ -440,7 +439,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	}
 	
 	//이번 주 매출 통계
-	public List<Statistics> curWeekSales(){
+	public List<Statistics> curWeekSales(String enddate, String startdate){
 		List<Statistics> curWeekarr = new ArrayList<>();
 
 		Connection conn = null;
@@ -451,11 +450,14 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String sql = "SELECT "
 					+ "to_char(TRUNC(payment_date, 'iw'),'YYYY.MM.DD')|| ' - ' || to_char(sysdate, 'YYYY.MM.DD') AS weekly, "
 					+ "sum(sumprice) AS total "
-					+ "FROM book_payment "
+					+ "FROM book_payment where payment_date "
+					+ "between to_date(?, 'yyyy-MM-DD') and to_date(?, 'YYYY-MM-DD') "
 					+ "group by TRUNC(payment_date, 'iw') "
 					+ "having TRUNC(payment_date, 'iw') > sysdate - 7";
 			
 			pstmt = conn.prepareCall(sql);
+			pstmt.setString(1, startdate);
+			pstmt.setString(2, enddate);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
