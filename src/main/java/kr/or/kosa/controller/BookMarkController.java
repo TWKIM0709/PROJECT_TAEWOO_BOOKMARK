@@ -40,6 +40,7 @@ import kr.or.kosa.service.main.mainService;
 import kr.or.kosa.service.payment.CartAddService;
 import kr.or.kosa.service.payment.CartDeleteService;
 import kr.or.kosa.service.payment.CartListService;
+import kr.or.kosa.service.payment.EbookPaymentService;
 import kr.or.kosa.service.payment.PaymentLogAllListService;
 import kr.or.kosa.service.payment.PaymentLogIdListService;
 import kr.or.kosa.service.payment.PaymentLogLikeIdListService;
@@ -471,8 +472,10 @@ public class BookMarkController extends HttpServlet {
     		forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/userpage/user_paymentFail.jsp");
+    	}	else if(url_Command.equals("/ebookpayment.do")) { //81 결제 실패 화면 이동
+    		action = new EbookPaymentService();
+    		forward = action.execute(request, response);
     	}
-    	 
     	//=================================================================//
     	//                                                     RequestDispatcher
     	//=================================================================//

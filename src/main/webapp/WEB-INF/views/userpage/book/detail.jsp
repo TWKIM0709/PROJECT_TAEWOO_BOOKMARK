@@ -1,3 +1,4 @@
+<%@page import="java.net.InetAddress"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -7,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
 
-
+    <script src="https://js.tosspayments.com/v1/payment"></script>
     <link rel="apple-touch-icon" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="apple-touch-icon-precomposed" href="https://www.millie.co.kr/favicon/ios-icon.png">
     <link rel="shortcut icon" type="image/png" href="https://www.millie.co.kr/favicon/android-icon.png">
@@ -38,6 +39,17 @@
 </head>
 
 <body>
+    <%
+
+	InetAddress ip = InetAddress.getLocalHost();
+	String hostIP = ip.getHostAddress();
+	//System.out.println("현재 아이피 : " + ip.getLocalHost());
+	//System.out.println("hostIP : " + hostIP);
+
+
+	request.setAttribute("ip", hostIP);
+	
+%>
     <div data-v-c1337ae8="" id="wrap" class="show-top-header show-header web-mount">
 	<div data-v-7fc2b3a6="" data-v-c1337ae8="" class="home-banner-component book-detail-banner">
 
@@ -226,9 +238,24 @@
                                 class="gtm-bdtl-libbtn">장바구니 담기</button></li>
                         <li data-v-07a4da8a="" class="share1"><button data-v-07a4da8a="" type="button"
                                 class="gtm-bdtl-postbtn" onclick="b()">YouTube에서 검색하기</button></li>
+                        <li data-v-07a4da8a="" class="share2"><button data-v-07a4da8a="" type="button"
+                               id="ebookPayment"class="gtm-bdtl-postbtn">E-book 구매하기</button></li>
                         <style>
                             .share1 {
                                 background-image: url(https://www.youtube.com/s/desktop/ff71ea81/img/favicon.ico);
+                                font-weight: 700;
+                                width: 100%;
+                                display: flex;
+                                -ms-flex-align: center;
+                                align-items: center;
+                                height: 100%;
+                                text-align: left;
+                                background-size: 24px;
+                                background-position: left 24px center;
+                                background-repeat: no-repeat;
+                            }
+                            .share2{
+                                background-image: url(https://cdn-icons-png.flaticon.com/512/1945/1945963.png);
                                 font-weight: 700;
                                 width: 100%;
                                 display: flex;
@@ -259,6 +286,53 @@
 </body>
 
 <script>
+
+$('#ebookPayment').click(function(){
+    test();
+})
+
+ let customerName = "<c:out value='${sessionScope.id}' />";
+ 
+function test(){
+
+    // let totalprice =  '${param.totalprice}';
+    // let cartsize = '${param.cartsize}';
+    // let customername = '${sessionScope.id}';
+    // let firstbook = '${param.firstbook}'	 
+    // let addr = '${param.addr}'
+    // let detail_addr = '${param.detail_addr}'
+
+ console.log("test함수 실행됐습니다~")
+    
+	let ip = '${requestScope.ip}';
+    let customername = customerName;
+    
+ 	console.log(ip);
+    //let url = "http://localhost:8090/PROJECT_TAEWOO_BOOKMARK/paymentOk.do?id=" + customername + "&addr=" + addr.replace(/ /g,"") + "&detail_addr=" + detail_addr.replace(/ /g,"-");
+    let successurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK-2/ebookpayment.do?isbn=" + '${book.isbn}'
+    //let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK/WEB-INF/views/userpage/user_paymentFail.jsp";
+    let failurl = "http://" + ip + ":8090/PROJECT_TAEWOO_BOOKMARK-2/paymentFail.do";
+
+    console.log(successurl);
+    
+        var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
+        var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
+        let num = '${requestScope.book.price}';
+        tossPayments.requestPayment('카드', { // 결제 수단
+		// 결제 정보
+		amount: num,
+		orderId: 'QTIk82kxDPefXZC8MLFj0',
+		orderName: '${requestScope.book.book_name}',
+		customerName: customername,
+		successUrl: successurl,
+		failUrl: "https://www.musinsa.com/app/",	
+		flowMode: 'D',
+		easyPay: '토스페이'
+		})
+}
+
+
+
 
     function b() {
     	window.open('https://www.youtube.com/results?search_query=' + '${book.book_name}'+' 리뷰');
