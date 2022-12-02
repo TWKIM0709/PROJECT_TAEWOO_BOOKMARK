@@ -97,7 +97,6 @@
 			dataType:"json",
 			data:{"type":"book"},
 			success:function(result){
-				console.log(result);
 				$('#bookreply').empty();
 				let text = '';
 				for(let index in result.BOOK){
@@ -118,7 +117,6 @@
 				let booktable = $('#booktable').DataTable();
 			},//success end
 			error:function(error){
-				console.log(error);
 			}//error end
 		});//ajax end
 	}
@@ -130,7 +128,6 @@
 			dataType:"json",
 			data:{"type":"blog"},
 			success:function(result){
-				console.log(result);
 				$('#blogreply').empty();
 				let text = '';
 				for(let index in result.BLOG){
@@ -147,7 +144,6 @@
 				let blogtable = $('#blogtable').DataTable();
 			},//success end
 			error:function(error){
-				console.log(error);
 			}//error end
 		});//ajax end
 	}
@@ -163,7 +159,6 @@
  	    		dataType : 'text',
  	    		success : function(result){
  	    			alert("댓글 삭제 완료");
- 	    			console.log(result);
  	    			if(result == 1){
  	    				alert("댓글 삭제 완료");
  	    				blogreload();
@@ -188,7 +183,6 @@
  	 	    		},
  	 	    		dataType : 'text',
  	 	    		success : function(result){
- 	 	    			console.log(result);
  	 	    			if(result == 1){
  	 	    				alert("댓글 삭제 완료");
  	 	    				bookreload();

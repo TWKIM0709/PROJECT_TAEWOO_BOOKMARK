@@ -74,8 +74,6 @@
 	
     
     function fileChange(file){
-    	console.log(typeof file);
-    	console.log(file);
         let fileurl = "";
         var form = new FormData();
         form.append("image", file[0]);
@@ -92,14 +90,9 @@
 
 
         $.ajax(settings).done(function (response) {
-            console.log(response);
             var jx = JSON.parse(response);
-            console.log(jx.data.url);
             fileurl = jx.data.url;
-            console.log(fileurl);
-            console.log(1);
         	$('#summernote').summernote('insertImage', fileurl);
-        	console.log(2);
         });
     }
 </script>

@@ -17,7 +17,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/utils/include/admintop.jsp"></jsp:include>
-어드민 블로그 리스트a
+어드민 블로그 리스트
 <div class="container">
   <table class="table table-striped" id="blogtable">
     <thead>

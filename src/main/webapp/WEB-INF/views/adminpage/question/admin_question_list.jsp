@@ -90,7 +90,6 @@
 	    	success : function(result){
 	    		let text = "";
 	    		for(let index in result.questionlist){// &#39;
-	    			console.log(result.questionlist[index].depth);
 	    			text += '<tr onclick="location.href= &#39;ㅇㅇㅇ&#39; " class="trelement">'+
 										'<td>'+result.questionlist[index].question_no+'</td>'+
 										'<td>'+result.questionlist[index].id + '</td>'+

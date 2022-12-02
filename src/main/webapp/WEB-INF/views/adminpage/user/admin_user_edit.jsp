@@ -381,8 +381,6 @@
 	
   <script>
     	 function registck(){
-    		 console.log('실행됨');
-			console.log( $("#regist_no").val().length);
     		if($("#id").val()=='' || !pwck || $("#name").val()=='' || $("#zipcode").val()==''
     				|| $("#address").val()=='' || $("#detailaddress").val()==''|| $("#regist_no").val().length != 6  || $("#phone").val().length != 10 ){
     			$("#register").attr("disabled",true);
@@ -403,7 +401,6 @@
   }
 //비밀번호 정규식
   function PwdCheck(obj){
-	console.log('a');
    var idReg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
    if( !idReg.test(obj.value) ){
@@ -421,8 +418,6 @@
     function kakaopost() {
       new daum.Postcode({
         oncomplete: function (data) {
-        	console.log(data.zonecode);
-        	console.log(data.address);
         	$('#zipcode').val(data.zonecode);
         	$('#address').val(data.address);
         }

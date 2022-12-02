@@ -142,7 +142,6 @@
 				locale: 'ko' // 한국어 설정
 			}; //option end
 		var calendar = new FullCalendar.Calendar(calendarEl, calendarOption);
-		console.log(calendarOption.events);
 		calendar.render();
 //페이지로드 - FullCalendar 생성 area end
 	//}) //onload end
@@ -155,7 +154,6 @@
 			type:"post",
 			dataType:"json",
 			success:function(result){
-				console.log(result);
 				calendarOption.events.length = 0;
 				for(let c of result.calendar){//for start
 					let calendarobj = {
@@ -203,7 +201,6 @@
 					"calendar_content" : $('#title').val()
 				},
 				success : function(result){
-					console.log(result);
 					if(result == 1){ // 일정 추가 성공
 						swal("SUCCESS", "일정 추가 성공!", "success");
 						reload('add');
@@ -253,28 +250,21 @@ $('#addclosebtn').click(function(){
 				},
 				dataType:"text",
 				success:function(event){
-					console.log(event);
 					if(event == "0"){ //일정번호가 잘못 되었을 겅유
-						console.log("일정번호를 입력해주세요");
 						swal("FAIL...", "일정번호를 입력해주세요...", "warning");
 					} else if (event == "1"){ //수정하려는 캘린더가 없을 경우
-						console.log("없는 일정 입니다.");
 						swal("FAIL...", "없는 일정 입니다...", "warning");
 					} else if (event == "2"){ //수정 성공
-						console.log("일정 수정 성공");
 						swal("SUCCESS!", "일정 수정 성공!", "success");
 						reload('update');
 					} else if (event == "3"){ //수정 실패
-						console.log("일정 수정 실패");
 						swal("FAIL...", "일정 수정 실패...", "error");
 					} else if (event == "4"){ //에러 ( 실패 )
-						console.log("일정 수정 에러");
 						swal("ERROR...", "일정 수정 에러...", "error");
 					}
 					$('#updatetest').toggleClass('hide');
 				},
 				error:function(error){
-					console.log("일정 수정 에러");
 					swal("ERROR...", "일정 수정 에러...", "error");
 				}
 			});
@@ -291,25 +281,19 @@ $('#deletepopupbutton').on({
 					},
 					dataType:"text",
 					success:function(event){
-						console.log(event);
 						if(event == "0"){ //일정번호가 잘못 되었을 겅유
-							console.log("일정번호를 입력해주세요");
 							swal("FAIL...", "일정번호를 입력해주세요...", "warning");
 						} else if (event == "1"){ //삭제 성공
-							console.log("일정 삭제 성공");
 							swal("SUCCESS!", "일정 삭제 성공!", "success");
 							reload('update');
 						} else if (event == "2"){ //삭제 실패
-							console.log("일정 삭제 실패");
 							swal("FAIL...", "일정 삭제 실패...", "error");
 						} else if (event == "3"){ //삭제 실패
-							console.log("일정 삭제 오류");
 							swal("FAIL...", "일정 삭제 실패...", "error");
 						} //if - else if end
 						$('#updatetest').toggleClass('hide');
 					}, //success end
 					error:function(error){
-						console.log("일정 삭제 에러");
 						swal("ERROR...", "일정 삭제 에러...", "error");
 					} //error end
 				});//ajax end
