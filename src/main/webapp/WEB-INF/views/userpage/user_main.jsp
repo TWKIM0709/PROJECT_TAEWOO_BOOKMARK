@@ -276,6 +276,7 @@ function showSlides() {
   dots[slideIndex-1].className += " active";
   setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
+let popuplocal;
 </script>
 
 </body>
@@ -322,11 +323,10 @@ function showSlides() {
 				</div>
 				<c:forEach var="popup" items="${requestScope.popup }">
 					<script type="text/javascript">
-						let local1 = JSON.parse(window.localStorage.getItem('${popup.popup_filename}'));
-						if(local1 == null){
-							window.open("popup/popup.jsp?file='${popup.popup_filename}'","_blank","width=820,height=550");
+						popuplocal = JSON.parse(window.localStorage.getItem('${popup.popup_filename}'));
+						if(popuplocal == null){
+							window.open("popup/popup.jsp?file='${popup.popup_filename}'","_blank","width=820,height=550,location=0");
 						}
-						
 					</script>
 				</c:forEach>
 </body>
