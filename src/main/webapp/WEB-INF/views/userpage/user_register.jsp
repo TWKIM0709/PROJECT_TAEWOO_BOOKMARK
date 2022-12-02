@@ -9,6 +9,7 @@
     <meta name="viewport"
         content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- /v3/join -->
 
 
@@ -934,16 +935,16 @@
 								dataType : 'text',
 								success : function(result){
 									if(result == "false"){
-										alert("이미 있는 아이디입니다.")
+										Swal.fire("이미 있는 아이디입니다.")
 									}else if($('#id').val().length < 6 ){
-										 alert("아이디는 6글자 이상이어야 합니다.")
+										Swal.fire("아이디는 6글자 이상이어야 합니다.")
 									}
 									else {
-										alert("사용 가능한 아이디입니다.");
+										Swal.fire("사용 가능한 아이디입니다.");
 									} 
 								},
 								error : function(){
-									alert("서버요청실패");
+									Swal.fire("서버요청실패");
 								}
 							})
 							 
@@ -1222,7 +1223,7 @@ function CharacterCheck(obj){
 var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; 
 
 if( regExp.test(obj.value) ){
-	alert("특수문자는 입력하실수 없습니다.");
+	Swal.fire("특수문자는 입력하실수 없습니다.");
 	obj.value = obj.value.substring( 0 , obj.value.length - 1 ); 
 	}
 }
@@ -1231,7 +1232,7 @@ function IDCheck(obj){
 	var idReg = /^[A-za-z0-9]*$/g;
 
 	if( !idReg.test(obj.value) ){
-		alert("한글 및 특수문자는 입력하실수 없습니다.");
+		Swal.fire("한글 및 특수문자는 입력하실수 없습니다.");
 		obj.value = obj.value.substring( 0 , obj.value.length - 1 ); // 입력한 특수문자 한자리 지움
 		}
 
