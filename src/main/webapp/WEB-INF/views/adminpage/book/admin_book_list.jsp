@@ -78,7 +78,6 @@ function likeSearch(searchval, cpageval){
     	type:"post",
     	dataType:"json",
     	success : function(result){
-    		console.log(result);
     		let text = "";
     		for(let index in result.booklist){
     			text += '<tr onclick="location.href= &#39; bookDetail.do?isbn='+result.booklist[index].isbn+' &#39;" class="trelement">'+
@@ -89,7 +88,6 @@ function likeSearch(searchval, cpageval){
 					'<td>'+result.booklist[index].price+'</td>'+
 		      '</tr>';
     		}
-    		console.log(text);
 			$('.trelement').remove();
 			$('#pager-area').empty();
 			
@@ -98,7 +96,6 @@ function likeSearch(searchval, cpageval){
     	},
     	error : function(error){
     		alert('error');
-    		console.log(error);
     	}
     });
 }

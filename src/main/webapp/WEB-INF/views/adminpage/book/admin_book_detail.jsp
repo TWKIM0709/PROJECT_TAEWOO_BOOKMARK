@@ -83,7 +83,6 @@
 				},
 				dataType : "text",
 				success : function(result){
-					console.log(result);
 					if(result == 0){
 						alert('삭제됨');
 						location.href = "bookAlllist.do";

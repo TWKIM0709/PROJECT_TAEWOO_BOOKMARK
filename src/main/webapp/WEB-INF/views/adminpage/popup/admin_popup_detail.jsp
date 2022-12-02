@@ -67,7 +67,6 @@ $(function(){
 	let datestr = '20' + '${requestScope.popup.popup_date}';
 	datestr = datestr.replace('/','-');
 	datestr = datestr.replace('/','-');
-	console.log(datestr);
 	$('#popup_date').val(datestr);
 });
 </script>

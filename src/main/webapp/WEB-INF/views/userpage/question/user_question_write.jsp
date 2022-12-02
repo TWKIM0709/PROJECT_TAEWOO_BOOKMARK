@@ -25,12 +25,11 @@
 <body>
 <a href="javascript:history.back();">뒤로가기</a>
 <h1></h1>
-<form action="questionWriteok.do" method="get" >
+<form action="questionWriteok.do" method="get" enctype="multipart/form-data">
 <div>
 	<input id="inputTitle" placeholder="제목을 작성해주세요" name = "question_title">
 </div>
 	<textarea id="summernote" name="question_content"  ></textarea>
-<div id="test_cnt">(0 / 100)</div>
 <input type="submit" id="test" value="글쓰기">
 </form>
 <script>
@@ -68,7 +67,7 @@
         }
        
 	});
-	
+  });
 
     function fileChange(file){
     	console.log(typeof file);

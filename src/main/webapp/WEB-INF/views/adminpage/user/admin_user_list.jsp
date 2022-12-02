@@ -103,7 +103,6 @@
 										'<td><button class="btn btn-dark"  onclick="location.href= \'userWithdraw.do?id='+result.likeuserlist[index].id+'\' ">삭제</button></td>'+
 							      '</tr>';
 	    		}
-	    		console.log(text);
 				$('.trelement').remove();
 				$('#pager-area').empty();
 				
@@ -112,7 +111,6 @@
 	    	},
 	    	error : function(error){
 	    		alert('error');
-	    		console.log(error);
 	    	}
 	 })
  }
