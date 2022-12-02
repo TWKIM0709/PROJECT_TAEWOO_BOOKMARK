@@ -70,8 +70,6 @@
   });
 
     function fileChange(file){
-    	console.log(typeof file);
-    	console.log(file);
         let fileurl = "";
         var form = new FormData();
         form.append("image", file[0]);

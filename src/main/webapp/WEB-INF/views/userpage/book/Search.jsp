@@ -241,7 +241,6 @@
     <link rel="stylesheet" type="text/css"
         href="https://d3udu241ivsax2.cloudfront.net/v3/style/search.d5e7ba02987a9fbca3c2.css">
     <script charset="utf-8" src="https://d3udu241ivsax2.cloudfront.net/v3/js/search.1bfec2c80b414a00a1f3.js"></script>
-    <link rel="stylesheet" type="text/css"href="Search.css">
 </head>
 
 <body style="height: auto; overflow: visible;">
@@ -380,7 +379,6 @@
                         $('#hjPager').empty();
 
                         let resultData = result;
-                        console.log(resultData);
                         let test = '';
                        
                         let listlen = resultData.booklist.length;
