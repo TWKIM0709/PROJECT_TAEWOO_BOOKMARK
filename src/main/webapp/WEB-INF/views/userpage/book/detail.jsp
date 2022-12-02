@@ -229,8 +229,10 @@
                                 class="gtm-bdtl-libbtn">장바구니 담기</button></li>
                         <li data-v-07a4da8a="" class="share1"><button data-v-07a4da8a="" type="button"
                                 class="gtm-bdtl-postbtn" onclick="b()">YouTube에서 검색하기</button></li>
+                        <c:if test="${book.file_name != null}">
                         <li data-v-07a4da8a="" class="share2"><button data-v-07a4da8a="" type="button"
                                id="ebookPayment"class="gtm-bdtl-postbtn">E-book 구매하기</button></li>
+                               </c:if>
                         <style>
                             .share1 {
                                 background-image: url(https://www.youtube.com/s/desktop/ff71ea81/img/favicon.ico);
